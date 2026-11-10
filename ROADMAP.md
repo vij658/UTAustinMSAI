@@ -8,8 +8,8 @@ Written 2026-11-09/10. Status: **draft 1.** The video lists exist and every vide
 
 | File | What it is | Main-path videos | Optional |
 |---|---|---|---|
-| [tracks/A-ai-math.md](tracks/A-ai-math.md) | AI math: notation, calculus, linear algebra, multivariable calculus, probability, statistics, optimization, light discrete math | 47 (Blocks 0-7), plus 12 from gap-fill pass 1 (rows G1-G12) | 20 "optional extras" |
-| [tracks/B-ai-ml-concepts.md](tracks/B-ai-ml-concepts.md) | AI/ML concepts in the order of the UT foundational courses: ML, deep learning, transformers, RL, planning, ethics, generative models | 48 (Blocks 1-8), plus 7 bike videos from gap-fill pass 1 (rows G1-G7; G8 is optional) | 30 (about 12 are desk-only) |
+| [tracks/A-ai-math.md](tracks/A-ai-math.md) | AI math: notation, calculus, linear algebra, multivariable calculus, probability, statistics, optimization, light discrete math | 47 (Blocks 0-7), plus 15 from gap-fill passes 1 and 2 (rows G1-G15) | 20 "optional extras" |
+| [tracks/B-ai-ml-concepts.md](tracks/B-ai-ml-concepts.md) | AI/ML concepts in the order of the UT foundational courses: ML, deep learning, transformers, RL, planning, ethics, generative models | 48 (Blocks 1-8), plus 9 bike videos from gap-fill passes 1 and 2 (rows G1-G7, G9, G11; G8 and G10 are optional) | 30 (about 12 are desk-only) |
 | [tracks/C-genai-stack.md](tracks/C-genai-stack.md) | The GenAI stack and enterprise architecture: stack map, LLMs for architects, prompting, RAG, agents/MCP, evals, security and governance, serving and cost, AWS GenAI, large-company patterns | about 50 (Blocks 0-9; the table has 51 rows), plus 8 from gap-fill pass 1 (rows G1-G8) | 8 desk videos |
 
 Every block in every track has: why it matters, an ordered table (title, channel, link, length, level, mode, what you will get, status), a "full circle" line, and three recap questions with hidden answers. Each track ends with **Gaps** (topics where no good video was found) and **Not checked**.
@@ -108,7 +108,7 @@ Gaps are listed, never filled with weak videos. These are the open ones.
 
 ## 8. What is pending
 
-1. **Gap-filling, one agent at a time.** Pass 1 is done for all three tracks. Still open after it: PAC/VC and graphical models (short visual videos), ethics guidelines from a university or standards body, a standalone RMSProp video, a sets video that covers complements, and a short general scaling-laws lecture. A second pass can target those; I tell you before each run.
+1. **Gap-filling is done for now (two passes).** Still open: short visual PAC/VC and Bayes-net videos, OECD and NIST guideline lectures from a credible source, and the Stanford CS336 scaling-laws lecture (its ID fails the existence check). Another pass would mostly hunt for videos that may not exist; I suggest starting to ride and noting which gaps you actually feel.
 2. **Lengths:** open each link once to fill the "length ?" cells, or ask for a pass when YouTube access allows it.
 3. **Playlists:** turn each block into an ordered YouTube playlist (the Atlas script can do this once the lists settle).
 4. **Repo:** this folder is committed locally, but pushing to GitHub is blocked until a repository named `MSAIAtlas` exists and the session has push access (the session's GitHub login is currently invalid).

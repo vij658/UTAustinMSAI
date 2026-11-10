@@ -383,10 +383,32 @@ Belongs after #44 (propositional logic) and before #45 (induction): watch G11, t
 
 ---
 
+## Gap-fill pass 2 (2026-11-10)
+
+Method: every video below passed the same YouTube oEmbed check as the main path (the lookup returned the title and channel copied here, for the ID in the link). I did not watch any of them, and a length is shown only where I saw one on a page (the source is named); otherwise it says "length ?".
+
+### Standalone RMSProp (Block 6 gap)
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-------|------|-------------------|--------|
+| G13 | RMSProp (C2W2L07) | DeepLearningAI | https://www.youtube.com/watch?v=_e-LFe_igno | length ? | Deeper | BIKE | RMSProp, the adaptive step-size method that Adam (G6) builds on (title-based; the code in the title looks like a course, week and lecture number, but I could not read the watch page to confirm). Expect update formulas, so pause if you lose the thread. | verified; title-based |
+
+Belongs after #40 (SGD): suggested watch order G5 (momentum), then G13 (RMSProp), then G6 (Adam), which combines the two.
+### Sets, complements and De Morgan (Block 7 gap)
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-------|------|-------------------|--------|
+| G14 | Bringing the set operations together \| Probability and Statistics \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=OCNXS_m1HWU | at least 6:20 (last chapter marker, per rosetta.to) | Start | BIKE | One compound set expression worked step by step, using relative complement, absolute complement (everything in the universal set that is not in A), intersection and union. The page does not mention Venn diagrams or De Morgan's laws. | verified; content per rosetta.to page |
+| G15 | Demorgan's Law and other properties of Complement sets \| Sets \| Grade 11 \| Math \| Khan Academy | Khan Academy India - English | https://www.youtube.com/watch?v=ao8w25ypGXM | length ? | Deeper | DESK | De Morgan's laws and other properties of complements of sets (title-based; I could not read a page describing the content). It comes from a Grade 11 school-maths series, so expect a classroom pace; pause and copy the identities down. | verified; title-based |
+
+Belongs after #44 (propositional logic): suggested watch order G11 and G12 (pass 1), then G14 for complements, then G15 for De Morgan, which is the set version of the logic rules in #44. The Harvard Stat 110 Lecture 1 (Probability and Counting) is already listed under Optional extras and is a stronger bridge into probability events than the school-level videos; I did not list it again.
+
+---
+
 ## Gaps
 
-- **Sets (Block 7):** I verified only one basic Venn-diagram video (The Organic Chemistry Tutor, listed under Optional extras). I did not judge it good enough for the main path, so sets have no main-path video. Filled in gap-fill pass 1: G11, G12.
-- **Learning-rate schedules, momentum and Adam (Block 6):** searches returned several candidates, but I did not run the oEmbed check on any of them, so none is listed. #39 covers the learning rate itself; the named optimizers are a gap. Filled in gap-fill pass 1: G5, G6, G7.
+- **Sets (Block 7):** I verified only one basic Venn-diagram video (The Organic Chemistry Tutor, listed under Optional extras). I did not judge it good enough for the main path, so sets have no main-path video. Filled in gap-fill pass 1: G11, G12. Filled in gap-fill pass 2: G14, G15.
+- **Learning-rate schedules, momentum and Adam (Block 6):** searches returned several candidates, but I did not run the oEmbed check on any of them, so none is listed. #39 covers the learning rate itself; the named optimizers are a gap. Filled in gap-fill pass 1: G5, G6, G7. Filled in gap-fill pass 2: G13.
 - **Hessian and second-order conditions for convexity (Block 6):** no candidate found that I could check. #41 covers convexity at the intuition level only. Filled in gap-fill pass 1: G8, G9, G10.
 - **Bayesian inference beyond the basics (Block 5):** coverage is thin. #36 and #37 give the idea and the link to regularization, but there is no verified video on conjugate priors or posterior updating with a continuous prior in the main path. Filled in gap-fill pass 1: G3, G4.
 - **Continuous random variables and densities (Block 4):** only covered inside the normal-distribution lecture (#30) and the CLT video (#31), with no dedicated video. Stat 110 lectures on this exist but were not checked. Filled in gap-fill pass 1: G1, G2.
@@ -397,6 +419,7 @@ Belongs after #44 (propositional logic) and before #45 (induction): watch G11, t
 - **Total hours is therefore not confirmed.** The 3Blue1Brown, Khan and StatQuest videos are usually short and the lectures are usually around an hour, so the total probably falls somewhere in the low-to-mid 20s of hours, which is at or just under the requested range. This is an expectation, not a measurement; check the lengths on the day before you plan a ride.
 - **Content of videos:** I confirmed that each video exists, with the title and channel above, but I did not watch any of them. Descriptions in "What you will get" are drawn from titles, chapter lists and series context, and are marked "title-based" where I had nothing else (#22, #23, #25, #36). MIT 6.042J lecture topics come from the OCW lecture list, not from the YouTube pages.
 - **Gap-fill rows (G1 to G12):** I did not watch any of them. Lengths are given only where I saw one on a page (G6, per podwise, rounded); every other row shows "length ?". Content notes come from the named listing pages or from titles only, as marked in the Status column.
+- **Gap-fill pass 2 rows (G13 to G15):** I did not watch any of them. The only length is G14's, a lower bound from its last chapter marker on a rosetta.to page; G13 and G15 show "length ?". G13 and G15 are title-based (I could not read their watch pages), and G14's content comes from the rosetta.to page. The five Stanford Online IDs retried in this pass failed the oEmbed check again, so none of them is used.
 - **Level and Mode tags** are my judgement from the format and creator, not something a lookup can verify.
 - **Not included, not checked for content:** a PAC-learning and VC-dimension lecture (Caltech, "Lecture 07 - The VC Dimension", https://www.youtube.com/watch?v=Dc0sr0kdBVI) passed the existence check, but it belongs to ML theory rather than this math track, so I left it out. A Technion "Lecture 4-5: Convex sets and functions" (https://www.youtube.com/watch?v=knBF1VfjSz4) also exists, but I did not confirm its language, so I left it out. The 2023 Boyd Lecture 3 (convex functions) could not be verified (the oEmbed lookup failed), so it is not listed.
 - **Passed the existence check but not used:** "The Mean Squared Error of an Estimator and the Bias Variance Tradeoff" (Mike, the Mathematician, https://www.youtube.com/watch?v=UAefABgvb84), "What are Maximum Likelihood (ML) and Maximum a posteriori (MAP)?" (Iain Explains Signals, Systems, and Digital Comms, https://www.youtube.com/watch?v=9Ahdh_8xAEI), "Explaining the intuition behind Bayesian inference" (Ben Lambert, https://www.youtube.com/watch?v=yvWlpwnT1nw), and "Maximum Likelihood Estimation (MLE): The Intuition" (IntuitiveML, https://www.youtube.com/watch?v=wbh730SeqeA). I did not check their length or content, so I did not put them in the path. The Ben Lambert one is the first to try if you want more Bayesian inference (see Gaps).
