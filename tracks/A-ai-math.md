@@ -330,19 +330,73 @@ Suggested use: if #20 or #27 feels like a cold start, do Stat 110 Lecture 1 and 
 
 ---
 
+## Gap-fill pass 1 (2026-11-10)
+
+Method: every video below passed the same YouTube oEmbed check as the main path (the lookup returned the title and channel copied here, for the ID in the link). I did not watch any of them, and a length is shown only where I saw one on a page (the source is named); otherwise it says "length ?".
+
+### Continuous random variables and densities (Block 4 gap)
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-------|------|-------------------|--------|
+| G1 | Why “probability of 0” does not mean “impossible” \| Probabilities of probabilities, part 2 | 3Blue1Brown | https://www.youtube.com/watch?v=ZA4JkHKZM50 | length ? | Start | BIKE | Why a single exact value of a continuous variable has probability 0, and how a density (height as probability per unit, area as probability) fixes that. | verified; content per rosetta.to page |
+| G2 | Lecture 12: Discrete vs. Continuous, the Uniform \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=Tci---bVs60 | length ? | Deeper | BIKE | The PDF as a density and not a probability, PDF versus CDF, expectation and variance for continuous variables, LOTUS and the Uniform distribution. | verified; content per stat110-notes page |
+
+Belongs after #29 (expectation) and before #30 (normal distribution): watch G1 first for the picture, then G2 for the formal version. G1 also continues #36, so you can leave it until then if you prefer.
+
+### Bayesian inference beyond the basics (Block 5 gap)
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-------|------|-------------------|--------|
+| G3 | Explaining the intuition behind Bayesian inference | Ben Lambert | https://www.youtube.com/watch?v=yvWlpwnT1nw | length ? | Start | BIKE | An intuition-first look at Bayesian inference (title-based; I did not confirm the content beyond the title). | verified; title-based |
+| G4 | Lecture 23: Beta distribution \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=UZjlBQbV1KU | length ? | Deeper | DESK | The Beta distribution as a prior for an unknown probability, and the Beta-Binomial update (a Beta prior plus Binomial data gives a Beta posterior). The page also lists a finance guest segment, which you can skip. | verified; content per stat110-notes page |
+
+Belongs after #36 (probabilities of probabilities, part 1) and #37 (MAP): watch G3 right after #36, and G4 after G2 and #37, because it needs densities and the prior-times-likelihood idea. MAP versus maximum likelihood is already covered by #37, so I did not add a separate video for it.
+
+### Momentum, Adam and learning-rate decay (Block 6 gap)
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-------|------|-------------------|--------|
+| G5 | L12.3 SGD with Momentum | Sebastian Raschka | https://www.youtube.com/watch?v=gMxvefj0YAM | length ? | Deeper | BIKE | Momentum added to SGD, the first step before the adaptive optimizers (title-based). | verified; title-based |
+| G6 | L12.4 Adam: Combining Adaptive Learning Rates and Momentum | Sebastian Raschka | https://www.youtube.com/watch?v=eUOvUIRPSX8 | 15 min (per podwise, rounded) | Deeper | DESK | Adam as adaptive learning rates plus momentum (title-based). The update rules are formulas, so pause and follow them on paper. | verified; length per podwise, content title-based |
+| G7 | L12.1 Learning Rate Decay | Sebastian Raschka | https://www.youtube.com/watch?v=Owm1H0ukjS4 | length ? | Deeper | BIKE | Why and how the learning rate is lowered during training (title-based). | verified; title-based |
+
+Belongs after #40 (SGD): watch G5, then G6. G7 can go any time after #39 (gradient descent step by step), which is where the learning rate is first explained. These three come from one lecture series (L12.0 to L12.6); I used podwise only to see the lecture titles and one length. I did not find or check a verified RMSProp-only video, so RMSProp is covered only inside G6.
+
+### Hessian and second-order conditions (Block 6 gap)
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-------|------|-------------------|--------|
+| G8 | The Hessian matrix \| Multivariable calculus \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=LbBcuZukCAw | length ? | Deeper | BIKE | The Hessian as the matrix that collects all second partial derivatives, with a worked two-variable example. | verified; content per rosetta.to page |
+| G9 | Second partial derivative test intuition | Khan Academy | https://www.youtube.com/watch?v=sJo7D74PAak | length ? | Deeper | DESK | Why the sign of the second-derivative test separates local minimum, local maximum and saddle point for two variables, using xy and x^2 - y^2 as examples. | verified; content per rosetta.to page |
+| G10 | Operations Research 10B: Hessian Matrix, Convex & Concave Functions | Yong Wang | https://www.youtube.com/watch?v=F3YoC5A6Avg | length ? | Deeper | DESK | Hessian, positive and negative semidefinite matrices, and convex and concave functions (title-based, plus the topic list on a third-party listing page that I could not tie to this exact video ID). | verified; title-based |
+
+Belongs after #41 (Convexity 101) and before #42: watch G8, then G9, then G10, which is the only one aimed at semidefinite Hessians and convexity. G8 and G9 build on Block 3 (#21 to #23), so if second partial derivatives feel rusty, revisit #21 first. I could not judge the teaching quality of G10, so treat it as optional.
+
+### Sets (Block 7 gap)
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-------|------|-------------------|--------|
+| G11 | Intersection and union of sets \| Probability and Statistics \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=jAfNg3ylZAI | length ? | Start | BIKE | Sets as collections of distinct objects, then intersection and union drawn with Venn diagrams. Complements are not mentioned on the page I read. | verified; content per rosetta.to page |
+| G12 | Expressing Events with Set Operations | Dr. Dylan Spicker | https://www.youtube.com/watch?v=UU6e6hHSgxg | length ? | Start | BIKE | Writing probability events with set operations (title-based; I did not confirm whether complements are covered). | verified; title-based |
+
+Belongs after #44 (propositional logic) and before #45 (induction): watch G11, then G12. G12 links sets back to events in Block 4, so it can also be done early if event notation in #25 to #27 looks unfamiliar. The Organic Chemistry Tutor video under Optional extras remains an alternative.
+
+---
+
 ## Gaps
 
-- **Sets (Block 7):** I verified only one basic Venn-diagram video (The Organic Chemistry Tutor, listed under Optional extras). I did not judge it good enough for the main path, so sets have no main-path video.
-- **Learning-rate schedules, momentum and Adam (Block 6):** searches returned several candidates, but I did not run the oEmbed check on any of them, so none is listed. #39 covers the learning rate itself; the named optimizers are a gap.
-- **Hessian and second-order conditions for convexity (Block 6):** no candidate found that I could check. #41 covers convexity at the intuition level only.
-- **Bayesian inference beyond the basics (Block 5):** coverage is thin. #36 and #37 give the idea and the link to regularization, but there is no verified video on conjugate priors or posterior updating with a continuous prior in the main path.
-- **Continuous random variables and densities (Block 4):** only covered inside the normal-distribution lecture (#30) and the CLT video (#31), with no dedicated video. Stat 110 lectures on this exist but were not checked.
+- **Sets (Block 7):** I verified only one basic Venn-diagram video (The Organic Chemistry Tutor, listed under Optional extras). I did not judge it good enough for the main path, so sets have no main-path video. Filled in gap-fill pass 1: G11, G12.
+- **Learning-rate schedules, momentum and Adam (Block 6):** searches returned several candidates, but I did not run the oEmbed check on any of them, so none is listed. #39 covers the learning rate itself; the named optimizers are a gap. Filled in gap-fill pass 1: G5, G6, G7.
+- **Hessian and second-order conditions for convexity (Block 6):** no candidate found that I could check. #41 covers convexity at the intuition level only. Filled in gap-fill pass 1: G8, G9, G10.
+- **Bayesian inference beyond the basics (Block 5):** coverage is thin. #36 and #37 give the idea and the link to regularization, but there is no verified video on conjugate priors or posterior updating with a continuous prior in the main path. Filled in gap-fill pass 1: G3, G4.
+- **Continuous random variables and densities (Block 4):** only covered inside the normal-distribution lecture (#30) and the CLT video (#31), with no dedicated video. Stat 110 lectures on this exist but were not checked. Filled in gap-fill pass 1: G1, G2.
 
 ## Not checked
 
 - **Lengths:** only 8 of 47 main-path videos have a confirmed length (#2, #5, #6, #7, #8, #15, #19, #44). For the other 39 and for every optional extra, YouTube returned a bot-protection page and I did not work around it, so they show "length ?". The confirmed ones sum to 2 h 58 m 36 s.
 - **Total hours is therefore not confirmed.** The 3Blue1Brown, Khan and StatQuest videos are usually short and the lectures are usually around an hour, so the total probably falls somewhere in the low-to-mid 20s of hours, which is at or just under the requested range. This is an expectation, not a measurement; check the lengths on the day before you plan a ride.
 - **Content of videos:** I confirmed that each video exists, with the title and channel above, but I did not watch any of them. Descriptions in "What you will get" are drawn from titles, chapter lists and series context, and are marked "title-based" where I had nothing else (#22, #23, #25, #36). MIT 6.042J lecture topics come from the OCW lecture list, not from the YouTube pages.
+- **Gap-fill rows (G1 to G12):** I did not watch any of them. Lengths are given only where I saw one on a page (G6, per podwise, rounded); every other row shows "length ?". Content notes come from the named listing pages or from titles only, as marked in the Status column.
 - **Level and Mode tags** are my judgement from the format and creator, not something a lookup can verify.
 - **Not included, not checked for content:** a PAC-learning and VC-dimension lecture (Caltech, "Lecture 07 - The VC Dimension", https://www.youtube.com/watch?v=Dc0sr0kdBVI) passed the existence check, but it belongs to ML theory rather than this math track, so I left it out. A Technion "Lecture 4-5: Convex sets and functions" (https://www.youtube.com/watch?v=knBF1VfjSz4) also exists, but I did not confirm its language, so I left it out. The 2023 Boyd Lecture 3 (convex functions) could not be verified (the oEmbed lookup failed), so it is not listed.
 - **Passed the existence check but not used:** "The Mean Squared Error of an Estimator and the Bias Variance Tradeoff" (Mike, the Mathematician, https://www.youtube.com/watch?v=UAefABgvb84), "What are Maximum Likelihood (ML) and Maximum a posteriori (MAP)?" (Iain Explains Signals, Systems, and Digital Comms, https://www.youtube.com/watch?v=9Ahdh_8xAEI), "Explaining the intuition behind Bayesian inference" (Ben Lambert, https://www.youtube.com/watch?v=yvWlpwnT1nw), and "Maximum Likelihood Estimation (MLE): The Intuition" (IntuitiveML, https://www.youtube.com/watch?v=wbh730SeqeA). I did not check their length or content, so I did not put them in the path. The Ben Lambert one is the first to try if you want more Bayesian inference (see Gaps).

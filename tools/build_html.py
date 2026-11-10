@@ -288,7 +288,7 @@ def render_block(num, title, body, added):
         v["optional"] = v["level"].lower() == "scholar"
         if v["optional"]:
             opt.append(v)
-        elif v["id"] == "G1":
+        elif v["id"] == "G1" and CUR_TRACK[0] == "C":
             main.insert(0, v)
         else:
             main.append(v)
@@ -673,6 +673,9 @@ def build_track(key, slug, long_title, short):
                     gap_notes.append((st, sb))
                     continue
                 blk = next((n for pat, n in GAP_GROUPS if re.search(pat, st, re.I)), None)
+                if blk is None:
+                    mb = re.search(r"\(Block (\d+)", st)   # headings like "Sets (Block 7 gap)"
+                    blk = int(mb.group(1)) if mb else None
                 if blk is None:
                     warn("gap-fill group without block: " + st)
                     continue
