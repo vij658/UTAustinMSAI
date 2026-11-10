@@ -292,14 +292,14 @@ def render_block(num, title, body, added):
         elif v["id"] == "G1" and CUR_TRACK[0] == "C":
             main.insert(0, v)
         else:
-            am = re.search(r"Belongs after #(\d+)", v["note"])
+            am = re.search(r"Belongs after #(\d+(?:\.\d+)?)", v["note"])
             pos = None
             if am:   # place it right after the numbered video its note names
                 idx = [i for i, m_ in enumerate(main) if m_["id"] == am.group(1)]
                 if idx:
                     pos = idx[0] + 1
                     while pos < len(main) and main[pos]["added"] and re.search(
-                            r"Belongs after #%s\b" % am.group(1), main[pos]["note"]):
+                            r"Belongs after #%s(?![\d.])" % re.escape(am.group(1)), main[pos]["note"]):
                         pos += 1
             if pos is None:
                 main.append(v)

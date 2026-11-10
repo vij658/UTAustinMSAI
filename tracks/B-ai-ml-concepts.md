@@ -1,6 +1,6 @@
 # Track B: AI and ML concepts
 
-A watch-while-biking ladder of 48 main videos (plus 30 optional ones) that builds the mental models behind the UT MSAI foundational courses: ML basics, classical ML, deep learning, transformers and LLMs, reinforcement learning, planning and search, ethics, and generative models.
+A watch-while-biking ladder of 48 main videos (plus 30 optional ones, and 7 more bike videos added in the later gap-fill pass) that builds the mental models behind the UT MSAI foundational courses: ML basics, classical ML, deep learning, transformers and LLMs, reinforcement learning, planning and search, ethics, and generative models.
 
 **Total time (honest accounting).** YouTube's oEmbed endpoint does not return duration, and the watch page showed a duration for only some videos. So lengths are known for 11 of the 48 main videos (summing to about 4 h 13 min), shown below as the page stated them. Two long Karpathy talks show only a lower bound taken from their chapter list. The other 35 read "length ?" and I did not estimate them. A total in hours cannot be stated from verified data; once the "length ?" cells are filled in (open each link once), the sum is the answer.
 
@@ -15,7 +15,7 @@ A watch-while-biking ladder of 48 main videos (plus 30 optional ones) that build
 
 **UT course mapping.** The block names follow the course topics in the task brief. I could not open https://cdso.utexas.edu/msai in this session (usage limit reached), so the syllabus mapping is not independently confirmed here. Please check it against that page.
 
-**Mode balance.** All 48 main videos are BIKE. All DESK items are in the optional sub-lists.
+**Mode balance.** All 48 original main videos are BIKE, and so are the 7 gap-fill additions on the main path. All DESK items are in the optional sub-lists (the gap-fill row G8, a long graduate lecture, is also optional).
 
 ---
 
@@ -291,21 +291,64 @@ Autoregressive language models are covered by 4.1 to 4.4, so no extra video is n
 
 ---
 
+## Gap-fill pass 1 (2026-11-10)
+
+Method: every video below passed the same YouTube oEmbed check as the main path (the lookup returned the title and channel copied here, for the ID in the link). I did not watch any of them, and a length is shown only where I saw one on a page (the source is named); otherwise it says "length ?".
+
+### Short overview of the kinds of learning (Block 1 gap)
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-------|------|-------------------|--------|
+| G1 | Supervised vs. Unsupervised Learning | IBM Technology | https://www.youtube.com/watch?v=W01tIRP_Rqs | 6:54 (per tubescript transcript page) | Start | BIKE | A short explainer on supervised learning (classification and regression) versus unsupervised learning (clustering, association, dimensionality reduction), with a brief mention of semi-supervised. It does not cover reinforcement learning; that is introduced by 5.1. | verified; content per tubescript transcript page |
+
+Belongs after #1.1 (the gentle first picture of machine learning): suggested watch order 1.1, then G1 as a quick vocabulary pass, then 1.2. For the reinforcement side, 5.1 is the existing introduction, so G1 plus 5.1 together cover the three kinds.
+
+### Training and debugging neural networks (Block 3 gap)
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-------|------|-------------------|--------|
+| G2 | Lecture 6 \| Training Neural Networks I | Stanford University School of Engineering | https://www.youtube.com/watch?v=wEoyxE0GP2M | length ? | Deeper | BIKE | Stanford CS231n (Spring 2017) lecture whose course-syllabus line reads "Activation functions, initialization, dropout, batch normalization". Slide-heavy, so glance at the screen between pedals. | verified; content per CS231n 2017 syllabus line |
+| G3 | Lecture 7 \| Training Neural Networks II | Stanford University School of Engineering | https://www.youtube.com/watch?v=_JB0AO7QxSA | length ? | Deeper | BIKE | Next CS231n lecture; the syllabus line reads "Update rules, ensembles, data augmentation, transfer learning" (update rules are the optimizer variants such as momentum). Slide-heavy; pause for any formulas. | verified; content per CS231n 2017 syllabus line |
+
+Belongs after #3.6 (CS231n Lecture 5 on CNNs, which Lectures 6 and 7 follow in the same course): suggested watch order 3.6, then G2, then G3. Both assume backprop from 3.3. Neither is a hands-on debugging walkthrough as far as I can tell from the syllabus lines, so 3.O3 (DESK) is still the closest item for diagnosing training in code. I did not find a Karpathy "Recipe for Training Neural Networks" video (only the blog post and third-party read-throughs), and the Andrew Ng CS230 lectures did not pass the oEmbed check.
+
+### Fine-tuning, LoRA and scaling (Block 4 gap)
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-------|------|-------------------|--------|
+| G4 | State of GPT \| BRK216HFS | Microsoft Developer | https://www.youtube.com/watch?v=bZQun8Y4L2A | length ? | Deeper | BIKE | Karpathy's Microsoft Build 2023 talk. Third-party notes list the assistant training pipeline (pre-training, supervised fine-tuning, reward modelling, RLHF), then applications such as prompting techniques, retrieval-augmented LLMs and a finetuning section with default recommendations. | verified; content per third-party notes gist (section headings) |
+| G5 | What is LoRA? Low-Rank Adaptation for finetuning LLMs EXPLAINED | AI Coffee Break with Letitia | https://www.youtube.com/watch?v=KEv-F5UkhxU | at least 6:14 (last chapter marker) | Deeper | BIKE | A short explainer; the chapter list reads: why finetuning LLMs is costly, how LoRA works, low-rank adaptation, LoRA vs other approaches. | verified; content per watch-page chapter list |
+| G6 | RAG vs Fine-Tuning vs Prompt Engineering: Optimizing AI Models | IBM Technology | https://www.youtube.com/watch?v=zYGDpG-pTho | 11:18 (per sozai transcript page) | Start | BIKE | A comparison of the three ways to adapt a model to a task: what each costs, what each can and cannot add, and how they are combined. | verified; content per sozai transcript page |
+| G7 | Chinchilla Explained: Compute-Optimal Massive Language Models | Edan Meyer | https://www.youtube.com/watch?v=PZXN7jm9IC0 | 32:45 (per the watch page) | Deeper | BIKE | A walk through DeepMind's Chinchilla paper; chapters: overview, paper introduction, methods, scaling implications, Chinchilla overview and performance, summary, critiques. It covers the model-size versus data trade-off for a compute budget, not scaling laws in general. A solo creator's channel, not a university; paper figures are shown, so glance at the screen. | verified; content per watch-page chapter list and summary |
+
+Belongs after #4.4 (the post-training and RLHF story): suggested watch order G4 (the assistant pipeline and when to fine-tune), G5 (what LoRA changes), G6 (choosing between fine-tuning, retrieval and prompting), then G7, which extends the scaling-laws chapter at 25:43 of 4.3 and could also be placed right after 4.3.
+
+### POMDPs (Block 6 gap)
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-------|------|-------------------|--------|
+| G8 | Lecture 15 Partially Observable MDPs (POMDPs) -- CS287-FA19 Advanced Robotics at UC Berkeley | Pieter Abbeel | https://www.youtube.com/watch?v=2dNp7QyoF_k | length ? | Scholar | DESK | A Berkeley graduate lecture on POMDPs (title and short description only; no chapter list was available). Expect a full, mathematical lecture that assumes MDPs, not a short intro. | verified; title-based |
+
+Belongs after #6.5 (Poupart's POMDP lecture): suggested watch order 6.5 first, then G8 only if you want a second, graduate-course view. Treat it as optional.
+
+---
+
 ## Gaps
 
-- **Training, tuning and debugging neural networks (Block 3):** no concept-level, BIKE-friendly video was verified. The closest items are CS231n 2016 Lecture 6 (3.4, title only) and Karpathy's makemore Part 3 (3.O3, DESK).
-- **Short animated overview of supervised vs unsupervised vs reinforcement learning (Block 1):** candidates from small channels were found but not included; Caltech Lecture 1 (1.4) is the verified source.
-- **PAC learning and VC dimension (Block 2):** only one small-channel PAC video (2.O2) and the long Caltech lecture sequence; no short visual VC video verified.
-- **Graphical models (Block 2):** a single introductory lecture (2.14); no dedicated short visual video.
-- **Scaling laws and fine-tuning concepts (Block 4):** only as chapters inside Karpathy's talks (4.3, 4.4). Dedicated videos exist but their channels were not vetted.
-- **POMDPs (Block 6):** one long expert lecture (6.5). A short POMDP intro from a small channel exists (ID Ggcl0GfJjfc, oEmbed ok) but I did not include it because I could not judge its quality.
-- **Ethics guidelines (Block 7):** only a short orientation (7.1); no university lecture on the EU/OECD guidelines was verified.
-- **Stanford CS25 introduction to transformers (ID XfpMkf4rD6E):** oEmbed refused, so excluded.
+- **Training, tuning and debugging neural networks (Block 3):** no concept-level, BIKE-friendly video was verified. The closest items are CS231n 2016 Lecture 6 (3.4, title only) and Karpathy's makemore Part 3 (3.O3, DESK). Filled in gap-fill pass 1: G2, G3 (two full CS231n lectures; still no short, hands-on debugging video).
+- **Short animated overview of supervised vs unsupervised vs reinforcement learning (Block 1):** candidates from small channels were found but not included; Caltech Lecture 1 (1.4) is the verified source. Filled in gap-fill pass 1: G1 (supervised vs unsupervised only; no credible short that covers all three kinds was found, and reinforcement learning is introduced by 5.1).
+- **PAC learning and VC dimension (Block 2):** only one small-channel PAC video (2.O2) and the long Caltech lecture sequence; no short visual VC video verified. Still open after pass 1: the candidates that passed oEmbed came from small channels ("PAC Learning and VC Dimension" by John Mount, ID X4Oxst5huQA, and a worked-example video by Mahesh Huddar, ID vbQovP_Y9p8) and I could not read a page that describes their content, so I added none. 2.O2 and the Caltech lectures (2.5, 2.O3, 2.O4) stay the only PAC/VC sources.
+- **Graphical models (Block 2):** a single introductory lecture (2.14); no dedicated short visual video. Still open after pass 1: the oEmbed-passing candidates were a full Heidelberg lecture (ID KnDP8-S7gl4, "Lecture 15.1: Bayesian Networks/Probabilistic Graphical Models | ML19", whose watch page I could not read) and small-channel videos on d-separation and Bayes nets; none is short and visual from a credible channel, so none is added. 6.O1 and 2.14 stay the references.
+- **Scaling laws and fine-tuning concepts (Block 4):** only as chapters inside Karpathy's talks (4.3, 4.4). Dedicated videos exist but their channels were not vetted. Filled in gap-fill pass 1: G4, G5, G6, G7 (fine-tuning, LoRA, fine-tuning vs retrieval vs prompting, and Chinchilla only). A general scaling-laws lecture is still open: the Stanford CS336 scaling-laws lecture and the Stanford CS229 "Building LLMs" lecture failed the oEmbed check, and the other scaling-law explainers that passed came from small channels I did not trust.
+- **POMDPs (Block 6):** one long expert lecture (6.5). A short POMDP intro from a small channel exists (ID Ggcl0GfJjfc, oEmbed ok) but I did not include it because I could not judge its quality. Filled in gap-fill pass 1: G8 (a long Berkeley graduate lecture, not a short intro). The Ggcl0GfJjfc candidate ("POMDP Introduction", channel yagcik) passed oEmbed again but its page could not be read, so it is still not used; the Stanford AA228 "Offline Belief State Planning" lecture (ID vmwq4w53e9Q) failed the oEmbed check, so it is not listed.
+- **Ethics guidelines (Block 7):** only a short orientation (7.1); no university lecture on the EU/OECD guidelines was verified. Still open after pass 1: nothing from a university or standards body on the EU, OECD or NIST guidelines passed the check; the EU AI Act and NIST videos found came from a law firm, a training company or small channels. Two credible but general items passed oEmbed and are not guideline-specific, so I did not add them: "What is AI ethics? Oxford Professor Edward Harcourt explains" (University of Oxford, ID Gpf_ttt_c8M) and "The Turing Lectures: Can we trust AI?" (The Alan Turing Institute, ID 7SyAC5TsEsQ).
+- **Stanford CS25 introduction to transformers (ID XfpMkf4rD6E):** oEmbed refused, so excluded. Still open after pass 1: no other verified version came up in this pass; several other Stanford Online lecture IDs also failed oEmbed, so a Stanford Online transformers lecture may be a general limitation of the check.
 
 ## Not checked
 
 - I have not watched any video; "What you will get" is from titles and, for two Karpathy talks, chapter lists on the watch page.
 - Lengths: the watch page stated a duration for only 11 main videos. The rest read "length ?". I did not estimate, so total hours are not available.
 - The UT syllabus mapping: https://cdso.utexas.edu/msai could not be opened in this session. Course-topic claims come from the task brief.
+- Gap-fill rows (G1 to G8): I did not watch any of them. Lengths are given only where I saw one on a page (G1 and G6 on third-party transcript pages, G5 as a lower bound from its last chapter marker, G7 on the YouTube watch page); every other row shows "length ?". Content notes come from the named syllabus lines, chapter lists, notes or transcript pages, or from the title only (G8), as marked in the Status column. Level and Mode tags for these rows are my judgement.
 - Whether each video remains available over time, and whether Level/Mode tags match the actual pace and need for pausing.
 - Whether channel re-uploads exist for lectures I selected (I used the original or official channel where search surfaced it, and dropped third-party re-uploads).
