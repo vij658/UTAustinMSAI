@@ -152,7 +152,7 @@ footer p{max-width:72ch}
 </div></header>
 <main id="main" class="wrap">
 <h1>MSAI + GenAI Architect Roadmap: the bike-video plan</h1><p>For Sankar. One hour a day on the stationary bike, watching, to build mental models before the UT Austin online MS in AI starts (Spring 2027) and while growing toward the goal of designing large-scale GenAI tech stacks for big companies (coding + architecture + AI).</p>
-<p>Written 2026-11-09/10. Status: <strong>draft 1.</strong> The video lists exist and every video was checked to exist; none was watched. See "How much to trust this" before relying on any number.</p><h2>Pick a track</h2><ul class="tracks"><li><a href="A-ai-math.html"><strong>A: AI math</strong><span>62 main-path videos in 8 blocks</span></a></li><li><a href="B-ai-ml-concepts.html"><strong>B: AI and ML concepts</strong><span>57 main-path videos in 8 blocks</span></a></li><li><a href="C-genai-stack.html"><strong>C: The GenAI stack and enterprise architecture</strong><span>58 main-path videos in 10 blocks</span></a></li><li><a href="D-tech-stack-bike.html"><strong>D: Enterprise tech stack foundations (bike path)</strong><span>53 main-path videos in 9 blocks</span></a></li></ul><section><h2>1. What is in this folder</h2><table>
+<p>Written 2026-11-09/10. Status: <strong>draft 1.</strong> The video lists exist and every video was checked to exist; none was watched. See "How much to trust this" before relying on any number.</p><h2>Pick a track</h2><ul class="tracks"><li><a href="A-ai-math.html"><strong>A: AI math</strong><span>62 main-path videos in 8 blocks</span></a></li><li><a href="B-ai-ml-concepts.html"><strong>B: AI and ML concepts</strong><span>57 main-path videos in 8 blocks</span></a></li><li><a href="C-genai-stack.html"><strong>C: The GenAI stack and enterprise architecture</strong><span>58 main-path videos in 10 blocks</span></a></li><li><a href="D-tech-stack-bike.html"><strong>D: Enterprise tech stack foundations (bike path)</strong><span>53 main-path videos in 9 blocks</span></a></li><li><a href="E-tech-stack-desk.html"><strong>E: Enterprise tech stack hands-on (desk path)</strong><span>47 main-path videos in 8 blocks</span></a></li></ul><section><h2>1. What is in this folder</h2><table>
 <thead>
 <tr>
 <th>File</th>
@@ -180,6 +180,18 @@ footer p{max-width:72ch}
 <td>about 50 (Blocks 0-9; the table has 51 rows), plus 8 from gap-fill pass 1 (rows G1-G8)</td>
 <td>8 desk videos</td>
 </tr>
+<tr>
+<td><a href="D-tech-stack-bike.html">tracks/D-tech-stack-bike.md</a></td>
+<td>The general enterprise tech stack, bike path: stack map, distributed systems, data layer, APIs and messaging, cloud-native platform, security and identity (fast lane), reliability and observability, data and ML platform, architecture judgment and case studies</td>
+<td>53 (Blocks 0-8)</td>
+<td>32 (3 desk)</td>
+</tr>
+<tr>
+<td><a href="E-tech-stack-desk.html">tracks/E-tech-stack-desk.md</a></td>
+<td>The same stack layers at the desk: hands-on and diagram-heavy videos, each block ending in a lab (draw it, run it, defend it). Cloud-neutral and open-source tools, Java/Spring where possible; not AWS service tutorials</td>
+<td>47 (Blocks 0-7, all DESK)</td>
+<td>24</td>
+</tr>
 </tbody>
 </table>
 <p>Every block in every track has: why it matters, an ordered table (title, channel, link, length, level, mode, what you will get, status), a "full circle" line, and three recap questions with hidden answers. Each track ends with <strong>Gaps</strong> (topics where no good video was found) and <strong>Not checked</strong>.</p>
@@ -193,8 +205,9 @@ footer p{max-width:72ch}
 <li><strong>Ride:</strong> two videos, in table order, from the block you are on. Watch the intuition video before the lecture; the tables are already ordered that way.</li>
 <li><strong>Right after:</strong> answer that block's recap questions out loud, then open the hidden answers. Missed one? Re-watch only that video. Do not push on.</li>
 <li><strong>One line of notes:</strong> "what hurt, and what fixed it" for each video. If you keep this habit, the Atlas style of thinking carries over directly.</li>
-<li><strong>Desk items are optional.</strong> Never let a DESK video eat a ride. Save them for a weekend session, if at all.</li>
-<li><strong>If you fall behind, cut in this order:</strong> optional lists first, then Track A Block 7 (discrete math), then Track B Blocks 7-8, then the later Track C blocks. Never cut the first three blocks of Track C, or Track A Blocks 1-6: the rest builds on them.</li>
+<li><strong>Desk items are optional.</strong> Never let a DESK video eat a ride. Save them for a weekend session, if at all. Track E is the desk path: one block per weekend session, after the Track D block it pairs with.</li>
+<li><strong>If you fall behind, cut in this order:</strong> optional lists first, then Track A Block 7 (discrete math), then Track B Blocks 7-8, then Track E labs you have not reached, then the later Track C blocks. Never cut the first three blocks of Track C, or Track A Blocks 1-6: the rest builds on them.</li>
+<li><strong>Keep the roadmap out of your main YouTube history.</strong> Watch on a separate Chrome profile or a second Google or brand account signed in on the bike monitor. Playlists for the Atlas step should be created on that account too. Adding to a playlist does not touch watch history; playing does.</li>
 </ol></section><section><h2>4. Order of play</h2><p>Two lanes run in parallel so the math and the goal both move every week.</p>
 <ul>
 <li><strong>Lane M (math and ML), 4 rides a week:</strong> Track A in block order, then Track B Blocks 1-3.</li>
@@ -245,6 +258,65 @@ footer p{max-width:72ch}
 </tbody>
 </table>
 <p>That targets A0-A6 (43 videos), B1-B2 (18 videos) and C0-C4 (22 videos, plus G1-G3). If the 30-minute guess is optimistic, B2 slips into the semester. That is fine: B2 and B3 are the preview of the UT Machine Learning and Deep Learning courses.</p>
+<h3>The tech-stack paths (Track D bike, Track E desk)</h3>
+<p>Track D is the general enterprise stack that sits under the GenAI stack (Track C). Track E is the same layers done at the desk, each block ending in a lab. The rule is: watch a D block on the bike, then do its E block at the desk, and watch the C block it feeds. This is the dependency map:</p>
+<table>
+<thead>
+<tr>
+<th>Track D block (bike)</th>
+<th>Track E block (desk)</th>
+<th>Feeds Track C block</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D0 stack map</td>
+<td>E0 drawing and designing systems</td>
+<td>C0 big picture</td>
+</tr>
+<tr>
+<td>D1 distributed systems</td>
+<td>(covered inside E1 and E2 labs)</td>
+<td>C7 serving and cost (latency, caching)</td>
+</tr>
+<tr>
+<td>D2 data layer</td>
+<td>E1 data layer lab</td>
+<td>C3 embeddings, vector search and RAG</td>
+</tr>
+<tr>
+<td>D3 APIs and messaging</td>
+<td>E2 APIs and messaging lab</td>
+<td>C4 agents and tools</td>
+</tr>
+<tr>
+<td>D4 cloud-native platform</td>
+<td>E3 cloud-native lab</td>
+<td>C7 customization and serving</td>
+</tr>
+<tr>
+<td>D5 security and identity (your fast lane)</td>
+<td>E4 security and observability lab</td>
+<td>C6 safety, security and governance</td>
+</tr>
+<tr>
+<td>D6 reliability and observability</td>
+<td>E4 security and observability lab</td>
+<td>C5 evaluation and observability</td>
+</tr>
+<tr>
+<td>D7 data and ML platform</td>
+<td>E5 data and ML platform lab</td>
+<td>C7 serving, C6 governance</td>
+</tr>
+<tr>
+<td>D8 architecture judgment</td>
+<td>E6 system-design walkthroughs, E7 GenAI-era designs</td>
+<td>C9 enterprise architecture at scale</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Time reality.</strong> The four bike tracks now hold about 230 main-path videos. At the unmeasured 30-minute guess that is roughly 115 rides, nearly four months of daily riding, so everything cannot fit before January. Suggested order: finish A0-A4 and C0-C2 first as planned, then make Lane G alternate: a D block, then the C block it feeds (D2 before C3, D3 before C4, D6 before C5, D5 before C6, D4 and D7 before C7). Do the E blocks on weekends, one per weekend, and alternate them with your AWS desk study rather than adding to it. Re-plan after week one when real lengths are known.</p>
 <h3>During the semester</h3>
 <table>
 <thead>

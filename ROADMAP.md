@@ -11,6 +11,8 @@ Written 2026-11-09/10. Status: **draft 1.** The video lists exist and every vide
 | [tracks/A-ai-math.md](tracks/A-ai-math.md) | AI math: notation, calculus, linear algebra, multivariable calculus, probability, statistics, optimization, light discrete math | 47 (Blocks 0-7), plus 15 from gap-fill passes 1 and 2 (rows G1-G15) | 20 "optional extras" |
 | [tracks/B-ai-ml-concepts.md](tracks/B-ai-ml-concepts.md) | AI/ML concepts in the order of the UT foundational courses: ML, deep learning, transformers, RL, planning, ethics, generative models | 48 (Blocks 1-8), plus 9 bike videos from gap-fill passes 1 and 2 (rows G1-G7, G9, G11; G8 and G10 are optional) | 30 (about 12 are desk-only) |
 | [tracks/C-genai-stack.md](tracks/C-genai-stack.md) | The GenAI stack and enterprise architecture: stack map, LLMs for architects, prompting, RAG, agents/MCP, evals, security and governance, serving and cost, AWS GenAI, large-company patterns | about 50 (Blocks 0-9; the table has 51 rows), plus 8 from gap-fill pass 1 (rows G1-G8) | 8 desk videos |
+| [tracks/D-tech-stack-bike.md](tracks/D-tech-stack-bike.md) | The general enterprise tech stack, bike path: stack map, distributed systems, data layer, APIs and messaging, cloud-native platform, security and identity (fast lane), reliability and observability, data and ML platform, architecture judgment and case studies | 53 (Blocks 0-8) | 32 (3 desk) |
+| [tracks/E-tech-stack-desk.md](tracks/E-tech-stack-desk.md) | The same stack layers at the desk: hands-on and diagram-heavy videos, each block ending in a lab (draw it, run it, defend it). Cloud-neutral and open-source tools, Java/Spring where possible; not AWS service tutorials | 47 (Blocks 0-7, all DESK) | 24 |
 
 Every block in every track has: why it matters, an ordered table (title, channel, link, length, level, mode, what you will get, status), a "full circle" line, and three recap questions with hidden answers. Each track ends with **Gaps** (topics where no good video was found) and **Not checked**.
 
@@ -29,8 +31,9 @@ Tags: **Level** = Start / Deeper / Scholar. **Mode** = BIKE (you can mostly list
 1. **Ride:** two videos, in table order, from the block you are on. Watch the intuition video before the lecture; the tables are already ordered that way.
 2. **Right after:** answer that block's recap questions out loud, then open the hidden answers. Missed one? Re-watch only that video. Do not push on.
 3. **One line of notes:** "what hurt, and what fixed it" for each video. If you keep this habit, the Atlas style of thinking carries over directly.
-4. **Desk items are optional.** Never let a DESK video eat a ride. Save them for a weekend session, if at all.
-5. **If you fall behind, cut in this order:** optional lists first, then Track A Block 7 (discrete math), then Track B Blocks 7-8, then the later Track C blocks. Never cut the first three blocks of Track C, or Track A Blocks 1-6: the rest builds on them.
+4. **Desk items are optional.** Never let a DESK video eat a ride. Save them for a weekend session, if at all. Track E is the desk path: one block per weekend session, after the Track D block it pairs with.
+5. **If you fall behind, cut in this order:** optional lists first, then Track A Block 7 (discrete math), then Track B Blocks 7-8, then Track E labs you have not reached, then the later Track C blocks. Never cut the first three blocks of Track C, or Track A Blocks 1-6: the rest builds on them.
+6. **Keep the roadmap out of your main YouTube history.** Watch on a separate Chrome profile or a second Google or brand account signed in on the bike monitor. Playlists for the Atlas step should be created on that account too. Adding to a playlist does not touch watch history; playing does.
 
 ## 4. Order of play
 
@@ -54,6 +57,24 @@ Approximate; re-plan after week one when you know real lengths.
 | 8 | B2 classical ML (start) | C4 finish |
 
 That targets A0-A6 (43 videos), B1-B2 (18 videos) and C0-C4 (22 videos, plus G1-G3). If the 30-minute guess is optimistic, B2 slips into the semester. That is fine: B2 and B3 are the preview of the UT Machine Learning and Deep Learning courses.
+
+### The tech-stack paths (Track D bike, Track E desk)
+
+Track D is the general enterprise stack that sits under the GenAI stack (Track C). Track E is the same layers done at the desk, each block ending in a lab. The rule is: watch a D block on the bike, then do its E block at the desk, and watch the C block it feeds. This is the dependency map:
+
+| Track D block (bike) | Track E block (desk) | Feeds Track C block |
+|---|---|---|
+| D0 stack map | E0 drawing and designing systems | C0 big picture |
+| D1 distributed systems | (covered inside E1 and E2 labs) | C7 serving and cost (latency, caching) |
+| D2 data layer | E1 data layer lab | C3 embeddings, vector search and RAG |
+| D3 APIs and messaging | E2 APIs and messaging lab | C4 agents and tools |
+| D4 cloud-native platform | E3 cloud-native lab | C7 customization and serving |
+| D5 security and identity (your fast lane) | E4 security and observability lab | C6 safety, security and governance |
+| D6 reliability and observability | E4 security and observability lab | C5 evaluation and observability |
+| D7 data and ML platform | E5 data and ML platform lab | C7 serving, C6 governance |
+| D8 architecture judgment | E6 system-design walkthroughs, E7 GenAI-era designs | C9 enterprise architecture at scale |
+
+**Time reality.** The four bike tracks now hold about 230 main-path videos. At the unmeasured 30-minute guess that is roughly 115 rides, nearly four months of daily riding, so everything cannot fit before January. Suggested order: finish A0-A4 and C0-C2 first as planned, then make Lane G alternate: a D block, then the C block it feeds (D2 before C3, D3 before C4, D6 before C5, D5 before C6, D4 and D7 before C7). Do the E blocks on weekends, one per weekend, and alternate them with your AWS desk study rather than adding to it. Re-plan after week one when real lengths are known.
 
 ### During the semester
 
