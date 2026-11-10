@@ -22,6 +22,8 @@ TRACKS = [
     ("A", "A-ai-math", "AI math", "Math"),
     ("B", "B-ai-ml-concepts", "AI and ML concepts", "AI and ML"),
     ("C", "C-genai-stack", "The GenAI stack and enterprise architecture", "GenAI stack"),
+    ("D", "D-tech-stack-bike", "Enterprise tech stack foundations (bike path)", "Tech stack, bike", "bike"),
+    ("E", "E-tech-stack-desk", "Enterprise tech stack hands-on (desk path)", "Tech stack, desk", "desk"),
 ]
 
 # Short labels for the block diagram where the heading is too long for a box.
@@ -30,6 +32,12 @@ SHORT_NAMES = {
           3: "Embeddings, vector search and RAG", 4: "Agents and tools",
           5: "Evaluation and observability", 6: "Safety, security and governance",
           7: "Customization and serving", 8: "AWS GenAI", 9: "Enterprise architecture at scale"},
+    "D": {0: "Stack map", 1: "Distributed systems", 2: "The data layer", 3: "APIs and messaging",
+          4: "Cloud-native platform", 5: "Security and identity", 6: "Reliability and observability",
+          7: "Data and ML platform", 8: "Architecture judgment"},
+    "E": {0: "Drawing systems", 1: "Data layer lab", 2: "APIs and messaging lab", 3: "Cloud-native lab",
+          4: "Security and observability lab", 5: "Data and ML platform lab",
+          6: "System-design walkthroughs", 7: "GenAI-era designs"},
 }
 
 # Where the rows from "Gap-fill pass 1" (Track C) are placed.
@@ -531,7 +539,9 @@ JS = r"""
   });
 
   function isMain(li) { return li.getAttribute('data-main') === '1'; }
-  function isQueue(li) { return isMain(li) && li.getAttribute('data-desk') === '0'; }
+  var wrapEl = document.getElementById('upnext-wrap');
+  var deskTrack = !!wrapEl && wrapEl.getAttribute('data-mode') === 'desk';
+  function isQueue(li) { return isMain(li) && (deskTrack || li.getAttribute('data-desk') === '0'); }
 
   function makeCard(li) {
     var sec = li.closest('section');
@@ -635,7 +645,7 @@ PAGE = """<!doctype html>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
 <header class="top"><div class="wrap topbar">
-<a class="brand" href="index.html">MSAI bike plan</a>
+<a class="brand" href="index.html">MSAI video plan</a>
 <nav aria-label="Pages">__NAV__</nav>
 <button id="theme" type="button" aria-label="Switch between light and dark colours">Light / dark</button>
 </div></header>
@@ -651,7 +661,7 @@ __BODY__
 
 def nav_html(current):
     items = [("index.html", "Roadmap", "index")] + [
-        ("%s.html" % slug, "%s: %s" % (key, short), key) for key, slug, _, short in TRACKS]
+        ("%s.html" % slug, "%s: %s" % (key, short), key) for key, slug, _, short, *_m in TRACKS]
     return "".join('<a href="%s"%s>%s</a>' % (href, ' aria-current="page"' if k == current else "", html.escape(label))
                    for href, label, k in items)
 
@@ -670,7 +680,7 @@ def page(title, desc, current, body, footer_extra=""):
 
 # ----------------------------------------------------------------------------- track pages
 
-def build_track(key, slug, long_title, short):
+def build_track(key, slug, long_title, short, mode="bike"):
     CUR_TRACK[0] = key
     src = ROOT / "tracks" / (slug + ".md")
     lines = src.read_text(encoding="utf-8").split("\n")
@@ -753,18 +763,24 @@ def build_track(key, slug, long_title, short):
     first_block = next((i for i, p in enumerate(parts) if p.startswith('<section class="block"')), 0)
     before, after = parts[:first_block], parts[first_block:]
 
+    if mode == "desk":
+        lede = ("%d main-path videos in %d blocks, in the order to watch them. These are for a desk session: "
+                "you will pause, type, draw or run things. The next-session panel offers the next two unwatched videos." % (total_main, len(blocks)))
+    else:
+        lede = ("%d main-path videos in %d blocks, in the order to watch them: %d to watch on the bike%s. The next-ride panel only offers bike videos."
+                % (total_main, len(blocks), total_bike,
+                   (" and %d that need paper or pausing (marked Desk)" % total_desk) if total_desk else ""))
     hero = (
         '<h1>%s</h1>'
-        '<p class="lede">%d main-path videos in %d blocks, in the order to watch them: %d to watch on the bike%s. The next-ride panel only offers bike videos.</p>'
+        '<p class="lede">%s</p>'
         '<p class="overall" id="overall" aria-live="polite"></p>'
-        '<div id="upnext-wrap"><h2>Next ride</h2><div id="upnext" aria-live="polite"></div></div>'
+        '<div id="upnext-wrap" data-mode="%s"><h2>%s</h2><div id="upnext" aria-live="polite"></div></div>'
         '<section><h2>Order of the blocks</h2>'
         '<p>Each block needs the one before it. Follow the arrows; the bar fills as you mark videos as watched.</p>%s</section>'
-        % (html.escape(page_title), total_main, len(blocks), total_bike,
-           (" and %d that need paper or pausing (marked Desk)" % total_desk) if total_desk else "", chain_html(blocks)))
+        % (html.escape(page_title), lede, mode, "Next session" if mode == "desk" else "Next ride", chain_html(blocks)))
     about = ('<details class="fold" open><summary>About this track and how to read it</summary>%s</details>' % render_text(intro_md)) if intro_md else ""
     body = hero + about + "".join(before) + "".join(after) + "".join(extras) + "".join(notes)
-    out = page("%s - MSAI bike plan" % page_title, "Ordered video list: %s." % long_title, key, body)
+    out = page("%s - MSAI video plan" % page_title, "Ordered video list: %s." % long_title, key, body)
     (OUT / (slug + ".html")).write_text(out, encoding="utf-8")
     statuses = {}
     for p in [] : pass
@@ -792,7 +808,7 @@ def build_index(infos):
 
 def main():
     OUT.mkdir(exist_ok=True)
-    infos = [build_track(*t) for t in TRACKS]
+    infos = [build_track(*t) for t in TRACKS if (ROOT / "tracks" / (t[1] + ".md")).exists()]
     build_index(infos)
     for i in infos:
         print("%s: %d main-path videos, %d blocks, %d distinct video ids" % (i["key"], i["main"], i["blocks"], len(i["vids"])))

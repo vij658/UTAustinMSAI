@@ -146,13 +146,13 @@ footer p{max-width:72ch}
 <body>
 <a class="skip" href="#main">Skip to the content</a>
 <header class="top"><div class="wrap topbar">
-<a class="brand" href="index.html">MSAI bike plan</a>
-<nav aria-label="Pages"><a href="index.html" aria-current="page">Roadmap</a><a href="A-ai-math.html">A: Math</a><a href="B-ai-ml-concepts.html">B: AI and ML</a><a href="C-genai-stack.html">C: GenAI stack</a></nav>
+<a class="brand" href="index.html">MSAI video plan</a>
+<nav aria-label="Pages"><a href="index.html" aria-current="page">Roadmap</a><a href="A-ai-math.html">A: Math</a><a href="B-ai-ml-concepts.html">B: AI and ML</a><a href="C-genai-stack.html">C: GenAI stack</a><a href="D-tech-stack-bike.html">D: Tech stack, bike</a><a href="E-tech-stack-desk.html">E: Tech stack, desk</a></nav>
 <button id="theme" type="button" aria-label="Switch between light and dark colours">Light / dark</button>
 </div></header>
 <main id="main" class="wrap">
 <h1>MSAI + GenAI Architect Roadmap: the bike-video plan</h1><p>For Sankar. One hour a day on the stationary bike, watching, to build mental models before the UT Austin online MS in AI starts (Spring 2027) and while growing toward the goal of designing large-scale GenAI tech stacks for big companies (coding + architecture + AI).</p>
-<p>Written 2026-11-09/10. Status: <strong>draft 1.</strong> The video lists exist and every video was checked to exist; none was watched. See "How much to trust this" before relying on any number.</p><h2>Pick a track</h2><ul class="tracks"><li><a href="A-ai-math.html"><strong>A: AI math</strong><span>62 main-path videos in 8 blocks</span></a></li><li><a href="B-ai-ml-concepts.html"><strong>B: AI and ML concepts</strong><span>57 main-path videos in 8 blocks</span></a></li><li><a href="C-genai-stack.html"><strong>C: The GenAI stack and enterprise architecture</strong><span>58 main-path videos in 10 blocks</span></a></li></ul><section><h2>1. What is in this folder</h2><table>
+<p>Written 2026-11-09/10. Status: <strong>draft 1.</strong> The video lists exist and every video was checked to exist; none was watched. See "How much to trust this" before relying on any number.</p><h2>Pick a track</h2><ul class="tracks"><li><a href="A-ai-math.html"><strong>A: AI math</strong><span>62 main-path videos in 8 blocks</span></a></li><li><a href="B-ai-ml-concepts.html"><strong>B: AI and ML concepts</strong><span>57 main-path videos in 8 blocks</span></a></li><li><a href="C-genai-stack.html"><strong>C: The GenAI stack and enterprise architecture</strong><span>58 main-path videos in 10 blocks</span></a></li><li><a href="D-tech-stack-bike.html"><strong>D: Enterprise tech stack foundations (bike path)</strong><span>53 main-path videos in 9 blocks</span></a></li></ul><section><h2>1. What is in this folder</h2><table>
 <thead>
 <tr>
 <th>File</th>
@@ -165,13 +165,13 @@ footer p{max-width:72ch}
 <tr>
 <td><a href="A-ai-math.html">tracks/A-ai-math.md</a></td>
 <td>AI math: notation, calculus, linear algebra, multivariable calculus, probability, statistics, optimization, light discrete math</td>
-<td>47 (Blocks 0-7), plus 12 from gap-fill pass 1 (rows G1-G12)</td>
+<td>47 (Blocks 0-7), plus 15 from gap-fill passes 1 and 2 (rows G1-G15)</td>
 <td>20 "optional extras"</td>
 </tr>
 <tr>
 <td><a href="B-ai-ml-concepts.html">tracks/B-ai-ml-concepts.md</a></td>
 <td>AI/ML concepts in the order of the UT foundational courses: ML, deep learning, transformers, RL, planning, ethics, generative models</td>
-<td>48 (Blocks 1-8), plus 7 bike videos from gap-fill pass 1 (rows G1-G7; G8 is optional)</td>
+<td>48 (Blocks 1-8), plus 9 bike videos from gap-fill passes 1 and 2 (rows G1-G7, G9, G11; G8 and G10 are optional)</td>
 <td>30 (about 12 are desk-only)</td>
 </tr>
 <tr>
@@ -361,7 +361,7 @@ footer p{max-width:72ch}
 <li><strong>Track B:</strong> training, tuning and debugging neural networks; a short animated overview of supervised/unsupervised/RL; a short visual VC-dimension video; graphical models beyond one lecture; scaling laws and fine-tuning as standalone videos; a short POMDP intro; a university lecture on ethics guidelines.</li>
 <li><strong>Track C, after gap-fill pass 1:</strong> eight videos were added (prompting, structured outputs, tool calling, prompt injection, HNSW, token cost). Still open: bank model-risk management for LLMs (the one candidate is a registration page, not a video); how to choose a vector store; prompt caching and batching from an AI-lab or cloud-provider channel; case studies from banks' own engineers (the one candidate is a podcast episode with no YouTube ID); Simon Willison's own lethal-trifecta talk was never recorded; open versus closed models at architect level; non-AWS reference architectures. Block 2 is still only five BIKE items. Not searched at all: OpenAI, Google DeepMind and Microsoft official channels, Stanford CS224N and similar courses, Databricks and Snowflake talks, NIST AI RMF and EU AI Act walkthroughs.</li>
 </ul></section><section><h2>8. What is pending</h2><ol>
-<li><strong>Gap-filling, one agent at a time.</strong> Pass 1 is done for all three tracks. Still open after it: PAC/VC and graphical models (short visual videos), ethics guidelines from a university or standards body, a standalone RMSProp video, a sets video that covers complements, and a short general scaling-laws lecture. A second pass can target those; I tell you before each run.</li>
+<li><strong>Gap-filling is done for now (two passes).</strong> Still open: short visual PAC/VC and Bayes-net videos, OECD and NIST guideline lectures from a credible source, and the Stanford CS336 scaling-laws lecture (its ID fails the existence check). Another pass would mostly hunt for videos that may not exist; I suggest starting to ride and noting which gaps you actually feel.</li>
 <li><strong>Lengths:</strong> open each link once to fill the "length ?" cells, or ask for a pass when YouTube access allows it.</li>
 <li><strong>Playlists:</strong> turn each block into an ordered YouTube playlist (the Atlas script can do this once the lists settle).</li>
 <li><strong>Repo:</strong> this folder is committed locally, but pushing to GitHub is blocked until a repository named <code>MSAIAtlas</code> exists and the session has push access (the session's GitHub login is currently invalid).</li>
@@ -492,7 +492,9 @@ footer p{max-width:72ch}
   });
 
   function isMain(li) { return li.getAttribute('data-main') === '1'; }
-  function isQueue(li) { return isMain(li) && li.getAttribute('data-desk') === '0'; }
+  var wrapEl = document.getElementById('upnext-wrap');
+  var deskTrack = !!wrapEl && wrapEl.getAttribute('data-mode') === 'desk';
+  function isQueue(li) { return isMain(li) && (deskTrack || li.getAttribute('data-desk') === '0'); }
 
   function makeCard(li) {
     var sec = li.closest('section');
