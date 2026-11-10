@@ -286,12 +286,32 @@ def render_block(num, title, body, added):
             (main if v["main"] else opt).append(v)
     for v in added:
         v["optional"] = v["level"].lower() == "scholar"
+        v["main"] = not v["optional"]
         if v["optional"]:
             opt.append(v)
         elif v["id"] == "G1" and CUR_TRACK[0] == "C":
             main.insert(0, v)
         else:
-            main.append(v)
+            am = re.search(r"Belongs after #(\d+)", v["note"])
+            pos = None
+            if am:   # place it right after the numbered video its note names
+                idx = [i for i, m_ in enumerate(main) if m_["id"] == am.group(1)]
+                if idx:
+                    pos = idx[0] + 1
+                    while pos < len(main) and main[pos]["added"] and re.search(
+                            r"Belongs after #%s\b" % am.group(1), main[pos]["note"]):
+                        pos += 1
+            if pos is None:
+                main.append(v)
+            else:
+                main.insert(pos, v)
+    seen_notes = set()   # a group's "where it fits" note is shown once, on its first row
+    for v in main + opt:
+        if v["added"] and v["note"]:
+            if v["note"] in seen_notes:
+                v["note"] = ""
+            else:
+                seen_notes.add(v["note"])
     counted = main
     bike = [v for v in main if v["mode"] != "DESK"]
     out = []
