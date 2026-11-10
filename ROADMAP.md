@@ -10,7 +10,7 @@ Written 2026-11-09/10. Status: **draft 1.** The video lists exist and every vide
 |---|---|---|---|
 | [tracks/A-ai-math.md](tracks/A-ai-math.md) | AI math: notation, calculus, linear algebra, multivariable calculus, probability, statistics, optimization, light discrete math | 47 (Blocks 0-7) | 20 "optional extras" |
 | [tracks/B-ai-ml-concepts.md](tracks/B-ai-ml-concepts.md) | AI/ML concepts in the order of the UT foundational courses: ML, deep learning, transformers, RL, planning, ethics, generative models | 48 (Blocks 1-8) | 30 (about 12 are desk-only) |
-| [tracks/C-genai-stack.md](tracks/C-genai-stack.md) | The GenAI stack and enterprise architecture: stack map, LLMs for architects, prompting, RAG, agents/MCP, evals, security and governance, serving and cost, AWS GenAI, large-company patterns | about 50 (Blocks 0-9; the table has 51 rows) | 8 desk videos |
+| [tracks/C-genai-stack.md](tracks/C-genai-stack.md) | The GenAI stack and enterprise architecture: stack map, LLMs for architects, prompting, RAG, agents/MCP, evals, security and governance, serving and cost, AWS GenAI, large-company patterns | about 50 (Blocks 0-9; the table has 51 rows), plus 8 from gap-fill pass 1 (rows G1-G8) | 8 desk videos |
 
 Every block in every track has: why it matters, an ordered table (title, channel, link, length, level, mode, what you will get, status), a "full circle" line, and three recap questions with hidden answers. Each track ends with **Gaps** (topics where no good video was found) and **Not checked**.
 
@@ -47,13 +47,13 @@ Approximate; re-plan after week one when you know real lengths.
 | Weeks | Lane M | Lane G |
 |---|---|---|
 | 1-2 | A0 notation and warm-up; A1 calculus | C0 the big picture; C1 LLMs for architects (watch 1.1 to 1.3 now; treat the 3 h 21 m deep dive 1.4 as its own run of rides later) |
-| 3-4 | A2 vectors and linear algebra (10 videos, the biggest block); A3 multivariable calculus | C1 finish; C2 prompting and structured outputs |
+| 3-4 | A2 vectors and linear algebra (10 videos, the biggest block); A3 multivariable calculus | C1 finish; C2 prompting and structured outputs (add G1, G2 and G3 from the gap-fill section; the track file says where each one goes) |
 | 5 | A4 probability | C3 embeddings and RAG (start) |
 | 6 | A5 statistics; A6 optimization (start) | C3 finish |
 | 7 | A6 finish; B1 what AI/ML is | C4 agents and tools (start) |
 | 8 | B2 classical ML (start) | C4 finish |
 
-That targets A0-A6 (43 videos), B1-B2 (18 videos) and C0-C4 (22 videos). If the 30-minute guess is optimistic, B2 slips into the semester. That is fine: B2 and B3 are the preview of the UT Machine Learning and Deep Learning courses.
+That targets A0-A6 (43 videos), B1-B2 (18 videos) and C0-C4 (22 videos, plus G1-G3). If the 30-minute guess is optimistic, B2 slips into the semester. That is fine: B2 and B3 are the preview of the UT Machine Learning and Deep Learning courses.
 
 ### During the semester
 
@@ -61,7 +61,8 @@ That targets A0-A6 (43 videos), B1-B2 (18 videos) and C0-C4 (22 videos). If the 
 |---|---|
 | B2, B3 | Ahead of the UT Machine Learning and Deep Learning courses |
 | B5 (RL), B6 (planning), B7 (ethics), B8 (generative models) | Ahead of the matching UT courses |
-| C5 evals and observability, C6 safety and governance, C7 serving and cost, C8 AWS GenAI, C9 enterprise architecture | Keep Lane G moving toward the goal; these are the most architect-heavy blocks |
+| C5 evals and observability, C6 safety and governance (add G4-G6 on prompt injection), C7 serving and cost (add G8), C8 AWS GenAI, C9 enterprise architecture | Keep Lane G moving toward the goal; these are the most architect-heavy blocks |
+| G7 (HNSW indexes in pgvector, a university seminar) | Optional, Scholar level; after C3 once RAG feels familiar |
 | A7 | Only if a course needs it |
 
 ## 5. How this maps to the UT courses
@@ -103,11 +104,11 @@ Gaps are listed, never filled with weak videos. These are the open ones.
 
 - **Track A:** sets (no main-path video); learning-rate schedules, momentum and Adam; Hessian and second-order convexity; Bayesian inference beyond the basics; dedicated continuous random variables and densities.
 - **Track B:** training, tuning and debugging neural networks; a short animated overview of supervised/unsupervised/RL; a short visual VC-dimension video; graphical models beyond one lecture; scaling laws and fine-tuning as standalone videos; a short POMDP intro; a university lecture on ethics guidelines.
-- **Track C:** Block 2 (prompting) is thin; prompt injection from a primary source; bank model-risk management for LLMs from a regulator or a large bank; vector database internals (HNSW and other ANN indexes); tool/function calling in a listen-only form; prompt caching and token-cost mechanics from a primary source; open versus closed models at architect level; case studies from banks' own engineers; non-AWS reference architectures. Not searched at all: OpenAI, Google DeepMind and Microsoft official channels, Stanford CS224N and similar courses, Databricks and Snowflake talks, NIST AI RMF and EU AI Act walkthroughs.
+- **Track C, after gap-fill pass 1:** eight videos were added (prompting, structured outputs, tool calling, prompt injection, HNSW, token cost). Still open: bank model-risk management for LLMs (the one candidate is a registration page, not a video); how to choose a vector store; prompt caching and batching from an AI-lab or cloud-provider channel; case studies from banks' own engineers (the one candidate is a podcast episode with no YouTube ID); Simon Willison's own lethal-trifecta talk was never recorded; open versus closed models at architect level; non-AWS reference architectures. Block 2 is still only five BIKE items. Not searched at all: OpenAI, Google DeepMind and Microsoft official channels, Stanford CS224N and similar courses, Databricks and Snowflake talks, NIST AI RMF and EU AI Act walkthroughs.
 
 ## 8. What is pending
 
-1. **Gap-filling, one agent at a time,** in this order: Track C first (it serves the goal), then A, then B. Each run is capped and reports back before the next starts.
+1. **Gap-filling, one agent at a time.** Pass 1 (Track C) is done. Next are Track A (Adam and momentum, Bayesian inference beyond the basics, densities, sets), then Track B. Each run is capped and reports back before the next starts, and I tell you before each one.
 2. **Lengths:** open each link once to fill the "length ?" cells, or ask for a pass when YouTube access allows it.
 3. **Playlists:** turn each block into an ordered YouTube playlist (the Atlas script can do this once the lists settle).
 4. **Repo:** this folder is committed locally, but pushing to GitHub is blocked until a repository named `MSAIAtlas` exists and the session has push access (the session's GitHub login is currently invalid).

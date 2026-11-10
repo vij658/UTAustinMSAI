@@ -371,3 +371,71 @@ Optional desk list: none for this block.
 - **Not searched at all:** OpenAI, Google DeepMind and Microsoft official channels; university courses (Stanford CS224N, CS329S, Berkeley LLM Agents); Databricks and Snowflake summit talks; NIST AI RMF and EU AI Act walkthroughs; the Google "Gemini Enterprise Agent Platform" videos.
 - **Totals:** 28 of the 50 main videos have a known length or lower bound (sum >= 25.6 h); the other 22 are unknown, so the whole main path is an estimate of roughly 38-42 h. Optional desk videos are extra.
 
+---
+
+## Gap-fill pass 1 (2026-11-10)
+
+One capped pass over the Gaps list. Every row below was confirmed with the YouTube oEmbed endpoint (title and channel copied exactly as returned, ID matched in the thumbnail URL). Lengths marked "(per podwise)" come from the third-party podwise.ai listing, not the YouTube page; lengths marked "(per ai.engineer)" come from the AI Engineer site's talk page. Dates: "upload date ?" means the YouTube upload date was not seen; the event year is given instead where a page stated it.
+
+### Prompting and structured outputs (Block 2 gap)
+
+| # | Title | Channel | Link | Length | Published | Layer | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-----------|-------|-------|------|-------------------|--------|
+| G1 | AI prompt engineering: A deep dive | Anthropic | https://www.youtube.com/watch?v=T9aRN5JkmL8 | 1h16m (per podwise) | 2024-09-05 (per podwise) | Orchestration/agents | Start | BIKE | A roundtable of Anthropic staff on what makes a good prompt engineer and how to write and iterate on prompts; the philosophy behind prompting rather than a template list. A conversation, so it works with no screen. Pre-2025, so model names are dated; the habits are not. | verified; content per podwise summary |
+| G2 | No more bad outputs with structured generation: Remi Louf | AI Engineer | https://www.youtube.com/watch?v=aNmfvN6S_n4 | 16 min (per ai.engineer) | AI Engineer World's Fair 2024, upload date ? | Orchestration/agents | Deeper | BIKE | How constrained decoding (the Outlines library, by its creator) forces a model to emit output that matches a schema, as opposed to asking nicely and retrying. This is the mechanism behind provider "structured output" modes. Content judged from the title and the conference page. | verified |
+
+Belongs after Block 2 (2.1 and 2.2). Suggested order: G1, then 2.1, then 2.2, then G2.
+
+### Tool and function calling as a concept (listen-only)
+
+| # | Title | Channel | Link | Length | Published | Layer | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-----------|-------|-------|------|-------------------|--------|
+| G3 | Tool Calling Is Not Just Plumbing for AI Agents — Roy Derks | AI Engineer | https://www.youtube.com/watch?v=zuMw0pkPXpU | 25:18 (per ai.engineer) | AI Engineer Summit 2025, upload date ? | Orchestration/agents | Deeper | BIKE | Per the talk page: a tool definition (name, description, input and output schema) is a behavioural contract; who owns the model-tool loop (your app or the agent framework); hosting tools behind MCP or a tool platform so you can swap frameworks; the risk of letting the model generate queries instead of using fixed tools. Architect-level, no live coding. | verified |
+
+Belongs after Block 2 as the listen-only counterpart to desk video 2.D1, and again alongside Block 4 (4.1).
+
+### Prompt injection, the lethal trifecta and tool-call risk
+
+| # | Title | Channel | Link | Length | Published | Layer | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-----------|-------|-------|------|-------------------|--------|
+| G4 | Prompt Injection, explained | Simon Willison | https://www.youtube.com/watch?v=FgxwCaL6UTA | length ? (the embed is the first 12 minutes of an hour-long webinar, per his blog post) | 2023-05-02 (date of the blog post that embeds it) | Guardrails | Start | BIKE | Prompt injection from the person who named it: the attack, why it is not solved like SQL injection, and why it matters once a model has tools. 2023, so it predates the "lethal trifecta" framing but gives the foundations. | verified |
+| G5 | Open Questions for AI Engineering: Simon Willison | AI Engineer | https://www.youtube.com/watch?v=AjLVoAu-u-Q | 24:33 (per ai.engineer) | AI Engineer Summit 2023 (his companion post is dated 2023-10-17); upload date ? | Guardrails | Deeper | BIKE | A broad keynote; the prompt-injection section ("When content becomes an instruction", from 15:35 per the talk page) covers the attack and an email-assistant example. Listen to the relevant segment rather than treating the whole talk as on-topic. May be dated (2023). | verified |
+| G6 | "I've never seen anything scarier than an LLM with tool calls." — Erik Meijer aka @HeadinTheBox | AI Engineer | https://www.youtube.com/watch?v=-CnA2lGfymY | 21:13 (per ai.engineer) | AI Engineer World's Fair 2026, upload date ? | Guardrails | Deeper | BIKE | Per the talk page: prompt injection compared with SQL injection, the lethal trifecta (private data, untrusted content, external communication), and a proposal to have a checker inspect an agent's plan before an interpreter runs it. The most current of the three, but a single speaker's argument. | verified |
+
+Belongs after Block 6 (6.1). Suggested order: G4, G6, G5 segment; then 6.1 is now optional. Simon Willison's own lethal-trifecta talk (Bay Area AI Security Meetup, Aug 2025) was not recorded per his blog, so it cannot be watched; his annotated slides are on his site.
+
+### Vector database internals
+
+| # | Title | Channel | Link | Length | Published | Layer | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-----------|-------|-------|------|-------------------|--------|
+| G7 | pgvector: Stylish Hierarchical Navigable Small World Indexes (Jonathan Katz) | CMU Database Group | https://www.youtube.com/watch?v=YU66YlZW6dA | 1h10m (per podwise) | 2023-11-21 (per podwise; talk given 2023-11-20) | Embeddings/vector | Scholar | BIKE | A university database seminar on how HNSW indexes work and how pgvector implements them: design decisions, performance work, trade-offs. Dense and database-oriented, so best after Block 3. Fits a bank that already runs Postgres. 2023, so pgvector features have moved on; the index ideas have not. | verified; content per CMU page description |
+
+Belongs after Block 3 (3.3). This is a single-index deep dive, not a "how to choose a vector store" survey; that survey remains a gap.
+
+### Token-cost mechanics
+
+| # | Title | Channel | Link | Length | Published | Layer | Level | Mode | What you will get | Status |
+|---|-------|---------|------|--------|-----------|-------|-------|------|-------------------|--------|
+| G8 | Your Agent Is Wasting Tokens and You Don't Know It - Erik Hanchett, AWS | AI Engineer | https://www.youtube.com/watch?v=uiP88SpCi1Q | 5:55 (per ai.engineer) | AI Engineer World's Fair 2026, upload date ? | Cost | Start | BIKE | Per the talk page, five controls: cache repeated prompt content (system prompt, tool definitions), route tasks by difficulty to cheaper models, offload large tool results, cap loops, trim history with a summary. Short and from an AWS developer advocate using the Strands SDK for demos, so the SDK parts are vendor-specific; the five levers are general. | verified |
+
+Belongs after Block 7 (7.7) and alongside Block 9 (9.5, 9.6).
+
+### Still gaps after this pass
+
+- **Bank model-risk management for LLMs (SR 11-7 style):** one candidate was found (GARP webcast "Managing the Risks of GenAI Models", 2024-11-06, with H2O.ai and MathWorks speakers covering SR 11-7 validation of LLMs) but it is a registration page, not a YouTube video, so it was not added. 6.7 remains the only video in the file.
+- **How to choose a vector store** (survey of options and trade-offs): nothing credible found; G7 covers one index type only.
+- **Prompt caching, batching and routing from an AI-lab or cloud-provider channel itself:** G8 is the only item; no Anthropic, OpenAI or AWS-channel video on caching or batch pricing was verified.
+- **Case studies from large banks' own engineers:** one candidate found (Capital One's Rashmi Shetty on the TWIML AI Podcast, episode 765, 2026-04-16, about 50 min by chapter list) but no YouTube ID could be found, so it could not be oEmbed-checked. It is an audio-first episode that can be listened to from twimlai.com/go/765 (not verified in this pass as a video).
+- **Block 2** is still only five BIKE items (2.1, 2.2, G1, G2, G3) and no OpenAI or Google structured-outputs talk.
+- **Simon Willison's lethal-trifecta talk** has no recording; G6 is the best verified substitute.
+
+### Rejected or unverified in this pass
+
+- hkhDdcM5V94, "Building with Anthropic Claude: Prompt Workshop with Zack Witten" (AI Engineer): oEmbed confirmed it exists, but length, date and whether it is listen-only or a live-prompting workshop could not be checked. Not added; try it at a desk if wanted.
+- yj-wSRJwrrc, "Pydantic is all you need" (Jason Liu, AI Engineer Summit 2023): listed on ai.engineer but not oEmbed-checked, and it overlaps 2.2. Not added.
+- Capital One / Rashmi Shetty (TWIML #765): no YouTube ID found, see above.
+- GARP "Managing the Risks of GenAI Models": not a YouTube video, registration required.
+- Simon Willison, "My Lethal Trifecta talk at the Bay Area AI Security Meetup": his post says the talk was not recorded.
+- recapio.com, podwise.ai, lilys.ai and pulse.bot pages: third-party summary sites, used only to find IDs or lengths; the lilys.ai page redirected to another host and was not followed.
+- Search results for HNSW and prompt caching returned only blogs, vendor docs and course-note sites (KodeKloud notes, Zilliz, DigitalOcean, AWS blog posts); no verifiable video IDs came out of them.
+
