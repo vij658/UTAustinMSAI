@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MSAI + GenAI Architect Roadmap: the bike-video plan</title>
+<meta name="description" content="Plan for watching the AI math, AI/ML and GenAI stack videos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F5F8; --panel:#FFFFFF; --ink:#12202D; --muted:#4F6071; --line:#CBD6E0;
+  --accent:#0A5FC4; --accent-ink:#FFFFFF; --done:#1C7A4B; --warn:#8F5200; --tint:#E6EFF9;
+  --body:"Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif;
+  --head:"Bricolage Grotesque","Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1621; --panel:#152131; --ink:#E9EFF5; --muted:#A3B5C6; --line:#28394C;
+    --accent:#6BB8FF; --accent-ink:#06121E; --done:#6FD09A; --warn:#F0B45A; --tint:#16293D;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1621; --panel:#152131; --ink:#E9EFF5; --muted:#A3B5C6; --line:#28394C;
+  --accent:#6BB8FF; --accent-ink:#06121E; --done:#6FD09A; --warn:#F0B45A; --tint:#16293D;
+}
+*{box-sizing:border-box}
+html{font-size:19px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55;overflow-wrap:anywhere}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:12px;top:12px;background:var(--accent);color:var(--accent-ink);padding:8px 14px;border-radius:6px;z-index:10}
+a{color:var(--accent);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.topbar{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;min-height:56px;padding-top:6px;padding-bottom:6px}
+.brand{font-family:var(--head);font-weight:800;font-size:1.05rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.top nav{display:flex;flex-wrap:wrap;gap:2px 6px}
+.top nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;color:var(--ink);text-decoration:none;border-radius:8px;font-weight:700;font-size:.92rem}
+.top nav a[aria-current="page"]{background:var(--tint);color:var(--accent);box-shadow:inset 0 -3px 0 var(--accent)}
+.top nav a:hover{background:var(--tint)}
+#theme{min-height:44px;padding:0 14px;border:2px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;font:inherit;font-size:.9rem;cursor:pointer}
+h1,h2,h3{font-family:var(--head);line-height:1.12;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(2.1rem,5.2vw,3.3rem);font-weight:800;margin:36px 0 10px}
+h2{font-size:clamp(1.55rem,3.4vw,2.05rem);font-weight:800;margin:0 0 14px}
+h3{font-size:1.3rem;font-weight:700;margin:26px 0 8px}
+p{margin:0 0 14px;max-width:72ch}
+ul,ol{max-width:72ch}
+.lede{font-size:1.12rem;color:var(--muted);max-width:60ch;margin-bottom:20px}
+.overall{font-weight:700;margin:0 0 6px}
+section{margin:44px 0}
+section,.video{scroll-margin-top:76px}
+.block{padding-top:6px}
+#upnext-wrap{margin:24px 0 8px}
+#upnext{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.ride{background:var(--panel);border:3px solid var(--accent);border-radius:12px;padding:22px 22px 20px}
+.ride .where{margin:0 0 6px;color:var(--muted);font-size:.9rem}
+.ride h3{margin:0 0 8px;font-size:clamp(1.35rem,2.6vw,1.65rem)}
+.ride h3 a{color:var(--ink);text-decoration:none}
+.ride h3 a:hover{text-decoration:underline}
+.ride .vwhy{margin:10px 0 16px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:8px;border:2px solid var(--accent);background:transparent;color:var(--accent);font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.empty{background:var(--panel);border:2px dashed var(--line);border-radius:12px;padding:20px}
+.chain{list-style:none;margin:20px 0 0;padding:0;max-width:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:56px;row-gap:34px}
+.chain li{grid-column:var(--c);grid-row:var(--r);position:relative}
+.chain a{display:flex;flex-direction:column;gap:2px;height:100%;padding:14px 16px 16px;background:var(--panel);border:2px solid var(--line);border-radius:8px;color:var(--ink);text-decoration:none}
+.chain a:hover{border-color:var(--accent)}
+.cn{font-size:.85rem;color:var(--muted)}
+.cname{font-family:var(--head);font-weight:700;font-size:1.08rem;line-height:1.2}
+.ccount{font-size:.88rem;color:var(--muted);margin-top:4px}
+.chain .bar{display:block;height:7px;border-radius:4px;background:var(--line);margin-top:10px;overflow:hidden}
+.chain .bar i{display:block;height:100%;width:0;background:var(--done)}
+.chain li::after{position:absolute;font-size:1.7rem;font-weight:700;color:var(--muted);line-height:1}
+.chain li.to-right::after{content:"\2192";right:-44px;top:calc(50% - 14px)}
+.chain li.to-left::after{content:"\2190";left:-44px;top:calc(50% - 14px)}
+.chain li.to-down::after{content:"\2193";left:calc(50% - 8px);bottom:-30px}
+.layers{list-style:none;margin:16px 0;padding:0;max-width:640px}
+.layers li{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line);position:relative}
+.layers li:not(:last-child)::after{content:"\2193";position:absolute;left:12px;bottom:-14px;background:var(--bg);color:var(--muted);font-weight:700;line-height:1;z-index:1}
+.layers .ln{font-family:var(--head);font-weight:800;font-size:1.3rem;color:var(--accent)}
+.layers strong{display:block;font-family:var(--head);font-size:1.1rem}
+.layers span:not(.ln){color:var(--muted)}
+.videos{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+.video{display:grid;grid-template-columns:48px minmax(0,1fr);gap:10px;padding:18px 0;border-top:1px solid var(--line)}
+.video:last-child{border-bottom:1px solid var(--line)}
+.check{display:flex;align-items:flex-start;justify-content:center;padding-top:3px;cursor:pointer}
+.check input{width:30px;height:30px;accent-color:var(--done);cursor:pointer;margin:0}
+.vtitle{font-size:1.12rem;font-weight:700;line-height:1.3}
+.vtitle a{color:var(--accent)}
+.vnum{display:inline-block;min-width:2.4em;color:var(--muted);font-weight:400;font-size:.9rem}
+.vmeta{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:4px;color:var(--muted);font-size:.88rem;align-items:center}
+.pill{padding:0 11px;border:1.5px solid currentColor;border-radius:999px;font-weight:700;line-height:1.5}
+.pill.desk{border-style:dashed}
+.tag{padding:0 8px;border-radius:4px;font-weight:700}
+.tag.added{background:var(--tint);color:var(--accent)}
+.tag.warn{border:1.5px solid var(--warn);color:var(--warn)}
+.watched{display:none;color:var(--done);font-weight:700}
+.vwhy{margin:8px 0 0;max-width:68ch}
+.vnote{margin:6px 0 0;color:var(--muted);font-size:.92rem}
+.video.done .vtitle a{color:var(--muted)}
+.video.done .watched{display:inline}
+.video.done .vwhy{color:var(--muted)}
+details{margin:14px 0}
+summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:700;color:var(--accent)}
+.answers,.optional,.fold{background:var(--panel);border:2px solid var(--line);border-radius:8px;padding:0 18px}
+.answers[open],.optional[open],.fold[open]{padding-bottom:10px}
+.answers p,.answers li{max-width:68ch}
+.optional .videos{margin-top:0}
+.optional .video:first-child{border-top:0}
+.scroll{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;min-width:100%;font-size:.92rem}
+th,td{border-top:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+th{font-family:var(--head);font-size:.95rem;border-top:0;border-bottom:2px solid var(--ink)}
+.tracks{list-style:none;padding:0;margin:20px 0 0;max-width:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
+.tracks a{display:block;height:100%;padding:18px 20px;background:var(--panel);border:2px solid var(--line);border-radius:8px;color:var(--ink);text-decoration:none}
+.tracks a:hover{border-color:var(--accent)}
+.tracks strong{display:block;font-family:var(--head);font-size:1.25rem;margin-bottom:4px}
+.tracks span{color:var(--muted);font-size:.92rem}
+code{font-size:.9em;background:var(--tint);padding:1px 5px;border-radius:4px}
+hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+footer{margin:56px 0 40px;color:var(--muted);font-size:.9rem}
+footer p{max-width:72ch}
+@media (max-width:900px){
+  .chain{grid-template-columns:1fr;row-gap:34px}
+  .chain li{grid-column:1;grid-row:auto}
+  .chain li.to-right::after,.chain li.to-left::after,.chain li.to-down::after{content:"\2193";left:calc(50% - 8px);right:auto;top:auto;bottom:-30px}
+}
+@media (max-width:560px){
+  html{font-size:18px}
+  .wrap{padding:0 16px}
+  .top{position:static}
+  .brand{order:1}
+  #theme{order:2}
+  .top nav{order:3;width:100%}
+  .video{grid-template-columns:40px minmax(0,1fr)}
+  .ride{padding:18px 16px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .chain .bar i{transition:width .3s ease}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="top"><div class="wrap topbar">
+<a class="brand" href="index.html">MSAI bike plan</a>
+<nav aria-label="Pages"><a href="index.html" aria-current="page">Roadmap</a><a href="A-ai-math.html">A: Math</a><a href="B-ai-ml-concepts.html">B: AI and ML</a><a href="C-genai-stack.html">C: GenAI stack</a></nav>
+<button id="theme" type="button" aria-label="Switch between light and dark colours">Light / dark</button>
+</div></header>
+<main id="main" class="wrap">
+<h1>MSAI + GenAI Architect Roadmap: the bike-video plan</h1><p>For Sankar. One hour a day on the stationary bike, watching, to build mental models before the UT Austin online MS in AI starts (Spring 2027) and while growing toward the goal of designing large-scale GenAI tech stacks for big companies (coding + architecture + AI).</p>
+<p>Written 2026-11-09/10. Status: <strong>draft 1.</strong> The video lists exist and every video was checked to exist; none was watched. See "How much to trust this" before relying on any number.</p><h2>Pick a track</h2><ul class="tracks"><li><a href="A-ai-math.html"><strong>A: AI math</strong><span>47 main-path videos in 8 blocks</span></a></li><li><a href="B-ai-ml-concepts.html"><strong>B: AI and ML concepts</strong><span>48 main-path videos in 8 blocks</span></a></li><li><a href="C-genai-stack.html"><strong>C: The GenAI stack and enterprise architecture</strong><span>58 main-path videos in 10 blocks</span></a></li></ul><section><h2>1. What is in this folder</h2><table>
+<thead>
+<tr>
+<th>File</th>
+<th>What it is</th>
+<th>Main-path videos</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="A-ai-math.html">tracks/A-ai-math.md</a></td>
+<td>AI math: notation, calculus, linear algebra, multivariable calculus, probability, statistics, optimization, light discrete math</td>
+<td>47 (Blocks 0-7)</td>
+<td>20 "optional extras"</td>
+</tr>
+<tr>
+<td><a href="B-ai-ml-concepts.html">tracks/B-ai-ml-concepts.md</a></td>
+<td>AI/ML concepts in the order of the UT foundational courses: ML, deep learning, transformers, RL, planning, ethics, generative models</td>
+<td>48 (Blocks 1-8)</td>
+<td>30 (about 12 are desk-only)</td>
+</tr>
+<tr>
+<td><a href="C-genai-stack.html">tracks/C-genai-stack.md</a></td>
+<td>The GenAI stack and enterprise architecture: stack map, LLMs for architects, prompting, RAG, agents/MCP, evals, security and governance, serving and cost, AWS GenAI, large-company patterns</td>
+<td>about 50 (Blocks 0-9; the table has 51 rows), plus 8 from gap-fill pass 1 (rows G1-G8)</td>
+<td>8 desk videos</td>
+</tr>
+</tbody>
+</table>
+<p>Every block in every track has: why it matters, an ordered table (title, channel, link, length, level, mode, what you will get, status), a "full circle" line, and three recap questions with hidden answers. Each track ends with <strong>Gaps</strong> (topics where no good video was found) and <strong>Not checked</strong>.</p>
+<p>Tags: <strong>Level</strong> = Start / Deeper / Scholar. <strong>Mode</strong> = BIKE (you can mostly listen) or DESK (needs code, paper or pausing, so it never uses up a ride).</p></section><section><h2>2. How much to trust this</h2><ul>
+<li><strong>Verified means "exists".</strong> For each video the YouTube oEmbed lookup returned the same video ID, and titles and channels are copied exactly as returned. Nobody watched the videos. "What you will get" comes from titles, chapter lists and the channel's usual format.</li>
+<li><strong>Lengths are mostly unknown.</strong> YouTube returned a bot-protection page for most watch pages and the agents did not work around it. Per the track files: A has a confirmed length for 8 of 47 main videos (2 h 58 m), B for 11 of 48 (about 4 h 13 m, plus lower bounds for two Karpathy talks), C for 28 of about 50 (at least 25.6 h combined). No total can be stated yet. Opening each link once fills the "length ?" cells.</li>
+<li><strong>The planning below uses a guess.</strong> I assumed about 30 minutes per video, so two videos per ride. Lectures run longer (Karpathy's <em>Deep Dive into LLMs</em> is at least 3 h 21 m on its own), so expect to get through fewer videos than the plan says. Re-plan after week one.</li>
+<li><strong>Level and Mode tags</strong> are judgement calls, not lookups.</li>
+<li><strong>Tools change fast.</strong> In Track C, anything published before 2025 is flagged "may be dated" in its table, and even 2025 material on frameworks and services can be a release or two behind by now.</li>
+</ul></section><section><h2>3. The routine (bike mode)</h2><ol>
+<li><strong>Ride:</strong> two videos, in table order, from the block you are on. Watch the intuition video before the lecture; the tables are already ordered that way.</li>
+<li><strong>Right after:</strong> answer that block's recap questions out loud, then open the hidden answers. Missed one? Re-watch only that video. Do not push on.</li>
+<li><strong>One line of notes:</strong> "what hurt, and what fixed it" for each video. If you keep this habit, the Atlas style of thinking carries over directly.</li>
+<li><strong>Desk items are optional.</strong> Never let a DESK video eat a ride. Save them for a weekend session, if at all.</li>
+<li><strong>If you fall behind, cut in this order:</strong> optional lists first, then Track A Block 7 (discrete math), then Track B Blocks 7-8, then the later Track C blocks. Never cut the first three blocks of Track C, or Track A Blocks 1-6: the rest builds on them.</li>
+</ol></section><section><h2>4. Order of play</h2><p>Two lanes run in parallel so the math and the goal both move every week.</p>
+<ul>
+<li><strong>Lane M (math and ML), 4 rides a week:</strong> Track A in block order, then Track B Blocks 1-3.</li>
+<li><strong>Lane G (GenAI stack), 2 rides a week:</strong> Track C in block order.</li>
+<li>Week layout: Monday-Thursday Lane M, Friday-Saturday Lane G, Sunday rest or catch-up. Your AWS reading at the desk (see section 6) is separate from the bike.</li>
+</ul>
+<h3>Before January (about 8 weeks)</h3>
+<p>Approximate; re-plan after week one when you know real lengths.</p>
+<table>
+<thead>
+<tr>
+<th>Weeks</th>
+<th>Lane M</th>
+<th>Lane G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-2</td>
+<td>A0 notation and warm-up; A1 calculus</td>
+<td>C0 the big picture; C1 LLMs for architects (watch 1.1 to 1.3 now; treat the 3 h 21 m deep dive 1.4 as its own run of rides later)</td>
+</tr>
+<tr>
+<td>3-4</td>
+<td>A2 vectors and linear algebra (10 videos, the biggest block); A3 multivariable calculus</td>
+<td>C1 finish; C2 prompting and structured outputs (add G1, G2 and G3 from the gap-fill section; the track file says where each one goes)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A4 probability</td>
+<td>C3 embeddings and RAG (start)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A5 statistics; A6 optimization (start)</td>
+<td>C3 finish</td>
+</tr>
+<tr>
+<td>7</td>
+<td>A6 finish; B1 what AI/ML is</td>
+<td>C4 agents and tools (start)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>B2 classical ML (start)</td>
+<td>C4 finish</td>
+</tr>
+</tbody>
+</table>
+<p>That targets A0-A6 (43 videos), B1-B2 (18 videos) and C0-C4 (22 videos, plus G1-G3). If the 30-minute guess is optimistic, B2 slips into the semester. That is fine: B2 and B3 are the preview of the UT Machine Learning and Deep Learning courses.</p>
+<h3>During the semester</h3>
+<table>
+<thead>
+<tr>
+<th>Track block</th>
+<th>Why now</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B2, B3</td>
+<td>Ahead of the UT Machine Learning and Deep Learning courses</td>
+</tr>
+<tr>
+<td>B5 (RL), B6 (planning), B7 (ethics), B8 (generative models)</td>
+<td>Ahead of the matching UT courses</td>
+</tr>
+<tr>
+<td>C5 evals and observability, C6 safety and governance (add G4-G6 on prompt injection), C7 serving and cost (add G8), C8 AWS GenAI, C9 enterprise architecture</td>
+<td>Keep Lane G moving toward the goal; these are the most architect-heavy blocks</td>
+</tr>
+<tr>
+<td>G7 (HNSW indexes in pgvector, a university seminar)</td>
+<td>Optional, Scholar level; after C3 once RAG feels familiar</td>
+</tr>
+<tr>
+<td>A7</td>
+<td>Only if a course needs it</td>
+</tr>
+</tbody>
+</table></section><section><h2>5. How this maps to the UT courses</h2><p>Course topics are from the official program page (https://cdso.utexas.edu/msai), which I opened on 2026-11-09. The block mapping is my reading of the syllabi, not UT's. The page lists no prerequisites, and I did not find the Spring 2027 start date or the reading lists.</p>
+<table>
+<thead>
+<tr>
+<th>UT foundational course</th>
+<th>Syllabus topics (from the page)</th>
+<th>Prepare with</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Machine Learning</td>
+<td>PAC learning, VC dimension, perceptron, linear regression and gradient descent, boosting, PCA/SVD, maximum likelihood, Bayesian inference, EM, graphical models, neural networks</td>
+<td>A2 (SVD/PCA), A4-A6, B1, B2</td>
+</tr>
+<tr>
+<td>Deep Learning</td>
+<td>Deep and convolutional networks, sequence modelling, reinforcement learning, PyTorch</td>
+<td>A1, A3, A6, B3, B4</td>
+</tr>
+<tr>
+<td>Planning, Search, and Reasoning Under Uncertainty</td>
+<td>Heuristic search, adversarial planning, Bayesian state estimation, MDPs, POMDPs</td>
+<td>A4, B6</td>
+</tr>
+<tr>
+<td>Reinforcement Learning</td>
+<td>Bandits, MDPs, dynamic programming, Monte Carlo, temporal-difference learning, policy gradients</td>
+<td>A4, B5</td>
+</tr>
+<tr>
+<td>Ethics in AI (the only course the page labels required)</td>
+<td>History, ethical theories, fairness, accountability, transparency</td>
+<td>B7</td>
+</tr>
+</tbody>
+</table>
+<p>Electives that fit the GenAI-architect goal and what to watch first: Natural Language Processing (B4, then C1), Advances in Deep Learning (B3-B4), Advances in Deep Generative Models (B8). I am not a career advisor, so treat that as input.</p></section><section><h2>6. How this fits the material you already have</h2><p>You already have the desk side. The bike videos give the mental model; these are where to read and practise.</p>
+<ul>
+<li><strong>SAA-C03 course companion</strong> (the 54-page set): the AWS Associate track. Not part of the bike plan.</li>
+<li><strong>AWS system design visual guide</strong> (25 pages plus the three-part production architecture set): its AI pages line up with Track C.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Track C block</th>
+<th>Matching guide page</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C7 customization and serving</td>
+<td>Page 15 customization strategies; Page 21 model deployment and monitoring</td>
+</tr>
+<tr>
+<td>C6 safety, security and governance</td>
+<td>Page 16 guardrails and responsible AI; Page 25 AI security and governance</td>
+</tr>
+<tr>
+<td>C8 AWS GenAI</td>
+<td>Page 19 AI service landscape</td>
+</tr>
+<tr>
+<td>C3 RAG</td>
+<td>Page 15 customization strategies (likely covers RAG against fine-tuning; check)</td>
+</tr>
+<tr>
+<td>C4 agents</td>
+<td>Page 22 agentic systems</td>
+</tr>
+<tr>
+<td>C7 cost</td>
+<td>Page 23 AI cost and security</td>
+</tr>
+<tr>
+<td>C1, B1 fundamentals</td>
+<td>Page 24 AI/ML fundamentals; Page 20 ML lifecycle</td>
+</tr>
+</tbody>
+</table>
+<p>The Page 15-25 titles are from the output list of that chat; I did not open the pages themselves, so check that each really covers the block before relying on the pairing.</p></section><section><h2>7. Known gaps (from the three tracks)</h2><p>Gaps are listed, never filled with weak videos. These are the open ones.</p>
+<ul>
+<li><strong>Track A:</strong> sets (no main-path video); learning-rate schedules, momentum and Adam; Hessian and second-order convexity; Bayesian inference beyond the basics; dedicated continuous random variables and densities.</li>
+<li><strong>Track B:</strong> training, tuning and debugging neural networks; a short animated overview of supervised/unsupervised/RL; a short visual VC-dimension video; graphical models beyond one lecture; scaling laws and fine-tuning as standalone videos; a short POMDP intro; a university lecture on ethics guidelines.</li>
+<li><strong>Track C, after gap-fill pass 1:</strong> eight videos were added (prompting, structured outputs, tool calling, prompt injection, HNSW, token cost). Still open: bank model-risk management for LLMs (the one candidate is a registration page, not a video); how to choose a vector store; prompt caching and batching from an AI-lab or cloud-provider channel; case studies from banks' own engineers (the one candidate is a podcast episode with no YouTube ID); Simon Willison's own lethal-trifecta talk was never recorded; open versus closed models at architect level; non-AWS reference architectures. Block 2 is still only five BIKE items. Not searched at all: OpenAI, Google DeepMind and Microsoft official channels, Stanford CS224N and similar courses, Databricks and Snowflake talks, NIST AI RMF and EU AI Act walkthroughs.</li>
+</ul></section><section><h2>8. What is pending</h2><ol>
+<li><strong>Gap-filling, one agent at a time.</strong> Pass 1 (Track C) is done. Next are Track A (Adam and momentum, Bayesian inference beyond the basics, densities, sets), then Track B. Each run is capped and reports back before the next starts, and I tell you before each one.</li>
+<li><strong>Lengths:</strong> open each link once to fill the "length ?" cells, or ask for a pass when YouTube access allows it.</li>
+<li><strong>Playlists:</strong> turn each block into an ordered YouTube playlist (the Atlas script can do this once the lists settle).</li>
+<li><strong>Repo:</strong> this folder is committed locally, but pushing to GitHub is blocked until a repository named <code>MSAIAtlas</code> exists and the session has push access (the session's GitHub login is currently invalid).</li>
+</ol></section><section><h2>Appendix: videos that appear in more than one track</h2><p>Watch each once, the first time you reach it in the plan. Row labels are the track and the row number in that track's table.</p>
+<table>
+<thead>
+<tr>
+<th>Video</th>
+<th>Channel</th>
+<th>Where it appears</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=FgakZw6K1QQ" target="_blank" rel="noopener noreferrer">StatQuest: Principal Component Analysis (PCA), Step-by-Step</a></td>
+<td>StatQuest with Josh Starmer</td>
+<td>A 19, B 2.7</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=XepXtl9YKwc" target="_blank" rel="noopener noreferrer">Maximum Likelihood, clearly explained!!!</a></td>
+<td>StatQuest with Josh Starmer</td>
+<td>A 34, B 2.11</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=IHZwWFHWa-w" target="_blank" rel="noopener noreferrer">Gradient descent, how neural networks learn / Deep Learning Chapter 2</a></td>
+<td>3Blue1Brown</td>
+<td>A 38, B 3.2</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=sDv4f4s2SB8" target="_blank" rel="noopener noreferrer">Gradient Descent, Step-by-Step</a></td>
+<td>StatQuest with Josh Starmer</td>
+<td>A 39, B 2.1</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=Ilg3gGewQ5U" target="_blank" rel="noopener noreferrer">Backpropagation, intuitively / Deep Learning Chapter 3</a></td>
+<td>3Blue1Brown</td>
+<td>A 42, B 3.3</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=tIeHLnjs5U8" target="_blank" rel="noopener noreferrer">Backpropagation calculus / Deep Learning Chapter 4</a></td>
+<td>3Blue1Brown</td>
+<td>A 43, B 3.O4</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=nbBvuuNVfco" target="_blank" rel="noopener noreferrer">Singular Value Decomposition (SVD): Mathematical Overview</a></td>
+<td>Steve Brunton</td>
+<td>A 2, B 2.8</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=EuBBz3bI-aA" target="_blank" rel="noopener noreferrer">Machine Learning Fundamentals: Bias and Variance</a></td>
+<td>StatQuest with Josh Starmer</td>
+<td>A 5, B 1.2</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" rel="noopener noreferrer">But what is a neural network? / Deep learning chapter 1</a></td>
+<td>3Blue1Brown</td>
+<td>A 6, B 3.1</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=wjZofJX0v4M" target="_blank" rel="noopener noreferrer">Transformers, the tech behind LLMs / Deep Learning Chapter 5</a></td>
+<td>3Blue1Brown</td>
+<td>B 4.1, C 1.2</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=eMlx5fFNoYc" target="_blank" rel="noopener noreferrer">Attention in transformers, step-by-step / Deep Learning Chapter 6</a></td>
+<td>3Blue1Brown</td>
+<td>B 4.2, C 1.3</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank" rel="noopener noreferrer">[1hr Talk] Intro to Large Language Models</a></td>
+<td>Andrej Karpathy</td>
+<td>B 4.3, C 1.1</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=7xTGNNLPyMI" target="_blank" rel="noopener noreferrer">Deep Dive into LLMs like ChatGPT</a></td>
+<td>Andrej Karpathy</td>
+<td>B 4.4, C 1.4</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank" rel="noopener noreferrer">Let's build GPT: from scratch, in code, spelled out.</a></td>
+<td>Andrej Karpathy</td>
+<td>B 4.O3, C 1.D2</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=zduSFxRajkE" target="_blank" rel="noopener noreferrer">Let's build the GPT Tokenizer</a></td>
+<td>Andrej Karpathy</td>
+<td>B 4.O4, C 1.D1</td>
+</tr>
+</tbody>
+</table>
+<!-- 15 shared videos --></section>
+</main>
+<footer class="wrap"><p>Every video was confirmed to exist with YouTube's embed lookup (title and channel copied as returned). None was watched by the person who compiled this list, and many lengths are unknown. Watched marks are kept in this browser; browsers that give each saved file its own storage will not carry them from one page to another.</p><p><button id="reset" class="btn" type="button">Clear watched marks</button></p></footer>
+<script>
+(function () {
+  var KEY = 'msai-watched', THEME = 'msai-theme';
+  var watched = {};
+  try { (JSON.parse(window.localStorage.getItem(KEY) || '[]') || []).forEach(function (i) { watched[i] = 1; }); } catch (e) {}
+  function save() { try { window.localStorage.setItem(KEY, JSON.stringify(Object.keys(watched))); } catch (e) {} }
+
+  try {
+    var t = window.localStorage.getItem(THEME);
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+  var themeBtn = document.getElementById('theme');
+  if (themeBtn) themeBtn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    if (!cur) cur = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { window.localStorage.setItem(THEME, next); } catch (e) {}
+  });
+
+  var items = Array.prototype.slice.call(document.querySelectorAll('li.video'));
+  if (!items.length) return;
+  var upnext = document.getElementById('upnext');
+  var overall = document.getElementById('overall');
+
+  function isDone(li) { return !!watched[li.getAttribute('data-vid')]; }
+  function setDone(li, on) {
+    var id = li.getAttribute('data-vid');
+    if (on) watched[id] = 1; else delete watched[id];
+    save(); refresh();
+  }
+  items.forEach(function (li) {
+    var cb = li.querySelector('input');
+    cb.addEventListener('change', function () { setDone(li, cb.checked); });
+  });
+
+  function isMain(li) { return li.getAttribute('data-main') === '1'; }
+  function isQueue(li) { return isMain(li) && li.getAttribute('data-desk') === '0'; }
+
+  function makeCard(li) {
+    var sec = li.closest('section');
+    var a = li.querySelector('.vtitle a');
+    var card = document.createElement('article');
+    card.className = 'ride';
+    var where = document.createElement('p');
+    where.className = 'where';
+    where.textContent = (sec ? 'Block ' + sec.getAttribute('data-block') + ': ' + sec.getAttribute('data-short') : '') +
+      ', video ' + li.querySelector('.vnum').textContent;
+    var h3 = document.createElement('h3');
+    var link = document.createElement('a');
+    link.href = a.href; link.target = '_blank'; link.rel = 'noopener noreferrer';
+    link.textContent = a.textContent;
+    h3.appendChild(link);
+    var meta = li.querySelector('.vmeta').cloneNode(true);
+    var w = meta.querySelector('.watched'); if (w) w.remove();
+    var why = document.createElement('p');
+    why.className = 'vwhy';
+    why.textContent = li.querySelector('.vwhy').textContent;
+    var actions = document.createElement('div');
+    actions.className = 'actions';
+    var open = document.createElement('a');
+    open.className = 'btn primary'; open.href = a.href; open.target = '_blank'; open.rel = 'noopener noreferrer';
+    open.textContent = 'Open the video';
+    var mark = document.createElement('button');
+    mark.type = 'button'; mark.className = 'btn'; mark.textContent = 'Mark as watched';
+    mark.addEventListener('click', function () { setDone(li, true); });
+    var jump = document.createElement('a');
+    jump.className = 'btn'; jump.href = '#' + li.id; jump.textContent = 'Show in the list';
+    actions.appendChild(open); actions.appendChild(mark); actions.appendChild(jump);
+    [where, h3, meta, why, actions].forEach(function (n) { card.appendChild(n); });
+    return card;
+  }
+
+  function refresh() {
+    items.forEach(function (li) {
+      var on = isDone(li);
+      li.classList.toggle('done', on);
+      li.querySelector('input').checked = on;
+    });
+    var totalAll = 0, doneAll = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-block]'), function (sec) {
+      var n = sec.getAttribute('data-block');
+      var rows = Array.prototype.filter.call(sec.querySelectorAll('li.video'), isMain);
+      var done = rows.filter(isDone).length;
+      totalAll += rows.length; doneAll += done;
+      var chain = document.getElementById('chain-' + n);
+      if (chain) {
+        chain.querySelector('.cdone').textContent = done;
+        chain.querySelector('.bar i').style.width = (rows.length ? Math.round(100 * done / rows.length) : 0) + '%';
+      }
+    });
+    if (overall) overall.textContent = doneAll + ' of ' + totalAll + ' main-path videos watched in this track.';
+    if (upnext) {
+      upnext.textContent = '';
+      var next = items.filter(function (li) { return isQueue(li) && !isDone(li); }).slice(0, 2);
+      if (!next.length) {
+        var e = document.createElement('div');
+        e.className = 'empty';
+        var deskLeft = items.filter(function (li) { return isMain(li) && !isDone(li); }).length;
+        e.textContent = deskLeft
+          ? 'Every bike video in this track is watched. ' + deskLeft + ' desk video' + (deskLeft === 1 ? ' is' : 's are') + ' left in the lists; save them for a desk session.'
+          : 'Every main-path video in this track is marked as watched. Open the optional lists inside each block, or go on to the next track.';
+        upnext.appendChild(e);
+      } else {
+        next.forEach(function (li) { upnext.appendChild(makeCard(li)); });
+      }
+    }
+  }
+
+  var reset = document.getElementById('reset');
+  if (reset) {
+    var armed = null;
+    reset.addEventListener('click', function () {
+      if (!armed) {
+        reset.textContent = 'Press again to clear all watched marks';
+        armed = setTimeout(function () { armed = null; reset.textContent = 'Clear watched marks'; }, 4000);
+        return;
+      }
+      clearTimeout(armed); armed = null;
+      watched = {}; save(); refresh(); reset.textContent = 'Clear watched marks';
+    });
+  }
+  refresh();
+})();
+</script>
+</body>
+</html>
