@@ -24,6 +24,8 @@ TRACKS = [
     ("C", "C-genai-stack", "The GenAI stack and enterprise architecture", "GenAI stack"),
     ("D", "D-tech-stack-bike", "Enterprise tech stack foundations (bike path)", "Tech stack, bike", "bike"),
     ("E", "E-tech-stack-desk", "Enterprise tech stack hands-on (desk path)", "Tech stack, desk", "desk"),
+    ("F", "F-ut-courses", "UT Austin MSAI course tracker", "UT courses"),
+    ("G", "G-genai-end-to-end", "End-to-end GenAI: from data to a governed production system", "End-to-end GenAI"),
 ]
 
 # Short labels for the block diagram where the heading is too long for a box.
@@ -35,6 +37,14 @@ SHORT_NAMES = {
     "D": {0: "Stack map", 1: "Distributed systems", 2: "The data layer", 3: "APIs and messaging",
           4: "Cloud-native platform", 5: "Security and identity", 6: "Reliability and observability",
           7: "Data and ML platform", 8: "Architecture judgment"},
+    "F": {1: "Machine Learning", 2: "Deep Learning", 3: "Reinforcement Learning", 4: "Planning and search",
+          5: "Ethics in AI", 6: "Natural Language Processing", 7: "Advances in Deep Learning",
+          8: "Deep Generative Models", 9: "Case Studies in ML", 10: "Optimization",
+          11: "Online learning", 12: "Logical reasoning", 13: "AI in Healthcare", 14: "AI in Astrophysics"},
+    "G": {0: "The build map", 1: "Language-model basics", 2: "Pretraining", 3: "Post-training",
+          4: "Adaptation", 5: "Inference and serving", 6: "Grounding and RAG", 7: "Agents and tools",
+          8: "Multimodal and diffusion", 9: "Evaluation", 10: "Safety and governance",
+          11: "LLMOps and platform", 12: "Capstone designs"},
     "E": {0: "Drawing systems", 1: "Data layer lab", 2: "APIs and messaging lab", 3: "Cloud-native lab",
           4: "Security and observability lab", 5: "Data and ML platform lab",
           6: "System-design walkthroughs", 7: "GenAI-era designs"},
