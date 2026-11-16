@@ -13,6 +13,7 @@ Written 2026-11-09/10. Status: **draft 1.** The video lists exist and every vide
 | [tracks/C-genai-stack.md](tracks/C-genai-stack.md) | The GenAI stack and enterprise architecture: stack map, LLMs for architects, prompting, RAG, agents/MCP, evals, security and governance, serving and cost, AWS GenAI, large-company patterns | about 50 (Blocks 0-9; the table has 51 rows), plus 8 from gap-fill pass 1 (rows G1-G8) | 8 desk videos |
 | [tracks/D-tech-stack-bike.md](tracks/D-tech-stack-bike.md) | The general enterprise tech stack, bike path: stack map, distributed systems, data layer, APIs and messaging, cloud-native platform, security and identity (fast lane), reliability and observability, data and ML platform, architecture judgment and case studies | 53 (Blocks 0-8) | 32 (3 desk) |
 | [tracks/E-tech-stack-desk.md](tracks/E-tech-stack-desk.md) | The same stack layers at the desk: hands-on and diagram-heavy videos, each block ending in a lab (draw it, run it, defend it). Cloud-neutral and open-source tools, Java/Spring where possible; not AWS service tutorials | 47 (Blocks 0-7, all DESK) | 24 |
+| [tracks/F-ut-courses.md](tracks/F-ut-courses.md) | UT Austin MSAI course tracker: one block per course (all 14 listed on the cdso page), each with the official description, free public materials, a short prep and companion video path, and recap questions; opens with an elective ranking for the GenAI-architect goal and questions for the program coordinator | 93 (Blocks 1-14; 43 are reused from Tracks A-C) | 50 (18 of the 93 main rows are DESK) |
 
 Every block in every track has: why it matters, an ordered table (title, channel, link, length, level, mode, what you will get, status), a "full circle" line, and three recap questions with hidden answers. Each track ends with **Gaps** (topics where no good video was found) and **Not checked**.
 
@@ -98,7 +99,7 @@ Course topics are from the official program page (https://cdso.utexas.edu/msai),
 | Reinforcement Learning | Bandits, MDPs, dynamic programming, Monte Carlo, temporal-difference learning, policy gradients | A4, B5 |
 | Ethics in AI (the only course the page labels required) | History, ethical theories, fairness, accountability, transparency | B7 |
 
-Electives that fit the GenAI-architect goal and what to watch first: Natural Language Processing (B4, then C1), Advances in Deep Learning (B3-B4), Advances in Deep Generative Models (B8). I am not a career advisor, so treat that as input.
+**Track F is the full course tracker.** It has one block for each of the 14 courses on the cdso page (not just the four foundational ones above), with free public materials (textbooks, course sites) and a prep path per course. It opens with a ranking of which electives sit closest to the GenAI-architect goal. The ranking is my judgement from the course outlines, not salary or hiring data. In short: Deep Learning, Advances in Deep Learning, Natural Language Processing and Advances in Deep Generative Models are the closest; Machine Learning, Optimization, Reinforcement Learning, Ethics in AI and Case Studies are useful; Planning, Online Learning, Automated Logical Reasoning, AI in Healthcare and AI in Astrophysics are niche for this goal. Track F also lists four questions for the program coordinator (which courses run when, weekly hours, whether the four foundational courses are mandatory, and what Advances in Deep Learning covers). The cdso page shows no course numbers or syllabi, so confirm the mapping in the UT handbook or with the coordinator before choosing a semester plan.
 
 ## 6. How this fits the material you already have
 
@@ -132,7 +133,7 @@ Gaps are listed, never filled with weak videos. These are the open ones.
 1. **Gap-filling is done for now (two passes).** Still open: short visual PAC/VC and Bayes-net videos, OECD and NIST guideline lectures from a credible source, and the Stanford CS336 scaling-laws lecture (its ID fails the existence check). Another pass would mostly hunt for videos that may not exist; I suggest starting to ride and noting which gaps you actually feel.
 2. **Lengths:** open each link once to fill the "length ?" cells, or ask for a pass when YouTube access allows it.
 3. **Playlists:** turn each block into an ordered YouTube playlist (the Atlas script can do this once the lists settle).
-4. **Repo:** this folder is committed locally, but pushing to GitHub is blocked until a repository named `MSAIAtlas` exists and the session has push access (the session's GitHub login is currently invalid).
+4. **Repo:** done. The folder is pushed to https://github.com/vij658/UTAustinMSAI (public: only first name, the UT program and the study plan are in it).
 
 ## Appendix: videos that appear in more than one track
 
