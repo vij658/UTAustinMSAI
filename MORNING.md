@@ -32,3 +32,8 @@ Open each at youtube.com/watch?v=<ID>. If one works, tell me and I add it.
 - Pages my fetch tool refused to cite (open them to confirm): the Convex Optimization book site, the NAM PDF, PhysioNet, the sbi package page, astroML, the Cambridge Logic and Proof page, arXiv 1911.01429 and 1204.5721, the Hazan online-learning site.
 - Track F, Block 7: the Advances in Deep Learning prep rests on the UT Deep Learning Group site (ut.philkr.net/advances_in_deeplearning), which only matches by title. Check that it is the same course once the handbook arrives.
 - Track F, Block 14 (AI in Astrophysics): no UT course page exists publicly, so the block uses analogue material.
+
+## Added after Track G part 1 (stages 0-6, end-to-end GenAI)
+- Watch pages I could not read, so the rows are title-based (open at youtube.com/watch?v=<ID>): Bjkc-SYat_M (Block 0 optional, Four Layers of the GenAI Stack), dRT5Vf9_OYw (2.2 FineWeb talk), RmTyzx-17Do (3.O1 DeepSeek-R1 walkthrough), KLJ3EEo8aPU (4.2 CMU fine-tuning lecture), sGqEKzJYrNE (4.O2 Hamel Husain on TWIML), r09tJfON6kE (6.O3 GraphRAG, personal channel, not vetted).
+- IDs that failed the existence check and were dropped: lp2AqYQDeh4 (a FineWeb dataset video), WePxmeXU1xg and LPv1KfUXLCo (two Stanford CS336 uploads with generic titles). I found only Lecture 1 of Stanford CS336 (SQ3fZ1sAqXI); the other lectures (data, scaling laws, inference, RL) have no ID I could confirm.
+- Gaps stated in Track G: no dedicated video on preparing fine-tuning data; none on "hosted API versus self-hosted"; chunking is only a DESK video (6.O1).
