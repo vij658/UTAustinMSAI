@@ -9,7 +9,7 @@ Create a folder with `tracks/*.md`, `ROADMAP.md`, `tools/build_html.py`, run `py
 - Nothing was watched. "Verified" means YouTube oEmbed returned the same ID, title and channel. Lengths are filled only where seen.
 - Keep roadmap videos out of his YouTube watch history (standing preference). Do not open or play videos in his signed-in browser. For lengths use cookie-less fetches of watch-page HTML from a youtube.com tab, paced about 30 seconds apart, and only with his history paused.
 - One research agent at a time, and tell him before each starts (three at once hit the rate limit).
-- GitHub push is blocked (invalid token). Needs an empty `MSAIAtlas` repo and a working token.
+- GitHub: repo is vij658/UTAustinMSAI (public, created by the user on 2026-11-16). The shell's `gh` login is invalid, but attaching the repo to the session (add_repo tool, push access) lets plain `git push origin main` work through the session proxy. Commit authors are only Claude <noreply@anthropic.com>; keep personal email out of commits. No employer or sensitive details belong in this public repo.
 
 ## State at this checkpoint
 - A 62, B 57, C 58, D 53, E 47 main-path videos; gap-fill passes 1 and 2 done for A, B, C.
