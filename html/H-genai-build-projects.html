@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Track H: Build GenAI projects, one layer at a time - MSAI video plan</title>
+<meta name="description" content="Ordered video list: Build GenAI projects, one layer at a time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F5F8; --panel:#FFFFFF; --ink:#12202D; --muted:#4F6071; --line:#CBD6E0;
+  --accent:#0A5FC4; --accent-ink:#FFFFFF; --done:#1C7A4B; --warn:#8F5200; --tint:#E6EFF9;
+  --body:"Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif;
+  --head:"Bricolage Grotesque","Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1621; --panel:#152131; --ink:#E9EFF5; --muted:#A3B5C6; --line:#28394C;
+    --accent:#6BB8FF; --accent-ink:#06121E; --done:#6FD09A; --warn:#F0B45A; --tint:#16293D;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1621; --panel:#152131; --ink:#E9EFF5; --muted:#A3B5C6; --line:#28394C;
+  --accent:#6BB8FF; --accent-ink:#06121E; --done:#6FD09A; --warn:#F0B45A; --tint:#16293D;
+}
+*{box-sizing:border-box}
+html{font-size:19px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55;overflow-wrap:anywhere}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:12px;top:12px;background:var(--accent);color:var(--accent-ink);padding:8px 14px;border-radius:6px;z-index:10}
+a{color:var(--accent);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.topbar{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;min-height:56px;padding-top:6px;padding-bottom:6px}
+.brand{font-family:var(--head);font-weight:800;font-size:1.05rem;color:var(--ink);text-decoration:none;margin-right:auto}
+.top nav{display:flex;flex-wrap:wrap;gap:2px 6px}
+.top nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;color:var(--ink);text-decoration:none;border-radius:8px;font-weight:700;font-size:.92rem}
+.top nav a[aria-current="page"]{background:var(--tint);color:var(--accent);box-shadow:inset 0 -3px 0 var(--accent)}
+.top nav a:hover{background:var(--tint)}
+#theme{min-height:44px;padding:0 14px;border:2px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;font:inherit;font-size:.9rem;cursor:pointer}
+h1,h2,h3{font-family:var(--head);line-height:1.12;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(2.1rem,5.2vw,3.3rem);font-weight:800;margin:36px 0 10px}
+h2{font-size:clamp(1.55rem,3.4vw,2.05rem);font-weight:800;margin:0 0 14px}
+h3{font-size:1.3rem;font-weight:700;margin:26px 0 8px}
+p{margin:0 0 14px;max-width:72ch}
+ul,ol{max-width:72ch}
+.lede{font-size:1.12rem;color:var(--muted);max-width:60ch;margin-bottom:20px}
+.overall{font-weight:700;margin:0 0 6px}
+section{margin:44px 0}
+section,.video{scroll-margin-top:76px}
+.block{padding-top:6px}
+#upnext-wrap{margin:24px 0 8px}
+#upnext{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.ride{background:var(--panel);border:3px solid var(--accent);border-radius:12px;padding:22px 22px 20px}
+.ride .where{margin:0 0 6px;color:var(--muted);font-size:.9rem}
+.ride h3{margin:0 0 8px;font-size:clamp(1.35rem,2.6vw,1.65rem)}
+.ride h3 a{color:var(--ink);text-decoration:none}
+.ride h3 a:hover{text-decoration:underline}
+.ride .vwhy{margin:10px 0 16px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:8px;border:2px solid var(--accent);background:transparent;color:var(--accent);font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.empty{background:var(--panel);border:2px dashed var(--line);border-radius:12px;padding:20px}
+.chain{list-style:none;margin:20px 0 0;padding:0;max-width:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:56px;row-gap:34px}
+.chain li{grid-column:var(--c);grid-row:var(--r);position:relative}
+.chain a{display:flex;flex-direction:column;gap:2px;height:100%;padding:14px 16px 16px;background:var(--panel);border:2px solid var(--line);border-radius:8px;color:var(--ink);text-decoration:none}
+.chain a:hover{border-color:var(--accent)}
+.cn{font-size:.85rem;color:var(--muted)}
+.cname{font-family:var(--head);font-weight:700;font-size:1.08rem;line-height:1.2}
+.ccount{font-size:.88rem;color:var(--muted);margin-top:4px}
+.chain .bar{display:block;height:7px;border-radius:4px;background:var(--line);margin-top:10px;overflow:hidden}
+.chain .bar i{display:block;height:100%;width:0;background:var(--done)}
+.chain li::after{position:absolute;font-size:1.7rem;font-weight:700;color:var(--muted);line-height:1}
+.chain li.to-right::after{content:"\2192";right:-44px;top:calc(50% - 14px)}
+.chain li.to-left::after{content:"\2190";left:-44px;top:calc(50% - 14px)}
+.chain li.to-down::after{content:"\2193";left:calc(50% - 8px);bottom:-30px}
+.layers{list-style:none;margin:16px 0;padding:0;max-width:640px}
+.layers li{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line);position:relative}
+.layers li:not(:last-child)::after{content:"\2193";position:absolute;left:12px;bottom:-14px;background:var(--bg);color:var(--muted);font-weight:700;line-height:1;z-index:1}
+.layers .ln{font-family:var(--head);font-weight:800;font-size:1.3rem;color:var(--accent)}
+.layers strong{display:block;font-family:var(--head);font-size:1.1rem}
+.layers span:not(.ln){color:var(--muted)}
+.videos{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+.video{display:grid;grid-template-columns:48px minmax(0,1fr);gap:10px;padding:18px 0;border-top:1px solid var(--line)}
+.video:last-child{border-bottom:1px solid var(--line)}
+.check{display:flex;align-items:flex-start;justify-content:center;padding-top:3px;cursor:pointer}
+.check input{width:30px;height:30px;accent-color:var(--done);cursor:pointer;margin:0}
+.vtitle{font-size:1.12rem;font-weight:700;line-height:1.3}
+.vtitle a{color:var(--accent)}
+.vnum{display:inline-block;min-width:2.4em;color:var(--muted);font-weight:400;font-size:.9rem}
+.vmeta{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:4px;color:var(--muted);font-size:.88rem;align-items:center}
+.pill{padding:0 11px;border:1.5px solid currentColor;border-radius:999px;font-weight:700;line-height:1.5}
+.pill.desk{border-style:dashed}
+.tag{padding:0 8px;border-radius:4px;font-weight:700}
+.tag.added{background:var(--tint);color:var(--accent)}
+.tag.warn{border:1.5px solid var(--warn);color:var(--warn)}
+.watched{display:none;color:var(--done);font-weight:700}
+.vwhy{margin:8px 0 0;max-width:68ch}
+.vnote{margin:6px 0 0;color:var(--muted);font-size:.92rem}
+.video.done .vtitle a{color:var(--muted)}
+.video.done .watched{display:inline}
+.video.done .vwhy{color:var(--muted)}
+details{margin:14px 0}
+summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:700;color:var(--accent)}
+.answers,.optional,.fold{background:var(--panel);border:2px solid var(--line);border-radius:8px;padding:0 18px}
+.answers[open],.optional[open],.fold[open]{padding-bottom:10px}
+.answers p,.answers li{max-width:68ch}
+.optional .videos{margin-top:0}
+.optional .video:first-child{border-top:0}
+.scroll{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;min-width:100%;font-size:.92rem}
+th,td{border-top:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+th{font-family:var(--head);font-size:.95rem;border-top:0;border-bottom:2px solid var(--ink)}
+.tracks{list-style:none;padding:0;margin:20px 0 0;max-width:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
+.tracks a{display:block;height:100%;padding:18px 20px;background:var(--panel);border:2px solid var(--line);border-radius:8px;color:var(--ink);text-decoration:none}
+.tracks a:hover{border-color:var(--accent)}
+.tracks strong{display:block;font-family:var(--head);font-size:1.25rem;margin-bottom:4px}
+.tracks span{color:var(--muted);font-size:.92rem}
+code{font-size:.9em;background:var(--tint);padding:1px 5px;border-radius:4px}
+hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+footer{margin:56px 0 40px;color:var(--muted);font-size:.9rem}
+footer p{max-width:72ch}
+@media (max-width:900px){
+  .chain{grid-template-columns:1fr;row-gap:34px}
+  .chain li{grid-column:1;grid-row:auto}
+  .chain li.to-right::after,.chain li.to-left::after,.chain li.to-down::after{content:"\2193";left:calc(50% - 8px);right:auto;top:auto;bottom:-30px}
+}
+@media (max-width:560px){
+  html{font-size:18px}
+  .wrap{padding:0 16px}
+  .top{position:static}
+  .brand{order:1}
+  #theme{order:2}
+  .top nav{order:3;width:100%}
+  .video{grid-template-columns:40px minmax(0,1fr)}
+  .ride{padding:18px 16px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .chain .bar i{transition:width .3s ease}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="top"><div class="wrap topbar">
+<a class="brand" href="index.html">MSAI video plan</a>
+<nav aria-label="Pages"><a href="index.html">Roadmap</a><a href="A-ai-math.html">A: Math</a><a href="B-ai-ml-concepts.html">B: AI and ML</a><a href="C-genai-stack.html">C: GenAI stack</a><a href="D-tech-stack-bike.html">D: Tech stack, bike</a><a href="E-tech-stack-desk.html">E: Tech stack, desk</a><a href="F-ut-courses.html">F: UT courses</a><a href="G-genai-end-to-end.html">G: End-to-end GenAI</a><a href="H-genai-build-projects.html" aria-current="page">H: Build projects</a></nav>
+<button id="theme" type="button" aria-label="Switch between light and dark colours">Light / dark</button>
+</div></header>
+<main id="main" class="wrap">
+<h1>Track H: Build GenAI projects, one layer at a time</h1><p class="lede">0 main-path videos in 0 blocks, in the order to watch them. These are for a desk session: you will pause, type, draw or run things. The next-session panel offers the next two unwatched videos.</p><p class="overall" id="overall" aria-live="polite"></p><div id="upnext-wrap" data-mode="desk"><h2>Next session</h2><div id="upnext" aria-live="polite"></div></div><section><h2>Order of the blocks</h2><p>Each block needs the one before it. Follow the arrows; the bar fills as you mark videos as watched.</p><ol class="chain" aria-label="Blocks in the order to watch them; each block builds on the one before"></ol></section><details class="fold" open><summary>About this track and how to read it</summary><p><strong>What this track is.</strong> A desk track of follow-along build videos: you type the code the video types, run it, and end each block with something that works. It starts with a single script that calls a language model and grows, one layer at a time, into a complete GenAI system on AWS: a domain name, HTTPS, an edge firewall, a gateway, authentication, an API service, retrieval, tools and agents, a database, a queue, a cache, tracing, evaluations, guardrails, infrastructure as code and a delivery pipeline. Tracks C, D, E and G explain these layers; this track has you build them.</p>
+<p><strong>The one rule: progression.</strong> Each block adds one new layer (at most two small ones) on top of what already works. Nothing appears that an earlier block did not introduce. Every block ends with a <strong>Progression check</strong> (what is new, what is reused, whether the step is too big), and the ladder below was split wherever a step looked too big.</p>
+<p><strong>Two kinds of building in each block.</strong></p>
+<ol>
+<li><strong>Follow the video.</strong> Build exactly what the main video builds, in its own code. This is the safe, guided part: if you get stuck, the video and its repository are there.</li>
+<li><strong>Carry it into DocDesk.</strong> Then add the same layer to your own running project, DocDesk (below), with a short checklist. This is where the layers pile up into one system instead of twenty unrelated demos.</li>
+</ol>
+<p><strong>The thread project: DocDesk.</strong> A question-answering assistant over a small library of public documents of the kind a bank publishes or reads (for example consumer guides from the CFPB or FDIC, downloaded as PDFs). It starts as a terminal chatbot (Block 2) and ends as a multi-user service on AWS with its own domain (Block 22). Public data only: nothing from work, no employer data, no real customer data.</p>
+<p><strong>Defaults.</strong> Python 3.11 or later; VS Code; Git and GitHub; Docker from Block 9; AWS from Block 14, kept inside a monthly budget alarm (Block 14 sets one up). A hosted model API (OpenAI or Anthropic) for the first blocks, a local model with Ollama from Block 6, Amazon Bedrock from Block 17. Every cloud block ends with <strong>Cost and teardown</strong>.</p>
+<hr /></details><section><h2>The mental model: one request through a real GenAI system</h2><p>Read this before Block 1, and come back to it at the start of every block. The ladder lights up one box at a time.</p>
+<p>```
+ You (browser or app)</p><div class="scroll"><table><thead><tr><th></th></tr></thead><tbody><tr><td><ol>
+<li>DNS: the name docdesk.example.com becomes an address        [Block 16]</li>
+</ol></td></tr></tbody></table></div><p>v
+ CDN + WAF: cache static files close to the user, block bad traffic  [Block 16]</p><div class="scroll"><table><thead><tr><th></th></tr></thead><tbody><tr><td><ol start="2">
+<li>HTTPS: an encrypted connection (TLS certificate)            [Block 16]</li>
+</ol></td></tr></tbody></table></div><p>v
+ Load balancer / API gateway: one front door; routes, throttles,     [Blocks 13, 16]
+ checks API keys</p><div class="scroll"><table><thead><tr><th></th></tr></thead><tbody></tbody></table></div><p>v
+ Auth: who is this user, and what may they see? (login, tokens)      [Blocks 13, 22]</p><div class="scroll"><table><thead><tr><th></th></tr></thead><tbody></tbody></table></div><p>v
+ Web UI  ---&gt;  API service (FastAPI): the contract of your app       [Blocks 4, 5]</p><div class="scroll"><table><thead><tr><th></th></tr></thead><tbody></tbody></table></div><pre><code>              v
+      GenAI orchestration: the "brain" of the request
+        - prompt templates and structured output                  [Block 3]
+        - conversation memory                                     [Block 2]
+        - retrieval (RAG): find the right passages first          [Blocks 7, 8]
+        - tools and agents: call functions, loop until done       [Blocks 11, 12]
+        - guardrails: check what goes in and comes out            [Block 20]
+</code></pre><div class="scroll"><table><thead><tr><th></th></tr></thead><tbody></tbody></table></div><pre><code>              v
+      Model: hosted API, local model or Amazon Bedrock           [Blocks 1, 6, 17]
+</code></pre><div class="scroll"><table><thead><tr><th></th></tr></thead><tbody></tbody></table></div><p>Data layer:  SQL database (users, chats)                           [Block 10]
+                vector store (embeddings)                             [Blocks 7, 10]
+                object storage (the PDFs)                             [Block 14]
+                cache (repeat questions)                              [Block 18]
+                queue + workers (slow jobs such as ingesting files)   [Block 18]</p>
+<p>Around everything:
+   containers and a runtime (where the code runs)                    [Blocks 9, 15]
+   cloud account, identities and secrets                             [Blocks 14, 15]
+   logs, traces, cost per request, evaluations                       [Block 19]
+   infrastructure as code and a delivery pipeline                    [Block 21]
+```</p>
+<p><strong>The walk, in words.</strong> A user types a question. DNS turns the name into an address; the request reaches the edge, where a CDN serves static files and a web application firewall drops obvious attacks; HTTPS keeps it private. A load balancer or API gateway is the single front door: it routes the request, throttles abusive clients and checks keys. The auth layer decides who the user is and which documents they may see. The API service receives a typed request. The orchestration code builds the prompt, looks up relevant passages (retrieval), maybe calls tools, and sends everything to a model. The answer comes back through guardrails and is streamed to the user, while the system writes the conversation to the database, logs a trace with the cost of the call, and keeps slow work (reading new PDFs) on a queue for background workers. Infrastructure as code describes all of it, and a pipeline tests and ships each change.</p>
+<p><strong>Why this order.</strong> You build from the inside out: first the part that is new to you and unique to GenAI (talking to a model, prompts, retrieval, tools), then wrap it in the parts every enterprise system has (API, containers, database, auth), then move it to the cloud and add the internet edge, and last the parts that keep it reliable, safe and cheap in production (queues, caches, tracing, evaluations, guardrails, automation). Each wrapper is introduced only when there is something worth wrapping.</p>
+<hr /></section><section><h2>The ladder</h2><div class="scroll"><table><thead><tr><th>Block</th><th>You build</th><th>New layer(s)</th><th>Reuses</th><th>Progression check</th></tr></thead><tbody><tr><td>0</td><td>Nothing yet: the map above, plus a few short "how it works" videos</td><td>the mental model</td><td>nothing</td><td>Starting point.</td></tr><tr><td>1</td><td>One Python script that sends a question to a model and prints the answer</td><td>model API, API keys in environment variables</td><td>Block 0 map</td><td>Smallest possible step: one file, one call.</td></tr><tr><td>2</td><td>A terminal chatbot that remembers the conversation, streams its answer and prints token use and cost</td><td>conversation memory, streaming, tokens and cost</td><td>Block 1 call</td><td>One idea added: a list of messages. Cost appears early on purpose.</td></tr><tr><td>3</td><td>Prompt templates and structured output: the model returns JSON your code validates</td><td>prompt layer, output contract (Pydantic)</td><td>Block 2 chatbot</td><td>Still one file; adds the "contract" idea the API needs later.</td></tr><tr><td>4</td><td>A chat web page (Streamlit or Gradio) over the Block 2-3 code</td><td>user interface</td><td>Blocks 2-3 as functions</td><td>Only the screen is new; the logic is unchanged.</td></tr><tr><td>5</td><td>Your own HTTP API (FastAPI); the web page now calls it</td><td>API service, HTTP and JSON, OpenAPI docs</td><td>Blocks 3-4</td><td>Splits one program into client and server: the first real architecture step.</td></tr><tr><td>6</td><td>A local model with Ollama, switchable with the hosted one by a setting</td><td>model abstraction (provider switch)</td><td>Block 5 API</td><td>Same API, different engine behind it; prepares for Bedrock in Block 17.</td></tr><tr><td>7</td><td>Embeddings and semantic search over a few documents (vector store such as Chroma)</td><td>embeddings, vector store</td><td>Block 5-6 API</td><td>Retrieval without generation first, so RAG is not two new ideas at once.</td></tr><tr><td>8</td><td>RAG: ask questions of your PDFs with cited answers, behind your API</td><td>chunking, retrieval pipeline, citations</td><td>Blocks 6-7</td><td>Joins two things you already have: search (7) and generation (1-6).</td></tr><tr><td>9</td><td>Put the API and UI in containers and run them together with Docker Compose</td><td>containers, multi-service runtime</td><td>Block 8 app</td><td>Packaging only; the code does not change.</td></tr><tr><td>10</td><td>Add Postgres with pgvector: users, chat history and vectors in one database</td><td>SQL database, persistence, migrations</td><td>Blocks 8-9</td><td>Swaps the vector store and adds history; runs in the Compose stack from Block 9.</td></tr><tr><td>11</td><td>Tool calling: the model calls your functions (a calculator, a database query)</td><td>tool layer</td><td>Blocks 5, 10</td><td>One tool loop, no agent framework yet.</td></tr><tr><td>12</td><td>A small agent (LangGraph or similar) and your own MCP server exposing a DocDesk tool</td><td>agent loop, MCP</td><td>Block 11 tools</td><td>Tools first, then the loop that chooses them.</td></tr><tr><td>13</td><td>Login and API keys, rate limiting, and a reverse proxy / gateway in front, all locally</td><td>authentication, authorization, gateway</td><td>Blocks 5, 9, 10</td><td>Security edge built locally before any cloud, so only one thing is new.</td></tr><tr><td>14</td><td>AWS foundations: account safety, IAM users and roles, the CLI, a budget alarm, S3 for the PDFs</td><td>cloud account, identity, object storage</td><td>DocDesk PDFs</td><td>No deployment yet; just a safe place to deploy into.</td></tr><tr><td>15</td><td>Deploy the DocDesk containers to AWS (ECR plus App Runner or ECS Fargate), database on RDS, secrets in Secrets Manager</td><td>cloud runtime, managed database, secrets</td><td>Blocks 9, 10, 14</td><td>The same containers from Block 9 move to the cloud; nothing else changes.</td></tr><tr><td>16</td><td>The internet edge: your domain (Route 53), HTTPS (ACM), a load balancer or API Gateway, CloudFront and WAF</td><td>DNS, TLS, edge, cloud gateway</td><td>Block 15 service</td><td>Puts a proper front door on a service that already runs.</td></tr><tr><td>17</td><td>Amazon Bedrock as a third model provider, then Bedrock Knowledge Bases compared with your own RAG</td><td>managed GenAI services</td><td>Blocks 6, 8</td><td>Uses the provider switch from Block 6; build-versus-buy is the lesson.</td></tr><tr><td>18</td><td>A queue and workers for ingesting PDFs, a cache for repeat questions, streaming responses</td><td>async processing, caching</td><td>Blocks 8, 15</td><td>Slow work moves off the request path.</td></tr><tr><td>19</td><td>Tracing, logs and cost per request; a small evaluation set scored automatically</td><td>observability, evaluation</td><td>Blocks 8, 17</td><td>You measure before you tune or add guardrails.</td></tr><tr><td>20</td><td>Guardrails: prompt-injection tests, PII redaction, input/output checks, permission-aware retrieval</td><td>safety layer</td><td>Blocks 13, 19</td><td>Uses the eval set from Block 19 to show the guardrails work.</td></tr><tr><td>21</td><td>Infrastructure as code (Terraform or AWS CDK) and a GitHub Actions pipeline with tests and evals</td><td>IaC, CI/CD</td><td>Blocks 14-20</td><td>Writes down what you built by hand, so it can be rebuilt and changed safely.</td></tr><tr><td>22</td><td>Capstone: DocDesk end to end, with multi-user sign-in (Cognito), per-user data, cost dashboard and a two-page design document</td><td>the whole stack, design review</td><td>everything</td><td>No new technology; joins and defends the whole system.</td></tr></tbody></table></div><!-- BLOCKS GO HERE --></section>
+</main>
+<footer class="wrap"><p>Every video was confirmed to exist with YouTube's embed lookup (title and channel copied as returned). None was watched by the person who compiled this list; each length was read from the video's YouTube page. Watched marks are kept in this browser; browsers that give each saved file its own storage will not carry them from one page to another.</p><p><button id="reset" class="btn" type="button">Clear watched marks</button></p></footer>
+<script>
+(function () {
+  var KEY = 'msai-watched', THEME = 'msai-theme';
+  var watched = {};
+  try { (JSON.parse(window.localStorage.getItem(KEY) || '[]') || []).forEach(function (i) { watched[i] = 1; }); } catch (e) {}
+  function save() { try { window.localStorage.setItem(KEY, JSON.stringify(Object.keys(watched))); } catch (e) {} }
+
+  try {
+    var t = window.localStorage.getItem(THEME);
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+  var themeBtn = document.getElementById('theme');
+  if (themeBtn) themeBtn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    if (!cur) cur = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { window.localStorage.setItem(THEME, next); } catch (e) {}
+  });
+
+  var items = Array.prototype.slice.call(document.querySelectorAll('li.video'));
+  if (!items.length) return;
+  var upnext = document.getElementById('upnext');
+  var overall = document.getElementById('overall');
+
+  function isDone(li) { return !!watched[li.getAttribute('data-vid')]; }
+  function setDone(li, on) {
+    var id = li.getAttribute('data-vid');
+    if (on) watched[id] = 1; else delete watched[id];
+    save(); refresh();
+  }
+  items.forEach(function (li) {
+    var cb = li.querySelector('input');
+    cb.addEventListener('change', function () { setDone(li, cb.checked); });
+  });
+
+  function isMain(li) { return li.getAttribute('data-main') === '1'; }
+  var wrapEl = document.getElementById('upnext-wrap');
+  var deskTrack = !!wrapEl && wrapEl.getAttribute('data-mode') === 'desk';
+  function isQueue(li) { return isMain(li) && (deskTrack || li.getAttribute('data-desk') === '0'); }
+
+  function makeCard(li) {
+    var sec = li.closest('section');
+    var a = li.querySelector('.vtitle a');
+    var card = document.createElement('article');
+    card.className = 'ride';
+    var where = document.createElement('p');
+    where.className = 'where';
+    where.textContent = (sec ? 'Block ' + sec.getAttribute('data-block') + ': ' + sec.getAttribute('data-short') : '') +
+      ', video ' + li.querySelector('.vnum').textContent;
+    var h3 = document.createElement('h3');
+    var link = document.createElement('a');
+    link.href = a.href; link.target = '_blank'; link.rel = 'noopener noreferrer';
+    link.textContent = a.textContent;
+    h3.appendChild(link);
+    var meta = li.querySelector('.vmeta').cloneNode(true);
+    var w = meta.querySelector('.watched'); if (w) w.remove();
+    var why = document.createElement('p');
+    why.className = 'vwhy';
+    why.textContent = li.querySelector('.vwhy').textContent;
+    var actions = document.createElement('div');
+    actions.className = 'actions';
+    var open = document.createElement('a');
+    open.className = 'btn primary'; open.href = a.href; open.target = '_blank'; open.rel = 'noopener noreferrer';
+    open.textContent = 'Open the video';
+    var mark = document.createElement('button');
+    mark.type = 'button'; mark.className = 'btn'; mark.textContent = 'Mark as watched';
+    mark.addEventListener('click', function () { setDone(li, true); });
+    var jump = document.createElement('a');
+    jump.className = 'btn'; jump.href = '#' + li.id; jump.textContent = 'Show in the list';
+    actions.appendChild(open); actions.appendChild(mark); actions.appendChild(jump);
+    [where, h3, meta, why, actions].forEach(function (n) { card.appendChild(n); });
+    return card;
+  }
+
+  function refresh() {
+    items.forEach(function (li) {
+      var on = isDone(li);
+      li.classList.toggle('done', on);
+      li.querySelector('input').checked = on;
+    });
+    var totalAll = 0, doneAll = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-block]'), function (sec) {
+      var n = sec.getAttribute('data-block');
+      var rows = Array.prototype.filter.call(sec.querySelectorAll('li.video'), isMain);
+      var done = rows.filter(isDone).length;
+      totalAll += rows.length; doneAll += done;
+      var chain = document.getElementById('chain-' + n);
+      if (chain) {
+        chain.querySelector('.cdone').textContent = done;
+        chain.querySelector('.bar i').style.width = (rows.length ? Math.round(100 * done / rows.length) : 0) + '%';
+      }
+    });
+    if (overall) overall.textContent = doneAll + ' of ' + totalAll + ' main-path videos watched in this track.';
+    if (upnext) {
+      upnext.textContent = '';
+      var next = items.filter(function (li) { return isQueue(li) && !isDone(li); }).slice(0, 2);
+      if (!next.length) {
+        var e = document.createElement('div');
+        e.className = 'empty';
+        var deskLeft = items.filter(function (li) { return isMain(li) && !isDone(li); }).length;
+        e.textContent = deskLeft
+          ? 'Every bike video in this track is watched. ' + deskLeft + ' desk video' + (deskLeft === 1 ? ' is' : 's are') + ' left in the lists; save them for a desk session.'
+          : 'Every main-path video in this track is marked as watched. Open the optional lists inside each block, or go on to the next track.';
+        upnext.appendChild(e);
+      } else {
+        next.forEach(function (li) { upnext.appendChild(makeCard(li)); });
+      }
+    }
+  }
+
+  var reset = document.getElementById('reset');
+  if (reset) {
+    var armed = null;
+    reset.addEventListener('click', function () {
+      if (!armed) {
+        reset.textContent = 'Press again to clear all watched marks';
+        armed = setTimeout(function () { armed = null; reset.textContent = 'Clear watched marks'; }, 4000);
+        return;
+      }
+      clearTimeout(armed); armed = null;
+      watched = {}; save(); refresh(); reset.textContent = 'Clear watched marks';
+    });
+  }
+  refresh();
+})();
+</script>
+</body>
+</html>

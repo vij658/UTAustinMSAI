@@ -26,6 +26,7 @@ TRACKS = [
     ("E", "E-tech-stack-desk", "Enterprise tech stack hands-on (desk path)", "Tech stack, desk", "desk"),
     ("F", "F-ut-courses", "UT Austin MSAI course tracker", "UT courses"),
     ("G", "G-genai-end-to-end", "End-to-end GenAI: from data to a governed production system", "End-to-end GenAI"),
+    ("H", "H-genai-build-projects", "Build GenAI projects, one layer at a time", "Build projects", "desk"),
 ]
 
 # Short labels for the block diagram where the heading is too long for a box.
@@ -45,6 +46,11 @@ SHORT_NAMES = {
           4: "Adaptation", 5: "Inference and serving", 6: "Grounding and RAG", 7: "Agents and tools",
           8: "Multimodal and diffusion", 9: "Evaluation", 10: "Safety and governance",
           11: "LLMOps and platform", 12: "Capstone designs"},
+    "H": {0: "The map", 1: "First LLM call", 2: "Terminal chatbot", 3: "Prompts and structured output",
+          4: "Chat web UI", 5: "Your own API", 6: "Local models", 7: "Embeddings and search", 8: "RAG",
+          9: "Containers", 10: "Database", 11: "Tool calling", 12: "Agents and MCP", 13: "Auth and gateway",
+          14: "AWS foundations", 15: "Deploy to AWS", 16: "Internet edge", 17: "Amazon Bedrock",
+          18: "Queues and caching", 19: "Tracing and evals", 20: "Guardrails", 21: "IaC and CI/CD", 22: "Capstone"},
     "E": {0: "Drawing systems", 1: "Data layer lab", 2: "APIs and messaging lab", 3: "Cloud-native lab",
           4: "Security and observability lab", 5: "Data and ML platform lab",
           6: "System-design walkthroughs", 7: "GenAI-era designs"},
