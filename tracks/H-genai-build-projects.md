@@ -98,6 +98,19 @@ Read this before Block 1, and come back to it at the start of every block. The l
 
 ---
 
+## Four milestone projects
+
+The 22 build blocks form four complete projects, each a working system that the next one grows. Stop at any milestone and you still have something whole that runs.
+
+| Milestone | Blocks | What runs at the end | Where it runs |
+|---|---|---|---|
+| 1. A chat app with its own API | 1-6 | A web chat that calls your FastAPI service, which returns structured answers from a hosted or a local model | your laptop |
+| 2. A document assistant with tools | 7-13 | DocDesk: questions answered from your PDFs with citations, a database of users and chats, tools, an agent and an MCP server, behind login and an Nginx front door, all started by one `docker compose up` | your laptop |
+| 3. The same system on AWS | 14-17 | DocDesk on ECS Fargate with RDS, S3 and secrets, reached at your own HTTPS domain through CloudFront, WAF and a load balancer, with Bedrock as a model choice | AWS |
+| 4. A production-grade service | 18-22 | Background ingestion, caching and streaming; traces, cost per request and evaluations; guardrails; everything rebuilt by Terraform and shipped by a pipeline with an eval gate; Cognito sign-in for several users; a design document you can defend | AWS, two environments |
+
+**Before moving to the next milestone**, check the previous one still runs end to end, and redraw the Block 0 diagram with the boxes you have built filled in.
+
 ## Block 0: The map
 
 **What you build:** Nothing yet. You watch five short "how it works" videos and then draw the request walk from the mental model above from memory, so every later block has a box to land in.
