@@ -30,10 +30,10 @@ Conventions used in every table:
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 1 | What is a function? \| Functions and their graphs \| Algebra II \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=kvGsIo1TmsM | length ? | Start | BIKE | The idea of a function as an input-to-output rule, and how to read f(x) notation. | verified |
+| 1 | What is a function? \| Functions and their graphs \| Algebra II \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=kvGsIo1TmsM | 7:56 | Start | BIKE | The idea of a function as an input-to-output rule, and how to read f(x) notation. | verified |
 | 2 | Zero, negative, and fractional exponents \| Pre-Algebra \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=tOuCdKqO6-s | 14:04 | Start | BIKE | What x^0, x^-2 and x^(1/2) mean, which you need before logs and e^x make sense. | verified |
-| 3 | Introduction to Logarithms | Khan Academy | https://www.youtube.com/watch?v=mQTWzLpCcW0 | length ? | Start | BIKE | A log is the question "what power gives this number?"; the inverse of an exponent. | verified |
-| 4 | Sigma notation for sums \| Sequences, series and induction \| Precalculus \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=5jwXThH6fg4 | length ? | Start | BIKE | How to read and expand Σ with its index and limits. Loss functions are sums like this. | verified |
+| 3 | Introduction to Logarithms | Khan Academy | https://www.youtube.com/watch?v=mQTWzLpCcW0 | 9:48 | Start | BIKE | A log is the question "what power gives this number?"; the inverse of an exponent. | verified |
+| 4 | Sigma notation for sums \| Sequences, series and induction \| Precalculus \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=5jwXThH6fg4 | 4:26 | Start | BIKE | How to read and expand Σ with its index and limits. Loss functions are sums like this. | verified |
 | 5 | How to Read Math in Deep Learning Paper? | Deep Learning with Yacine | https://www.youtube.com/watch?v=YXWxVxQ6AeY | 27:17 | Start | DESK | A five-step method for reading formulas in a paper: identify, copy by hand, translate symbols into meaning, then compress to an intuition. Worked on the QHAdam optimizer. | verified |
 
 **Full circle:** the cross-entropy loss −Σ yᵢ log(ŷᵢ) and the softmax e^zᵢ / Σ e^zⱼ are just the four things in this block (sum, log, exponent, function) wearing a suit.
@@ -64,8 +64,8 @@ Conventions used in every table:
 | 6 | The essence of calculus | 3Blue1Brown | https://www.youtube.com/watch?v=WUvTyaaNkzM | 17:04 | Start | BIKE | The big picture of calculus before any formulas. Watch this first. | verified |
 | 7 | The paradox of the derivative \| Chapter 2, Essence of calculus | 3Blue1Brown | https://www.youtube.com/watch?v=9vKqVkMQHKk | 16:50 | Start | BIKE | What a derivative is: the slope of a curve at one point, built up from tiny nudges. | verified |
 | 8 | Derivative formulas through geometry \| Chapter 3, Essence of calculus | 3Blue1Brown | https://www.youtube.com/watch?v=S0_qX4VJhMQ | 17:33 | Start | BIKE | Where the power rule and other basic derivative formulas come from, seen geometrically. | verified |
-| 9 | Visualizing the chain rule and product rule \| Chapter 4, Essence of calculus | 3Blue1Brown | https://www.youtube.com/watch?v=YG15m2VwSjA | length ? | Start | BIKE | The chain rule as nudges passing through stages. This is the idea behind backpropagation. | verified |
-| 10 | What's so special about Euler's number e? \| Chapter 5, Essence of calculus | 3Blue1Brown | https://www.youtube.com/watch?v=m2MIpDrF7Es | length ? | Start | BIKE | Why e^x is its own derivative, and how that connects to exponentials and logs from Block 0. | verified |
+| 9 | Visualizing the chain rule and product rule \| Chapter 4, Essence of calculus | 3Blue1Brown | https://www.youtube.com/watch?v=YG15m2VwSjA | 15:56 | Start | BIKE | The chain rule as nudges passing through stages. This is the idea behind backpropagation. | verified |
+| 10 | What's so special about Euler's number e? \| Chapter 5, Essence of calculus | 3Blue1Brown | https://www.youtube.com/watch?v=m2MIpDrF7Es | 13:50 | Start | BIKE | Why e^x is its own derivative, and how that connects to exponentials and logs from Block 0. | verified |
 
 Practice tip: after #9, do three or four chain-rule exercises by hand on paper. A verified board-style lecture for extra practice is listed under "Optional extras" near the end.
 
@@ -96,16 +96,16 @@ Order logic: the 3Blue1Brown series (#11 to #17) is watched in its own chapter o
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 11 | Vectors \| Chapter 1, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=fNk_zzaMoSs | length ? | Start | BIKE | Vectors as arrows, as lists of numbers, and the idea that vector addition and scaling are what matter. | verified |
-| 12 | Linear combinations, span, and basis vectors \| Chapter 2, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=k7RM-ot2NWY | length ? | Start | BIKE | Linear combinations, span and basis vectors: the vocabulary for everything after. | verified |
-| 13 | Linear transformations and matrices \| Chapter 3, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=kYB8IZa5AuE | length ? | Start | BIKE | A matrix as a transformation of space: the columns say where the basis vectors land. The key mental model of the whole track. | verified |
-| 14 | Matrix multiplication as composition \| Chapter 4, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=XkY2DOUCWMU | length ? | Start | BIKE | Matrix multiplication as doing one transformation after another. | verified |
+| 11 | Vectors \| Chapter 1, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=fNk_zzaMoSs | 9:51 | Start | BIKE | Vectors as arrows, as lists of numbers, and the idea that vector addition and scaling are what matter. | verified |
+| 12 | Linear combinations, span, and basis vectors \| Chapter 2, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=k7RM-ot2NWY | 9:59 | Start | BIKE | Linear combinations, span and basis vectors: the vocabulary for everything after. | verified |
+| 13 | Linear transformations and matrices \| Chapter 3, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=kYB8IZa5AuE | 10:58 | Start | BIKE | A matrix as a transformation of space: the columns say where the basis vectors land. The key mental model of the whole track. | verified |
+| 14 | Matrix multiplication as composition \| Chapter 4, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=XkY2DOUCWMU | 10:03 | Start | BIKE | Matrix multiplication as doing one transformation after another. | verified |
 | 15 | The determinant \| Chapter 6, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=Ip3X9LOh2dk | 10:03 | Start | BIKE | The determinant as the factor by which a transformation scales area or volume. | verified |
-| 16 | Dot products and duality \| Chapter 9, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=LyGKycYT2v0 | length ? | Start | BIKE | The dot product, why it measures alignment, and how it connects to transformations. Attention and embeddings use this everywhere. | verified |
-| 17 | Eigenvectors and eigenvalues \| Chapter 14, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=PFDu9oVAE-g | length ? | Start | BIKE | Eigenvectors as the directions a transformation only stretches, and eigenvalues as the stretch factors. | verified |
-| 18 | Singular Value Decomposition (SVD): Overview | Steve Brunton | https://www.youtube.com/watch?v=gXbThCXjZFM | length ? | Deeper | BIKE | The big picture of SVD as a factorization of any matrix and why it is useful for data. | verified |
+| 16 | Dot products and duality \| Chapter 9, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=LyGKycYT2v0 | 14:11 | Start | BIKE | The dot product, why it measures alignment, and how it connects to transformations. Attention and embeddings use this everywhere. | verified |
+| 17 | Eigenvectors and eigenvalues \| Chapter 14, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=PFDu9oVAE-g | 17:15 | Start | BIKE | Eigenvectors as the directions a transformation only stretches, and eigenvalues as the stretch factors. | verified |
+| 18 | Singular Value Decomposition (SVD): Overview | Steve Brunton | https://www.youtube.com/watch?v=gXbThCXjZFM | 6:44 | Deeper | BIKE | The big picture of SVD as a factorization of any matrix and why it is useful for data. | verified |
 | 19 | StatQuest: Principal Component Analysis (PCA), Step-by-Step | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=FgakZw6K1QQ | 21:57 | Deeper | BIKE | PCA worked through step by step, which makes the SVD idea concrete on data. | verified |
-| 20 | 29. Singular Value Decomposition | MIT OpenCourseWare | https://www.youtube.com/watch?v=TX_vooSnhm8 | length ? | Scholar | DESK | The classic university lecture on SVD (MIT 18.06 numbering). Watch it after #18 and #19 so the formulas already have a picture behind them. | verified |
+| 20 | 29. Singular Value Decomposition | MIT OpenCourseWare | https://www.youtube.com/watch?v=TX_vooSnhm8 | 40:28 | Scholar | DESK | The classic university lecture on SVD (MIT 18.06 numbering). Watch it after #18 and #19 so the formulas already have a picture behind them. | verified |
 
 Note on #20: it is a full university lecture and its length is unconfirmed. I kept it because SVD is central to the UT courses and it is the one lecture-depth treatment I verified. Steve Brunton's "Mathematical Overview" (listed under Optional extras) is a possible alternative, but I could not confirm its length either. If you only want intuition, #18 and #19 are enough and you can skip #20.
 
@@ -134,10 +134,10 @@ Note on #20: it is a full university lecture and its length is unconfirmed. I ke
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 21 | Partial derivatives, introduction | Khan Academy | https://www.youtube.com/watch?v=AXqhWeUEtQU | length ? | Start | BIKE | Taking the derivative with respect to one variable while the others are held fixed. | verified |
-| 22 | Gradient | Khan Academy | https://www.youtube.com/watch?v=tIpKfDc295M | length ? | Deeper | BIKE | The gradient as the vector of partial derivatives (title-based description; I did not confirm the content beyond the title). | verified |
-| 23 | The Jacobian matrix | Khan Academy | https://www.youtube.com/watch?v=bohL918kXQk | length ? | Deeper | BIKE | The Jacobian as the matrix of partial derivatives, tying this block back to matrices from Block 2 (title-based description). | verified |
-| 24 | Lec 12: Gradient; directional derivative; tangent plane \| MIT 18.02 Multivariable Calculus, Fall 07 | MIT OpenCourseWare | https://www.youtube.com/watch?v=2XraaWefBd8 | length ? | Deeper | DESK | A full university lecture on the gradient and directional derivatives, for after the shorter videos above. | verified |
+| 21 | Partial derivatives, introduction | Khan Academy | https://www.youtube.com/watch?v=AXqhWeUEtQU | 10:55 | Start | BIKE | Taking the derivative with respect to one variable while the others are held fixed. | verified |
+| 22 | Gradient | Khan Academy | https://www.youtube.com/watch?v=tIpKfDc295M | 5:30 | Deeper | BIKE | The gradient as the vector of partial derivatives (title-based description; I did not confirm the content beyond the title). | verified |
+| 23 | The Jacobian matrix | Khan Academy | https://www.youtube.com/watch?v=bohL918kXQk | 6:22 | Deeper | BIKE | The Jacobian as the matrix of partial derivatives, tying this block back to matrices from Block 2 (title-based description). | verified |
+| 24 | Lec 12: Gradient; directional derivative; tangent plane \| MIT 18.02 Multivariable Calculus, Fall 07 | MIT OpenCourseWare | https://www.youtube.com/watch?v=2XraaWefBd8 | 50:10 | Deeper | DESK | A full university lecture on the gradient and directional derivatives, for after the shorter videos above. | verified |
 
 Note on #24: it is a full lecture with unconfirmed length. It is optional: #21 to #23 cover what the later blocks use. Take it if the gradient still feels like symbols and not a direction.
 
@@ -168,14 +168,14 @@ Order logic: Khan gives the first vocabulary, 3Blue1Brown gives the Bayes pictur
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 25 | Probability explained \| Independent and dependent events \| Probability and Statistics \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=uzkc-qNVoOk | length ? | Start | BIKE | A gentle first pass at probability with independent and dependent events (title-based description). | verified |
-| 26 | Bayes theorem, the geometry of changing beliefs | 3Blue1Brown | https://www.youtube.com/watch?v=HZGCoVF3YvM | length ? | Start | BIKE | Bayes' theorem as a picture of how evidence reshapes a belief. | verified |
-| 27 | Lecture 4: Conditional Probability \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=P7NE4WF8j-Q | length ? | Deeper | BIKE | The formal treatment of conditional probability and how to think with it. | verified |
-| 28 | Lecture 8: Random Variables and Their Distributions \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=k2BB0p8byGA | length ? | Deeper | BIKE | What a random variable is and how a distribution describes it. | verified |
-| 29 | Lecture 9: Expectation, Indicator Random Variables, Linearity \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=LX2q356N2rU | length ? | Deeper | BIKE | Expectation, and the linearity trick with indicator variables that makes hard averages easy. | verified |
-| 30 | Lecture 13: Normal distribution \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=72QjzHnYvL0 | length ? | Deeper | BIKE | The normal (Gaussian) distribution in depth. | verified |
-| 31 | But what is the Central Limit Theorem? | 3Blue1Brown | https://www.youtube.com/watch?v=zeJD6dqJ5lo | length ? | Start | BIKE | Why sums and averages of many random things look normal. | verified |
-| 32 | Lecture 28: Inequalities \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=UtXK_EQ3Pow | length ? | Scholar | DESK | Probability inequalities. This is the proof-flavoured background for the PAC-learning style bounds in the UT courses. | verified |
+| 25 | Probability explained \| Independent and dependent events \| Probability and Statistics \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=uzkc-qNVoOk | 8:18 | Start | BIKE | A gentle first pass at probability with independent and dependent events (title-based description). | verified |
+| 26 | Bayes theorem, the geometry of changing beliefs | 3Blue1Brown | https://www.youtube.com/watch?v=HZGCoVF3YvM | 15:11 | Start | BIKE | Bayes' theorem as a picture of how evidence reshapes a belief. | verified |
+| 27 | Lecture 4: Conditional Probability \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=P7NE4WF8j-Q | 49:45 | Deeper | BIKE | The formal treatment of conditional probability and how to think with it. | verified |
+| 28 | Lecture 8: Random Variables and Their Distributions \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=k2BB0p8byGA | 50:24 | Deeper | BIKE | What a random variable is and how a distribution describes it. | verified |
+| 29 | Lecture 9: Expectation, Indicator Random Variables, Linearity \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=LX2q356N2rU | 50:22 | Deeper | BIKE | Expectation, and the linearity trick with indicator variables that makes hard averages easy. | verified |
+| 30 | Lecture 13: Normal distribution \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=72QjzHnYvL0 | 51:09 | Deeper | BIKE | The normal (Gaussian) distribution in depth. | verified |
+| 31 | But what is the Central Limit Theorem? | 3Blue1Brown | https://www.youtube.com/watch?v=zeJD6dqJ5lo | 31:14 | Start | BIKE | Why sums and averages of many random things look normal. | verified |
+| 32 | Lecture 28: Inequalities \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=UtXK_EQ3Pow | 47:29 | Scholar | DESK | Probability inequalities. This is the proof-flavoured background for the PAC-learning style bounds in the UT courses. | verified |
 
 Note on lectures #27 to #30 and #32: each is a full university lecture and lengths are unconfirmed. I found no verified short video that covers conditional probability, random variables, expectation and the normal distribution at this depth. #25, #26 and #31 are the short on-ramps.
 
@@ -204,11 +204,11 @@ Note on lectures #27 to #30 and #32: each is a full university lecture and lengt
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 33 | The standard error, Clearly Explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=XNgt7F6FqDU | length ? | Start | BIKE | How uncertain an estimate from a sample is, and how that uncertainty shrinks with more data. | verified |
-| 34 | Maximum Likelihood, clearly explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=XepXtl9YKwc | length ? | Start | BIKE | The core idea of maximum likelihood: pick the parameters that make the observed data most probable. | verified |
-| 35 | Maximum Likelihood For the Normal Distribution, step-by-step!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=Dn6b9fCIUpM | length ? | Deeper | DESK | A worked maximum-likelihood derivation for a normal distribution. Pause and follow on paper. | verified |
-| 36 | Binomial distributions \| Probabilities of probabilities, part 1 | 3Blue1Brown | https://www.youtube.com/watch?v=8idr1WZ1A7Q | length ? | Start | BIKE | The binomial distribution, and the Bayesian idea of putting a probability distribution on an unknown probability (title-based description). | verified |
-| 37 | Bayesian Maximum Aposteriori Estimation (MAP): Extending Maximum Likelihood Estimation | Steve Brunton | https://www.youtube.com/watch?v=xgfexqYxrDU | length ? | Deeper | BIKE | MAP as maximum likelihood plus a prior, which bridges to regularization. | verified |
+| 33 | The standard error, Clearly Explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=XNgt7F6FqDU | 11:43 | Start | BIKE | How uncertain an estimate from a sample is, and how that uncertainty shrinks with more data. | verified |
+| 34 | Maximum Likelihood, clearly explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=XepXtl9YKwc | 6:12 | Start | BIKE | The core idea of maximum likelihood: pick the parameters that make the observed data most probable. | verified |
+| 35 | Maximum Likelihood For the Normal Distribution, step-by-step!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=Dn6b9fCIUpM | 19:50 | Deeper | DESK | A worked maximum-likelihood derivation for a normal distribution. Pause and follow on paper. | verified |
+| 36 | Binomial distributions \| Probabilities of probabilities, part 1 | 3Blue1Brown | https://www.youtube.com/watch?v=8idr1WZ1A7Q | 12:34 | Start | BIKE | The binomial distribution, and the Bayesian idea of putting a probability distribution on an unknown probability (title-based description). | verified |
+| 37 | Bayesian Maximum Aposteriori Estimation (MAP): Extending Maximum Likelihood Estimation | Steve Brunton | https://www.youtube.com/watch?v=xgfexqYxrDU | 12:58 | Deeper | BIKE | MAP as maximum likelihood plus a prior, which bridges to regularization. | verified |
 
 **Full circle:** minimizing squared error or cross-entropy is maximum likelihood under a noise model, L2 regularization is MAP with a Gaussian prior on the weights, and the standard error is why more data and bigger batches give steadier estimates.
 
@@ -237,12 +237,12 @@ Order logic: 3Blue1Brown first for the picture (it is chapter 2 of a series on n
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 38 | Gradient descent, how neural networks learn \| Deep Learning Chapter 2 | 3Blue1Brown | https://www.youtube.com/watch?v=IHZwWFHWa-w | length ? | Start | BIKE | Gradient descent as walking downhill on a cost surface, shown on a real network. | verified |
-| 39 | Gradient Descent, Step-by-Step | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=sDv4f4s2SB8 | length ? | Start | BIKE | Gradient descent with actual numbers: step size, learning rate, and when to stop. | verified |
-| 40 | Stochastic Gradient Descent, Clearly Explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=vMh0zPT0tLI | length ? | Start | BIKE | Why using a random subset of the data per step still works. | verified |
-| 41 | Convexity 101 [Optimization Bootcamp] | Steve Brunton | https://www.youtube.com/watch?v=9WXVgQFFsDI | length ? | Deeper | BIKE | A first look at convex sets and functions, and why convexity makes optimization easy. | verified |
-| 42 | Backpropagation, intuitively \| Deep Learning Chapter 3 | 3Blue1Brown | https://www.youtube.com/watch?v=Ilg3gGewQ5U | length ? | Start | BIKE | What backpropagation is doing, with no calculus yet. | verified |
-| 43 | Backpropagation calculus \| Deep Learning Chapter 4 | 3Blue1Brown | https://www.youtube.com/watch?v=tIeHLnjs5U8 | length ? | Deeper | DESK | Backpropagation as the chain rule from Block 1, written out. Pause and follow the derivatives on paper. | verified |
+| 38 | Gradient descent, how neural networks learn \| Deep Learning Chapter 2 | 3Blue1Brown | https://www.youtube.com/watch?v=IHZwWFHWa-w | 20:33 | Start | BIKE | Gradient descent as walking downhill on a cost surface, shown on a real network. | verified |
+| 39 | Gradient Descent, Step-by-Step | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=sDv4f4s2SB8 | 23:54 | Start | BIKE | Gradient descent with actual numbers: step size, learning rate, and when to stop. | verified |
+| 40 | Stochastic Gradient Descent, Clearly Explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=vMh0zPT0tLI | 10:53 | Start | BIKE | Why using a random subset of the data per step still works. | verified |
+| 41 | Convexity 101 [Optimization Bootcamp] | Steve Brunton | https://www.youtube.com/watch?v=9WXVgQFFsDI | 14:57 | Deeper | BIKE | A first look at convex sets and functions, and why convexity makes optimization easy. | verified |
+| 42 | Backpropagation, intuitively \| Deep Learning Chapter 3 | 3Blue1Brown | https://www.youtube.com/watch?v=Ilg3gGewQ5U | 12:47 | Start | BIKE | What backpropagation is doing, with no calculus yet. | verified |
+| 43 | Backpropagation calculus \| Deep Learning Chapter 4 | 3Blue1Brown | https://www.youtube.com/watch?v=tIeHLnjs5U8 | 10:17 | Deeper | DESK | Backpropagation as the chain rule from Block 1, written out. Pause and follow the derivatives on paper. | verified |
 
 Note: I verified a full Stanford convex-optimization lecture exists (Boyd, EE364A, Lecture 1; see "Optional extras") but did not include it in the main path. #41 is the gentler on-ramp, and the full lectures are a time commitment you can decide on later.
 
@@ -274,9 +274,9 @@ This block is deliberately light. Lecture topics for MIT 6.042J are taken from t
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
 | 44 | Propositional Logic: The Complete Crash Course | TrevTutor | https://www.youtube.com/watch?v=AVl3wK2yTEc | 53:48 | Start | DESK | Propositions, truth tables, logical equivalence, conditionals and contrapositives, and basic inference (from the video's chapter list). | verified |
-| 45 | Lec 2 \| MIT 6.042J Mathematics for Computer Science, Fall 2010 | MIT OpenCourseWare | https://www.youtube.com/watch?v=z8HKWUWS-lA | length ? | Deeper | DESK | Proof by induction. | verified |
-| 46 | Lec 6 \| MIT 6.042J Mathematics for Computer Science, Fall 2010 | MIT OpenCourseWare | https://www.youtube.com/watch?v=h9wxtqoa1jY | length ? | Deeper | DESK | Graph theory and coloring. | verified |
-| 47 | Lec 16 \| MIT 6.042J Mathematics for Computer Science, Fall 2010 | MIT OpenCourseWare | https://www.youtube.com/watch?v=pNt5Ll6hGqo | length ? | Deeper | DESK | Counting rules. | verified |
+| 45 | Lec 2 \| MIT 6.042J Mathematics for Computer Science, Fall 2010 | MIT OpenCourseWare | https://www.youtube.com/watch?v=z8HKWUWS-lA | 1:19:25 | Deeper | DESK | Proof by induction. | verified |
+| 46 | Lec 6 \| MIT 6.042J Mathematics for Computer Science, Fall 2010 | MIT OpenCourseWare | https://www.youtube.com/watch?v=h9wxtqoa1jY | 1:22:51 | Deeper | DESK | Graph theory and coloring. | verified |
+| 47 | Lec 16 \| MIT 6.042J Mathematics for Computer Science, Fall 2010 | MIT OpenCourseWare | https://www.youtube.com/watch?v=pNt5Ll6hGqo | 1:20:02 | Deeper | DESK | Counting rules. | verified |
 
 Note on #44: at 53:48 it is long, and I found no verified shorter propositional-logic video that also covers conditionals and inference, so I kept it. It has chapter marks, so you can do it in two rides. Sets have no dedicated video in the main path (see Gaps).
 
@@ -305,26 +305,26 @@ These passed the same oEmbed check. Use them to deepen a block or to add listeni
 
 | Block | Title | Channel | Link | Length | Status |
 |-------|-------|---------|------|--------|--------|
-| 1 | Calculus 1 Lecture 2.6: Discussion of the Chain Rule for Derivatives of Functions | Professor Leonard | https://www.youtube.com/watch?v=8dr1dZjfhmc | length ? | verified |
-| 0 | Introduction to logarithm properties \| Logarithms \| Algebra II \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=PupNgv49_WY | length ? | verified |
-| 2 | Inverse matrices, column space and null space \| Chapter 7, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=uQhTuRlWMxw | length ? | verified |
-| 2 | 21. Eigenvalues and Eigenvectors | MIT OpenCourseWare | https://www.youtube.com/watch?v=cdZnhQjJu4I | length ? | verified |
-| 2 | Singular Value Decomposition (SVD): Mathematical Overview | Steve Brunton | https://www.youtube.com/watch?v=nbBvuuNVfco | length ? | verified |
-| 3 | Computing a Jacobian matrix | Khan Academy | https://www.youtube.com/watch?v=CGbBbH1e7Yw | length ? | verified |
-| 3 | Lec 8: Level curves; partial derivatives; tangent plane \| MIT 18.02 Multivariable Calculus, Fall 07 | MIT OpenCourseWare | https://www.youtube.com/watch?v=dK3NEf13nPc | length ? | verified |
-| 4 | Lecture 1: Probability and Counting \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=KbB0FjPg0mw | length ? | verified |
-| 4 | Lecture 5: Conditioning Continued, Law of Total Probability \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=JzDvVgNDxo8 | length ? | verified |
-| 4 | Lecture 10: Expectation Continued \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=P1fSFvhPf7Q | length ? | verified |
-| 4 | Lecture 11: The Poisson distribution \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=TD1N4hxqMzY | length ? | verified |
-| 4 | Lecture 29: Law of Large Numbers and Central Limit Theorem \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=OprNqnHsVIA | length ? | verified |
-| 4 | The medical test paradox, and redesigning Bayes' rule | 3Blue1Brown | https://www.youtube.com/watch?v=lG4VkPoG3ko | length ? | verified |
-| 5 | Machine Learning Fundamentals: Bias and Variance | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=EuBBz3bI-aA | length ? | verified |
-| 6 | But what is a neural network? \| Deep learning chapter 1 | 3Blue1Brown | https://www.youtube.com/watch?v=aircAruvnKk | length ? | verified |
-| 6 | Convexity Implies that Local Minima are Global Minima | Steve Brunton | https://www.youtube.com/watch?v=D-Qy9QfJgQg | length ? | verified |
-| 6 | Stanford EE364A Convex Optimization I Stephen Boyd I 2023 I Lecture 1 | Stanford Online | https://www.youtube.com/watch?v=kV1ru-Inzl4 | length ? | verified |
-| 7 | Lec 1 \| MIT 6.042J Mathematics for Computer Science, Fall 2010 (Introduction and Proofs, per the OCW list) | MIT OpenCourseWare | https://www.youtube.com/watch?v=L3LMbpZIKhQ | length ? | verified |
-| 7 | Lec 3 \| MIT 6.042J Mathematics for Computer Science, Fall 2010 (Strong Induction, per the OCW list) | MIT OpenCourseWare | https://www.youtube.com/watch?v=NuGDkmwEObM | length ? | verified |
-| 7 | Intersection of Sets, Union of Sets and Venn Diagrams | The Organic Chemistry Tutor | https://www.youtube.com/watch?v=xZELQc11ACY | length ? | verified |
+| 1 | Calculus 1 Lecture 2.6: Discussion of the Chain Rule for Derivatives of Functions | Professor Leonard | https://www.youtube.com/watch?v=8dr1dZjfhmc | 1:34:01 | verified |
+| 0 | Introduction to logarithm properties \| Logarithms \| Algebra II \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=PupNgv49_WY | 9:15 | verified |
+| 2 | Inverse matrices, column space and null space \| Chapter 7, Essence of linear algebra | 3Blue1Brown | https://www.youtube.com/watch?v=uQhTuRlWMxw | 12:08 | verified |
+| 2 | 21. Eigenvalues and Eigenvectors | MIT OpenCourseWare | https://www.youtube.com/watch?v=cdZnhQjJu4I | 51:22 | verified |
+| 2 | Singular Value Decomposition (SVD): Mathematical Overview | Steve Brunton | https://www.youtube.com/watch?v=nbBvuuNVfco | 12:50 | verified |
+| 3 | Computing a Jacobian matrix | Khan Academy | https://www.youtube.com/watch?v=CGbBbH1e7Yw | 3:53 | verified |
+| 3 | Lec 8: Level curves; partial derivatives; tangent plane \| MIT 18.02 Multivariable Calculus, Fall 07 | MIT OpenCourseWare | https://www.youtube.com/watch?v=dK3NEf13nPc | 46:13 | verified |
+| 4 | Lecture 1: Probability and Counting \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=KbB0FjPg0mw | 46:29 | verified |
+| 4 | Lecture 5: Conditioning Continued, Law of Total Probability \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=JzDvVgNDxo8 | 50:01 | verified |
+| 4 | Lecture 10: Expectation Continued \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=P1fSFvhPf7Q | 50:10 | verified |
+| 4 | Lecture 11: The Poisson distribution \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=TD1N4hxqMzY | 42:46 | verified |
+| 4 | Lecture 29: Law of Large Numbers and Central Limit Theorem \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=OprNqnHsVIA | 49:48 | verified |
+| 4 | The medical test paradox, and redesigning Bayes' rule | 3Blue1Brown | https://www.youtube.com/watch?v=lG4VkPoG3ko | 21:13 | verified |
+| 5 | Machine Learning Fundamentals: Bias and Variance | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=EuBBz3bI-aA | 6:36 | verified |
+| 6 | But what is a neural network? \| Deep learning chapter 1 | 3Blue1Brown | https://www.youtube.com/watch?v=aircAruvnKk | 18:40 | verified |
+| 6 | Convexity Implies that Local Minima are Global Minima | Steve Brunton | https://www.youtube.com/watch?v=D-Qy9QfJgQg | 20:25 | verified |
+| 6 | Stanford EE364A Convex Optimization I Stephen Boyd I 2023 I Lecture 1 | Stanford Online | https://www.youtube.com/watch?v=kV1ru-Inzl4 | 1:18:27 | verified |
+| 7 | Lec 1 \| MIT 6.042J Mathematics for Computer Science, Fall 2010 (Introduction and Proofs, per the OCW list) | MIT OpenCourseWare | https://www.youtube.com/watch?v=L3LMbpZIKhQ | 44:09 | verified |
+| 7 | Lec 3 \| MIT 6.042J Mathematics for Computer Science, Fall 2010 (Strong Induction, per the OCW list) | MIT OpenCourseWare | https://www.youtube.com/watch?v=NuGDkmwEObM | 1:22:00 | verified |
+| 7 | Intersection of Sets, Union of Sets and Venn Diagrams | The Organic Chemistry Tutor | https://www.youtube.com/watch?v=xZELQc11ACY | 11:49 | verified |
 
 Suggested use: if #20 or #27 feels like a cold start, do Stat 110 Lecture 1 and Lecture 5 first (probability and counting, then conditioning). If #44 feels too fast for induction, add MIT Lec 1 before #45.
 
@@ -338,8 +338,8 @@ Method: every video below passed the same YouTube oEmbed check as the main path 
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| G1 | Why “probability of 0” does not mean “impossible” \| Probabilities of probabilities, part 2 | 3Blue1Brown | https://www.youtube.com/watch?v=ZA4JkHKZM50 | length ? | Start | BIKE | Why a single exact value of a continuous variable has probability 0, and how a density (height as probability per unit, area as probability) fixes that. | verified; content per rosetta.to page |
-| G2 | Lecture 12: Discrete vs. Continuous, the Uniform \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=Tci---bVs60 | length ? | Deeper | BIKE | The PDF as a density and not a probability, PDF versus CDF, expectation and variance for continuous variables, LOTUS and the Uniform distribution. | verified; content per stat110-notes page |
+| G1 | Why “probability of 0” does not mean “impossible” \| Probabilities of probabilities, part 2 | 3Blue1Brown | https://www.youtube.com/watch?v=ZA4JkHKZM50 | 10:00 | Start | BIKE | Why a single exact value of a continuous variable has probability 0, and how a density (height as probability per unit, area as probability) fixes that. | verified; content per rosetta.to page |
+| G2 | Lecture 12: Discrete vs. Continuous, the Uniform \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=Tci---bVs60 | 49:56 | Deeper | BIKE | The PDF as a density and not a probability, PDF versus CDF, expectation and variance for continuous variables, LOTUS and the Uniform distribution. | verified; content per stat110-notes page |
 
 Belongs after #29 (expectation) and before #30 (normal distribution): watch G1 first for the picture, then G2 for the formal version. G1 also continues #36, so you can leave it until then if you prefer.
 
@@ -347,8 +347,8 @@ Belongs after #29 (expectation) and before #30 (normal distribution): watch G1 f
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| G3 | Explaining the intuition behind Bayesian inference | Ben Lambert | https://www.youtube.com/watch?v=yvWlpwnT1nw | length ? | Start | BIKE | An intuition-first look at Bayesian inference (title-based; I did not confirm the content beyond the title). | verified; title-based |
-| G4 | Lecture 23: Beta distribution \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=UZjlBQbV1KU | length ? | Deeper | DESK | The Beta distribution as a prior for an unknown probability, and the Beta-Binomial update (a Beta prior plus Binomial data gives a Beta posterior). The page also lists a finance guest segment, which you can skip. | verified; content per stat110-notes page |
+| G3 | Explaining the intuition behind Bayesian inference | Ben Lambert | https://www.youtube.com/watch?v=yvWlpwnT1nw | 8:20 | Start | BIKE | An intuition-first look at Bayesian inference (title-based; I did not confirm the content beyond the title). | verified; title-based |
+| G4 | Lecture 23: Beta distribution \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=UZjlBQbV1KU | 49:48 | Deeper | DESK | The Beta distribution as a prior for an unknown probability, and the Beta-Binomial update (a Beta prior plus Binomial data gives a Beta posterior). The page also lists a finance guest segment, which you can skip. | verified; content per stat110-notes page |
 
 Belongs after #36 (probabilities of probabilities, part 1) and #37 (MAP): watch G3 right after #36, and G4 after G2 and #37, because it needs densities and the prior-times-likelihood idea. MAP versus maximum likelihood is already covered by #37, so I did not add a separate video for it.
 
@@ -356,9 +356,9 @@ Belongs after #36 (probabilities of probabilities, part 1) and #37 (MAP): watch 
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| G5 | L12.3 SGD with Momentum | Sebastian Raschka | https://www.youtube.com/watch?v=gMxvefj0YAM | length ? | Deeper | BIKE | Momentum added to SGD, the first step before the adaptive optimizers (title-based). | verified; title-based |
-| G6 | L12.4 Adam: Combining Adaptive Learning Rates and Momentum | Sebastian Raschka | https://www.youtube.com/watch?v=eUOvUIRPSX8 | 15 min (per podwise, rounded) | Deeper | DESK | Adam as adaptive learning rates plus momentum (title-based). The update rules are formulas, so pause and follow them on paper. | verified; length per podwise, content title-based |
-| G7 | L12.1 Learning Rate Decay | Sebastian Raschka | https://www.youtube.com/watch?v=Owm1H0ukjS4 | length ? | Deeper | BIKE | Why and how the learning rate is lowered during training (title-based). | verified; title-based |
+| G5 | L12.3 SGD with Momentum | Sebastian Raschka | https://www.youtube.com/watch?v=gMxvefj0YAM | 9:04 | Deeper | BIKE | Momentum added to SGD, the first step before the adaptive optimizers (title-based). | verified; title-based |
+| G6 | L12.4 Adam: Combining Adaptive Learning Rates and Momentum | Sebastian Raschka | https://www.youtube.com/watch?v=eUOvUIRPSX8 | 15:33 | Deeper | DESK | Adam as adaptive learning rates plus momentum (title-based). The update rules are formulas, so pause and follow them on paper. | verified; length per podwise, content title-based |
+| G7 | L12.1 Learning Rate Decay | Sebastian Raschka | https://www.youtube.com/watch?v=Owm1H0ukjS4 | 17:06 | Deeper | BIKE | Why and how the learning rate is lowered during training (title-based). | verified; title-based |
 
 Belongs after #40 (SGD): watch G5, then G6. G7 can go any time after #39 (gradient descent step by step), which is where the learning rate is first explained. These three come from one lecture series (L12.0 to L12.6); I used podwise only to see the lecture titles and one length. I did not find or check a verified RMSProp-only video, so RMSProp is covered only inside G6.
 
@@ -366,9 +366,9 @@ Belongs after #40 (SGD): watch G5, then G6. G7 can go any time after #39 (gradie
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| G8 | The Hessian matrix \| Multivariable calculus \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=LbBcuZukCAw | length ? | Deeper | BIKE | The Hessian as the matrix that collects all second partial derivatives, with a worked two-variable example. | verified; content per rosetta.to page |
-| G9 | Second partial derivative test intuition | Khan Academy | https://www.youtube.com/watch?v=sJo7D74PAak | length ? | Deeper | DESK | Why the sign of the second-derivative test separates local minimum, local maximum and saddle point for two variables, using xy and x^2 - y^2 as examples. | verified; content per rosetta.to page |
-| G10 | Operations Research 10B: Hessian Matrix, Convex & Concave Functions | Yong Wang | https://www.youtube.com/watch?v=F3YoC5A6Avg | length ? | Deeper | DESK | Hessian, positive and negative semidefinite matrices, and convex and concave functions (title-based, plus the topic list on a third-party listing page that I could not tie to this exact video ID). | verified; title-based |
+| G8 | The Hessian matrix \| Multivariable calculus \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=LbBcuZukCAw | 6:10 | Deeper | BIKE | The Hessian as the matrix that collects all second partial derivatives, with a worked two-variable example. | verified; content per rosetta.to page |
+| G9 | Second partial derivative test intuition | Khan Academy | https://www.youtube.com/watch?v=sJo7D74PAak | 10:43 | Deeper | DESK | Why the sign of the second-derivative test separates local minimum, local maximum and saddle point for two variables, using xy and x^2 - y^2 as examples. | verified; content per rosetta.to page |
+| G10 | Operations Research 10B: Hessian Matrix, Convex & Concave Functions | Yong Wang | https://www.youtube.com/watch?v=F3YoC5A6Avg | 8:13 | Deeper | DESK | Hessian, positive and negative semidefinite matrices, and convex and concave functions (title-based, plus the topic list on a third-party listing page that I could not tie to this exact video ID). | verified; title-based |
 
 Belongs after #41 (Convexity 101) and before #42: watch G8, then G9, then G10, which is the only one aimed at semidefinite Hessians and convexity. G8 and G9 build on Block 3 (#21 to #23), so if second partial derivatives feel rusty, revisit #21 first. I could not judge the teaching quality of G10, so treat it as optional.
 
@@ -376,8 +376,8 @@ Belongs after #41 (Convexity 101) and before #42: watch G8, then G9, then G10, w
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| G11 | Intersection and union of sets \| Probability and Statistics \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=jAfNg3ylZAI | length ? | Start | BIKE | Sets as collections of distinct objects, then intersection and union drawn with Venn diagrams. Complements are not mentioned on the page I read. | verified; content per rosetta.to page |
-| G12 | Expressing Events with Set Operations | Dr. Dylan Spicker | https://www.youtube.com/watch?v=UU6e6hHSgxg | length ? | Start | BIKE | Writing probability events with set operations (title-based; I did not confirm whether complements are covered). | verified; title-based |
+| G11 | Intersection and union of sets \| Probability and Statistics \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=jAfNg3ylZAI | 7:44 | Start | BIKE | Sets as collections of distinct objects, then intersection and union drawn with Venn diagrams. Complements are not mentioned on the page I read. | verified; content per rosetta.to page |
+| G12 | Expressing Events with Set Operations | Dr. Dylan Spicker | https://www.youtube.com/watch?v=UU6e6hHSgxg | 23:36 | Start | BIKE | Writing probability events with set operations (title-based; I did not confirm whether complements are covered). | verified; title-based |
 
 Belongs after #44 (propositional logic) and before #45 (induction): watch G11, then G12. G12 links sets back to events in Block 4, so it can also be done early if event notation in #25 to #27 looks unfamiliar. The Organic Chemistry Tutor video under Optional extras remains an alternative.
 
@@ -391,15 +391,15 @@ Method: every video below passed the same YouTube oEmbed check as the main path 
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| G13 | RMSProp (C2W2L07) | DeepLearningAI | https://www.youtube.com/watch?v=_e-LFe_igno | length ? | Deeper | BIKE | RMSProp, the adaptive step-size method that Adam (G6) builds on (title-based; the code in the title looks like a course, week and lecture number, but I could not read the watch page to confirm). Expect update formulas, so pause if you lose the thread. | verified; title-based |
+| G13 | RMSProp (C2W2L07) | DeepLearningAI | https://www.youtube.com/watch?v=_e-LFe_igno | 7:42 | Deeper | BIKE | RMSProp, the adaptive step-size method that Adam (G6) builds on (title-based; the code in the title looks like a course, week and lecture number, but I could not read the watch page to confirm). Expect update formulas, so pause if you lose the thread. | verified; title-based |
 
 Belongs after #40 (SGD): suggested watch order G5 (momentum), then G13 (RMSProp), then G6 (Adam), which combines the two.
 ### Sets, complements and De Morgan (Block 7 gap)
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| G14 | Bringing the set operations together \| Probability and Statistics \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=OCNXS_m1HWU | at least 6:20 (last chapter marker, per rosetta.to) | Start | BIKE | One compound set expression worked step by step, using relative complement, absolute complement (everything in the universal set that is not in A), intersection and union. The page does not mention Venn diagrams or De Morgan's laws. | verified; content per rosetta.to page |
-| G15 | Demorgan's Law and other properties of Complement sets \| Sets \| Grade 11 \| Math \| Khan Academy | Khan Academy India - English | https://www.youtube.com/watch?v=ao8w25ypGXM | length ? | Deeper | DESK | De Morgan's laws and other properties of complements of sets (title-based; I could not read a page describing the content). It comes from a Grade 11 school-maths series, so expect a classroom pace; pause and copy the identities down. | verified; title-based |
+| G14 | Bringing the set operations together \| Probability and Statistics \| Khan Academy | Khan Academy | https://www.youtube.com/watch?v=OCNXS_m1HWU | 6:27 | Start | BIKE | One compound set expression worked step by step, using relative complement, absolute complement (everything in the universal set that is not in A), intersection and union. The page does not mention Venn diagrams or De Morgan's laws. | verified; content per rosetta.to page |
+| G15 | Demorgan's Law and other properties of Complement sets \| Sets \| Grade 11 \| Math \| Khan Academy | Khan Academy India - English | https://www.youtube.com/watch?v=ao8w25ypGXM | 5:33 | Deeper | DESK | De Morgan's laws and other properties of complements of sets (title-based; I could not read a page describing the content). It comes from a Grade 11 school-maths series, so expect a classroom pace; pause and copy the identities down. | verified; title-based |
 
 Belongs after #44 (propositional logic): suggested watch order G11 and G12 (pass 1), then G14 for complements, then G15 for De Morgan, which is the set version of the logic rules in #44. The Harvard Stat 110 Lecture 1 (Probability and Counting) is already listed under Optional extras and is a stronger bridge into probability events than the school-level videos; I did not list it again.
 

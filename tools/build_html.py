@@ -40,7 +40,7 @@ SHORT_NAMES = {
     "F": {1: "Machine Learning", 2: "Deep Learning", 3: "Reinforcement Learning", 4: "Planning and search",
           5: "Ethics in AI", 6: "Natural Language Processing", 7: "Advances in Deep Learning",
           8: "Deep Generative Models", 9: "Case Studies in ML", 10: "Optimization",
-          11: "Online learning", 12: "Logical reasoning", 13: "AI in Healthcare", 14: "AI in Astrophysics"},
+          11: "Online learning", 12: "Logical reasoning", 13: "AI in Healthcare", 14: "AI in Astrophysics", 15: "Agentic software engineering"},
     "G": {0: "The build map", 1: "Language-model basics", 2: "Pretraining", 3: "Post-training",
           4: "Adaptation", 5: "Inference and serving", 6: "Grounding and RAG", 7: "Agents and tools",
           8: "Multimodal and diffusion", 9: "Evaluation", 10: "Safety and governance",
@@ -69,8 +69,27 @@ def warn(msg):
 
 # ----------------------------------------------------------------------------- markdown helpers
 
+_ITEM = re.compile(r"^([-*]|\d+\.)\s+\S")
+
+
+def fix_lists(text):
+    """Python-Markdown needs a blank line before a list. Our sources often put a
+    list right under a bold label line, which would otherwise render as one
+    run-on paragraph."""
+    out, prev, in_code = [], "", False
+    for ln in text.split("\n"):
+        if ln.strip().startswith("```"):
+            in_code = not in_code
+        if (not in_code and _ITEM.match(ln) and prev.strip()
+                and not _ITEM.match(prev) and not prev.startswith((" ", "|", "<"))):
+            out.append("")
+        out.append(ln)
+        prev = ln
+    return "\n".join(out)
+
+
 def md(text):
-    return markdown.markdown(text, extensions=["extra", "sane_lists"])
+    return markdown.markdown(fix_lists(text), extensions=["extra", "sane_lists"])
 
 
 def md_inline(text):

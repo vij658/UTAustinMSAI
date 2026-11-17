@@ -26,15 +26,15 @@ A watch-while-biking ladder of 48 main videos (plus 30 optional ones, and 7 more
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
 | 1.1 | A Gentle Introduction to Machine Learning | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=Gv9_4yMHFhI | 12:45 | Start | BIKE | A plain-language first picture of what machine learning is, before any maths. | verified |
-| 1.2 | Machine Learning Fundamentals: Bias and Variance | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=EuBBz3bI-aA | length ? | Start | BIKE | Why a model can be too simple or too wiggly: the overfitting / underfitting mental model. | verified |
-| 1.3 | Machine Learning Fundamentals: Cross Validation | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=fSytzGwwBVw | length ? | Start | BIKE | Train/test split and cross-validation: how you estimate performance on unseen data. | verified |
-| 1.4 | Lecture 01 - The Learning Problem | caltech | https://www.youtube.com/watch?v=mbyG85GZ0PI | length ? | Deeper | BIKE | Opening lecture of Caltech's Learning from Data course: what "the learning problem" is, including the kinds of learning. This is a full university lecture and is the only verified source here that frames supervised vs unsupervised vs reinforcement; a short animated alternative was not verified. | verified |
+| 1.2 | Machine Learning Fundamentals: Bias and Variance | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=EuBBz3bI-aA | 6:36 | Start | BIKE | Why a model can be too simple or too wiggly: the overfitting / underfitting mental model. | verified |
+| 1.3 | Machine Learning Fundamentals: Cross Validation | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=fSytzGwwBVw | 6:04 | Start | BIKE | Train/test split and cross-validation: how you estimate performance on unseen data. | verified |
+| 1.4 | Lecture 01 - The Learning Problem | caltech | https://www.youtube.com/watch?v=mbyG85GZ0PI | 1:21:27 | Deeper | BIKE | Opening lecture of Caltech's Learning from Data course: what "the learning problem" is, including the kinds of learning. This is a full university lecture and is the only verified source here that frames supervised vs unsupervised vs reinforcement; a short animated alternative was not verified. | verified |
 
 **Optional (extra):**
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 1.O1 | Lecture 1 "Supervised Learning Setup" - Cornell CS4780 Machine Learning for Decision Making SP17 | Kilian Weinberger | https://www.youtube.com/watch?v=MrLPzBxG95I | length ? | Deeper | BIKE | A second university framing of the supervised setup (data, labels, loss) if 1.4 felt abstract. | verified |
+| 1.O1 | Lecture 1 "Supervised Learning Setup" - Cornell CS4780 Machine Learning for Decision Making SP17 | Kilian Weinberger | https://www.youtube.com/watch?v=MrLPzBxG95I | 47:49 | Deeper | BIKE | A second university framing of the supervised setup (data, labels, loss) if 1.4 felt abstract. | verified |
 
 **Full circle:** you can explain, without maths, why a model that scores perfectly on its training data can still fail, and how holding data back (train/validation/test, cross-validation) is how we find out.
 
@@ -54,33 +54,33 @@ A watch-while-biking ladder of 48 main videos (plus 30 optional ones, and 7 more
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 2.1 | Gradient Descent, Step-by-Step | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=sDv4f4s2SB8 | length ? | Start | BIKE | Walking downhill on the loss, step by step; the engine behind most training later in the track. | verified |
-| 2.2 | StatQuest: Logistic Regression | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=yIYKR4sgzI8 | length ? | Start | BIKE | From a line to a probability: classification with the logistic curve. | verified |
-| 2.3 | Decision and Classification Trees, Clearly Explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=_L39rN6gz7Y | length ? | Start | BIKE | How a tree picks its splits. | verified |
-| 2.4 | Lecture 5 "Perceptron" -Cornell CS4780 SP17 | Kilian Weinberger | https://www.youtube.com/watch?v=wl7gVvI-HuY | length ? | Deeper | BIKE | The perceptron update rule in a university lecture. | verified |
-| 2.5 | Lecture 07 - The VC Dimension | caltech | https://www.youtube.com/watch?v=Dc0sr0kdBVI | length ? | Scholar | BIKE | VC dimension from Caltech's Learning from Data. A full, long lecture, used because I found no verified shorter source for VC dimension. It builds on Caltech lectures 5 and 6 (optional list below); do those first if you feel lost. My watch-page fetch for this ID failed, but oEmbed verified it. | verified |
+| 2.1 | Gradient Descent, Step-by-Step | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=sDv4f4s2SB8 | 23:54 | Start | BIKE | Walking downhill on the loss, step by step; the engine behind most training later in the track. | verified |
+| 2.2 | StatQuest: Logistic Regression | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=yIYKR4sgzI8 | 8:47 | Start | BIKE | From a line to a probability: classification with the logistic curve. | verified |
+| 2.3 | Decision and Classification Trees, Clearly Explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=_L39rN6gz7Y | 18:08 | Start | BIKE | How a tree picks its splits. | verified |
+| 2.4 | Lecture 5 "Perceptron" -Cornell CS4780 SP17 | Kilian Weinberger | https://www.youtube.com/watch?v=wl7gVvI-HuY | 49:56 | Deeper | BIKE | The perceptron update rule in a university lecture. | verified |
+| 2.5 | Lecture 07 - The VC Dimension | caltech | https://www.youtube.com/watch?v=Dc0sr0kdBVI | 1:13:31 | Scholar | BIKE | VC dimension from Caltech's Learning from Data. A full, long lecture, used because I found no verified shorter source for VC dimension. It builds on Caltech lectures 5 and 6 (optional list below); do those first if you feel lost. My watch-page fetch for this ID failed, but oEmbed verified it. | verified |
 | 2.6 | AdaBoost, Clearly Explained | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=LsK-xG1cLYA | 20:54 | Start | BIKE | Boosting as many weak learners that vote, with mistakes re-weighted. | verified |
 | 2.7 | StatQuest: Principal Component Analysis (PCA), Step-by-Step | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=FgakZw6K1QQ | 21:57 | Start | BIKE | PCA walked through step by step. | verified |
-| 2.8 | Singular Value Decomposition (SVD): Mathematical Overview | Steve Brunton | https://www.youtube.com/watch?v=nbBvuuNVfco | length ? | Deeper | BIKE | SVD overview from a university professor; connects to PCA in 2.7. | verified |
-| 2.9 | StatQuest: K-means clustering | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=4b5d3muPQmA | length ? | Start | BIKE | The k-means loop: assign points, recompute centres. | verified |
+| 2.8 | Singular Value Decomposition (SVD): Mathematical Overview | Steve Brunton | https://www.youtube.com/watch?v=nbBvuuNVfco | 12:50 | Deeper | BIKE | SVD overview from a university professor; connects to PCA in 2.7. | verified |
+| 2.9 | StatQuest: K-means clustering | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=4b5d3muPQmA | 8:30 | Start | BIKE | The k-means loop: assign points, recompute centres. | verified |
 | 2.10 | Expectation Maximization: how it works | Victor Lavrenko | https://www.youtube.com/watch?v=iQoXFmbXRJA | 10:39 | Deeper | BIKE | The EM idea, a soft version of the k-means loop. | verified |
-| 2.11 | Maximum Likelihood, clearly explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=XepXtl9YKwc | length ? | Start | BIKE | Picking parameters that make the observed data most probable. | verified |
+| 2.11 | Maximum Likelihood, clearly explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=XepXtl9YKwc | 6:12 | Start | BIKE | Picking parameters that make the observed data most probable. | verified |
 | 2.12 | Bayes' Theorem, Clearly Explained!!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=9wCnvr7Xw4E | 13:59 | Start | BIKE | Updating a belief with evidence; the base of every Bayesian method after this. | verified |
-| 2.13 | Maximum A Posteriori (MAP) - Why L2 Regularization is Bayesian in Disguise | DataMListic | https://www.youtube.com/watch?v=Ovuszur2uzk | length ? | Deeper | BIKE | Maximum likelihood vs a Bayesian prior (MAP), and how a prior appears as regularization. | verified |
-| 2.14 | undergraduate machine learning 7: Bayesian networks, aka probabilistic graphical models | Nando de Freitas | https://www.youtube.com/watch?v=XgP2hmf7X4U | length ? | Deeper | BIKE | Intro to graphical models from a university course. | verified |
+| 2.13 | Maximum A Posteriori (MAP) - Why L2 Regularization is Bayesian in Disguise | DataMListic | https://www.youtube.com/watch?v=Ovuszur2uzk | 4:01 | Deeper | BIKE | Maximum likelihood vs a Bayesian prior (MAP), and how a prior appears as regularization. | verified |
+| 2.14 | undergraduate machine learning 7: Bayesian networks, aka probabilistic graphical models | Nando de Freitas | https://www.youtube.com/watch?v=XgP2hmf7X4U | 45:00 | Deeper | BIKE | Intro to graphical models from a university course. | verified |
 
 **Optional (desk, or extra if you have time):**
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 2.O1 | Linear Regression, Clearly Explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=7ArmBVF2dCs | length ? | Start | BIKE | Least-squares line fit; watch before 2.1 if regression is rusty. | verified |
-| 2.O2 | PAC learning: the framework | Machine learning classroom | https://www.youtube.com/watch?v=Olqi2aMGdFg | length ? | Deeper | BIKE | Title-level match for the PAC framework. Small channel, content not reviewed; treat as a first pass before 2.5. | verified |
-| 2.O3 | Lecture 05 - Training Versus Testing | caltech | https://www.youtube.com/watch?v=SEYAnnLazMU | length ? | Scholar | DESK | Caltech lecture before 2.5 in the course sequence. | verified |
-| 2.O4 | Lecture 06 - Theory of Generalization | caltech | https://www.youtube.com/watch?v=6FWRijsmLtE | length ? | Scholar | DESK | Next Caltech lecture before 2.5. | verified |
-| 2.O5 | Gradient Boost Part 1 (of 4): Regression Main Ideas | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=3CC4N4z3GJc | length ? | Deeper | BIKE | Gradient boosting after AdaBoost. | verified |
-| 2.O6 | Machine Learning Lecture 32 "Boosting" -Cornell CS4780 SP17 | Kilian Weinberger | https://www.youtube.com/watch?v=dosOtgSdbnY | length ? | Scholar | DESK | Formal boosting lecture, after 2.6. | verified |
-| 2.O7 | Lecture 7 "Estimating Probabilities from Data: Maximum Likelihood Estimation" - Cornell CS4780 SP17 | Kilian Weinberger | https://www.youtube.com/watch?v=RIawrYLVdIw | length ? | Scholar | DESK | Formal MLE lecture, after 2.11. | verified |
-| 2.O8 | Clustering via Gaussian Mixture Models | Carlos Fernandez-Granda | https://www.youtube.com/watch?v=4g5kWmrqnN8 | length ? | Scholar | DESK | EM applied to Gaussian mixtures, after 2.10. | verified |
+| 2.O1 | Linear Regression, Clearly Explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=7ArmBVF2dCs | 27:26 | Start | BIKE | Least-squares line fit; watch before 2.1 if regression is rusty. | verified |
+| 2.O2 | PAC learning: the framework | Machine learning classroom | https://www.youtube.com/watch?v=Olqi2aMGdFg | 23:32 | Deeper | BIKE | Title-level match for the PAC framework. Small channel, content not reviewed; treat as a first pass before 2.5. | verified |
+| 2.O3 | Lecture 05 - Training Versus Testing | caltech | https://www.youtube.com/watch?v=SEYAnnLazMU | 1:16:57 | Scholar | DESK | Caltech lecture before 2.5 in the course sequence. | verified |
+| 2.O4 | Lecture 06 - Theory of Generalization | caltech | https://www.youtube.com/watch?v=6FWRijsmLtE | 1:18:11 | Scholar | DESK | Next Caltech lecture before 2.5. | verified |
+| 2.O5 | Gradient Boost Part 1 (of 4): Regression Main Ideas | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=3CC4N4z3GJc | 15:52 | Deeper | BIKE | Gradient boosting after AdaBoost. | verified |
+| 2.O6 | Machine Learning Lecture 32 "Boosting" -Cornell CS4780 SP17 | Kilian Weinberger | https://www.youtube.com/watch?v=dosOtgSdbnY | 48:27 | Scholar | DESK | Formal boosting lecture, after 2.6. | verified |
+| 2.O7 | Lecture 7 "Estimating Probabilities from Data: Maximum Likelihood Estimation" - Cornell CS4780 SP17 | Kilian Weinberger | https://www.youtube.com/watch?v=RIawrYLVdIw | 48:49 | Scholar | DESK | Formal MLE lecture, after 2.11. | verified |
+| 2.O8 | Clustering via Gaussian Mixture Models | Carlos Fernandez-Granda | https://www.youtube.com/watch?v=4g5kWmrqnN8 | 35:40 | Scholar | DESK | EM applied to Gaussian mixtures, after 2.10. | verified |
 
 **Full circle:** you can describe a line fit, turn it into a probability (logistic), grow a tree, vote many weak models into a strong one, squash many features into a few (PCA/SVD), find groups (k-means/EM), and say how a prior (Bayesian) differs from maximum likelihood.
 
@@ -100,25 +100,25 @@ A watch-while-biking ladder of 48 main videos (plus 30 optional ones, and 7 more
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 3.1 | But what is a neural network? \| Deep learning chapter 1 | 3Blue1Brown | https://www.youtube.com/watch?v=aircAruvnKk | length ? | Start | BIKE | The visual picture of neurons, layers and weights. | verified |
+| 3.1 | But what is a neural network? \| Deep learning chapter 1 | 3Blue1Brown | https://www.youtube.com/watch?v=aircAruvnKk | 18:40 | Start | BIKE | The visual picture of neurons, layers and weights. | verified |
 | 3.2 | Gradient descent, how neural networks learn \| Deep Learning Chapter 2 | 3Blue1Brown | https://www.youtube.com/watch?v=IHZwWFHWa-w | 20:33 | Start | BIKE | Loss and gradient descent applied to a network; reuses 2.1. | verified |
 | 3.3 | Backpropagation, intuitively \| Deep Learning Chapter 3 | 3Blue1Brown | https://www.youtube.com/watch?v=Ilg3gGewQ5U | 12:47 | Start | BIKE | The intuition for how the error flows backward through the network. | verified |
-| 3.4 | CS231n Winter 2016: Lecture 6: Neural Networks Part 3 / Intro to ConvNets | Andrej Karpathy | https://www.youtube.com/watch?v=hd_KFJ5ktUc | length ? | Deeper | BIKE | Closest verified fit for training practice plus the start of ConvNets, by title only; content not reviewed. See Gaps for training/tuning/debugging. | verified |
-| 3.5 | Neural Networks Part 8: Image Classification with Convolutional Neural Networks (CNNs) | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=HGwBXDKFk9I | length ? | Start | BIKE | Convolution filters and pooling for images, visually. | verified |
+| 3.4 | CS231n Winter 2016: Lecture 6: Neural Networks Part 3 / Intro to ConvNets | Andrej Karpathy | https://www.youtube.com/watch?v=hd_KFJ5ktUc | 1:09:35 | Deeper | BIKE | Closest verified fit for training practice plus the start of ConvNets, by title only; content not reviewed. See Gaps for training/tuning/debugging. | verified |
+| 3.5 | Neural Networks Part 8: Image Classification with Convolutional Neural Networks (CNNs) | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=HGwBXDKFk9I | 15:23 | Start | BIKE | Convolution filters and pooling for images, visually. | verified |
 | 3.6 | Lecture 5 \| Convolutional Neural Networks | Stanford University School of Engineering | https://www.youtube.com/watch?v=bNb2fEVKeEo | 1:08:56 | Deeper | BIKE | Stanford CS231n lecture on CNNs. A full lecture, used for the formal version after 3.5. | verified |
-| 3.7 | Recurrent Neural Networks (RNNs), Clearly Explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=AsNTP8Kwu80 | length ? | Start | BIKE | A network that carries a state across a sequence. | verified |
+| 3.7 | Recurrent Neural Networks (RNNs), Clearly Explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=AsNTP8Kwu80 | 16:37 | Start | BIKE | A network that carries a state across a sequence. | verified |
 | 3.8 | Long Short-Term Memory (LSTM), Clearly Explained | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=YCzL96nL7j0 | 20:45 | Start | BIKE | Gates that let a network remember longer. | verified |
 
 **Optional desk (code along, pause, or read):**
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 3.O1 | The spelled-out intro to neural networks and backpropagation: building micrograd | Andrej Karpathy | https://www.youtube.com/watch?v=VMj-3S1tku0 | length ? | Deeper | DESK | Build backprop in code to make 3.3 concrete. | verified |
-| 3.O2 | The StatQuest Introduction to PyTorch | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=FHdlXe1bSe4 | length ? | Start | DESK | PyTorch basics; have a laptop open. | verified |
-| 3.O3 | Building makemore Part 3: Activations & Gradients, BatchNorm | Andrej Karpathy | https://www.youtube.com/watch?v=P6sfmUTpUmc | length ? | Scholar | DESK | Diagnosing training (activations, gradients) in code; the closest verified item for "debugging". | verified |
-| 3.O4 | Backpropagation calculus \| Deep Learning Chapter 4 | 3Blue1Brown | https://www.youtube.com/watch?v=tIeHLnjs5U8 | length ? | Deeper | DESK | The chain-rule maths behind 3.3; pause and follow with paper. | verified |
-| 3.O5 | The Essential Main Ideas of Neural Networks | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=CqOfi41LfDw | length ? | Start | BIKE | A second, gentler pass over what a network is. | verified |
-| 3.O6 | CS231n Winter 2016: Lecture 10: Recurrent Neural Networks, Image Captioning, LSTM | Andrej Karpathy | https://www.youtube.com/watch?v=yCC09vCHzF8 | length ? | Scholar | DESK | Formal sequence-model lecture after 3.8. | verified |
+| 3.O1 | The spelled-out intro to neural networks and backpropagation: building micrograd | Andrej Karpathy | https://www.youtube.com/watch?v=VMj-3S1tku0 | 2:25:52 | Deeper | DESK | Build backprop in code to make 3.3 concrete. | verified |
+| 3.O2 | The StatQuest Introduction to PyTorch | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=FHdlXe1bSe4 | 23:22 | Start | DESK | PyTorch basics; have a laptop open. | verified |
+| 3.O3 | Building makemore Part 3: Activations & Gradients, BatchNorm | Andrej Karpathy | https://www.youtube.com/watch?v=P6sfmUTpUmc | 1:55:57 | Scholar | DESK | Diagnosing training (activations, gradients) in code; the closest verified item for "debugging". | verified |
+| 3.O4 | Backpropagation calculus \| Deep Learning Chapter 4 | 3Blue1Brown | https://www.youtube.com/watch?v=tIeHLnjs5U8 | 10:17 | Deeper | DESK | The chain-rule maths behind 3.3; pause and follow with paper. | verified |
+| 3.O5 | The Essential Main Ideas of Neural Networks | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=CqOfi41LfDw | 18:54 | Start | BIKE | A second, gentler pass over what a network is. | verified |
+| 3.O6 | CS231n Winter 2016: Lecture 10: Recurrent Neural Networks, Image Captioning, LSTM | Andrej Karpathy | https://www.youtube.com/watch?v=yCC09vCHzF8 | 1:09:54 | Scholar | DESK | Formal sequence-model lecture after 3.8. | verified |
 
 **Full circle:** you can say how a network turns inputs into outputs, how backprop assigns blame to each weight, why CNNs suit images, and why LSTMs were built to fix RNN memory.
 
@@ -139,19 +139,19 @@ A watch-while-biking ladder of 48 main videos (plus 30 optional ones, and 7 more
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
 | 4.1 | Transformers, the tech behind LLMs \| Deep Learning Chapter 5 | 3Blue1Brown | https://www.youtube.com/watch?v=wjZofJX0v4M | 27:14 | Start | BIKE | A visual walk through how a GPT-style model is put together, including tokens and embeddings. | verified |
-| 4.2 | Attention in transformers, step-by-step \| Deep Learning Chapter 6 | 3Blue1Brown | https://www.youtube.com/watch?v=eMlx5fFNoYc | length ? | Deeper | BIKE | The attention mechanism, step by step, visually. | verified |
-| 4.3 | [1hr Talk] Intro to Large Language Models | Andrej Karpathy | https://www.youtube.com/watch?v=zjkBMFhNj_g | at least 59:23 (outro chapter starts there) | Deeper | BIKE | Chapter list on the watch page shows LLM inference and training, finetuning into an assistant, scaling laws (25:43), tool use, and security. Covers the concept-level story end to end. | verified |
-| 4.4 | Deep Dive into LLMs like ChatGPT | Andrej Karpathy | https://www.youtube.com/watch?v=7xTGNNLPyMI | at least 3:21:46 (last chapter marker) | Deeper | BIKE | Long, but I found no shorter verified source for the full pre-training to post-training to RLHF story. Split it over three rides using the chapters on the page: 0:00 to 0:59 pre-training and tokenization; 0:59 to 2:07 post-training and hallucinations; 2:07 to 3:10 reinforcement learning and RLHF (chapter starts at 2:48:26). | verified |
+| 4.2 | Attention in transformers, step-by-step \| Deep Learning Chapter 6 | 3Blue1Brown | https://www.youtube.com/watch?v=eMlx5fFNoYc | 26:09 | Deeper | BIKE | The attention mechanism, step by step, visually. | verified |
+| 4.3 | [1hr Talk] Intro to Large Language Models | Andrej Karpathy | https://www.youtube.com/watch?v=zjkBMFhNj_g | 59:48 | Deeper | BIKE | Chapter list on the watch page shows LLM inference and training, finetuning into an assistant, scaling laws (25:43), tool use, and security. Covers the concept-level story end to end. | verified |
+| 4.4 | Deep Dive into LLMs like ChatGPT | Andrej Karpathy | https://www.youtube.com/watch?v=7xTGNNLPyMI | 3:31:23 | Deeper | BIKE | Long, but I found no shorter verified source for the full pre-training to post-training to RLHF story. Split it over three rides using the chapters on the page: 0:00 to 0:59 pre-training and tokenization; 0:59 to 2:07 post-training and hallucinations; 2:07 to 3:10 reinforcement learning and RLHF (chapter starts at 2:48:26). | verified |
 
 **Optional desk or extra:**
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 4.O1 | The Illustrated Word2vec - A Gentle Intro to Word Embeddings in Machine Learning | Jay Alammar | https://www.youtube.com/watch?v=ISPId9Lhc1g | length ? | Start | BIKE | Embeddings from first principles; watch before 4.1 if "embedding" feels vague. | verified |
-| 4.O2 | Decoder-Only Transformers, ChatGPTs specific Transformer, Clearly Explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=bQ5BoolX9Ag | length ? | Deeper | BIKE | A second angle on GPT-style models, after 4.2. | verified |
-| 4.O3 | Let's build GPT: from scratch, in code, spelled out. | Andrej Karpathy | https://www.youtube.com/watch?v=kCc8FmEb1nY | length ? | Scholar | DESK | Code a tiny GPT; needs the laptop open. | verified |
-| 4.O4 | Let's build the GPT Tokenizer | Andrej Karpathy | https://www.youtube.com/watch?v=zduSFxRajkE | length ? | Scholar | DESK | How tokenization works in code. | verified |
-| 4.O5 | Post-Training and RLHF Overview \| Post-Training Book Course, Lecture 1 | Nathan Lambert | https://www.youtube.com/watch?v=o6l6tJQgUg4 | length ? | Scholar | DESK | Lecture-style RLHF and post-training overview, after 4.4. | verified |
+| 4.O1 | The Illustrated Word2vec - A Gentle Intro to Word Embeddings in Machine Learning | Jay Alammar | https://www.youtube.com/watch?v=ISPId9Lhc1g | 8:44 | Start | BIKE | Embeddings from first principles; watch before 4.1 if "embedding" feels vague. | verified |
+| 4.O2 | Decoder-Only Transformers, ChatGPTs specific Transformer, Clearly Explained!!! | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=bQ5BoolX9Ag | 36:44 | Deeper | BIKE | A second angle on GPT-style models, after 4.2. | verified |
+| 4.O3 | Let's build GPT: from scratch, in code, spelled out. | Andrej Karpathy | https://www.youtube.com/watch?v=kCc8FmEb1nY | 1:56:20 | Scholar | DESK | Code a tiny GPT; needs the laptop open. | verified |
+| 4.O4 | Let's build the GPT Tokenizer | Andrej Karpathy | https://www.youtube.com/watch?v=zduSFxRajkE | 2:13:34 | Scholar | DESK | How tokenization works in code. | verified |
+| 4.O5 | Post-Training and RLHF Overview \| Post-Training Book Course, Lecture 1 | Nathan Lambert | https://www.youtube.com/watch?v=o6l6tJQgUg4 | 46:10 | Scholar | DESK | Lecture-style RLHF and post-training overview, after 4.4. | verified |
 
 **Full circle:** you can explain how text becomes tokens and embeddings, how attention mixes information, how pre-training on next-token prediction produces a base model, and why post-training and RLHF turn it into an assistant.
 
@@ -171,20 +171,20 @@ A watch-while-biking ladder of 48 main videos (plus 30 optional ones, and 7 more
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 5.1 | An introduction to Reinforcement Learning | Arxiv Insights | https://www.youtube.com/watch?v=JgvyzIkgxF0 | length ? | Start | BIKE | The agent, environment and reward picture, before any formulas. | verified |
-| 5.2 | DeepMind x UCL RL Lecture Series - Exploration & Control [2/13] | Google DeepMind | https://www.youtube.com/watch?v=aQJP3Z2Ho8U | length ? | Deeper | BIKE | The bandit setting and exploration vs exploitation, from a university course (per the title). Full lecture. | verified |
-| 5.3 | DeepMind x UCL RL Lecture Series - MDPs and Dynamic Programming [3/13] | Google DeepMind | https://www.youtube.com/watch?v=zSOMeug_i_M | length ? | Deeper | BIKE | MDPs and dynamic programming in one lecture (per the title). Full lecture. | verified |
-| 5.4 | RL Course by David Silver - Lecture 4: Model-Free Prediction | Google DeepMind | https://www.youtube.com/watch?v=PnHCvfgC_ZA | length ? | Deeper | BIKE | Monte Carlo and temporal-difference prediction (per the title: model-free prediction). Full lecture. | verified |
-| 5.5 | RL Course by David Silver - Lecture 7: Policy Gradient Methods | Google DeepMind | https://www.youtube.com/watch?v=KHZVXao4qXs | length ? | Deeper | BIKE | Optimising a policy directly. Full lecture. | verified |
-| 5.6 | DeepMind x UCL RL Lecture Series - Deep Reinforcement Learning #1 [12/13] | Google DeepMind | https://www.youtube.com/watch?v=cVzvNZOBaJ4 | length ? | Scholar | BIKE | Deep RL: neural networks inside RL. Full lecture. | verified |
+| 5.1 | An introduction to Reinforcement Learning | Arxiv Insights | https://www.youtube.com/watch?v=JgvyzIkgxF0 | 16:27 | Start | BIKE | The agent, environment and reward picture, before any formulas. | verified |
+| 5.2 | DeepMind x UCL RL Lecture Series - Exploration & Control [2/13] | Google DeepMind | https://www.youtube.com/watch?v=aQJP3Z2Ho8U | 2:10:13 | Deeper | BIKE | The bandit setting and exploration vs exploitation, from a university course (per the title). Full lecture. | verified |
+| 5.3 | DeepMind x UCL RL Lecture Series - MDPs and Dynamic Programming [3/13] | Google DeepMind | https://www.youtube.com/watch?v=zSOMeug_i_M | 1:43:56 | Deeper | BIKE | MDPs and dynamic programming in one lecture (per the title). Full lecture. | verified |
+| 5.4 | RL Course by David Silver - Lecture 4: Model-Free Prediction | Google DeepMind | https://www.youtube.com/watch?v=PnHCvfgC_ZA | 1:37:01 | Deeper | BIKE | Monte Carlo and temporal-difference prediction (per the title: model-free prediction). Full lecture. | verified |
+| 5.5 | RL Course by David Silver - Lecture 7: Policy Gradient Methods | Google DeepMind | https://www.youtube.com/watch?v=KHZVXao4qXs | 1:33:58 | Deeper | BIKE | Optimising a policy directly. Full lecture. | verified |
+| 5.6 | DeepMind x UCL RL Lecture Series - Deep Reinforcement Learning #1 [12/13] | Google DeepMind | https://www.youtube.com/watch?v=cVzvNZOBaJ4 | 47:05 | Scholar | BIKE | Deep RL: neural networks inside RL. Full lecture. | verified |
 
 **Optional (desk or extra):**
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 5.O1 | RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning | Google DeepMind | https://www.youtube.com/watch?v=2pWv7GOvuf0 | length ? | Deeper | BIKE | Formal intro after 5.1. | verified |
-| 5.O2 | DeepMind x UCL RL Lecture Series - Model-free Control [6/13] | Google DeepMind | https://www.youtube.com/watch?v=t9uf9cuogBo | length ? | Scholar | DESK | Control methods (title: model-free control), after 5.4. | verified |
-| 5.O3 | DeepMind x UCL RL Lecture Series - Policy-Gradient and Actor-Critic methods [9/13] | Google DeepMind | https://www.youtube.com/watch?v=y3oqOjHilio | length ? | Scholar | DESK | Second take on policy gradients, after 5.5. | verified |
+| 5.O1 | RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning | Google DeepMind | https://www.youtube.com/watch?v=2pWv7GOvuf0 | 1:28:12 | Deeper | BIKE | Formal intro after 5.1. | verified |
+| 5.O2 | DeepMind x UCL RL Lecture Series - Model-free Control [6/13] | Google DeepMind | https://www.youtube.com/watch?v=t9uf9cuogBo | 1:40:40 | Scholar | DESK | Control methods (title: model-free control), after 5.4. | verified |
+| 5.O3 | DeepMind x UCL RL Lecture Series - Policy-Gradient and Actor-Critic methods [9/13] | Google DeepMind | https://www.youtube.com/watch?v=y3oqOjHilio | 1:38:49 | Scholar | DESK | Second take on policy gradients, after 5.5. | verified |
 
 **Full circle:** you can describe the agent-environment loop, the exploration/exploitation trade-off, how an MDP is solved by dynamic programming when the model is known and by Monte Carlo/TD when it is not, and how policy gradients and deep networks extend this.
 
@@ -205,18 +205,18 @@ A watch-while-biking ladder of 48 main videos (plus 30 optional ones, and 7 more
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
 | 6.1 | Step-by-Step: A Star Search | CS188Spring2013 | https://www.youtube.com/watch?v=sAoBeujec74 | 22:17 | Start | BIKE | A worked A* example from the Berkeley CS188 channel. | verified |
-| 6.2 | COMPSCI 188 - 2018-08-30 - A* Search and Heuristics | Webcast Departmental | https://www.youtube.com/watch?v=Mlwrx7hbKPs | length ? | Deeper | BIKE | Berkeley lecture on A* and heuristics. Full lecture. | verified |
-| 6.3 | CS 188 Lecture 5: Adversarial Search | CS 188 | https://www.youtube.com/watch?v=_3djr6ZXLzQ | length ? | Deeper | BIKE | Berkeley lecture on adversarial (game) search. Full lecture. | verified |
-| 6.4 | CS 188 Lecture 18: Hidden Markov Models | CS 188 | https://www.youtube.com/watch?v=0u80UvCAKVo | length ? | Deeper | BIKE | Bayesian state estimation with HMMs. Full lecture. | verified |
-| 6.5 | DLRLSS 2019 - POMDPs - Pascal Poupart | Amii | https://www.youtube.com/watch?v=K0wcWi38IGA | length ? | Scholar | BIKE | POMDPs from a summer-school lecture. The only POMDP source I verified from a recognised expert; long. | verified |
+| 6.2 | COMPSCI 188 - 2018-08-30 - A* Search and Heuristics | Webcast Departmental | https://www.youtube.com/watch?v=Mlwrx7hbKPs | 1:25:00 | Deeper | BIKE | Berkeley lecture on A* and heuristics. Full lecture. | verified |
+| 6.3 | CS 188 Lecture 5: Adversarial Search | CS 188 | https://www.youtube.com/watch?v=_3djr6ZXLzQ | 1:23:00 | Deeper | BIKE | Berkeley lecture on adversarial (game) search. Full lecture. | verified |
+| 6.4 | CS 188 Lecture 18: Hidden Markov Models | CS 188 | https://www.youtube.com/watch?v=0u80UvCAKVo | 58:25 | Deeper | BIKE | Bayesian state estimation with HMMs. Full lecture. | verified |
+| 6.5 | DLRLSS 2019 - POMDPs - Pascal Poupart | Amii | https://www.youtube.com/watch?v=K0wcWi38IGA | 1:28:30 | Scholar | BIKE | POMDPs from a summer-school lecture. The only POMDP source I verified from a recognised expert; long. | verified |
 
 **Optional desk:**
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 6.O1 | Lecture 13: Bayes Nets | CS188Fall2013 | https://www.youtube.com/watch?v=VfyxPtlqZh4 | length ? | Deeper | DESK | Prerequisite for 6.4 if Bayes nets are rusty (also see 2.14). | verified |
-| 6.O2 | CS 188 Lecture 19: Particle Filtering | CS 188 | https://www.youtube.com/watch?v=r-bHqY5gaPw | length ? | Scholar | DESK | Approximate state estimation, after 6.4. | verified |
-| 6.O3 | Lecture 8: Markov Decision Processes (MDPs) | CS188Spring2013 | https://www.youtube.com/watch?v=i0o-ui1N35U | length ? | Deeper | DESK | Berkeley's MDP lecture as a bridge between Blocks 5 and 6. | verified |
+| 6.O1 | Lecture 13: Bayes Nets | CS188Fall2013 | https://www.youtube.com/watch?v=VfyxPtlqZh4 | 1:02:24 | Deeper | DESK | Prerequisite for 6.4 if Bayes nets are rusty (also see 2.14). | verified |
+| 6.O2 | CS 188 Lecture 19: Particle Filtering | CS 188 | https://www.youtube.com/watch?v=r-bHqY5gaPw | 1:19:06 | Scholar | DESK | Approximate state estimation, after 6.4. | verified |
+| 6.O3 | Lecture 8: Markov Decision Processes (MDPs) | CS188Spring2013 | https://www.youtube.com/watch?v=i0o-ui1N35U | 1:07:10 | Deeper | DESK | Berkeley's MDP lecture as a bridge between Blocks 5 and 6. | verified |
 
 **Full circle:** you can say how A* uses a heuristic to search efficiently, how minimax with pruning handles an opponent, how an HMM keeps a belief about a hidden state, and how POMDPs extend MDPs to act on that belief.
 
@@ -236,18 +236,18 @@ A watch-while-biking ladder of 48 main videos (plus 30 optional ones, and 7 more
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 7.1 | What is trustworthy AI? | DigitalEU | https://www.youtube.com/watch?v=Imv9SG-zfkU | length ? | Start | BIKE | A short orientation on trustworthy-AI guidelines from the channel named DigitalEU (title match only). | verified |
-| 7.2 | FAT* 2018: Joy Buolamwini - Intersectional Accuracy Disparities in Commercial Gender Classification | ACM FAccT Conference | https://www.youtube.com/watch?v=Af2VmR-iGkY | length ? | Deeper | BIKE | Case-based bias talk: accuracy gaps across groups in commercial face analysis. | verified |
-| 7.3 | The Accuracy, Fairness, and Limits of Predicting Recidivism | Berkman Klein Center for Internet & Society | https://www.youtube.com/watch?v=G0OE8p-fc10 | length ? | Deeper | BIKE | Case-based fairness talk on a recidivism prediction tool. | verified |
-| 7.4 | Turing Lecture: Algorithmic Accountability: Professor Ben Shneiderman, University of Maryland | The Alan Turing Institute | https://www.youtube.com/watch?v=UWuDgY8aHmU | length ? | Deeper | BIKE | A university-professor lecture on accountability and transparency. | verified |
+| 7.1 | What is trustworthy AI? | DigitalEU | https://www.youtube.com/watch?v=Imv9SG-zfkU | 1:53 | Start | BIKE | A short orientation on trustworthy-AI guidelines from the channel named DigitalEU (title match only). | verified |
+| 7.2 | FAT* 2018: Joy Buolamwini - Intersectional Accuracy Disparities in Commercial Gender Classification | ACM FAccT Conference | https://www.youtube.com/watch?v=Af2VmR-iGkY | 23:08 | Deeper | BIKE | Case-based bias talk: accuracy gaps across groups in commercial face analysis. | verified |
+| 7.3 | The Accuracy, Fairness, and Limits of Predicting Recidivism | Berkman Klein Center for Internet & Society | https://www.youtube.com/watch?v=G0OE8p-fc10 | 56:40 | Deeper | BIKE | Case-based fairness talk on a recidivism prediction tool. | verified |
+| 7.4 | Turing Lecture: Algorithmic Accountability: Professor Ben Shneiderman, University of Maryland | The Alan Turing Institute | https://www.youtube.com/watch?v=UWuDgY8aHmU | 1:21:32 | Deeper | BIKE | A university-professor lecture on accountability and transparency. | verified |
 
 **Optional (extra or desk):**
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 7.O1 | What is our ethical responsibility with AI & Machine Learning? - Fei-Fei Li & Andrew Ng | Stanford Online | https://www.youtube.com/watch?v=Aws-cOIXsNQ | length ? | Start | BIKE | A conversational overview from two prominent researchers. | verified |
-| 7.O2 | Fairness, part 1 - Moritz Hardt - MLSS 2020, Tübingen | virtual mlss2020 | https://www.youtube.com/watch?v=Igq_S_7IfOU | length ? | Scholar | DESK | The formal fairness criteria, after 7.3. | verified |
-| 7.O3 | What is the Problem to Which Fair Machine Learning is the Solution? \| Solon Barocas \| AI Now 2017 | AI Now Institute | https://www.youtube.com/watch?v=S_AkPi6-r3Y | length ? | Scholar | DESK | A critical look at what "fair ML" is for. | verified |
+| 7.O1 | What is our ethical responsibility with AI & Machine Learning? - Fei-Fei Li & Andrew Ng | Stanford Online | https://www.youtube.com/watch?v=Aws-cOIXsNQ | 1:00 | Start | BIKE | A conversational overview from two prominent researchers. | verified |
+| 7.O2 | Fairness, part 1 - Moritz Hardt - MLSS 2020, Tübingen | virtual mlss2020 | https://www.youtube.com/watch?v=Igq_S_7IfOU | 1:40:00 | Scholar | DESK | The formal fairness criteria, after 7.3. | verified |
+| 7.O3 | What is the Problem to Which Fair Machine Learning is the Solution? \| Solon Barocas \| AI Now 2017 | AI Now Institute | https://www.youtube.com/watch?v=S_AkPi6-r3Y | 5:36 | Scholar | DESK | A critical look at what "fair ML" is for. | verified |
 
 **Full circle:** you can describe where bias enters an ML pipeline, give two concrete cases, and say how accountability and transparency differ.
 
@@ -267,9 +267,9 @@ A watch-while-biking ladder of 48 main videos (plus 30 optional ones, and 7 more
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 8.1 | But how do AI images and videos actually work? \| Guest video by Welch Labs | 3Blue1Brown | https://www.youtube.com/watch?v=iv-5mZ_9CPY | length ? | Start | BIKE | Visual explanation of how AI image generators work (diffusion family, by title). | verified |
-| 8.2 | Generative Adversarial Networks (GANs) - Computerphile | Computerphile | https://www.youtube.com/watch?v=Sw9r8CL98N0 | length ? | Start | BIKE | The generator-vs-discriminator idea. | verified |
-| 8.3 | Variational Autoencoders - EXPLAINED! | CodeEmporium | https://www.youtube.com/watch?v=fcvYpzHmhvA | length ? | Deeper | BIKE | Autoencoders and the variational twist. | verified |
+| 8.1 | But how do AI images and videos actually work? \| Guest video by Welch Labs | 3Blue1Brown | https://www.youtube.com/watch?v=iv-5mZ_9CPY | 37:20 | Start | BIKE | Visual explanation of how AI image generators work (diffusion family, by title). | verified |
+| 8.2 | Generative Adversarial Networks (GANs) - Computerphile | Computerphile | https://www.youtube.com/watch?v=Sw9r8CL98N0 | 21:21 | Start | BIKE | The generator-vs-discriminator idea. | verified |
+| 8.3 | Variational Autoencoders - EXPLAINED! | CodeEmporium | https://www.youtube.com/watch?v=fcvYpzHmhvA | 17:36 | Deeper | BIKE | Autoencoders and the variational twist. | verified |
 
 Autoregressive language models are covered by 4.1 to 4.4, so no extra video is needed here.
 
@@ -277,7 +277,7 @@ Autoregressive language models are covered by 4.1 to 4.4, so no extra video is n
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| 8.O1 | Stanford CS236: Deep Generative Models I 2023 I Lecture 1 - Introduction | Stanford Online | https://www.youtube.com/watch?v=XZ0PMRWXBEU | length ? | Scholar | DESK | University introduction to the families of generative models; full lecture, only if you want the formal view. | verified |
+| 8.O1 | Stanford CS236: Deep Generative Models I 2023 I Lecture 1 - Introduction | Stanford Online | https://www.youtube.com/watch?v=XZ0PMRWXBEU | 57:27 | Scholar | DESK | University introduction to the families of generative models; full lecture, only if you want the formal view. | verified |
 
 **Full circle:** you can say in one sentence how each family generates: autoregressive (next token), GAN (adversarial game), VAE (decode a sampled latent), diffusion (reverse a noising process).
 
@@ -299,7 +299,7 @@ Method: every video below passed the same YouTube oEmbed check as the main path 
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| G1 | Supervised vs. Unsupervised Learning | IBM Technology | https://www.youtube.com/watch?v=W01tIRP_Rqs | 6:54 (per tubescript transcript page) | Start | BIKE | A short explainer on supervised learning (classification and regression) versus unsupervised learning (clustering, association, dimensionality reduction), with a brief mention of semi-supervised. It does not cover reinforcement learning; that is introduced by 5.1. | verified; content per tubescript transcript page |
+| G1 | Supervised vs. Unsupervised Learning | IBM Technology | https://www.youtube.com/watch?v=W01tIRP_Rqs | 7:08 | Start | BIKE | A short explainer on supervised learning (classification and regression) versus unsupervised learning (clustering, association, dimensionality reduction), with a brief mention of semi-supervised. It does not cover reinforcement learning; that is introduced by 5.1. | verified; content per tubescript transcript page |
 
 Belongs after #1.1 (the gentle first picture of machine learning): suggested watch order 1.1, then G1 as a quick vocabulary pass, then 1.2. For the reinforcement side, 5.1 is the existing introduction, so G1 plus 5.1 together cover the three kinds.
 
@@ -307,8 +307,8 @@ Belongs after #1.1 (the gentle first picture of machine learning): suggested wat
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| G2 | Lecture 6 \| Training Neural Networks I | Stanford University School of Engineering | https://www.youtube.com/watch?v=wEoyxE0GP2M | length ? | Deeper | BIKE | Stanford CS231n (Spring 2017) lecture whose course-syllabus line reads "Activation functions, initialization, dropout, batch normalization". Slide-heavy, so glance at the screen between pedals. | verified; content per CS231n 2017 syllabus line |
-| G3 | Lecture 7 \| Training Neural Networks II | Stanford University School of Engineering | https://www.youtube.com/watch?v=_JB0AO7QxSA | length ? | Deeper | BIKE | Next CS231n lecture; the syllabus line reads "Update rules, ensembles, data augmentation, transfer learning" (update rules are the optimizer variants such as momentum). Slide-heavy; pause for any formulas. | verified; content per CS231n 2017 syllabus line |
+| G2 | Lecture 6 \| Training Neural Networks I | Stanford University School of Engineering | https://www.youtube.com/watch?v=wEoyxE0GP2M | 1:20:19 | Deeper | BIKE | Stanford CS231n (Spring 2017) lecture whose course-syllabus line reads "Activation functions, initialization, dropout, batch normalization". Slide-heavy, so glance at the screen between pedals. | verified; content per CS231n 2017 syllabus line |
+| G3 | Lecture 7 \| Training Neural Networks II | Stanford University School of Engineering | https://www.youtube.com/watch?v=_JB0AO7QxSA | 1:15:30 | Deeper | BIKE | Next CS231n lecture; the syllabus line reads "Update rules, ensembles, data augmentation, transfer learning" (update rules are the optimizer variants such as momentum). Slide-heavy; pause for any formulas. | verified; content per CS231n 2017 syllabus line |
 
 Belongs after #3.6 (CS231n Lecture 5 on CNNs, which Lectures 6 and 7 follow in the same course): suggested watch order 3.6, then G2, then G3. Both assume backprop from 3.3. Neither is a hands-on debugging walkthrough as far as I can tell from the syllabus lines, so 3.O3 (DESK) is still the closest item for diagnosing training in code. I did not find a Karpathy "Recipe for Training Neural Networks" video (only the blog post and third-party read-throughs), and the Andrew Ng CS230 lectures did not pass the oEmbed check.
 
@@ -316,10 +316,10 @@ Belongs after #3.6 (CS231n Lecture 5 on CNNs, which Lectures 6 and 7 follow in t
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| G4 | State of GPT \| BRK216HFS | Microsoft Developer | https://www.youtube.com/watch?v=bZQun8Y4L2A | length ? | Deeper | BIKE | Karpathy's Microsoft Build 2023 talk. Third-party notes list the assistant training pipeline (pre-training, supervised fine-tuning, reward modelling, RLHF), then applications such as prompting techniques, retrieval-augmented LLMs and a finetuning section with default recommendations. | verified; content per third-party notes gist (section headings) |
-| G5 | What is LoRA? Low-Rank Adaptation for finetuning LLMs EXPLAINED | AI Coffee Break with Letitia | https://www.youtube.com/watch?v=KEv-F5UkhxU | at least 6:14 (last chapter marker) | Deeper | BIKE | A short explainer; the chapter list reads: why finetuning LLMs is costly, how LoRA works, low-rank adaptation, LoRA vs other approaches. | verified; content per watch-page chapter list |
-| G6 | RAG vs Fine-Tuning vs Prompt Engineering: Optimizing AI Models | IBM Technology | https://www.youtube.com/watch?v=zYGDpG-pTho | 11:18 (per sozai transcript page) | Start | BIKE | A comparison of the three ways to adapt a model to a task: what each costs, what each can and cannot add, and how they are combined. | verified; content per sozai transcript page |
-| G7 | Chinchilla Explained: Compute-Optimal Massive Language Models | Edan Meyer | https://www.youtube.com/watch?v=PZXN7jm9IC0 | 32:45 (per the watch page) | Deeper | BIKE | A walk through DeepMind's Chinchilla paper; chapters: overview, paper introduction, methods, scaling implications, Chinchilla overview and performance, summary, critiques. It covers the model-size versus data trade-off for a compute budget, not scaling laws in general. A solo creator's channel, not a university; paper figures are shown, so glance at the screen. | verified; content per watch-page chapter list and summary |
+| G4 | State of GPT \| BRK216HFS | Microsoft Developer | https://www.youtube.com/watch?v=bZQun8Y4L2A | 42:40 | Deeper | BIKE | Karpathy's Microsoft Build 2023 talk. Third-party notes list the assistant training pipeline (pre-training, supervised fine-tuning, reward modelling, RLHF), then applications such as prompting techniques, retrieval-augmented LLMs and a finetuning section with default recommendations. | verified; content per third-party notes gist (section headings) |
+| G5 | What is LoRA? Low-Rank Adaptation for finetuning LLMs EXPLAINED | AI Coffee Break with Letitia | https://www.youtube.com/watch?v=KEv-F5UkhxU | 8:21 | Deeper | BIKE | A short explainer; the chapter list reads: why finetuning LLMs is costly, how LoRA works, low-rank adaptation, LoRA vs other approaches. | verified; content per watch-page chapter list |
+| G6 | RAG vs Fine-Tuning vs Prompt Engineering: Optimizing AI Models | IBM Technology | https://www.youtube.com/watch?v=zYGDpG-pTho | 13:10 | Start | BIKE | A comparison of the three ways to adapt a model to a task: what each costs, what each can and cannot add, and how they are combined. | verified; content per sozai transcript page |
+| G7 | Chinchilla Explained: Compute-Optimal Massive Language Models | Edan Meyer | https://www.youtube.com/watch?v=PZXN7jm9IC0 | 32:45 | Deeper | BIKE | A walk through DeepMind's Chinchilla paper; chapters: overview, paper introduction, methods, scaling implications, Chinchilla overview and performance, summary, critiques. It covers the model-size versus data trade-off for a compute budget, not scaling laws in general. A solo creator's channel, not a university; paper figures are shown, so glance at the screen. | verified; content per watch-page chapter list and summary |
 
 Belongs after #4.4 (the post-training and RLHF story): suggested watch order G4 (the assistant pipeline and when to fine-tune), G5 (what LoRA changes), G6 (choosing between fine-tuning, retrieval and prompting), then G7, which extends the scaling-laws chapter at 25:43 of 4.3 and could also be placed right after 4.3.
 
@@ -327,7 +327,7 @@ Belongs after #4.4 (the post-training and RLHF story): suggested watch order G4 
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| G8 | Lecture 15 Partially Observable MDPs (POMDPs) -- CS287-FA19 Advanced Robotics at UC Berkeley | Pieter Abbeel | https://www.youtube.com/watch?v=2dNp7QyoF_k | length ? | Scholar | DESK | A Berkeley graduate lecture on POMDPs (title and short description only; no chapter list was available). Expect a full, mathematical lecture that assumes MDPs, not a short intro. | verified; title-based |
+| G8 | Lecture 15 Partially Observable MDPs (POMDPs) -- CS287-FA19 Advanced Robotics at UC Berkeley | Pieter Abbeel | https://www.youtube.com/watch?v=2dNp7QyoF_k | 1:22:51 | Scholar | DESK | A Berkeley graduate lecture on POMDPs (title and short description only; no chapter list was available). Expect a full, mathematical lecture that assumes MDPs, not a short intro. | verified; title-based |
 
 Belongs after #6.5 (Poupart's POMDP lecture): suggested watch order 6.5 first, then G8 only if you want a second, graduate-course view. Treat it as optional.
 
@@ -341,8 +341,8 @@ Method: every video below passed the same YouTube oEmbed check as the main path 
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| G9 | LLM Scaling Laws Explained: Kaplan vs. Chinchilla vs. Inference-Optimal (Why We Over-Train LLMs now) | Ryan Rad | https://www.youtube.com/watch?v=Zy23dMqk_Rs | at least 10:45 (last chapter marker) | Deeper | BIKE | A short walk through scaling laws; the chapter list reads: why scaling laws matter, the compute budget equation, Kaplan's scaling law, the Chinchilla shift, training versus inference cost, why small models are over-trained, and a GPT-3 / Chinchilla / Llama 3 comparison. A solo creator's channel (I did not vet the presenter's credentials); the description cites the Kaplan and Chinchilla papers. | verified; content per watch-page chapter list and description |
-| G10 | Neural Scaling Laws and GPT-3 - Jared Kaplan | Initiative for the Theoretical Sciences | https://www.youtube.com/watch?v=sNfkZFVm_xs | length ? | Scholar | DESK | A talk by Jared Kaplan, whose name is on the original scaling-laws paper, given on 4 December 2020 at a symposium on language, learning and networks. The page gives no chapter list, so beyond the title I cannot say how much is derivation and how much is overview; the audience was physicists, so treat it as optional. | verified; content per watch-page description (title and speaker only) |
+| G9 | LLM Scaling Laws Explained: Kaplan vs. Chinchilla vs. Inference-Optimal (Why We Over-Train LLMs now) | Ryan Rad | https://www.youtube.com/watch?v=Zy23dMqk_Rs | 12:35 | Deeper | BIKE | A short walk through scaling laws; the chapter list reads: why scaling laws matter, the compute budget equation, Kaplan's scaling law, the Chinchilla shift, training versus inference cost, why small models are over-trained, and a GPT-3 / Chinchilla / Llama 3 comparison. A solo creator's channel (I did not vet the presenter's credentials); the description cites the Kaplan and Chinchilla papers. | verified; content per watch-page chapter list and description |
+| G10 | Neural Scaling Laws and GPT-3 - Jared Kaplan | Initiative for the Theoretical Sciences | https://www.youtube.com/watch?v=sNfkZFVm_xs | 1:15:20 | Scholar | DESK | A talk by Jared Kaplan, whose name is on the original scaling-laws paper, given on 4 December 2020 at a symposium on language, learning and networks. The page gives no chapter list, so beyond the title I cannot say how much is derivation and how much is overview; the audience was physicists, so treat it as optional. | verified; content per watch-page description (title and speaker only) |
 
 Belongs after #4.3 (Karpathy's intro, whose scaling-laws chapter is the first mention): suggested watch order G9 (the general picture, ending on Kaplan versus Chinchilla), then G7 (Chinchilla in depth) if you want the paper walk-through, and G10 last and only if you want to hear the original author. The Stanford CS336 scaling-laws lecture is still not available to the check (see Gaps).
 
@@ -350,7 +350,7 @@ Belongs after #4.3 (Karpathy's intro, whose scaling-laws chapter is the first me
 
 | # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
 |---|-------|---------|------|--------|-------|------|-------------------|--------|
-| G11 | The E.U. AI Act: A Risk-Based Policy Approach to AI Applications | Stanford HAI | https://www.youtube.com/watch?v=OhBsDIG8ioM | 1:04:13 (per the watch page) | Deeper | BIKE | A 17 June 2021 webinar on the European Commission's April 2021 proposal to regulate high-risk AI: US policy experts and an EU Cabinet member discuss its benefits, drawbacks and transatlantic implications, with audience questions. It is a panel (good for listening) about the draft proposal, not the final law, so use it for the risk-based idea and check the current text of the Act separately. | verified; content per watch-page description |
+| G11 | The E.U. AI Act: A Risk-Based Policy Approach to AI Applications | Stanford HAI | https://www.youtube.com/watch?v=OhBsDIG8ioM | 1:04:13 | Deeper | BIKE | A 17 June 2021 webinar on the European Commission's April 2021 proposal to regulate high-risk AI: US policy experts and an EU Cabinet member discuss its benefits, drawbacks and transatlantic implications, with audience questions. It is a panel (good for listening) about the draft proposal, not the final law, so use it for the risk-based idea and check the current text of the Act separately. | verified; content per watch-page description |
 
 Belongs after #7.1 (the short trustworthy-AI orientation): suggested watch order 7.1, then G11. I found no OECD or NIST item from a university, standards body or major credible channel: the OECD results came from a German IT podcast channel and a small channel, the NIST ones from training and certification channels, and a Microsoft responsible-AI principles video came from a channel ("Microsoft ExpertZone UKI") whose status I could not confirm, so none is added.
 
