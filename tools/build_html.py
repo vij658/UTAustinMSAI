@@ -698,7 +698,7 @@ def nav_html(current):
 def page(title, desc, current, body, footer_extra=""):
     footer = (
         "<p>Every video was confirmed to exist with YouTube's embed lookup (title and channel copied as returned). "
-        "None was watched by the person who compiled this list, and many lengths are unknown. "
+        "None was watched by the person who compiled this list; each length was read from the video's YouTube page. "
         "Watched marks are kept in this browser; browsers that give each saved file its own storage will not carry them from one page to another.</p>"
         "%s"
         '<p><button id="reset" class="btn" type="button">Clear watched marks</button></p>' % footer_extra)
