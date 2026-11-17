@@ -19,6 +19,9 @@ Create a folder with `tracks/*.md`, `ROADMAP.md`, `tools/build_html.py`, run `py
 - HTML builder has `fix_lists()` so lists under bold labels render as lists.
 - ROADMAP.md is regenerated from measured numbers by the scratchpad script `build_roadmap.py`; MORNING.md lists pages I could not open.
 
+## Track H (added 2026-11-17)
+- `tracks/H-genai-build-projects.md`: build-along GenAI projects, 23 blocks (0-22), 87 main rows (62 DESK), 44 optional, 131 distinct videos, thread project DocDesk, four milestone projects. Written by four research agents in sequence (Blocks 0-6, 7-12, 13-17, 18-22). All 97 new IDs were re-checked with YouTube oEmbed on 2026-11-17 from a cookie-less youtube.com tab (all titles and channels matched; 7S7IEATzn3c has embedding off, so oEmbed answers 401, watch page read) and their lengths read 45 s apart. Builder: Track H in TRACKS (desk mode); fences no longer break into tables; `pre` blocks scroll.
+
 ## Length lookup status
 - Finished 2026-11-17: 500 of 500 lengths read (377 for Tracks A-E, 123 for F, G and the unlisted G candidates), none failed or was blocked. All are merged into the track tables (`merge_lengths.py`) and the F and G counts and wording were rewritten (`patch_fg.py`). ROADMAP.md was regenerated from the measured numbers (`build_roadmap.py`, then `patch_roadmap2.py` for the planning text). These scripts live in the session scratchpad, not in the repo; the tables hold the results.
 - Measured main-path hours (different videos per track): A 22 h 41 m, B 39 h 55 m, C 41 h 53 m, D 33 h 35 m, E 31 h 08 m, F 77 h 58 m (96 videos), G 46 h 16 m (74 videos); all seven together 233 h 54 m for 350 distinct videos.

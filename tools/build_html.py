@@ -153,8 +153,11 @@ def split_segments(body):
         segs.append(("table", header, rows))
         tab.clear()
 
+    in_code = False
     for line in body.split("\n"):
-        if line.lstrip().startswith("|"):
+        if line.strip().startswith("```"):
+            in_code = not in_code
+        if not in_code and line.lstrip().startswith("|"):
             if buf:
                 flush_text()
             tab.append(line)
@@ -514,6 +517,8 @@ th{font-family:var(--head);font-size:.95rem;border-top:0;border-bottom:2px solid
 .tracks strong{display:block;font-family:var(--head);font-size:1.25rem;margin-bottom:4px}
 .tracks span{color:var(--muted);font-size:.92rem}
 code{font-size:.9em;background:var(--tint);padding:1px 5px;border-radius:4px}
+pre{max-width:100%;overflow-x:auto;background:var(--tint);padding:12px 14px;border-radius:6px;line-height:1.35}
+pre code{background:none;padding:0;font-size:.82em;white-space:pre}
 hr{border:0;border-top:1px solid var(--line);margin:28px 0}
 footer{margin:56px 0 40px;color:var(--muted);font-size:.9rem}
 footer p{max-width:72ch}

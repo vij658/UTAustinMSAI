@@ -2,7 +2,7 @@
 
 For Sankar. One hour a day on the stationary bike, watching, to build mental models before the UT Austin online MS in AI starts (Spring 2027) and while growing toward the goal of designing large-scale GenAI tech stacks for big companies (coding + architecture + AI).
 
-Written 2026-11-09 to 2026-11-17. Status: **draft 2.** Seven tracks (A to G). Every video was checked to exist and its length was read from its YouTube page; none was watched. See "How much to trust this" before relying on any number.
+Written 2026-11-09 to 2026-11-17. Status: **draft 3.** Eight tracks (A to H): seven to watch and learn from, and Track H to build with. Every video was checked to exist and its length was read from its YouTube page; none was watched. See "How much to trust this" before relying on any number.
 
 ## 1. What is in this folder
 
@@ -15,6 +15,7 @@ Written 2026-11-09 to 2026-11-17. Status: **draft 2.** Seven tracks (A to G). Ev
 | [tracks/E-tech-stack-desk.md](tracks/E-tech-stack-desk.md) | The same stack layers at the desk: hands-on and diagram-heavy videos, each block ending in a lab (draw it, run it, defend it). Cloud-neutral and open-source tools, Java/Spring where possible; not AWS service tutorials | 47 (Blocks 0-7, all DESK) | 24 |
 | [tracks/F-ut-courses.md](tracks/F-ut-courses.md) | UT Austin MSAI course tracker: one block per course (all 15 in the handbook), each with the official description, free public materials, a short prep and companion video path, and recap questions; opens with an elective ranking for the GenAI-architect goal and questions for the program coordinator | 98 (Blocks 1-15; 48 are reused from Tracks A-C and G) | 50 |
 | [tracks/G-genai-end-to-end.md](tracks/G-genai-end-to-end.md) | The end-to-end spine: 13 stages from how a model is made to how a governed GenAI system runs in production (build map, language-model basics, pretraining, post-training, adaptation, inference and serving, grounding and RAG, agents and tools, multimodal and diffusion, evaluation, safety and governance, LLMOps and platform, capstone designs). About 70% of its rows are reused from Tracks A to F; each block ends with a build step on one thread project | 76 (Blocks 0-12) | 48 |
+| [tracks/H-genai-build-projects.md](tracks/H-genai-build-projects.md) | Build GenAI projects, one layer at a time: follow-along build videos (type along, run, get a working result) that start with one script calling a model and grow, block by block, into a full GenAI service on AWS (API, RAG, database, tools and agents, auth and gateway, ECS, domain and HTTPS, CloudFront and WAF, Bedrock, queues and cache, tracing and evals, guardrails, Terraform and CI/CD). Opens with a mental model of one request through the whole stack, a 23-block ladder with a progression check per block, and four milestone projects; one thread project, DocDesk, grows through every block | 87 (Blocks 0-22; 62 DESK) | 44 |
 
 Every block in every track has: why it matters, an ordered table (title, channel, link, length, level, mode, what you will get, status), a "full circle" line, and three recap questions with hidden answers. Each track ends with **Gaps** (topics where no good video was found) and **Not checked**.
 
@@ -35,8 +36,9 @@ Tags: **Level** = Start / Deeper / Scholar. **Mode** = BIKE (you can mostly list
 | E tech stack (desk) | 47 | 31 h 08 m | 15 h 23 m |
 | F UT courses | 96 | 77 h 58 m | 38 h 31 m |
 | G end-to-end GenAI | 74 | 46 h 16 m | 39 h 12 m |
+| H build projects (desk) | 87 | 41 h 37 m of video | 20 h 39 m |
 
-  Counting each video once, the main paths of all seven tracks together are 350 videos and 233 h 54 m (174 h 02 m of BIKE rows and 59 h 51 m of DESK rows, by the mode of the first track that lists each video).
+  Counting each video once, the main paths of Tracks A to G together are 350 videos and 233 h 54 m (174 h 02 m of BIKE rows and 59 h 51 m of DESK rows, by the mode of the first track that lists each video). Track H adds 71 main-path videos not on any other main path (32 h 44 m of video); its hours are video time only, and building along takes two to four times as long.
 - **What to plan with.** At one hour of riding a day, Track A's main path is about 22 h 41 m of listening, Track G's about 46 h 16 m. Tracks A and G together (the shortest route to both the math and the end-to-end stack) are 136 distinct videos and about 68 h 58 m; adding Track B makes 179 videos and about 99 h 49 m. Real riding is slower than listening time: pauses, rewinds and recap questions add time, and lectures such as Karpathy's *Deep Dive into LLMs* (3 h 31 m) take several rides on their own. Re-plan after the first week.
 - **Level and Mode tags** are judgement calls, not lookups.
 - **Tools change fast.** In Track C, anything published before 2025 is flagged "may be dated" in its table, and even 2025 material on frameworks and services can be a release or two behind by now.
@@ -112,6 +114,19 @@ Track G puts the whole life of a GenAI system in the order you would build and r
 | 12 | Capstone designs | Draw and defend the whole-stack design of the thread project, and write it up in two pages. |
 
 My suggestion, not a rule: do Track A Blocks 0-4 and Track C Blocks 0-2 first, as planned above, then let Lane G follow Track G in order and keep Tracks B to F as the library behind it (Track F for the courses you are about to take, Tracks D and E for the enterprise layers under the stack). Block 8 (multimodal and diffusion) has no build step and can wait. Track G's main path is 76 videos and about 46 h 16 m.
+### Track H: build it yourself (desk)
+
+Tracks A to G are for watching; Track H is for building. It starts with the mental model of one request through a real GenAI system (internet, DNS, CDN and firewall, gateway, auth, API, orchestration, model, data, and the production layers around them), then climbs a 23-block ladder where each block adds one layer to a project you keep: DocDesk, an assistant over public bank-style PDFs. The 22 build blocks form four milestone projects, each a complete system:
+
+| Milestone | Blocks | What runs at the end | Video time |
+|---|---|---|---|
+| 1. A chat app with its own API | 1-6 | web chat, FastAPI, structured output, hosted or local model | 5 h 26 m |
+| 2. A document assistant with tools | 7-13 | RAG with citations, Postgres + pgvector, tools, an agent, an MCP server, login and an Nginx front door, all in Docker Compose | 11 h 56 m |
+| 3. The same system on AWS | 14-17 | ECS Fargate, RDS, S3, secrets, your domain over HTTPS through CloudFront, WAF and a load balancer, Bedrock | 7 h 31 m |
+| 4. A production-grade service | 18-22 | queues, cache and streaming; traces, cost and evals; guardrails; Terraform and a pipeline with an eval gate; Cognito; a design document | 15 h 59 m |
+
+How it fits: Track H is desk work, so it never uses up a ride. A natural pairing is to ride the Track C or G block on a topic, then build the matching Track H block at the desk the same week (for example C3 or G6 on RAG, then H7-H8). Milestone 1 fits before January alongside the plan above if you have desk evenings; Milestone 3 onward costs money on AWS, so Block 14 sets a budget alarm before anything is created, and every cloud block ends with what to delete.
+
 ### During the semester
 
 | Track block | Why now |
@@ -167,7 +182,7 @@ You already have the desk side. The bike videos give the mental model; these are
 
 The Page 15-25 titles are from the output list of that chat; I did not open the pages themselves, so check that each really covers the block before relying on the pairing.
 
-## 7. Known gaps (from all seven tracks)
+## 7. Known gaps (from all eight tracks)
 
 Gaps are listed, never filled with weak videos. These are the open ones for Tracks A to C; every track file also ends with its own Gaps and Not checked sections.
 
@@ -177,6 +192,7 @@ Gaps are listed, never filled with weak videos. These are the open ones for Trac
 - **Tracks D and E:** see the Gaps sections at the end of each file.
 - **Track F:** most of the online courses have no public site or lectures of their own, so the prep paths use public materials of the same topics; Advances in Deep Learning rests on the UT Deep Learning Group's site, whose match with the online course is unconfirmed; Agentic Software Engineering has no description.
 - **Track G:** no dedicated video on preparing fine-tuning data or on the hosted-API-versus-self-hosted decision; chunking is covered only by a desk video; only the first Stanford CS336 lecture could be verified; several rows are title-based (the Status column says which).
+- **Track H:** no single "anatomy of an LLM app" video; LangGraph only optional; the Python Docker videos are from 2020 and 2022; no verified CloudFront follow-along; no ALB-versus-API-Gateway concept video; no Python Redis-caching video from a credible channel; many AWS console rows come from small channels (each row says so). Its Gaps section lists the rest.
 
 ## 8. What is pending
 
