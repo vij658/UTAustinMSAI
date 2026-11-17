@@ -510,4 +510,408 @@ Read this before Block 1, and come back to it at the start of every block. The l
 
 <!-- Pages to check (Blocks 0-6): none; every new row's watch page was read (the oEmbed endpoint was refused by the fetch allowlist, so title and channel come from the watch-page metadata). Row 0.2 is reused title-based from Track D 3.O4. -->
 
+---
+
+## Block 7: Embeddings and semantic search
+
+**What you build:** A small semantic search: a few pages of your DocDesk PDFs turned into vectors (embeddings), stored in a Chroma collection on disk, and searched by meaning through a new `POST /search` endpoint. Retrieval only; the model does not answer yet.
+**New layer:** embeddings and a vector store. **Reuses:** the Block 5-6 API, the Block 3 settings class and Ollama from Block 6 (for local embeddings).
+**Needs:** Block 6 working. One-time: `pip install chromadb pypdf`, and `ollama pull nomic-embed-text` (a small local embedding model); or use OpenAI's `text-embedding-3-small` with your existing key. The vectors and cosine similarity from Track A help but are not required: 7.2 teaches them.
+**Architecture so far:**
+```
+ browser -> app.py (Streamlit) -> api.py (FastAPI)          (Blocks 4-6)
+                                     |
+                POST /chat -> core.py -> provider (OpenAI | Ollama)
+              * POST /search
+                     |
+              * embed(text) -> [0.12, -0.03, ...]   (nomic-embed-text or text-embedding-3-small)
+                     |
+              * Chroma collection "docdesk"  (./chroma on disk)
+                  ids, passages, metadata {source, page}
+
+ * ingest.py: a few PDF pages -> paragraphs -> embeddings -> Chroma
+```
+**Follow the video:**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 7.1 | Vector databases are so hot right now. WTF are they? | Fireship | https://www.youtube.com/watch?v=klTvEwg3oJ4 | length ? | Start | BIKE | A fast concept pass (2023): what an embedding is, why a vector database differs from SQL lookups, and how it gives a model a kind of long-term memory; the product names have moved on, the idea has not. | verified; description |
+| 7.2 | Vector Databases Full Course for Beginners – Embeddings, Similarity Search & ChromaDB | freeCodeCamp.org | https://www.youtube.com/watch?v=lR931Iz8Z6U | length ? | Start | DESK | Per its chapters, a 2026 course: vectors, cosine similarity and Euclidean distance, tokens, embedding models, a demo that creates embeddings (with Google's Gemini model), how a vector database indexes them (IVF, HNSW), and a closing project that stores and searches embeddings in ChromaDB. | verified; description |
+| 7.3 | ChromaDB Crash Course - Intro to Vector Databases | Alejandro AO | https://www.youtube.com/watch?v=god8Pox1laE | length ? | Start | DESK | A 2025 hands-on Chroma session: a local client, adding, getting, updating and upserting items, managing collections, saving to disk with `PersistentClient`, and embedding locally with Sentence Transformers or with OpenAI. A mid-sized AI-engineering channel; the code is a Colab notebook. | verified; description |
+
+**Code:** 7.1: none (concept). 7.2: the description links course resources on Gumroad (cut off on the watch page); no GitHub repo, so type along. 7.3: the description links a Colab notebook (cut off on the watch page, so open it from the description); no GitHub repo.
+**Optional (extra):**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 7.O1 | The Illustrated Word2vec - A Gentle Intro to Word Embeddings in Machine Learning | Jay Alammar | https://www.youtube.com/watch?v=ISPId9Lhc1g | 8:44 | Start | BIKE | Embeddings from first principles; watch before 4.1 [Track B; row 7.2 here] if "embedding" feels vague. | verified; also in Track B 4.O1; watch once |
+| 7.O2 | OpenAI's NEW Embedding Models | James Briggs | https://www.youtube.com/watch?v=cUyw5eG-VtM | length ? | Deeper | DESK | OpenAI's `text-embedding-3-small` and `-large` against the older Ada model (2024): quality, cost, and the `dimensions` parameter that shortens vectors to save storage, with code. Watch if you embed with OpenAI rather than Ollama. | verified; description |
+
+**Build it (follow the video):**
+1. Watch 7.1 away from the keyboard. Write one line: "an embedding is a list of numbers where similar meanings sit close together".
+2. Follow 7.2 from "What are vectors" (0:22:40) to the end of "Embeddings and embedding models" (1:11:48); compute a cosine similarity by hand in Python with NumPy for two short vectors, as the video does.
+3. In the embeddings demo, use the model you already have instead of Gemini if you prefer: `ollama.embed(model="nomic-embed-text", input=["..."])` or `client.embeddings.create(model="text-embedding-3-small", input=["..."])`. Embed "overdraft fee", "charge for spending more than your balance" and "deposit insurance", and print the three pairwise cosine similarities: the first pair should score highest.
+4. Skim the index chapter (IVF and HNSW, 1:22:07) for the idea only, then follow the closing ChromaDB project in 7.2.
+5. Follow 7.3: create a client, a collection, add a handful of sentences with ids and metadata, and `query(query_texts=[...], n_results=3)`; read the distances that come back.
+6. Switch to `chromadb.PersistentClient(path="./chroma")`, restart Python, and check the data is still there.
+7. Try the same query with two different embedding models in two collections and see that the rankings differ: the model is part of the index.
+
+**Carry it into DocDesk:**
+- Add `EMBED_PROVIDER` and `EMBED_MODEL` to the Block 3 `Settings` class, and an `embed(texts) -> list[list[float]]` function next to `get_provider()` (Ollama or OpenAI, like the chat switch in Block 6).
+- Add `docdesk/ingest.py`: read three to five pages from your PDFs with `pypdf` (`PdfReader(path).pages[i].extract_text()`), split each page on blank lines into paragraphs, and add them to a Chroma collection with ids like `fdic-guide.pdf:3:2` and metadata `{source, page}`. Proper chunking waits for Block 8.
+- Create the collection with cosine distance (check the Chroma docs for the current option name) and pass your own embeddings, so Chroma's built-in default model is not used by accident.
+- Add `POST /search` to `api.py`: `SearchRequest(query: str, k: int = 3)` returns `list[Passage(id, source, page, text, score)]`. `POST /chat` does not change.
+- Record the embedding model name in the collection's metadata, and refuse to query if it does not match the setting.
+
+**Done when:** `curl -X POST localhost:8000/search -H "Content-Type: application/json" -d '{"query":"how much can a bank charge if I overdraw?","k":3}'` returns three passages from your PDFs about overdrafts, with page numbers, even though none of them contains the word "overdraw".
+**Stretch:** add a keyword search over the same paragraphs (count shared words, or `rank-bm25`) and print both rankings side by side for ten questions; note where each one wins (exact names and numbers versus paraphrases).
+**Cost and teardown:** local embeddings with Ollama cost nothing; OpenAI's small embedding model costs a fraction of a cent for a few pages (check the pricing page). Delete the `./chroma` folder to start over; `ollama rm nomic-embed-text` frees the disk.
+**Progression check:** New: embeddings, cosine similarity, a vector store, one search endpoint. Reused: the API, settings and provider switch from Blocks 3-6. Jump size: small to medium; the concept comes first (7.1), the maths and a first Chroma project second (7.2), Chroma in depth third (7.3), and no generation is added, so RAG in Block 8 joins two things you already have.
+**Architect's question:** the vector store is a derived copy of your documents. When you change the embedding model, every vector must be rebuilt; when a document changes or is withdrawn, its vectors must follow. Who owns that pipeline, how is the index versioned, and can an embedding service outside the bank see the text?
+
+<details><summary>Recap questions</summary>
+
+1. Q: What is an embedding, in one sentence? A: A fixed-length list of numbers produced by a model so that texts with similar meaning get vectors that are close together.
+2. Q: Why can you not mix vectors from two embedding models in one collection? A: Each model has its own vector space (and often its own dimension), so distances between vectors from different models are meaningless; changing the model means re-embedding everything.
+3. Q: What does a vector store add over a Python list and a loop of cosine similarities? A: Storage on disk with ids and metadata, filtering, and an approximate nearest-neighbour index (for example HNSW) so search stays fast when there are millions of vectors.
+
+</details>
+
+---
+
+## Block 8: RAG over your PDFs with citations, behind your API
+
+**What you build:** Retrieval-augmented generation (RAG): every PDF in `docdesk/docs/` loaded, cut into overlapping chunks and embedded; a question retrieves the top chunks, the prompt carries them, and the model answers with numbered citations that point to file and page. It runs behind a new `POST /ask` endpoint.
+**New layer:** chunking, the retrieval pipeline and citations. **Reuses:** Block 7 embeddings, Chroma and `/search`; the Block 6 provider switch for generation; the Block 3 schema and prompt files.
+**Needs:** Blocks 6 and 7 working. One-time: for 8.3, `pip install langchain-community langchain-text-splitters langchain-chroma langchain-ollama pypdf pytest` and `ollama pull mistral` (or use `llama3.2`, which you already have).
+**Architecture so far:**
+```
+ browser -> app.py (Streamlit: answer + * sources panel)
+              |
+           api.py
+             POST /chat   (Blocks 5-6)
+             POST /search (Block 7)
+           * POST /ask
+                |
+           * retrieve top-k chunks          (Chroma, Block 7)
+           * prompt = rules + numbered chunks + question
+           * generate                       (provider switch, Block 6)
+           * AskResponse: answer + citations [source, page, chunk]
+
+ * ingest.py: all PDFs -> pages -> chunks (size, overlap) -> embeddings -> Chroma
+```
+**Follow the video:**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 8.1 | RAG From Scratch: Part 1 (Overview) | LangChain | https://www.youtube.com/watch?v=wd7TZ4w1mSw | 5:13 | Start | BIKE | The idea of RAG (give the model private or fresh data at question time) and the plan for indexing, retrieval and generation. Only part 1 of the series is verified here; code in the series uses 2024 LangChain APIs (may be dated). | verified; also in Track C 3.1; watch once |
+| 8.2 | RAG from Scratch without any Frameworks | Prompt Engineering | https://www.youtube.com/watch?v=bmduzd1oY7U | length ? | Start | DESK | The whole pipeline in plain Python with no framework and no vector store (2024): prepare and chunk the data, embed the chunks, retrieve the closest ones, and generate the answer from them. A mid-sized channel; the code is a Colab notebook. | verified; description |
+| 8.3 | Python RAG Tutorial (with Local LLMs): AI For Your PDFs | pixegami | https://www.youtube.com/watch?v=2TJxpyO3ei4 | length ? | Deeper | DESK | The framework version (2024): load a folder of PDFs, split them into chunks, embed and store them in Chroma with stable ids so the database can be updated, answer locally through Ollama with the source ids listed, and unit-test the answers. | verified; description |
+
+**Code:** 8.1: none (concept; the series notebooks are linked from LangChain's channel). 8.2: a Colab notebook linked from the description; no GitHub repo. 8.3: https://github.com/pixegami/rag-tutorial-v2 (last updated 2024-05; matches the description's cut-off link). Two warnings: its `get_embedding_function.py` uses Amazon Bedrock by default, so switch to the commented `OllamaEmbeddings(model="nomic-embed-text")` line; and it imports from `langchain.vectorstores`, `langchain.document_loaders`, `langchain.prompts` and `langchain.schema`, paths that LangChain 1.0 (late 2025) no longer has. Use `langchain_chroma.Chroma`, `langchain_community.document_loaders.PyPDFDirectoryLoader`, `langchain_core.prompts.ChatPromptTemplate`, `langchain_core.documents.Document` and `langchain_ollama` instead, or pin `langchain<1.0` while you follow the video.
+**Optional (extra):**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 8.O1 | Learn RAG From Scratch – Python AI Tutorial from a LangChain Engineer | freeCodeCamp.org | https://www.youtube.com/watch?v=sVcwVQRHIc8 | 2:33:11 | Start | DESK | Follow-along coding of the full RAG pipeline; do it after 3.1-3.3 [Track C; rows 8.1 to 8.3 here] so the code has a mental model to land on. 2024-era LangChain (may be dated). | verified; also in Track C 3.D1; watch once |
+| 8.O2 | Semantic Chunking - 3 Methods for Better RAG | James Briggs | https://www.youtube.com/watch?v=7JS0pqXvha8 | 10:13 | Deeper | DESK | Per the description and chapters (2024): a simple RAG example, then three semantic chunkers (statistical, consecutive and cumulative) and chunking for video and multimodal use; Python code on screen, so a desk video, and the only dedicated chunking row in this track. | verified; content per watch-page description and chapters; also in Track G 6.O1; watch once |
+| 8.O3 | Deploy RAG to Production Faster Than You Think | pixegami | https://www.youtube.com/watch?v=ldFONBo2CR0 | length ? | Deeper | DESK | The sequel to 8.3 (2024): wrapping the RAG code in FastAPI, then a Docker image, AWS infrastructure with the CDK, Lambda and an asynchronous API. Here, only up to the end of "Adding FastAPI" (18:44). | verified; description |
+
+**Build it (follow the video):**
+1. Watch 8.1 and sketch the three stages (indexing, retrieval, generation) on your Block 0 sheet.
+2. Follow 8.2 in the Colab notebook, then copy it into a local script in your venv: chunk a text, embed the chunks, take the top three by cosine similarity, and paste them into the prompt. Swap its embedding and chat calls for your own `embed()` and provider from Blocks 6-7 if they differ.
+3. Change the chunk size (for example 200, 800 and 2,000 characters) and the overlap (0 and 80), ask the same question, and note how the retrieved text and the answer change.
+4. Follow 8.3: clone the repo, fix the embedding function and the imports as described under **Code**, put two PDFs in `data/`, and run `python populate_database.py`.
+5. Read how 8.3 builds chunk ids (`source:page:chunk`) and why that lets `populate_database.py` add only new chunks on the next run; add a third PDF and rerun to see it.
+6. Run `python query_data.py "your question"` and check that the printed sources point to the pages that really hold the answer.
+7. Follow the unit-test chapter (15:12): write two `pytest` tests, one that must find a known fact and one that must not invent an answer.
+
+**Carry it into DocDesk:**
+- Turn `ingest.py` into the real pipeline: all PDFs, page metadata, `RecursiveCharacterTextSplitter` (or your 8.2 splitter) with `CHUNK_SIZE` and `CHUNK_OVERLAP` in `Settings`, ids `source:page:chunk`, and only new ids added on each run.
+- Add `prompts/rag.md`: "Answer only from the numbered context. Cite every claim as [n]. If the context does not contain the answer, say you could not find it in the documents."
+- Add `POST /ask`: `AskRequest(question, k=4)` returns `AskResponse(answer, confidence, citations: list[Citation(n, source, page, chunk_id, text, score)], tokens_in, tokens_out, cost_usd)`. Generation goes through the Block 6 provider switch, so it works with OpenAI and Ollama.
+- Return only the citations the answer actually uses (parse the `[n]` markers); keep `/chat` and `/search` as they are.
+- In `app.py`, add a "Ask the documents" mode that calls `/ask` and shows each citation in an `st.expander` with file, page and the chunk text.
+
+**Done when:** a question whose answer is in one of your PDFs returns an answer with at least one citation pointing to the right file and page, and a question the PDFs do not cover ("What is the bank's stock price today?") returns "could not find it in the documents" instead of a guess.
+**Stretch:** write ten question-and-expected-page pairs and measure how often the right page is in the top four for chunk sizes 400, 800 and 1,200 (this small evaluation set returns in Block 19).
+**Cost and teardown:** with Ollama, nothing; with OpenAI, each `/ask` sends about k chunks as input tokens, so it costs several times a plain chat call (your cost line shows how much). Delete `./chroma` and re-ingest whenever you change the chunk settings or the embedding model.
+**Progression check:** New: PDF loading, chunk size and overlap, prompt assembly with context, citations, and LangChain as a helper. Reused: embeddings and Chroma (Block 7), the provider switch (Block 6), the API (Block 5). Jump size: medium; it joins search (Block 7) and generation (Blocks 1-6), and the block goes concept (8.1), plain pipeline (8.2), then the framework version (8.3), so LangChain arrives only after you have written every step without it.
+**Architect's question:** a RAG answer is only as good as what retrieval returned. Who decides chunk size, k and which documents are in the index; how will you know that an answer was grounded and not invented (Block 19); and what stops a user from retrieving a passage they are not allowed to see (Blocks 13 and 20)?
+
+<details><summary>Recap questions</summary>
+
+1. Q: What are the steps of a RAG request? A: Embed the question, retrieve the top-k most similar chunks from the index, put them into the prompt with instructions, generate the answer, and return it with the sources it used.
+2. Q: What does chunk overlap protect against, and what does it cost? A: It keeps a sentence or fact that sits on a chunk boundary whole in at least one chunk; it costs extra storage and duplicate text in the prompt.
+3. Q: Why give every chunk a stable id such as `source:page:chunk`? A: The ingestion can add only new chunks and update or delete changed ones, and a citation can point the user to the exact file and page.
+
+</details>
+
+---
+
+## Block 9: Containers with Docker and Docker Compose
+
+**What you build:** DocDesk in containers: one image for the API, one for the Streamlit page, and a `docker-compose.yml` that starts them together with Ollama and the Chroma data, so `docker compose up` runs the whole app on any machine with Docker.
+**New layer:** containers and a multi-service runtime. **Reuses:** the Block 8 app unchanged (code, settings, `.env`).
+**Needs:** Block 8 working. One-time: Docker Desktop (Mac or Windows) or Docker Engine with the Compose plugin (Linux); a Docker Hub account is not needed.
+**Architecture so far:**
+```
+ * docker compose up
+   +-------------------- * compose network "docdesk" --------------------+
+   |  * ui  (Streamlit :8501) --HTTP http://api:8000--> * api (FastAPI :8000)  |
+   |                                                    |          \          |
+   |                                    * volume ./chroma   * ollama (:11434)  |
+   |                                                         * volume: models  |
+   +----------------------------------------------------------------------+
+ .env -> env_file: (keys are passed in at run time, never baked into an image)
+ browser -> localhost:8501
+```
+**Follow the video:**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 9.1 | Docker Crash Course for Absolute Beginners [NEW] | TechWorld with Nana | https://www.youtube.com/watch?v=pg19Z8LL06w | 1:07:39 | Start | DESK | A 2023 course, sponsored by a vendor, that mixes animations with demos: Docker versus a VM, images versus containers, registries, the main commands, port binding, a Dockerfile, and building an image. The Dockerfile example is a Node.js app (per the chapter title), so redo it for a Spring Boot jar in the lab [Track E lab; Build it step 3 here]. Watch from 02:54 to 1:03:39. | verified; content per watch-page description and chapters; also in Track E 3.1; watch once |
+| 9.2 | Docker Tutorial For Beginners - How To Containerize Python Applications | Patrick Loeber | https://www.youtube.com/watch?v=bi0cKgmRuiA | length ? | Start | DESK | The Python version of 9.1's Dockerfile: first a plain Python script, then a FastAPI web app in a container, and how the virtual environment fits in. From 2020, so base-image tags are old (may be dated); the steps are unchanged. | verified; description |
+| 9.3 | How To Use Docker To Make Local Development A Breeze | ArjanCodes | https://www.youtube.com/watch?v=zkMRWDQV4Tg | length ? | Start | DESK | A small Python API server built and run in a container, why that beats running it straight on your laptop, then a docker-compose file for it and how to handle data that changes (2022). | verified; description |
+
+**Code:** 9.1: no repo needed (the demo app is Node.js; you redo it for DocDesk). 9.2: no repo; type along. 9.3: https://github.com/ArjanCodes/2022-docker (last updated 2022-07; it has a `Dockerfile`, a `docker-compose.yaml` and the Python server; matched by name with the description's cut-off link "2022-do...").
+**Optional (extra):**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 9.O1 | Docker Compose Tutorial - Docker in Practice \|\| Docker Tutorial 9 | TechWorld with Nana | https://www.youtube.com/watch?v=MVIcrmeV_6c | length ? | Start | DESK | A short 2019 explainer: how each `docker run` option maps to a field in a Compose file, a demo with two containers, and how Compose puts them on one network so they find each other by name. Old but the mapping has not changed (the `version:` line it may show is now unnecessary). | verified; description |
+
+**Build it (follow the video):**
+1. Follow 9.1 from 02:54 to 1:03:39: run a public image, list and stop containers, bind a port, and read the logs. Its last part builds a Node.js image (the row's note about a Spring Boot jar belongs to Track E); you do the Python version in step 3.
+2. Note the four words you will use daily: image (the packaged app), container (a running image), port mapping (`-p host:container`), environment variable (`-e` or `--env-file`).
+3. Follow 9.2's web-app example (09:14): a `Dockerfile` with a slim Python base image, `COPY requirements.txt`, `RUN pip install`, `COPY . .`, and a `CMD` that starts the server on `0.0.0.0`; build it with `docker build -t hello-api .` and run it with `docker run -p 8000:8000 hello-api`. Use a current base tag such as `python:3.12-slim`.
+4. Break it on purpose: start the server on `127.0.0.1` inside the container and see that the browser cannot reach it.
+5. Follow 9.3: clone the repo, build and run it with `docker run`, then with its `docker-compose.yaml` (`docker compose up --build`), and change a data file to see what the video says about mounted volumes.
+6. Run `docker compose down` and `docker compose down -v` and note which one deletes the volume's data.
+
+**Carry it into DocDesk:**
+- Add `.dockerignore` (`.venv/`, `.env`, `chroma/`, `__pycache__/`, `.git/`).
+- Add `Dockerfile.api` (runs `fastapi run api.py --port 8000`) and `Dockerfile.ui` (runs `streamlit run app.py --server.address=0.0.0.0 --server.port=8501`); `docker init` can generate a starting Python Dockerfile if you prefer.
+- Read the API address in `app.py` from `DOCDESK_API_URL` (default `http://localhost:8000`); in Compose set it to `http://api:8000`, the service name.
+- Add `docker-compose.yml` with `api`, `ui` and `ollama` (image `ollama/ollama`, a named volume for `/root/.ollama`); point the API at `http://ollama:11434`, mount `./chroma` into the API container, and pass keys with `env_file: .env`.
+- Add a `healthcheck` on `GET /health` for `api` and `depends_on` with `condition: service_healthy` for `ui`.
+- On a Mac, Ollama in a container cannot use the GPU and is slow; in that case leave Ollama on the host, drop the `ollama` service, and use `http://host.docker.internal:11434`.
+
+**Done when:** on a fresh clone, after creating `.env`, the single command `docker compose up --build` starts DocDesk, `localhost:8501` answers a question with citations, and `docker compose ps` shows `api` as healthy. Nothing is installed on the laptop except Docker.
+**Stretch:** make the API image smaller with a multi-stage build, run it as a non-root user, and compare `docker images` sizes before and after.
+**Cost and teardown:** no cloud cost. Images and model volumes use several GB: `docker compose down` stops everything, `docker compose down -v` also deletes volumes (your Chroma data and Ollama models), and `docker system prune` removes unused images.
+**Progression check:** New: Dockerfiles, images, containers, ports, environment variables, Compose services, networks and volumes. Reused: the Block 8 code, unchanged except for reading the API address from a setting. Jump size: medium; the concepts come first in a general course (9.1), then the same steps for a Python web app (9.2), then Compose for a Python app (9.3), before DocDesk combines three services.
+**Architect's question:** the image is now the unit you ship. What belongs inside it (code and dependencies) and what must stay outside (secrets, data, model weights, configuration per environment)? How will the same image move unchanged from your laptop to the cloud in Block 15?
+
+<details><summary>Recap questions</summary>
+
+1. Q: What is the difference between an image and a container? A: An image is the read-only package (code, runtime, dependencies, start command); a container is a running instance of it with its own process, file system layer and network.
+2. Q: Why must the server listen on `0.0.0.0` inside a container? A: `127.0.0.1` inside the container is the container's own loopback, so traffic forwarded from the host port would never reach a server bound only there.
+3. Q: How does the `ui` container find the `api` container in Compose? A: Compose puts the services on one network with built-in DNS, so `http://api:8000` resolves to the API service by its name.
+
+</details>
+
+---
+
+## Block 10: Postgres for users, chat history and vectors (pgvector)
+
+**What you build:** A Postgres database in the Compose stack: SQLAlchemy models for users, conversations and messages, created and changed with Alembic migrations, so DocDesk keeps chat history on the server; then the pgvector extension, so the chunk embeddings live in the same database and Chroma is retired.
+**New layer:** a SQL database, persistence and migrations; then vectors in SQL. **Reuses:** the Block 9 Compose stack, the Block 5 API and schemas, the Block 8 ingestion and retrieval.
+**Needs:** Block 9 working. SQL you already know from work (tables, keys, joins). One-time: `pip install sqlalchemy "psycopg[binary]" alembic pgvector` (10.2 uses the async driver `asyncpg`), and a database viewer if you like one (pgAdmin, DBeaver or `psql`).
+**Architecture so far:**
+```
+ ui -> api                                    (Compose, Block 9)
+        |  * SQLAlchemy session (DATABASE_URL)
+        v
+ * postgres  (image pgvector/pgvector, named volume pgdata)
+     * users, conversations, messages          (* Alembic migrations)
+     * chunks(id, source, page, text, embedding vector(768))   <- replaces Chroma
+        ^
+ ingest.py -> embeddings                       (Block 8)
+ ollama / hosted model                         (Block 6)
+```
+**Follow the video:**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 10.1 | Python FastAPI Tutorial (Part 5): Adding a Database - SQLAlchemy Models and Relationships | Corey Schafer | https://www.youtube.com/watch?v=NvOV3ig2tGY | length ? | Start | DESK | The next episode of the Block 5 series (2026): SQLAlchemy models and a relationship between two tables, a database session in FastAPI, and routes that read and write real rows instead of dummy data (on SQLite). | verified; description |
+| 10.2 | Setting Up a Dev Environment for FastAPI, PostgreSQL, SQLAlchemy & Alembic with Docker | Ssali Jonathan | https://www.youtube.com/watch?v=JWQEostzy60 | length ? | Deeper | DESK | Per its chapters, a 2025 build: a FastAPI app in Docker, Postgres as a second Compose service with a volume, settings from environment variables, an async SQLAlchemy connection and a first table, Compose Watch for hot reload, then Alembic set up from scratch with a first migration. A smaller channel, chosen because it matches this block step for step. | verified; description |
+| 10.3 | PGVector: Turn PostgreSQL into Vector Database (Python Tutorial) | Sunny Solanki - CoderzColumn | https://www.youtube.com/watch?v=erNoI9COOn0 | length ? | Deeper | DESK | Per its chapters (2025): install and enable the pgvector extension, store OpenAI embeddings in a table, query by cosine distance from Python, compare distance metrics, and speed searches up with IVFFlat and HNSW indexes. | verified; description |
+
+**Code:** 10.1: https://github.com/CoreyMSchafer/FastAPI-05-Database (last updated 2026-01; matched by name with the description's cut-off link; like Part 4 it carries the HTML templates from Parts 2-3, which you can ignore). 10.2: the description links a repository under `github.com/jod35/` that is cut off on the watch page; open it from the description, or type along. 10.3: the description links a repository under `github.com/sunny2309/` that is cut off on the watch page; type along.
+**Optional (extra):**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 10.O1 | Python FastAPI Tutorial (Part 15): PostgreSQL and Alembic - Database Migrations for Production | Corey Schafer | https://www.youtube.com/watch?v=e8NnDz8uT7o | length ? | Deeper | DESK | Moving the same series' app from SQLite to a locally installed Postgres and replacing `create_all` with Alembic migrations (2026). It builds on Parts 6 to 14 (auth, uploads, pagination), so watch it for the migration steps, not as a type-along. | verified; description |
+| 10.O2 | pgvector: Stylish Hierarchical Navigable Small World Indexes (Jonathan Katz) | CMU Database Group | https://www.youtube.com/watch?v=YU66YlZW6dA | 1:10:37 | Scholar | BIKE | A university database seminar on how HNSW indexes work and how pgvector implements them: design decisions, performance work, trade-offs. Dense and database-oriented, so best after Block 3 [Track C; Blocks 7 and 8 here]. Fits a bank that already runs Postgres. 2023, so pgvector features have moved on; the index ideas have not. | verified; content per CMU page description; also in Track C G7; watch once |
+
+**Build it (follow the video):**
+1. Follow 10.1 from its repo (or your Block 5 copy): define two models with a relationship, create the tables, add a session dependency, and turn the dummy-data routes into real database reads and writes on SQLite.
+2. Create, read and delete a few rows through `/docs`, then open the SQLite file in a viewer and find them.
+3. Follow 10.2 in a new folder: Dockerfile, a `db` service on Postgres with a named volume, `DATABASE_URL` from the environment, the connection and a first table; run `docker compose up` and connect with your viewer or `docker compose exec db psql -U ...`.
+4. Use the `pgvector/pgvector` image (for example tag `pg17`) instead of plain `postgres` for the `db` service now; it is Postgres with the extension included, so step 7 needs no new service.
+5. Continue 10.2 into Alembic: `alembic init`, point `env.py` at your models and URL, `alembic revision --autogenerate -m "init"`, read the generated file, then `alembic upgrade head`. Add a column, generate a second revision and upgrade again.
+6. Stop and restart the stack with `docker compose down` and `up`: the rows survive because they are in the volume. Then try `down -v` and see them go.
+7. Follow 10.3: `CREATE EXTENSION IF NOT EXISTS vector;`, a table with a `vector(n)` column, insert a few embeddings from Python, and query with `ORDER BY embedding <=> :query LIMIT 3` (cosine distance). Add an HNSW index and run `EXPLAIN` to see it used.
+
+**Carry it into DocDesk:**
+- Add the `db` service (pgvector image, volume `pgdata`) to the Block 9 Compose file and `DATABASE_URL` to `Settings`; the API waits for it with a healthcheck.
+- Add `docdesk/models.py` with SQLAlchemy models `User(id, name)`, `Conversation(id, user_id, created_at)` and `Message(id, conversation_id, role, content, tokens_in, tokens_out, cost_usd, created_at)`, and an Alembic migration that creates them. No login yet (Block 13); a `user` name in the request is enough.
+- Change `POST /chat` to take `conversation_id` (or create one), load the history from the database and save both turns; add `GET /conversations/{id}`. The server is no longer stateless, as Block 2's architect's question predicted.
+- Second migration: enable `vector` and add `Chunk(id, source, page, text, embedding vector(d))` where `d` matches your embedding model (768 for `nomic-embed-text`, 1536 for `text-embedding-3-small`), with an HNSW index using cosine distance.
+- Point `ingest.py` and retrieval at the `chunks` table (`pgvector.sqlalchemy.Vector` and `.cosine_distance()`), keep `/search` and `/ask` responses identical, then remove Chroma and its volume.
+
+**Done when:** after `docker compose down` and `docker compose up`, a conversation started before the restart can be continued (`GET /conversations/{id}` shows all turns with tokens and cost), `alembic current` shows the latest revision, and `/ask` returns the same citations from Postgres that it returned from Chroma.
+**Stretch:** add a keyword column (`tsvector`) to `chunks` and combine full-text rank with vector distance in one SQL query (hybrid search), then compare against vector-only on your ten Block 8 questions.
+**Cost and teardown:** no cloud cost. `docker compose down` keeps the data; `down -v` deletes `pgdata` (history and vectors), so back up with `pg_dump` first if you want to keep it.
+**Progression check:** New: SQLAlchemy models and sessions, Postgres in Compose, Alembic migrations, server-side history; then the pgvector column, distance operator and index. Reused: Compose (Block 9), the API and schemas (Block 5), ingestion and retrieval (Block 8). Jump size: medium; ordinary database work comes first (10.1 on SQLite, then 10.2 in Compose with migrations) and vectors second (10.3), and the retrieval API does not change when Chroma is swapped out.
+**Architect's question:** one database for relational data and vectors (pgvector) or a dedicated vector database? Postgres gives you transactions, backups, access control and a team that already runs it in a bank; a dedicated store may scale search further. At what number of vectors or queries per second would you revisit the choice, and what would you measure first?
+
+<details><summary>Recap questions</summary>
+
+1. Q: Why use Alembic migrations instead of `create_all()`? A: `create_all()` only creates missing tables; migrations record every schema change as a versioned script that can be reviewed, applied in order to every environment and rolled back.
+2. Q: What does `ORDER BY embedding <=> :q LIMIT 5` do in pgvector? A: It sorts rows by cosine distance between each stored embedding and the query vector and returns the five nearest, using an HNSW or IVFFlat index if one exists.
+3. Q: What changed in DocDesk's API contract when history moved into Postgres? A: The client now sends a conversation id instead of the whole history; the server loads and saves the turns, so it is stateful and must be backed up, secured and scaled with its database.
+
+</details>
+
+---
+
+## Block 11: Tool calling
+
+**What you build:** Tool calling by hand: you describe your own Python functions to the model as JSON schemas, the model asks for a call, your code checks the arguments and runs the function, and the result goes back to the model for the final answer. DocDesk gets a `lookup_fee(product)` tool over a small fees table in Postgres.
+**New layer:** the tool layer (one loop written by you, no agent framework). **Reuses:** the Block 5 API, the Block 6 provider switch, the Block 10 database and the Block 3 Pydantic models.
+**Needs:** Blocks 5 and 10 working. A model that supports tools: OpenAI's small models do; on Ollama, `llama3.2` and `qwen` models accept a `tools` list.
+**Architecture so far:**
+```
+ ui -> api.py  POST /chat
+         |
+       core.py
+         * tool loop (at most 5 steps):
+             model --> "call lookup_fee(product='checking')"
+             * validate arguments (Pydantic) -> run the function
+             * tool result --> model --> final answer
+         * tools.py: lookup_fee (SQL on fees), calculator
+         |
+ postgres: * fees(product, fee_name, amount, source, page)  + Block 10 tables
+```
+**Follow the video:**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 11.1 | What is Tool Calling? Connecting LLMs to Your Data | IBM Technology | https://www.youtube.com/watch?v=h8gMhXYAv1k | length ? | Start | BIKE | A short 2025 whiteboard explainer of tool calling: the model does not run anything itself, it asks your application to call a tool and uses the result, which is how it reaches live data. | verified; description |
+| 11.2 | Building AI Agents in Pure Python - Beginner Course | Tech With Tim | https://www.youtube.com/watch?v=c9AnqCeyxbI | length ? | Start | DESK | Per its chapters, a 2026 build with no framework: calling the API, keeping conversation history, then tool calling and a full loop that lets the model call tools until it can answer. Its first two steps repeat Blocks 1-2. Sponsor segments; the code sits on Skool behind a sign-up. | verified; description |
+
+**Code:** 11.1: none (concept). 11.2: the description links the code inside a Skool community (sign-up required); type along from the video, it is short.
+**Optional (extra):**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 11.O1 | Claude Function Calling Made Dead Simple (Anthropic Tool Use) | Nodematic Tutorials | https://www.youtube.com/watch?v=2HsmNeT8TCg | length ? | Start | DESK | The Anthropic version of this block (2025): an API key, a basic call, then a tool definition the model calls and the result sent back, plus a few optimizations. A small channel; the description links its demo code on GitHub (cut off on the watch page). | verified; description |
+| 11.O2 | Build Hour: Agentic Tool Calling | OpenAI | https://www.youtube.com/watch?v=7E-qdsVEoB8 | length ? | Deeper | DESK | OpenAI's own session (2025): the Responses API, hosted tools and the Agents SDK, reasoning with tool calls over long tasks, and a live demo that works through a backlog of tickets; the Agents SDK part previews Block 12. Code: https://github.com/openai/build-hours, folder `12-agentic-tool-calling/` (last updated 2026-11). | verified; description |
+| 11.O3 | Function Calling is All You Need — Full Workshop, with Ilan Bigio of OpenAI | AI Engineer | https://www.youtube.com/watch?v=KUEmEb71vzQ | 1:42:54 | Deeper | DESK | Hands-on function calling: the history, building an agent loop, memory, delegation and agent-written tools. Do this at a desk after Block 4's concept videos [Track C; row 11.1 here]. | verified; also in Track C 2.D1; watch once |
+
+**Build it (follow the video):**
+1. Watch 11.1 and draw the round trip on your sheet: user -> model -> "please call X with these arguments" -> your code -> result -> model -> answer.
+2. In 11.2, skim Steps 1 and 2 (you built them in Blocks 1-2) and type along from "Step 3: Tool Calling" (17:08).
+3. Define one tool as the video does (name, description, JSON-schema parameters), send it with the request, and print the raw response so you see the tool call (name and arguments as a JSON string) instead of text.
+4. Run the function yourself, append the model's tool-call message and then a tool message with the result and the matching call id, and call the model again; you should get a normal answer that uses the result.
+5. Follow "Full Agent Build" (28:09): wrap this in a loop that stops when the model answers without asking for a tool. Add a step limit (for example 5) so a confused model cannot loop forever.
+6. Add a second tool (a calculator that evaluates `a op b` with an allow-list of operators, never Python's `eval`) and ask a question that needs both.
+7. Send arguments that do not fit the schema on purpose (edit them before running) and make your code return an error message to the model instead of crashing.
+
+**Carry it into DocDesk:**
+- Add a migration with a `fees` table (`product`, `fee_name`, `amount`, `source`, `page`) and seed ten rows by hand from your public PDFs; the `source` and `page` let the tool cite like `/ask` does.
+- Add `docdesk/tools.py`: `lookup_fee(product: str) -> list[Fee]` runs a fixed, parameterised SQL query (no SQL written by the model), plus the calculator; each tool has a Pydantic input model that produces its JSON schema and validates the arguments.
+- In `core.py`, add the loop from 11.2 to `POST /chat` behind a setting `TOOLS_ENABLED`: at most 5 steps, every tool call logged with its name, arguments, duration and result size, and saved in the `messages` table (role `tool`).
+- Make it work on both providers (OpenAI and Ollama both accept a `tools` list); if a provider or model does not support tools, fall back to plain chat.
+- Show tool calls in the Streamlit page as a small "used lookup_fee(checking)" note under the answer.
+
+**Done when:** "What is the monthly fee on the basic checking account, and how much is that per year?" makes DocDesk call `lookup_fee` and the calculator (both visible in the log and in the page) and answer with the right numbers, and a question that needs no tool makes no tool call.
+**Stretch:** add a `run_readonly_sql(query)` tool that runs under a Postgres role with `SELECT` rights on `fees` only, try to make the model drop a table, and write down why the fixed-query tool is the safer default.
+**Cost and teardown:** each tool round trip is one more model call, so a tool question costs two to three times a plain answer (your cost line shows it); local models cost nothing. Nothing new to stop.
+**Progression check:** New: tool schemas, the tool-call message format, a loop with a step limit. Reused: the API (Block 5), the provider switch (Block 6), the database (Block 10), Pydantic (Block 3). Jump size: small to medium; the concept comes first (11.1) and 11.2 starts from the same first call and history you built, adding only tools and the loop, with no framework.
+**Architect's question:** a tool is an API the model can call on a user's behalf. Which tools may only read, which may change things, and which need a human to approve each call? Should the model ever write SQL, or only choose among fixed, reviewed queries, and how does a tool learn who the user is (Block 13)?
+
+<details><summary>Recap questions</summary>
+
+1. Q: Who runs the function in tool calling, the model or your code? A: Your code. The model only returns the tool name and arguments; your application validates them, runs the function and sends the result back.
+2. Q: What must you send back after running a tool? A: The model's tool-call message followed by a tool-result message carrying the result and the id of the call it answers, then call the model again.
+3. Q: Why put a step limit on the loop? A: A model can keep asking for tools (or repeat a failing call) indefinitely; a limit bounds cost and latency and turns a loop into a clear error.
+
+</details>
+
+---
+
+## Block 12: Agents and your own MCP server
+
+**What you build:** An agent built with a framework (the OpenAI Agents SDK) that decides on its own between searching the documents and looking up a fee, and your own MCP server that exposes DocDesk's `search_documents` tool so any MCP client (the MCP Inspector, Claude Desktop or a Python client) can use it.
+**New layer:** an agent loop from a framework, and MCP (a standard protocol for tools). **Reuses:** the Block 11 tools and loop idea, Block 8/10 retrieval, the Block 5 API.
+**Needs:** Block 11 working. One-time: `pip install openai-agents "mcp[cli]"`; Node.js for the MCP Inspector (`mcp dev` starts it with `npx`); Claude Desktop is optional. pixegami's repo uses `uv`; plain `pip` works too.
+**Architecture so far:**
+```
+ ui -> api.py
+         POST /chat, /ask, /search        (Blocks 5-11)
+       * POST /agent
+           * Agent (OpenAI Agents SDK, max_turns)
+               chooses: search_documents (Blocks 8, 10) | lookup_fee (Block 11)
+               model via provider settings (Block 6)
+
+ * docdesk_mcp.py  (FastMCP server, stdio)
+       tools: search_documents, lookup_fee  -> same functions, same Postgres
+         ^
+         |  MCP
+       * MCP Inspector / Claude Desktop / Python MCP client
+```
+**Follow the video:**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 12.1 | How We Build Effective Agents: Barry Zhang, Anthropic | AI Engineer | https://www.youtube.com/watch?v=D7_ipDqhtwk | 15:09 | Start | BIKE | Anthropic's short, opinionated guide: what an agent loop is, when a simple workflow beats an agent, and how to design around the model's view of the world. Watch first; it is the "when NOT to use agents" video. (Summary of its principles taken from third-party write-ups seen in search; the page itself gave only title and length.) | verified; also in Track C 4.1; watch once |
+| 12.2 | How to Build an Agent with the OpenAI Agents SDK | Sam Witteveen | https://www.youtube.com/watch?v=0Z7u6DTDZ8o | length ? | Deeper | DESK | Per its chapters (2025): a first agent in a Colab, streaming runs, adding your own function tools and a web-search tool, agents used as tools by another agent, and chat memory: Block 11's loop, now run by a framework. | verified; description |
+| 12.3 | Why we built—and donated—the Model Context Protocol (MCP) | Anthropic | https://www.youtube.com/watch?v=PLyCki2K0Lg | 35:32 | Start | BIKE | Anthropic's Stuart Ritchie interviews MCP co-creator David Soria Parra on what MCP is (an open standard for connecting AI to tools and data) and why it was donated to the Linux Foundation. | verified; also in Track C 4.2; watch once |
+| 12.4 | Build an MCP Server in 20 Minutes (with Python) | pixegami | https://www.youtube.com/watch?v=vzGkSn59rDU | length ? | Start | DESK | Per its chapters (2025): what an MCP server is, creating one in Python with a tool, a second example over Google Sheets, and using the tools from Claude Desktop. | verified; description |
+
+**Code:** 12.1 and 12.3: none (talks). 12.2: the Colab notebook linked from the description; the GitHub link in the description (https://github.com/samwit/llm-tutorials) was last updated 2023-06 and does not hold this notebook, so use the Colab. 12.4: https://github.com/pixegami/mcp-python-tutorial (last updated 2025-06; a weather tool built with `FastMCP` from the official `mcp` package; matched by name with the description's cut-off link "mcp-pytho..."). The weather tool needs a free OpenWeatherMap key; you can skip it and write your own tool.
+**Optional (extra):**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 12.O1 | LangChain vs. LangGraph vs. Deep Agents: When to Use Each One | LangChain | https://www.youtube.com/watch?v=ty8i2zl9q2c | 3:03 | Start | BIKE | Per the description and chapters: LangChain's own comparison of its three open-source agent frameworks, from LangGraph as a durable runtime to the ReAct-style agent loop to Deep Agents, with a "when to use each" section and a note on taking agents to production. A very short vendor video, so use it to see the framework-choice question, not as neutral advice. | verified; content per watch-page description and chapters; also in Track G 7.O3; watch once |
+| 12.O2 | Build Reliable AI Agents with LangGraph | AWS Developers | https://www.youtube.com/watch?v=E0BtW2yt2pA | length ? | Start | BIKE | A few minutes with LangChain's Lance Martin (2025): a code overview of a LangGraph agent and a LangGraph Studio demo, enough to see the graph style before choosing it over the Agents SDK. | verified; description |
+| 12.O3 | Building Agents with Model Context Protocol - Full Workshop with Mahesh Murag of Anthropic | AI Engineer | https://www.youtube.com/watch?v=kQmXtrmQ5Zg | 1:44:11 | Deeper | DESK | Hands-on MCP workshop: build servers and an agent that uses them. Do it after 4.2-4.3 [Track C; row 12.3 here]. Workshop code predates later MCP spec changes (may be dated). | verified; also in Track C 4.D1; watch once |
+
+**Build it (follow the video):**
+1. Watch 12.1 and write down two DocDesk questions a fixed workflow handles fine and one where letting the model choose the steps could help.
+2. Follow 12.2 in its Colab, then locally: `Agent(name=..., instructions=..., tools=[...])` and `Runner.run_sync(agent, "...")`; print `result.final_output`.
+3. Turn two plain Python functions into tools with `@function_tool` (the docstring and type hints become the schema; compare with the schema you wrote by hand in Block 11), stream a run, and read the trace of which tool was called when.
+4. Set `max_turns` on the run and ask something impossible, so you see the limit stop the loop.
+5. Watch 12.3 for the "why": one protocol so any client can use any server.
+6. Follow 12.4: create a `FastMCP` server with one `@mcp.tool()` (your own tool if you skip the weather key), run `mcp dev server.py` to open the MCP Inspector, list the tools and call one from the browser.
+7. If you use Claude Desktop, add the server to its configuration as the video shows and ask Claude a question that makes it call your tool.
+
+**Carry it into DocDesk:**
+- Add `docdesk/agent.py`: one agent with instructions from `prompts/agent.md` and two tools wrapping existing code, `search_documents(query, k)` (Block 8/10 retrieval returning cited chunks) and `lookup_fee(product)` (Block 11); `max_turns=6`.
+- Add `POST /agent` returning the answer, the citations it used and the list of tool calls; keep `/ask` and `/chat` as the cheaper fixed paths.
+- To run the agent on Ollama or another provider, use the SDK's LiteLLM model option (check its docs); otherwise keep it on OpenAI and say so in `/health`.
+- Add `docdesk/docdesk_mcp.py`: a `FastMCP("docdesk")` server exposing `search_documents` and `lookup_fee` with clear docstrings, calling the same functions and database; run it over stdio.
+- Test it in the MCP Inspector, then from a 20-line Python client (`ClientSession` and `stdio_client` from the `mcp` package, as in the SDK's README) that lists the tools and calls `search_documents`.
+
+**Done when:** `POST /agent` answers "Is my money insured if my bank fails, and what does the basic checking account cost per year?" by calling `search_documents` and `lookup_fee` (both listed in the response, with citations), and the MCP Inspector and your Python client can both call `search_documents` on `docdesk_mcp.py` and get the same chunks.
+**Stretch:** connect the agent to your own MCP server instead of the local functions (the Agents SDK can use an MCP server over stdio) and confirm the answers do not change; then rebuild the agent in LangGraph (12.O2) and compare the code and the traces.
+**Cost and teardown:** an agent run makes several model calls (each tool step is one), so it costs more than `/ask`; watch the per-request cost. The MCP server runs only while a client starts it over stdio; remove it from Claude Desktop's configuration when you are done.
+**Progression check:** New: an agent framework (Agent, Runner, function tools, max turns) and MCP (a server, tools over a protocol, the Inspector). Reused: the Block 11 tools and the loop you wrote by hand, Block 8/10 retrieval, the API. Jump size: medium; the agent loop arrives after you built the same loop yourself, and MCP comes as a concept (12.3) before a 20-minute server (12.4), with both wrapping functions that already work.
+**Architect's question:** MCP turns your tools into a shared service that any approved client can call. Who decides which MCP servers are allowed in the bank, how does a server know which user is calling and what they may see (Block 13), and when is an agent worth its extra cost and unpredictability compared with the fixed `/ask` path?
+
+<details><summary>Recap questions</summary>
+
+1. Q: What does an agent framework add over the loop you wrote in Block 11? A: The loop itself (call model, run tools, repeat until an answer or a limit), tool schemas generated from functions, tracing, memory, handoffs between agents and guardrail hooks; the decisions and the tools are still yours.
+2. Q: What does an MCP server expose, and who calls it? A: Tools (and also resources and prompts) described in a standard way; an MCP client inside an application such as Claude Desktop, an IDE, the Inspector or your own Python code connects to it and calls them.
+3. Q: Why keep both `/ask` and `/agent` in DocDesk? A: `/ask` is a fixed, cheap, predictable workflow for most questions; `/agent` costs more and varies more, so it is used only where choosing between tools adds value.
+
+</details>
+
+<!-- Pages to check (Blocks 7-12): every new row's watch page was read (oEmbed was again refused by the fetch allowlist; title and channel come from the watch-page metadata). The fetch tool sometimes returned another video's page for a requested ID, so a row was kept only when the page's title matched the search result; these candidate IDs were skipped for that reason and are not in the file: SXwC9fSwct8 (search title "Ultimate Docker Compose Tutorial", TechWorld with Nana per search), hAdEuDBN57g, bZzyPscbtI8, 8rieuXTvBtM, Ek8JHgZtmcI, tc713anE3UY, j63xRV52IMk. Repos were checked with git ls-remote and a shallow clone (last commit date); the GitHub API was not reachable from this session. -->
+
 <!-- BLOCKS GO HERE -->
