@@ -152,7 +152,7 @@ footer p{max-width:72ch}
 </div></header>
 <main id="main" class="wrap">
 <h1>MSAI + GenAI Architect Roadmap: the bike-video plan</h1><p>For Sankar. One hour a day on the stationary bike, watching, to build mental models before the UT Austin online MS in AI starts (Spring 2027) and while growing toward the goal of designing large-scale GenAI tech stacks for big companies (coding + architecture + AI).</p>
-<p>Written 2026-11-09/10. Status: <strong>draft 1.</strong> The video lists exist and every video was checked to exist; none was watched. See "How much to trust this" before relying on any number.</p><h2>Pick a track</h2><ul class="tracks"><li><a href="A-ai-math.html"><strong>A: AI math</strong><span>62 main-path videos in 8 blocks</span></a></li><li><a href="B-ai-ml-concepts.html"><strong>B: AI and ML concepts</strong><span>57 main-path videos in 8 blocks</span></a></li><li><a href="C-genai-stack.html"><strong>C: The GenAI stack and enterprise architecture</strong><span>58 main-path videos in 10 blocks</span></a></li><li><a href="D-tech-stack-bike.html"><strong>D: Enterprise tech stack foundations (bike path)</strong><span>53 main-path videos in 9 blocks</span></a></li><li><a href="E-tech-stack-desk.html"><strong>E: Enterprise tech stack hands-on (desk path)</strong><span>47 main-path videos in 8 blocks</span></a></li><li><a href="F-ut-courses.html"><strong>F: UT Austin MSAI course tracker</strong><span>98 main-path videos in 15 blocks</span></a></li><li><a href="G-genai-end-to-end.html"><strong>G: End-to-end GenAI: from data to a governed production system</strong><span>76 main-path videos in 13 blocks</span></a></li></ul><section><h2>1. What is in this folder</h2><table>
+<p>Written 2026-11-09 to 2026-11-17. Status: <strong>draft 2.</strong> Seven tracks (A to G). Every video was checked to exist and its length was read from its YouTube page; none was watched. See "How much to trust this" before relying on any number.</p><h2>Pick a track</h2><ul class="tracks"><li><a href="A-ai-math.html"><strong>A: AI math</strong><span>62 main-path videos in 8 blocks</span></a></li><li><a href="B-ai-ml-concepts.html"><strong>B: AI and ML concepts</strong><span>57 main-path videos in 8 blocks</span></a></li><li><a href="C-genai-stack.html"><strong>C: The GenAI stack and enterprise architecture</strong><span>58 main-path videos in 10 blocks</span></a></li><li><a href="D-tech-stack-bike.html"><strong>D: Enterprise tech stack foundations (bike path)</strong><span>53 main-path videos in 9 blocks</span></a></li><li><a href="E-tech-stack-desk.html"><strong>E: Enterprise tech stack hands-on (desk path)</strong><span>47 main-path videos in 8 blocks</span></a></li><li><a href="F-ut-courses.html"><strong>F: UT Austin MSAI course tracker</strong><span>98 main-path videos in 15 blocks</span></a></li><li><a href="G-genai-end-to-end.html"><strong>G: End-to-end GenAI: from data to a governed production system</strong><span>76 main-path videos in 13 blocks</span></a></li></ul><section><h2>1. What is in this folder</h2><table>
 <thead>
 <tr>
 <th>File</th>
@@ -194,21 +194,83 @@ footer p{max-width:72ch}
 </tr>
 <tr>
 <td><a href="F-ut-courses.html">tracks/F-ut-courses.md</a></td>
-<td>UT Austin MSAI course tracker: one block per course (all 14 listed on the cdso page), each with the official description, free public materials, a short prep and companion video path, and recap questions; opens with an elective ranking for the GenAI-architect goal and questions for the program coordinator</td>
-<td>93 (Blocks 1-14; 43 are reused from Tracks A-C)</td>
-<td>50 (18 of the 93 main rows are DESK)</td>
+<td>UT Austin MSAI course tracker: one block per course (all 15 in the handbook), each with the official description, free public materials, a short prep and companion video path, and recap questions; opens with an elective ranking for the GenAI-architect goal and questions for the program coordinator</td>
+<td>98 (Blocks 1-15; 48 are reused from Tracks A-C and G)</td>
+<td>50</td>
+</tr>
+<tr>
+<td><a href="G-genai-end-to-end.html">tracks/G-genai-end-to-end.md</a></td>
+<td>The end-to-end spine: 13 stages from how a model is made to how a governed GenAI system runs in production (build map, language-model basics, pretraining, post-training, adaptation, inference and serving, grounding and RAG, agents and tools, multimodal and diffusion, evaluation, safety and governance, LLMOps and platform, capstone designs). About 70% of its rows are reused from Tracks A to F; each block ends with a build step on one thread project</td>
+<td>76 (Blocks 0-12)</td>
+<td>48</td>
 </tr>
 </tbody>
 </table>
 <p>Every block in every track has: why it matters, an ordered table (title, channel, link, length, level, mode, what you will get, status), a "full circle" line, and three recap questions with hidden answers. Each track ends with <strong>Gaps</strong> (topics where no good video was found) and <strong>Not checked</strong>.</p>
 <p>Tags: <strong>Level</strong> = Start / Deeper / Scholar. <strong>Mode</strong> = BIKE (you can mostly listen) or DESK (needs code, paper or pausing, so it never uses up a ride).</p></section><section><h2>2. How much to trust this</h2><ul>
 <li><strong>Verified means "exists".</strong> For each video the YouTube oEmbed lookup returned the same video ID, and titles and channels are copied exactly as returned. Nobody watched the videos. "What you will get" comes from titles, chapter lists and the channel's usual format.</li>
-<li><strong>Lengths are mostly unknown.</strong> YouTube returned a bot-protection page for most watch pages and the agents did not work around it. Per the track files: A has a confirmed length for 8 of 47 main videos (2 h 58 m), B for 11 of 48 (about 4 h 13 m, plus lower bounds for two Karpathy talks), C for 28 of about 50 (at least 25.6 h combined). No total can be stated yet. Opening each link once fills the "length ?" cells.</li>
-<li><strong>The planning below uses a guess.</strong> I assumed about 30 minutes per video, so two videos per ride. Lectures run longer (Karpathy's <em>Deep Dive into LLMs</em> is at least 3 h 21 m on its own), so expect to get through fewer videos than the plan says. Re-plan after week one.</li>
-<li><strong>Level and Mode tags</strong> are judgement calls, not lookups.</li>
-<li><strong>Tools change fast.</strong> In Track C, anything published before 2025 is flagged "may be dated" in its table, and even 2025 material on frameworks and services can be a release or two behind by now.</li>
-</ul></section><section><h2>3. The routine (bike mode)</h2><ol>
-<li><strong>Ride:</strong> two videos, in table order, from the block you are on. Watch the intuition video before the lecture; the tables are already ordered that way.</li>
+<li><strong>Lengths are measured.</strong> Between 2026-11-16 and 2026-11-17 I read each video's length from its public YouTube page, without cookies, with your watch history paused and nothing played, and, after the first 190 requests went out back to back, I spaced the rest about 30 seconds apart at your request. No request was blocked. 484 of the 484 distinct videos in the tracks have a length this way; none are missing. The tables show the measured length; the older notes in the track files about lengths taken from chapter markers or conference pages were replaced.</li>
+<li><strong>Hours of the main path, by track</strong> (different videos counted per track, so a video shared with another track is counted in both; a video used twice inside one track counts once, which is why F has 98 main rows but 96 videos and G 76 rows but 74 videos; the optional column is the optional videos not already on the main path):</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Track</th>
+<th>Main-path videos</th>
+<th>Main-path hours</th>
+<th>Optional hours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A math</td>
+<td>62</td>
+<td>22 h 41 m</td>
+<td>12 h 32 m</td>
+</tr>
+<tr>
+<td>B AI/ML concepts</td>
+<td>57</td>
+<td>39 h 55 m</td>
+<td>32 h 27 m</td>
+</tr>
+<tr>
+<td>C GenAI stack</td>
+<td>58</td>
+<td>41 h 53 m</td>
+<td>14 h 08 m</td>
+</tr>
+<tr>
+<td>D tech stack (bike)</td>
+<td>53</td>
+<td>33 h 35 m</td>
+<td>22 h 35 m</td>
+</tr>
+<tr>
+<td>E tech stack (desk)</td>
+<td>47</td>
+<td>31 h 08 m</td>
+<td>15 h 23 m</td>
+</tr>
+<tr>
+<td>F UT courses</td>
+<td>96</td>
+<td>77 h 58 m</td>
+<td>38 h 31 m</td>
+</tr>
+<tr>
+<td>G end-to-end GenAI</td>
+<td>74</td>
+<td>46 h 16 m</td>
+<td>39 h 12 m</td>
+</tr>
+</tbody>
+</table>
+<p>Counting each video once, the main paths of all seven tracks together are 350 videos and 233 h 54 m (174 h 02 m of BIKE rows and 59 h 51 m of DESK rows, by the mode of the first track that lists each video).
+- <strong>What to plan with.</strong> At one hour of riding a day, Track A's main path is about 22 h 41 m of listening, Track G's about 46 h 16 m. Tracks A and G together (the shortest route to both the math and the end-to-end stack) are 136 distinct videos and about 68 h 58 m; adding Track B makes 179 videos and about 99 h 49 m. Real riding is slower than listening time: pauses, rewinds and recap questions add time, and lectures such as Karpathy's <em>Deep Dive into LLMs</em> (3 h 31 m) take several rides on their own. Re-plan after the first week.
+- <strong>Level and Mode tags</strong> are judgement calls, not lookups.
+- <strong>Tools change fast.</strong> In Track C, anything published before 2025 is flagged "may be dated" in its table, and even 2025 material on frameworks and services can be a release or two behind by now.</p></section><section><h2>3. The routine (bike mode)</h2><ol>
+<li><strong>Ride:</strong> about an hour of videos, in table order, from the block you are on. Lengths are measured now: Track A videos average 22 minutes (two or three per ride), Tracks B and C about 42 minutes (one or two per ride). Watch the intuition video before the lecture; the tables are already ordered that way.</li>
 <li><strong>Right after:</strong> answer that block's recap questions out loud, then open the hidden answers. Missed one? Re-watch only that video. Do not push on.</li>
 <li><strong>One line of notes:</strong> "what hurt, and what fixed it" for each video. If you keep this habit, the Atlas style of thinking carries over directly.</li>
 <li><strong>Desk items are optional.</strong> Never let a DESK video eat a ride. Save them for a weekend session, if at all. Track E is the desk path: one block per weekend session, after the Track D block it pairs with.</li>
@@ -221,7 +283,7 @@ footer p{max-width:72ch}
 <li>Week layout: Monday-Thursday Lane M, Friday-Saturday Lane G, Sunday rest or catch-up. Your AWS reading at the desk (see section 6) is separate from the bike.</li>
 </ul>
 <h3>Before January (about 8 weeks)</h3>
-<p>Approximate; re-plan after week one when you know real lengths.</p>
+<p>Rides are about an hour, six a week (Monday to Saturday). The hours below are the measured main-path lengths of each block; optional rows and gap-fill rows are extra. Re-plan after week one: pauses and rewinds make real pace slower than the measured lengths.</p>
 <table>
 <thead>
 <tr>
@@ -234,7 +296,7 @@ footer p{max-width:72ch}
 <tr>
 <td>1-2</td>
 <td>A0 notation and warm-up; A1 calculus</td>
-<td>C0 the big picture; C1 LLMs for architects (watch 1.1 to 1.3 now; treat the 3 h 21 m deep dive 1.4 as its own run of rides later)</td>
+<td>C0 the big picture; C1 LLMs for architects (watch 1.1 to 1.3 now; treat the 3 h 31 m deep dive 1.4 as its own run of rides later)</td>
 </tr>
 <tr>
 <td>3-4</td>
@@ -263,7 +325,7 @@ footer p{max-width:72ch}
 </tr>
 </tbody>
 </table>
-<p>That targets A0-A6 (43 videos), B1-B2 (18 videos) and C0-C4 (22 videos, plus G1-G3). If the 30-minute guess is optimistic, B2 slips into the semester. That is fine: B2 and B3 are the preview of the UT Machine Learning and Deep Learning courses.</p>
+<p>That targets A0-A6 (43 videos, 13 h 46 m), B1-B2 (18 videos, 7 h 04 m) and C0-C4 (22 videos, 15 h 57 m, plus the gap-fill rows G1-G3, 1 h 58 m). Lane M has about 32 rides in eight weeks and needs about 21 for A0-A6 and B1-B2 (Track A's two gap-fill passes add 3 h 55 m if you want them); Lane G has about 16 rides and needs about 18 for C0-C4 with G1-G3, so Lane G is the tight one: if it slips, move C4 into January and keep C0-C3. If Lane M has room, take B2 slowly; if not, B2 and B3 slip into the semester. That is fine: B2 and B3 are the preview of the UT Machine Learning and Deep Learning courses.</p>
 <h3>The tech-stack paths (Track D bike, Track E desk)</h3>
 <p>Track D is the general enterprise stack that sits under the GenAI stack (Track C). Track E is the same layers done at the desk, each block ending in a lab. The rule is: watch a D block on the bike, then do its E block at the desk, and watch the C block it feeds. This is the dependency map:</p>
 <table>
@@ -322,7 +384,86 @@ footer p{max-width:72ch}
 </tr>
 </tbody>
 </table>
-<p><strong>Time reality.</strong> The four bike tracks now hold about 230 main-path videos. At the unmeasured 30-minute guess that is roughly 115 rides, nearly four months of daily riding, so everything cannot fit before January. Suggested order: finish A0-A4 and C0-C2 first as planned, then make Lane G alternate: a D block, then the C block it feeds (D2 before C3, D3 before C4, D6 before C5, D5 before C6, D4 and D7 before C7). Do the E blocks on weekends, one per weekend, and alternate them with your AWS desk study rather than adding to it. Re-plan after week one when real lengths are known.</p>
+<p><strong>Time reality.</strong> The four bike tracks (A to D) hold 230 main-path videos and 138 h 04 m of measured listening (A 22 h 41 m, B 39 h 55 m, C 41 h 53 m, D 33 h 35 m). At an hour a ride that is about 138 rides, roughly four and a half months of daily riding, so everything cannot fit before January. Suggested order: finish A0-A4 and C0-C2 first as planned, then make Lane G alternate: a D block, then the C block it feeds (D2 before C3, D3 before C4, D6 before C5, D5 before C6, D4 and D7 before C7). Do the E blocks on weekends, one per weekend, and alternate them with your AWS desk study rather than adding to it. Re-plan after week one: your real pace, with pauses and rewinds, will be slower than the measured lengths.</p>
+<h3>Track G: the end-to-end spine</h3>
+<p>Track G puts the whole life of a GenAI system in the order you would build and run one: how a model is made (Blocks 1-3), how you adapt and serve it (4-5), how you ground it in your documents (6), how it acts (7), what else it can handle (8), how you know it works (9), how you keep it safe and governed (10), how you operate it (11) and how you draw and defend the whole design (12). It reuses about 70% of its rows from Tracks A to F and adds new videos only where a stage had a gap, so a video you have watched anywhere is ticked everywhere on the HTML pages (progress is kept by video ID). Each block names what to have watched first (for example A4 probability and B4 transformers before Block 1) and ends with a 1 to 3 hour build step on one thread project: an enterprise knowledge assistant for a fictional bank, using public data only and nothing from work.</p>
+<table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Stage</th>
+<th>Build step (first sentence; Block 8 has an optional try-it instead)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The build map</td>
+<td>Set up the folder and the charter for the thread project, an enterprise knowledge assistant for a fictional bank, using only public data.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Language-model basics</td>
+<td>Train a tiny GPT from scratch on a small public text, and learn what "it works" means for a language model.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Pretraining</td>
+<td>Run a miniature pretraining pipeline on your Block 1 corpus and compare tokenizers fairly.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Post-training and alignment</td>
+<td>Write instruction and preference data for the assistant and run a small supervised pass, so that post-training is something you have done, not only read.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Adaptation</td>
+<td>Compare four ways of adapting the assistant on the same questions, then shrink the winner.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Inference and serving</td>
+<td>Serve the quantized model from Block 4 behind an OpenAI-compatible endpoint and measure how it behaves under load.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Grounding and RAG</td>
+<td>Ground the assistant on your public-document corpus and measure retrieval, not just answers.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Agents and tools</td>
+<td>Turn the grounded assistant from Block 6 into an agent with three tools, and expose the same tools through an MCP server.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Multimodal and diffusion</td>
+<td>See how a vision-language model reads a scanned form, and how it fails.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Evaluation</td>
+<td>Score the assistant on one golden set with rules and an LLM judge, check the judge against your own labels, and compare two variants.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Safety and governance</td>
+<td>Add authorization, input and output guardrails and an audit trail to the assistant, then attack it with a red-team list and write its model card.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>LLMOps and platform</td>
+<td>Put the assistant behind an open-source gateway, with a trace for every question, a per-request cost log and a prompt that is versioned and gated.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Capstone designs</td>
+<td>Draw and defend the whole-stack design of the thread project, and write it up in two pages.</td>
+</tr>
+</tbody>
+</table>
+<p>My suggestion, not a rule: do Track A Blocks 0-4 and Track C Blocks 0-2 first, as planned above, then let Lane G follow Track G in order and keep Tracks B to F as the library behind it (Track F for the courses you are about to take, Tracks D and E for the enterprise layers under the stack). Block 8 (multimodal and diffusion) has no build step and can wait. Track G's main path is 76 videos and about 46 h 16 m.</p>
 <h3>During the semester</h3>
 <table>
 <thead>
@@ -353,44 +494,111 @@ footer p{max-width:72ch}
 <td>Only if a course needs it</td>
 </tr>
 </tbody>
-</table></section><section><h2>5. How this maps to the UT courses</h2><p>Course topics are from the official program page (https://cdso.utexas.edu/msai), which I opened on 2026-11-09. The block mapping is my reading of the syllabi, not UT's. The page lists no prerequisites, and I did not find the Spring 2027 start date or the reading lists.</p>
+</table></section><section><h2>5. How this maps to the UT courses</h2><p>Sources: the program page (https://cdso.utexas.edu/msai, opened 2026-11-09 and 2026-11-16) and the MSAI Online Handbook, published for 2027-2028, which you supplied (read in full on 2026-11-16). The block mapping is my reading of the course descriptions, not UT's. Track F has one block per course with the official description, free public materials and a prep path; it opens with a ranking of the courses by fit to the GenAI-architect goal (a judgement, not salary data).</p>
+<p><strong>What the handbook settles.</strong> The degree is 30 credit hours: 1 required course (Ethics in AI, grade B- or better) and 9 electives (grade C or better), letter grades only, a 3.0 GPA to graduate. The four courses the program page calls foundational (Machine Learning, Deep Learning, Reinforcement Learning, Planning) are listed as electives, so they are not mandatory; the page still recommends taking them first. Six years to finish (1.5 to 3 expected); at most 6 transfer credit hours; thesis option needs a UT AI faculty sponsor. The handbook lists 15 courses; Agentic Software Engineering is one the program page did not list, and it has a title only.</p>
 <table>
 <thead>
 <tr>
-<th>UT foundational course</th>
-<th>Syllabus topics (from the page)</th>
-<th>Prepare with</th>
+<th>UT course (handbook number)</th>
+<th>Track F block</th>
+<th>Prepare with (Tracks A and B)</th>
+<th>Spring 2027 per the program's 2026-11-16 email</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Machine Learning</td>
-<td>PAC learning, VC dimension, perceptron, linear regression and gradient descent, boosting, PCA/SVD, maximum likelihood, Bayesian inference, EM, graphical models, neural networks</td>
+<td>Machine Learning (AI 391L)</td>
+<td>1</td>
 <td>A2 (SVD/PCA), A4-A6, B1, B2</td>
+<td>runs</td>
 </tr>
 <tr>
-<td>Deep Learning</td>
-<td>Deep and convolutional networks, sequence modelling, reinforcement learning, PyTorch</td>
+<td>Deep Learning (AI 394D)</td>
+<td>2</td>
 <td>A1, A3, A6, B3, B4</td>
+<td>runs</td>
 </tr>
 <tr>
-<td>Planning, Search, and Reasoning Under Uncertainty</td>
-<td>Heuristic search, adversarial planning, Bayesian state estimation, MDPs, POMDPs</td>
-<td>A4, B6</td>
-</tr>
-<tr>
-<td>Reinforcement Learning</td>
-<td>Bandits, MDPs, dynamic programming, Monte Carlo, temporal-difference learning, policy gradients</td>
+<td>Reinforcement Learning (AI 394R)</td>
+<td>3</td>
 <td>A4, B5</td>
+<td>does not run</td>
 </tr>
 <tr>
-<td>Ethics in AI (the only course the page labels required)</td>
-<td>History, ethical theories, fairness, accountability, transparency</td>
+<td>Planning, Search, and Reasoning Under Uncertainty (AI 388U)</td>
+<td>4</td>
+<td>A4, B6</td>
+<td>does not run</td>
+</tr>
+<tr>
+<td>Ethics in AI (AI 380E, required)</td>
+<td>5</td>
 <td>B7</td>
+<td>runs</td>
+</tr>
+<tr>
+<td>Natural Language Processing (AI 388)</td>
+<td>6</td>
+<td>B4, then C1</td>
+<td>does not run</td>
+</tr>
+<tr>
+<td>Advances in Deep Learning (AI 395T)</td>
+<td>7</td>
+<td>B3-B4</td>
+<td>runs</td>
+</tr>
+<tr>
+<td>Advances in Generative Models (AI 395T; the program page says "Deep Generative Models")</td>
+<td>8</td>
+<td>B8</td>
+<td>runs</td>
+</tr>
+<tr>
+<td>Case Studies in Machine Learning (AI 391M)</td>
+<td>9</td>
+<td>B1, B2</td>
+<td>runs</td>
+</tr>
+<tr>
+<td>Optimization (AI 388J)</td>
+<td>10</td>
+<td>A6</td>
+<td>runs</td>
+</tr>
+<tr>
+<td>Online Learning and Optimization (AI 388K)</td>
+<td>11</td>
+<td>A6</td>
+<td>runs</td>
+</tr>
+<tr>
+<td>Automated Logical Reasoning (AI 389L)</td>
+<td>12</td>
+<td>A7</td>
+<td>runs</td>
+</tr>
+<tr>
+<td>AI in Healthcare (AI 380H)</td>
+<td>13</td>
+<td>B1</td>
+<td>runs</td>
+</tr>
+<tr>
+<td>AI in Astrophysics (AI 395T; needs a B or better in Machine Learning and Deep Learning passed or concurrent)</td>
+<td>14</td>
+<td>B1, B3</td>
+<td>not on that email's course list</td>
+</tr>
+<tr>
+<td>Agentic Software Engineering (AI 395T)</td>
+<td>15</td>
+<td>Track G Block 7</td>
+<td>runs</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Track F is the full course tracker.</strong> It has one block for each of the 14 courses on the cdso page (not just the four foundational ones above), with free public materials (textbooks, course sites) and a prep path per course. It opens with a ranking of which electives sit closest to the GenAI-architect goal. The ranking is my judgement from the course outlines, not salary or hiring data. In short: Deep Learning, Advances in Deep Learning, Natural Language Processing and Advances in Deep Generative Models are the closest; Machine Learning, Optimization, Reinforcement Learning, Ethics in AI and Case Studies are useful; Planning, Online Learning, Automated Logical Reasoning, AI in Healthcare and AI in Astrophysics are niche for this goal. Track F also lists four questions for the program coordinator (which courses run when, weekly hours, whether the four foundational courses are mandatory, and what Advances in Deep Learning covers). The cdso page shows no course numbers or syllabi, so confirm the mapping in the UT handbook or with the coordinator before choosing a semester plan.</p></section><section><h2>6. How this fits the material you already have</h2><p>You already have the desk side. The bike videos give the mental model; these are where to read and practise.</p>
+<p>Courses that fit the GenAI-architect goal most closely, by my reading of their descriptions: Deep Learning, Advances in Deep Learning, Natural Language Processing and Advances in Generative Models; Agentic Software Engineering is unrated because the handbook gives only its title. I am not a career advisor, so treat that as input. Questions for the program coordinator are at the top of Track F.</p></section><section><h2>6. How this fits the material you already have</h2><p>You already have the desk side. The bike videos give the mental model; these are where to read and practise.</p>
 <ul>
 <li><strong>SAA-C03 course companion</strong> (the 54-page set): the AWS Associate track. Not part of the bike plan.</li>
 <li><strong>AWS system design visual guide</strong> (25 pages plus the three-part production architecture set): its AI pages line up with Track C.</li>
@@ -433,17 +641,22 @@ footer p{max-width:72ch}
 </tr>
 </tbody>
 </table>
-<p>The Page 15-25 titles are from the output list of that chat; I did not open the pages themselves, so check that each really covers the block before relying on the pairing.</p></section><section><h2>7. Known gaps (from the three tracks)</h2><p>Gaps are listed, never filled with weak videos. These are the open ones.</p>
+<p>The Page 15-25 titles are from the output list of that chat; I did not open the pages themselves, so check that each really covers the block before relying on the pairing.</p></section><section><h2>7. Known gaps (from all seven tracks)</h2><p>Gaps are listed, never filled with weak videos. These are the open ones for Tracks A to C; every track file also ends with its own Gaps and Not checked sections.</p>
 <ul>
 <li><strong>Track A:</strong> sets (no main-path video); learning-rate schedules, momentum and Adam; Hessian and second-order convexity; Bayesian inference beyond the basics; dedicated continuous random variables and densities.</li>
 <li><strong>Track B:</strong> training, tuning and debugging neural networks; a short animated overview of supervised/unsupervised/RL; a short visual VC-dimension video; graphical models beyond one lecture; scaling laws and fine-tuning as standalone videos; a short POMDP intro; a university lecture on ethics guidelines.</li>
 <li><strong>Track C, after gap-fill pass 1:</strong> eight videos were added (prompting, structured outputs, tool calling, prompt injection, HNSW, token cost). Still open: bank model-risk management for LLMs (the one candidate is a registration page, not a video); how to choose a vector store; prompt caching and batching from an AI-lab or cloud-provider channel; case studies from banks' own engineers (the one candidate is a podcast episode with no YouTube ID); Simon Willison's own lethal-trifecta talk was never recorded; open versus closed models at architect level; non-AWS reference architectures. Block 2 is still only five BIKE items. Not searched at all: OpenAI, Google DeepMind and Microsoft official channels, Stanford CS224N and similar courses, Databricks and Snowflake talks, NIST AI RMF and EU AI Act walkthroughs.</li>
+<li><strong>Tracks D and E:</strong> see the Gaps sections at the end of each file.</li>
+<li><strong>Track F:</strong> most of the online courses have no public site or lectures of their own, so the prep paths use public materials of the same topics; Advances in Deep Learning rests on the UT Deep Learning Group's site, whose match with the online course is unconfirmed; Agentic Software Engineering has no description.</li>
+<li><strong>Track G:</strong> no dedicated video on preparing fine-tuning data or on the hosted-API-versus-self-hosted decision; chunking is covered only by a desk video; only the first Stanford CS336 lecture could be verified; several rows are title-based (the Status column says which).</li>
 </ul></section><section><h2>8. What is pending</h2><ol>
-<li><strong>Gap-filling is done for now (two passes).</strong> Still open: short visual PAC/VC and Bayes-net videos, OECD and NIST guideline lectures from a credible source, and the Stanford CS336 scaling-laws lecture (its ID fails the existence check). Another pass would mostly hunt for videos that may not exist; I suggest starting to ride and noting which gaps you actually feel.</li>
-<li><strong>Lengths:</strong> open each link once to fill the "length ?" cells, or ask for a pass when YouTube access allows it.</li>
-<li><strong>Playlists:</strong> turn each block into an ordered YouTube playlist (the Atlas script can do this once the lists settle).</li>
-<li><strong>Repo:</strong> done. The folder is pushed to https://github.com/vij658/UTAustinMSAI (public: only first name, the UT program and the study plan are in it).</li>
-</ol></section><section><h2>Appendix: videos that appear in more than one track</h2><p>Watch each once, the first time you reach it in the plan. Row labels are the track and the row number in that track's table.</p>
+<li><strong>Lengths:</strong> done for 484 of 484 videos (read from YouTube pages, 2026-11-16 and 17).</li>
+<li><strong>Playlists:</strong> turn each block into an ordered YouTube playlist, on the account you keep for riding (adding to a playlist does not touch watch history; playing does).</li>
+<li><strong>Handbook questions for the coordinator:</strong> which instructor teaches Advances in Deep Learning; what Agentic Software Engineering covers; whether AI in Astrophysics runs; whether the program recommends Machine Learning and Deep Learning first; whether the 2027-2028 handbook governs a Spring 2027 start. Track F lists them.</li>
+<li><strong>Pages I could not open</strong> are in MORNING.md.</li>
+<li><strong>Repo:</strong> done. https://github.com/vij658/UTAustinMSAI holds the tracks, this file and the generator for the HTML pages. It is public, so it holds only your first name, the program and the study plan.</li>
+<li><strong>Optional:</strong> a hosted private copy of the HTML pages, if you want to open them from the bike monitor without copying files.</li>
+</ol></section><section><h2>Appendix: videos that appear in more than one track</h2><p>Watch each once, the first time you reach it in the plan. Row labels are the track and the row number in that track's table. This table shows only the overlaps among Tracks A to C; Tracks F and G reuse many more rows from earlier tracks, and the HTML pages tick a video in every track once you mark it watched.</p>
 <table>
 <thead>
 <tr>

@@ -20,7 +20,9 @@ Create a folder with `tracks/*.md`, `ROADMAP.md`, `tools/build_html.py`, run `py
 - ROADMAP.md is regenerated from measured numbers by the scratchpad script `build_roadmap.py`; MORNING.md lists pages I could not open.
 
 ## Length lookup status
-- 377 lengths (all A-E ids) merged on 2026-11-16/17. The remaining 123 ids (Tracks F and G only) were being looked up 30-35 s apart in a Chrome tab on 2026-11-17; see the final commit message for whether it finished. Results go into the tracks with `merge_lengths.py` (replaces the Length cell with `H:MM:SS`), then `patch_fg.py` rewrites the F and G counts and wording.
+- Finished 2026-11-17: 500 of 500 lengths read (377 for Tracks A-E, 123 for F, G and the unlisted G candidates), none failed or was blocked. All are merged into the track tables (`merge_lengths.py`) and the F and G counts and wording were rewritten (`patch_fg.py`). ROADMAP.md was regenerated from the measured numbers (`build_roadmap.py`, then `patch_roadmap2.py` for the planning text). These scripts live in the session scratchpad, not in the repo; the tables hold the results.
+- Measured main-path hours (different videos per track): A 22 h 41 m, B 39 h 55 m, C 41 h 53 m, D 33 h 35 m, E 31 h 08 m, F 77 h 58 m (96 videos), G 46 h 16 m (74 videos); all seven together 233 h 54 m for 350 distinct videos.
+- Chrome tab used for the lookup was closed.
 
 ## Proposed edits to his to-do (not applied)
 - Section 9a: refund wording (a Q-drop from day 13 has no refund) and the coordinator-drop wording, to match the handbook; add or drop the refund sentence as he prefers.
