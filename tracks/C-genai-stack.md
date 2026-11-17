@@ -3,7 +3,7 @@
 Goal of this track: build the mental model of how a large company designs a generative-AI platform, from first principles up to bank-grade operations. Watch in order; each block assumes the previous one. Compiled 2026-11-09. Every video below was confirmed to exist with the oEmbed endpoint (title and channel are copied exactly as returned). AWS content here is GenAI-specific only (Bedrock, AgentCore, SageMaker AI for GenAI); no general AWS fundamentals.
 
 How to read the tables:
-- **Length**: exact when the video page gave it. A leading ">=" means a lower bound taken from the last chapter marker or the last transcript timestamp (the exact length could not be retrieved). "length ?" means no evidence was available.
+- **Length**: read from the video's YouTube page on 2026-11-16 or 17 (no cookies, nothing played).
 - **Published**: the upload date from the video page. For AWS re:Invent 2025 sessions where the page did not give it, the text says "re:Invent 2025, upload date ?" (the conference ran 1-5 Dec 2025).
 - **May be dated**: tools and services change fast. Anything published before 2025 is flagged. Even 2025 material on frameworks (LangChain, vLLM, Bedrock features) can be a release or two behind by Nov 2026.
 - **Level**: Start (no prior knowledge), Deeper (assumes earlier blocks), Scholar (dense or advanced).
@@ -363,19 +363,19 @@ Optional desk list: none for this block.
 
 ## Not checked
 
-- **Exact lengths** are missing for many videos (marked "length ?"); the page's duration was blocked. For re:Invent sessions, ">=" values come from the last timestamp in a third-party write-up (dev.to, Kazuya) of the transcript, not from YouTube.
+- **Lengths** were read from the YouTube pages on 2026-11-16 for every row. Earlier notes about ">=" values taken from transcript write-ups were replaced by the measured lengths.
 - **Upload dates** for many re:Invent sessions (marked "upload date ?").
 - **Content of "per title only" videos** (about 20 of the 50): oEmbed confirmed that they exist with that title and channel, but the video page or a summary could not be read. Treat their "What you will get" as expectation, not verified content.
 - **Seven pages that failed or were rate-limited when fetched** and were therefore not used or used by title only: Akka's "A Blueprint for Agentic AI Services | QCon London 2025" (EpPrZ1-OMe8, dropped), Nordic APIs "Design an Implementation of a Self-Service GenAI Platform in a Large Enterprise" (ktVuR4IdpzQ, dropped), AWS Cloud Bytes "Architecting Enterprise-Grade GenAI Systems on AWS" (J9QyD88LYvo, channel not confirmed as official, dropped), Matt Williams "How does function calling with tools really work?" (IdPdwQdM9lA, dropped), AIM3310, AIM3313 and NTA403 (kept by title).
 - **Dropped after checking:** Jason Liu "Systematically Improving RAG applications" (e668bTot45w) was a course promotion; a Stanford CS229 lecture ID from memory returned an error and the re-upload found was by an unrelated channel; several lookalike channels (e.g. summary or relaxation channels re-using talk titles) were rejected.
 - **Not searched at all:** OpenAI, Google DeepMind and Microsoft official channels; university courses (Stanford CS224N, CS329S, Berkeley LLM Agents); Databricks and Snowflake summit talks; NIST AI RMF and EU AI Act walkthroughs; the Google "Gemini Enterprise Agent Platform" videos.
-- **Totals:** 28 of the 50 main videos have a known length or lower bound (sum >= 25.6 h); the other 22 are unknown, so the whole main path is an estimate of roughly 38-42 h. Optional desk videos are extra.
+- **Totals:** all 58 main-path videos have a measured length, together 41 h 53 m (the earlier estimate of 38-42 h was close); the optional rows add 14 h 08 m.
 
 ---
 
 ## Gap-fill pass 1 (2026-11-10)
 
-One capped pass over the Gaps list. Every row below was confirmed with the YouTube oEmbed endpoint (title and channel copied exactly as returned, ID matched in the thumbnail URL). Lengths marked "(per podwise)" come from the third-party podwise.ai listing, not the YouTube page; lengths marked "(per ai.engineer)" come from the AI Engineer site's talk page. Dates: "upload date ?" means the YouTube upload date was not seen; the event year is given instead where a page stated it.
+One capped pass over the Gaps list. Every row below was confirmed with the YouTube oEmbed endpoint (title and channel copied exactly as returned, ID matched in the thumbnail URL). Lengths were read from the YouTube pages. Dates: "upload date ?" means the YouTube upload date was not seen; the event year is given instead where a page stated it.
 
 ### Prompting and structured outputs (Block 2 gap)
 

@@ -8,11 +8,11 @@ A watch-while-biking ladder for the general enterprise technology stack that sit
 - Level: Start / Deeper / Scholar. Scholar is used only in the optional lists.
 - Mode: BIKE = works mostly by listening (some need a glance at slides). DESK = needs code, paper, or pausing. Every main-path video is BIKE; DESK items appear only in optional lists.
 - Status "verified" means the YouTube oEmbed endpoint returned the exact video ID I asked for, with the title and channel shown (copied as returned). It does not mean I watched the video. After "verified" the Status says what the "What you will get" sentence is based on: the YouTube watch-page description or chapter list, a named third-party page (conference, InfoQ, ScyllaDB, AWS and similar), or the title only.
-- Length: shown only where a page stated it (the source is named). "at least X" is a lower bound taken from the last chapter marker. "length ?" means no page I read gave one. Nothing is estimated.
+- Length: read from the video's YouTube page on 2026-11-16 or 17 (no cookies, nothing played).
 - "What you will get" is one sentence in my own words, based only on the source named in Status. I have not watched any of these videos.
 - Dated material is flagged in the sentence (talks from 2012-2018 are named by year); the concepts mostly hold, product details may not.
 
-**Honest accounting.** The track has 53 main BIKE videos (Blocks 0-4: 30, Blocks 5-8: 23) and 32 optional videos (20 in Blocks 0-4, 12 in Blocks 5-8). Nothing was watched. Of the 53 main videos, 15 have some length figure and 38 read "length ?": 3 exact from a YouTube watch page, 4 exact from a conference, InfoQ, vendor or listing page, 1 approximate figure taken from an uploader's own description ("8 minutes", row 6.1), and 7 lower bounds from chapter markers. Of the 32 optional videos, only 1 (0.O2) has a length figure. Conference-slot times that a page showed are mentioned in some rows but are not counted as lengths. A total in hours cannot be stated from verified data. Many rows rest on the title alone because the YouTube watch pages could not always be read; the Gaps and Not checked sections at the end list them. The companion hands-on path for this stack is Track E (DESK).
+**Honest accounting.** The track has 53 main BIKE videos (Blocks 0-4: 30, Blocks 5-8: 23) and 32 optional videos (20 in Blocks 0-4, 12 in Blocks 5-8). Nothing was watched. All 53 main videos and all 32 optional videos have a measured length, read from the YouTube pages on 2026-11-16: 33 h 35 m for the main path and 22 h 35 m for the optional lists. Many rows rest on the title alone because the YouTube watch pages could not always be read; the Gaps and Not checked sections at the end list them. The companion hands-on path for this stack is Track E (DESK).
 
 **Mode balance.** All 53 main videos are BIKE. Three optional videos are DESK (1.O4, 2.O2, 6.O4); everything else in the optional lists is BIKE. The longer or slide-heavy videos say so in their row.
 
@@ -386,7 +386,7 @@ Honest list of what this track does not cover well, from Block 0 to Block 8.
 ## Not checked
 
 - I watched nothing. Every "What you will get" sentence comes from a title, a watch-page description or chapter list, or a named non-YouTube page (conference, USENIX, LeadDev, Feature Store Summit, Data Mesh Learning, Class Central and similar).
-- Lengths appear only where a page showed one, and the source is named in the row. Conference-slot times shown on a conference or USENIX page are noted in the row but are not treated as video lengths. Everything else reads "length ?"; nothing is estimated.
+- Lengths were read from the YouTube pages on 2026-11-16 for every row, so the earlier notes about conference-slot times are no longer needed.
 - Title-only rows (Status says "title-based"), new in Blocks 5-8: 5.4, 5.O1, 5.O2, 5.O3, 6.3, 6.O1, 6.O2, 6.O3, 6.O4, 7.1, 7.4, 7.O1, 7.O2, 8.1, 8.2, 8.3, 8.7, 8.O1, 8.O2, 8.O3. In Blocks 0-4 the title-only rows are the ones marked "title-based" in their Status, carried over from the earlier pass and not re-checked.
 - Speakers and authorship I did not confirm: 6.3 (the speaker is not confirmed; the Sigelman argument comes from a same-titled article), 6.O1, 6.O3 and 7.O1 (names come from the title only), and 7.O2 (a search tied the title to Chip Huyen, not confirmed on this upload).
 - The YouTube watch pages for many new rows returned errors or rate limits, which is why so many are title-based. I did not work around this.

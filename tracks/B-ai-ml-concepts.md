@@ -2,7 +2,7 @@
 
 A watch-while-biking ladder of 48 main videos (plus 30 optional ones, and 7 more bike videos added in the later gap-fill pass) that builds the mental models behind the UT MSAI foundational courses: ML basics, classical ML, deep learning, transformers and LLMs, reinforcement learning, planning and search, ethics, and generative models.
 
-**Total time (honest accounting).** YouTube's oEmbed endpoint does not return duration, and the watch page showed a duration for only some videos. So lengths are known for 11 of the 48 main videos (summing to about 4 h 13 min), shown below as the page stated them. Two long Karpathy talks show only a lower bound taken from their chapter list. The other 35 read "length ?" and I did not estimate them. A total in hours cannot be stated from verified data; once the "length ?" cells are filled in (open each link once), the sum is the answer.
+**Total time.** All 57 main videos (48 in the core blocks and 9 gap-fill rows) have a measured length, together 39 h 55 m; the optional lists add 32 h 27 m. The lengths were read from the YouTube pages on 2026-11-16; nothing was watched. Real riding takes longer (pauses, rewinds, recap questions).
 
 **Order logic.** Block 1 gives the vocabulary. Block 2 is classical ML. Block 3 builds on Block 2's gradient descent to get neural networks. Block 4 builds on Block 3's sequence models to get attention, transformers and LLMs. Block 5 (RL) uses the probability and gradient ideas from Blocks 1-3. Block 6 (planning) uses probability and MDPs from Blocks 2 and 5. Block 7 (ethics) comes after you have seen how models are built and fail. Block 8 closes by comparing generative model families, reusing Blocks 3-4. Inside each block, a visual/intuition video comes before a formal lecture.
 
@@ -10,7 +10,7 @@ A watch-while-biking ladder of 48 main videos (plus 30 optional ones, and 7 more
 - Level: Start / Deeper / Scholar.
 - Mode: BIKE = works mostly by listening. DESK = needs code, paper, or pausing.
 - Status "verified" means the YouTube oEmbed endpoint returned the exact video ID I asked for, with the title and channel shown (copied as returned). It does not mean I watched the video.
-- Length: shown only where the YouTube watch page stated it. "length ?" means it was not available. "at least X" is a lower bound from the last chapter marker.
+- Length: read from the video's YouTube page on 2026-11-16 or 17 (no cookies, nothing played).
 - "What you will get" is based on the video title and, where noted, on the chapter list on the watch page. I have not watched any of these videos.
 
 **UT course mapping.** The block names follow the course topics in the task brief. I could not open https://cdso.utexas.edu/msai in this session (usage limit reached), so the syllabus mapping is not independently confirmed here. Please check it against that page.
@@ -293,7 +293,7 @@ Autoregressive language models are covered by 4.1 to 4.4, so no extra video is n
 
 ## Gap-fill pass 1 (2026-11-10)
 
-Method: every video below passed the same YouTube oEmbed check as the main path (the lookup returned the title and channel copied here, for the ID in the link). I did not watch any of them, and a length is shown only where I saw one on a page (the source is named); otherwise it says "length ?".
+Method: every video below passed the same YouTube oEmbed check as the main path (the lookup returned the title and channel copied here, for the ID in the link). I did not watch any of them, and every length was read from its YouTube page on 2026-11-16 or 17.
 
 ### Short overview of the kinds of learning (Block 1 gap)
 
@@ -335,7 +335,7 @@ Belongs after #6.5 (Poupart's POMDP lecture): suggested watch order 6.5 first, t
 
 ## Gap-fill pass 2 (2026-11-10)
 
-Method: every video below passed the same YouTube oEmbed check as the main path (the lookup returned the title and channel copied here, for the ID in the link). I did not watch any of them, and a length is shown only where I saw one on a page (the source is named); otherwise it says "length ?".
+Method: every video below passed the same YouTube oEmbed check as the main path (the lookup returned the title and channel copied here, for the ID in the link). I did not watch any of them, and every length was read from its YouTube page on 2026-11-16 or 17.
 
 ### General scaling laws (Block 4 gap)
 
@@ -370,9 +370,9 @@ Belongs after #7.1 (the short trustworthy-AI orientation): suggested watch order
 ## Not checked
 
 - I have not watched any video; "What you will get" is from titles and, for two Karpathy talks, chapter lists on the watch page.
-- Lengths: the watch page stated a duration for only 11 main videos. The rest read "length ?". I did not estimate, so total hours are not available.
+- Lengths: every main and optional row has a measured length (read from the YouTube pages on 2026-11-16); the main path is 39 h 55 m.
 - The UT syllabus mapping: https://cdso.utexas.edu/msai could not be opened in this session. Course-topic claims come from the task brief.
-- Gap-fill rows (G1 to G8): I did not watch any of them. Lengths are given only where I saw one on a page (G1 and G6 on third-party transcript pages, G5 as a lower bound from its last chapter marker, G7 on the YouTube watch page); every other row shows "length ?". Content notes come from the named syllabus lines, chapter lists, notes or transcript pages, or from the title only (G8), as marked in the Status column. Level and Mode tags for these rows are my judgement.
-- Gap-fill pass 2 rows (G9 to G11): I did not watch any of them. Lengths are given only where I saw one on a YouTube watch page (G11's 1:04:13, and G9 as a lower bound from its last chapter marker); G10 shows "length ?". Content notes come from the watch-page descriptions and chapter list as marked in the Status column. Level and Mode tags are my judgement.
+- Gap-fill rows (G1 to G8): I did not watch any of them. Lengths were read from the YouTube pages. Content notes come from the named syllabus lines, chapter lists, notes or transcript pages, or from the title only (G8), as marked in the Status column. Level and Mode tags for these rows are my judgement.
+- Gap-fill pass 2 rows (G9 to G11): I did not watch any of them. Lengths were read from the YouTube pages. Content notes come from the watch-page descriptions and chapter list as marked in the Status column. Level and Mode tags are my judgement.
 - Whether each video remains available over time, and whether Level/Mode tags match the actual pace and need for pausing.
 - Whether channel re-uploads exist for lectures I selected (I used the original or official channel where search surfaced it, and dropped third-party re-uploads).

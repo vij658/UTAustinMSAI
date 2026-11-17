@@ -1,24 +1,28 @@
-# Resume here (written 2026-11-16)
+# Resume here (updated 2026-11-17)
 
-What this is: video learning roadmap for Sankar (UT Austin online MSAI, Spring 2027; goal: design large-scale GenAI tech stacks). Tracks are markdown in `tracks/`; `python3 tools/build_html.py` builds `html/` (index plus one page per track). `tools/checkpoint.sh "message"` rebuilds and commits.
+What this is: video learning roadmap for Sankar (UT Austin online MSAI, Spring 2027; goal: design large-scale GenAI tech stacks). Tracks are markdown in `tracks/`; `python3 tools/build_html.py` builds `html/` (index plus one page per track). `tools/checkpoint.sh "message"` rebuilds, commits and pushes.
 
 ## Rebuild from the Project copy
-Create a folder with `tracks/*.md`, `ROADMAP.md`, `tools/build_html.py`, run `python3 tools/build_html.py` (needs `pip install markdown`). Tracks: A math, B AI/ML concepts, C GenAI stack, D tech stack (bike), E tech stack (desk), F UT course tracker, G end-to-end GenAI (G is being built; the builder skips missing files).
+Create a folder with `tracks/*.md`, `ROADMAP.md`, `tools/build_html.py`, run `python3 tools/build_html.py` (needs `pip install markdown`). Tracks: A math, B AI/ML concepts, C GenAI stack, D tech stack (bike), E tech stack (desk), F UT course tracker, G end-to-end GenAI (13 stages, Blocks 0-12). The builder skips missing files.
 
 ## Rules that carry over
-- Nothing was watched. "Verified" means YouTube oEmbed returned the same ID, title and channel. Lengths are filled only where seen.
-- Keep roadmap videos out of his YouTube watch history (standing preference). Do not open or play videos in his signed-in browser. For lengths use cookie-less fetches of watch-page HTML from a youtube.com tab, paced about 30 seconds apart, and only with his history paused.
+- Nothing was watched. "Verified" means YouTube oEmbed returned the same ID, title and channel. A length means it was read from that video's YouTube watch page (no cookies, nothing played).
+- Keep roadmap videos out of his YouTube watch history (standing preference). Do not open or play videos in his signed-in browser. For lengths use cookie-less fetches of watch-page HTML from a youtube.com tab (`credentials:'omit'`), paced about 30 seconds apart, only with his history paused, and stop on 429 or 403. Never delete history without asking.
 - One research agent at a time, and tell him before each starts (three at once hit the rate limit).
 - GitHub: repo is vij658/UTAustinMSAI (public, created by the user on 2026-11-16). The shell's `gh` login is invalid, but attaching the repo to the session (add_repo tool, push access) lets plain `git push origin main` work through the session proxy. Commit authors are only Claude <noreply@anthropic.com>; keep personal email out of commits. No employer or sensitive details belong in this public repo.
+- Do not edit his Project doc `UT_MSAI_Todo.md` without his approval; proposed edits only (see the end of this file).
 
-## State at this checkpoint
-- A 62, B 57, C 58, D 53, E 47 main-path videos; gap-fill passes 1 and 2 done for A, B, C.
-- Done: Track F (UT course tracker: 14 courses, 93 main videos, elective ranking at the top of the file). Track G part 1 (Blocks 0-6: build map, language-model basics, pretraining, post-training, adaptation, inference and serving, grounding and RAG; 40 main videos) is written and committed. In progress: Track G part 2 (Blocks 7-12 plus Gaps, Not checked, morning list, intro counts); the file ends with `<!-- STAGES 7-12 GO HERE -->` until it lands. Then: update ROADMAP.md for Track G, fill lengths, send files.
-- In progress: a paced length lookup (187 videos, paced 30-35 s) held in a Chrome tab; results (video id -> seconds) go into the tracks with scratchpad `merge_lengths.py` (replaces the Length cell with the measured time plus '(per YouTube page, 2026-11-16)'). After it finishes, run the same lookup for Track F and G IDs that are not in A-E, recompute total hours, replace the 30-minute-per-video guess in ROADMAP.md.
+## State (2026-11-17)
+- Tracks A-E: 62, 57, 58, 53, 47 main-path videos; every length measured; stale "length ?" wording replaced; main-path hours A 22 h 41 m, B 39 h 55 m, C 41 h 53 m, D 33 h 35 m, E 31 h 08 m.
+- Track F (UT courses): 15 courses (Block 15 = Agentic Software Engineering, added from the handbook), 98 main rows. The 2027-2028 MSAI Student Handbook (he supplied it) has been merged: course numbers, only Ethics in AI required, prerequisites, coordinator questions. The Spring 2027 offering list is NOT in the handbook; it comes from his program email of 2026-11-16 (recorded in his to-do).
+- Track G (end-to-end GenAI): complete, 13 stages, 76 main rows, 124 rows, 121 distinct videos.
+- HTML builder has `fix_lists()` so lists under bold labels render as lists.
+- ROADMAP.md is regenerated from measured numbers by the scratchpad script `build_roadmap.py`; MORNING.md lists pages I could not open.
 
-## Paused 2026-11-16 15:43 (user asked to pause; no further video searches until he says start)
-- Track G is complete on disk: Blocks 0-12, Gaps, Not checked, morning list (agent 2 report: 76 main rows, 124 rows, 121 distinct videos). Not yet reviewed line by line by me beyond the build check.
-- Known formatting issue: in Track G Blocks 1-6 a numbered list right after a "**Build it**" line renders as one paragraph in the HTML; fix = a blank line after each such line.
-- Length lookup finished: 377 lengths (all A-E ids, none failed). They sit in the Chrome tab's `window.__res` and, partly, in the scratchpad (`raw_lengths.txt`, `merge_lengths.py`). NOT yet merged into the tracks. Track F and G ids that are not in A-E still have no measured length.
-- Handbook (MSAI Online Handbook 2027-2028, supplied by the user) read but NOT yet merged into Track F. Facts to merge: course numbers (ML AI 391L, Ethics AI 380E, Planning AI 388U, Optimization AI 388J, Deep Learning AI 394D, Online Learning and Optimization AI 388K, RL AI 394R, NLP AI 388, Automated Logical Reasoning AI 389L, Case Studies AI 391M, AI in Healthcare AI 380H, Advances in Deep Learning / Advances in Generative Models / AI in Astrophysics / Agentic Software Engineering all AI 395T); only Ethics is required (B- or better), the other 9 courses are free electives (C or better), 3.0 GPA, letter grades only, 6-year limit, typical 1.5-3 years, at most 6 transfer hours; a 15th course, Agentic Software Engineering (title only in the handbook), is new; AI in Astrophysics needs a B or better in ML and DL taken before or alongside; Advances in Generative Models says take ML and DL first; handbook description of Advances in Deep Learning matches the UT Deep Learning Group outline (memory-efficient optimization, diffusion and autoregressive generation, LLMs and vision). A related on-campus course page exists: CS 378 Agentic Software Engineering (Fall 2026, Emmett Witchel, on the handbook faculty list), unconfirmed to be the same course. The handbook is dated for 2027-2028, so check it applies to a Spring 2027 start.
-- Next when told to resume: merge handbook facts into Track F (new Block 15, ranking row, coordinator questions), merge lengths into tracks A-E, rebuild, run lengths for F/G ids, update ROADMAP for Track G and real hours, send files.
+## Length lookup status
+- 377 lengths (all A-E ids) merged on 2026-11-16/17. The remaining 123 ids (Tracks F and G only) were being looked up 30-35 s apart in a Chrome tab on 2026-11-17; see the final commit message for whether it finished. Results go into the tracks with `merge_lengths.py` (replaces the Length cell with `H:MM:SS`), then `patch_fg.py` rewrites the F and G counts and wording.
+
+## Proposed edits to his to-do (not applied)
+- Section 9a: refund wording (a Q-drop from day 13 has no refund) and the coordinator-drop wording, to match the handbook; add or drop the refund sentence as he prefers.
+- Replace "Foundational" with the handbook's wording: only Ethics in AI is required; the other nine courses are free electives.
+- Ask whether AI in Astrophysics is offered (the handbook lists it, the program email does not).

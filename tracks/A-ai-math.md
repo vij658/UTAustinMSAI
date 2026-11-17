@@ -2,7 +2,7 @@
 
 The math you need to read the UT Austin MS in AI syllabi without freezing, built as a watch-while-riding path. It has **47 videos in 8 blocks** (Block 0 to Block 7). Every video below passed a YouTube oEmbed existence check (the lookup returned the same video ID, with the title and channel copied exactly). I did not watch them; see "Not checked" at the end.
 
-**Hours:** only 8 of the 47 videos have a length I could confirm (together 2 h 58 m). For the rest YouTube blocked the length lookup, so they show "length ?". My expectation, not a measurement, is that the total lands in the low-to-mid 20s of hours. If you want more listening time, the "Optional extras" section lists more verified videos.
+**Hours:** all 62 main-path videos (47 in the core blocks and 15 gap-fill rows) have a measured length, together 22 h 41 m; the optional extras add 12 h 32 m. The lengths were read from the YouTube pages on 2026-11-16; nothing was watched. If you want more listening time, the "Optional extras" section lists more verified videos.
 
 **Order logic:**
 
@@ -18,7 +18,7 @@ Conventions used in every table:
 
 - **Level**: Start = no background needed. Deeper = university level. Scholar = research or proof depth.
 - **Mode**: BIKE = you can ride and mostly listen, glancing at the screen. DESK = you need paper, code or pausing, so save it for a desk session.
-- **Length**: copied from the YouTube page. "length ?" means the page would not show it (YouTube returned a bot-protection page), so the length is unconfirmed.
+- **Length**: read from the video's YouTube page on 2026-11-16 or 17 (no cookies, nothing played).
 - **Status**: "verified" means the YouTube oEmbed lookup returned the same video ID, with the title and channel exactly as written in the table.
 - Titles and channels are copied exactly as the oEmbed lookup returned them.
 
@@ -107,7 +107,7 @@ Order logic: the 3Blue1Brown series (#11 to #17) is watched in its own chapter o
 | 19 | StatQuest: Principal Component Analysis (PCA), Step-by-Step | StatQuest with Josh Starmer | https://www.youtube.com/watch?v=FgakZw6K1QQ | 21:57 | Deeper | BIKE | PCA worked through step by step, which makes the SVD idea concrete on data. | verified |
 | 20 | 29. Singular Value Decomposition | MIT OpenCourseWare | https://www.youtube.com/watch?v=TX_vooSnhm8 | 40:28 | Scholar | DESK | The classic university lecture on SVD (MIT 18.06 numbering). Watch it after #18 and #19 so the formulas already have a picture behind them. | verified |
 
-Note on #20: it is a full university lecture and its length is unconfirmed. I kept it because SVD is central to the UT courses and it is the one lecture-depth treatment I verified. Steve Brunton's "Mathematical Overview" (listed under Optional extras) is a possible alternative, but I could not confirm its length either. If you only want intuition, #18 and #19 are enough and you can skip #20.
+Note on #20: it is a full university lecture; its length is in the table. I kept it because SVD is central to the UT courses and it is the one lecture-depth treatment I verified. Steve Brunton's "Mathematical Overview" (listed under Optional extras) is a possible alternative; its length is in the table. If you only want intuition, #18 and #19 are enough and you can skip #20.
 
 **Full circle:** a dense layer is y = Wx + b, attention scores are dot products, embeddings are compared by dot product or cosine, PCA and SVD give dimensionality reduction, and low-rank ideas (including LoRA) are truncated SVD in spirit.
 
@@ -139,7 +139,7 @@ Note on #20: it is a full university lecture and its length is unconfirmed. I ke
 | 23 | The Jacobian matrix | Khan Academy | https://www.youtube.com/watch?v=bohL918kXQk | 6:22 | Deeper | BIKE | The Jacobian as the matrix of partial derivatives, tying this block back to matrices from Block 2 (title-based description). | verified |
 | 24 | Lec 12: Gradient; directional derivative; tangent plane \| MIT 18.02 Multivariable Calculus, Fall 07 | MIT OpenCourseWare | https://www.youtube.com/watch?v=2XraaWefBd8 | 50:10 | Deeper | DESK | A full university lecture on the gradient and directional derivatives, for after the shorter videos above. | verified |
 
-Note on #24: it is a full lecture with unconfirmed length. It is optional: #21 to #23 cover what the later blocks use. Take it if the gradient still feels like symbols and not a direction.
+Note on #24: it is a full lecture (its length is in the table). It is optional: #21 to #23 cover what the later blocks use. Take it if the gradient still feels like symbols and not a direction.
 
 **Full circle:** gradient descent moves every parameter along minus the gradient of the loss, and backpropagation computes that gradient by multiplying Jacobians layer by layer (you will see it done in Block 6).
 
@@ -177,7 +177,7 @@ Order logic: Khan gives the first vocabulary, 3Blue1Brown gives the Bayes pictur
 | 31 | But what is the Central Limit Theorem? | 3Blue1Brown | https://www.youtube.com/watch?v=zeJD6dqJ5lo | 31:14 | Start | BIKE | Why sums and averages of many random things look normal. | verified |
 | 32 | Lecture 28: Inequalities \| Statistics 110 | Harvard University | https://www.youtube.com/watch?v=UtXK_EQ3Pow | 47:29 | Scholar | DESK | Probability inequalities. This is the proof-flavoured background for the PAC-learning style bounds in the UT courses. | verified |
 
-Note on lectures #27 to #30 and #32: each is a full university lecture and lengths are unconfirmed. I found no verified short video that covers conditional probability, random variables, expectation and the normal distribution at this depth. #25, #26 and #31 are the short on-ramps.
+Note on lectures #27 to #30 and #32: each is a full university lecture (the lengths are in the table). I found no verified short video that covers conditional probability, random variables, expectation and the normal distribution at this depth. #25, #26 and #31 are the short on-ramps.
 
 **Full circle:** a classifier's softmax output is a probability distribution, cross-entropy is an expected negative log probability, a mini-batch average estimates an expectation, MDPs are defined with expectations, and the inequalities in #32 are the starting point of generalization bounds.
 
@@ -301,7 +301,7 @@ Note on #44: at 53:48 it is long, and I found no verified shorter propositional-
 
 ## Optional extras (verified to exist, not counted in the main path)
 
-These passed the same oEmbed check. Use them to deepen a block or to add listening hours if the main path feels too short. Lengths were not confirmed.
+These passed the same oEmbed check. Use them to deepen a block or to add listening hours if the main path feels too short. Their lengths are in the tables.
 
 | Block | Title | Channel | Link | Length | Status |
 |-------|-------|---------|------|--------|--------|
@@ -332,7 +332,7 @@ Suggested use: if #20 or #27 feels like a cold start, do Stat 110 Lecture 1 and 
 
 ## Gap-fill pass 1 (2026-11-10)
 
-Method: every video below passed the same YouTube oEmbed check as the main path (the lookup returned the title and channel copied here, for the ID in the link). I did not watch any of them, and a length is shown only where I saw one on a page (the source is named); otherwise it says "length ?".
+Method: every video below passed the same YouTube oEmbed check as the main path (the lookup returned the title and channel copied here, for the ID in the link). I did not watch any of them, and every length was read from its YouTube page on 2026-11-16 or 17.
 
 ### Continuous random variables and densities (Block 4 gap)
 
@@ -385,7 +385,7 @@ Belongs after #44 (propositional logic) and before #45 (induction): watch G11, t
 
 ## Gap-fill pass 2 (2026-11-10)
 
-Method: every video below passed the same YouTube oEmbed check as the main path (the lookup returned the title and channel copied here, for the ID in the link). I did not watch any of them, and a length is shown only where I saw one on a page (the source is named); otherwise it says "length ?".
+Method: every video below passed the same YouTube oEmbed check as the main path (the lookup returned the title and channel copied here, for the ID in the link). I did not watch any of them, and every length was read from its YouTube page on 2026-11-16 or 17.
 
 ### Standalone RMSProp (Block 6 gap)
 
@@ -415,11 +415,11 @@ Belongs after #44 (propositional logic): suggested watch order G11 and G12 (pass
 
 ## Not checked
 
-- **Lengths:** only 8 of 47 main-path videos have a confirmed length (#2, #5, #6, #7, #8, #15, #19, #44). For the other 39 and for every optional extra, YouTube returned a bot-protection page and I did not work around it, so they show "length ?". The confirmed ones sum to 2 h 58 m 36 s.
-- **Total hours is therefore not confirmed.** The 3Blue1Brown, Khan and StatQuest videos are usually short and the lectures are usually around an hour, so the total probably falls somewhere in the low-to-mid 20s of hours, which is at or just under the requested range. This is an expectation, not a measurement; check the lengths on the day before you plan a ride.
+- **Lengths:** all 62 main-path videos and all 20 optional extras have a length read from the YouTube page on 2026-11-16 (22 h 41 m main path, 12 h 32 m optional). Earlier drafts said only 8 of 47 were known; those cells were replaced.
+- **Total hours are measured:** 22 h 41 m of listening for the main path. Real riding takes longer (pauses, rewinds, recap questions).
 - **Content of videos:** I confirmed that each video exists, with the title and channel above, but I did not watch any of them. Descriptions in "What you will get" are drawn from titles, chapter lists and series context, and are marked "title-based" where I had nothing else (#22, #23, #25, #36). MIT 6.042J lecture topics come from the OCW lecture list, not from the YouTube pages.
-- **Gap-fill rows (G1 to G12):** I did not watch any of them. Lengths are given only where I saw one on a page (G6, per podwise, rounded); every other row shows "length ?". Content notes come from the named listing pages or from titles only, as marked in the Status column.
-- **Gap-fill pass 2 rows (G13 to G15):** I did not watch any of them. The only length is G14's, a lower bound from its last chapter marker on a rosetta.to page; G13 and G15 show "length ?". G13 and G15 are title-based (I could not read their watch pages), and G14's content comes from the rosetta.to page. The five Stanford Online IDs retried in this pass failed the oEmbed check again, so none of them is used.
+- **Gap-fill rows (G1 to G12):** I did not watch any of them. Lengths were read from the YouTube pages. Content notes come from the named listing pages or from titles only, as marked in the Status column.
+- **Gap-fill pass 2 rows (G13 to G15):** I did not watch any of them. Lengths were read from the YouTube pages. G13 and G15 are title-based (I could not read their watch pages), and G14's content comes from the rosetta.to page. The five Stanford Online IDs retried in this pass failed the oEmbed check again, so none of them is used.
 - **Level and Mode tags** are my judgement from the format and creator, not something a lookup can verify.
 - **Not included, not checked for content:** a PAC-learning and VC-dimension lecture (Caltech, "Lecture 07 - The VC Dimension", https://www.youtube.com/watch?v=Dc0sr0kdBVI) passed the existence check, but it belongs to ML theory rather than this math track, so I left it out. A Technion "Lecture 4-5: Convex sets and functions" (https://www.youtube.com/watch?v=knBF1VfjSz4) also exists, but I did not confirm its language, so I left it out. The 2023 Boyd Lecture 3 (convex functions) could not be verified (the oEmbed lookup failed), so it is not listed.
 - **Passed the existence check but not used:** "The Mean Squared Error of an Estimator and the Bias Variance Tradeoff" (Mike, the Mathematician, https://www.youtube.com/watch?v=UAefABgvb84), "What are Maximum Likelihood (ML) and Maximum a posteriori (MAP)?" (Iain Explains Signals, Systems, and Digital Comms, https://www.youtube.com/watch?v=9Ahdh_8xAEI), "Explaining the intuition behind Bayesian inference" (Ben Lambert, https://www.youtube.com/watch?v=yvWlpwnT1nw), and "Maximum Likelihood Estimation (MLE): The Intuition" (IntuitiveML, https://www.youtube.com/watch?v=wbh730SeqeA). I did not check their length or content, so I did not put them in the path. The Ben Lambert one is the first to try if you want more Bayesian inference (see Gaps).
