@@ -914,4 +914,366 @@ Read this before Block 1, and come back to it at the start of every block. The l
 
 <!-- Pages to check (Blocks 7-12): every new row's watch page was read (oEmbed was again refused by the fetch allowlist; title and channel come from the watch-page metadata). The fetch tool sometimes returned another video's page for a requested ID, so a row was kept only when the page's title matched the search result; these candidate IDs were skipped for that reason and are not in the file: SXwC9fSwct8 (search title "Ultimate Docker Compose Tutorial", TechWorld with Nana per search), hAdEuDBN57g, bZzyPscbtI8, 8rieuXTvBtM, Ek8JHgZtmcI, tc713anE3UY, j63xRV52IMk. Repos were checked with git ls-remote and a shallow clone (last commit date); the GitHub API was not reachable from this session. -->
 
+---
+
+## Block 13: Users, auth and a gateway, all local
+
+**What you build:** Real users for DocDesk on your laptop: registration and login with hashed passwords, a JWT access token on every request, routes that know the current user, chats that only their owner can read, an API key for scripts, a rate limit, and Nginx in front of everything in the Compose stack as the single front door.
+**New layer:** authentication and authorization, and a gateway (reverse proxy) in front of the services. **Reuses:** the Block 5 API, the Block 9 Compose stack and the Block 10 `users`, `conversations` and `messages` tables.
+**Needs:** Block 10 working (12 is not required). One-time: `pip install pyjwt "pwdlib[argon2]" pydantic-settings` (the libraries Corey Schafer's Part 10 repo uses; pixegami's 5.3 repo uses `python-jose` instead, which does the same job). No new account or cloud service: Nginx runs as the `nginx` image in Compose. Corey Schafer's Parts 10 and 11 continue his series from Parts 6 to 9 (async database, routers), which you have not built; start from his Part 10 repo, as the Build steps say, rather than from your Block 5 copy.
+**Architecture so far:**
+```
+ browser / curl / script
+   |  :80 only (the one published port)
+   v
+ * nginx (reverse proxy)  /  -> ui:8501     /api/ -> api:8000
+   * limit_req (per-IP rate limit), request size limit, access log
+   |
+ ui (Streamlit) ---- Authorization: Bearer <JWT> ----> api (FastAPI)
+                                                         * POST /auth/register, /auth/token
+                                                         * get_current_user dependency (JWT or X-API-Key)
+                                                         * per-user rate limit
+                                                         /chat, /ask, /agent  -> only your own conversations
+ postgres: users(* email, * password_hash), * api_keys(user_id, key_hash),
+           conversations(user_id ...), messages            (Block 10)
+```
+**Follow the video:**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 13.1 | Session Vs JWT: The Differences You May Not Know! | ByteByteGo | https://www.youtube.com/watch?v=fyTxwIa-1U0 | length ? | Start | BIKE | An animated explainer (2024) of the two ways a server remembers a logged-in user: a session id that points to state on the server, or a signed token that carries the claims itself, and what each costs you for logout, scaling and security. | verified; description |
+| 13.2 | OAuth and OpenID Connect in Plain English • Nate Barbettini • GOTO 2020 | GOTO Conferences | https://www.youtube.com/watch?v=sSy5-3IkXHE | 18:44 | Start | BIKE | Fast lane: per the chapters, why OAuth exists (delegated authorisation), the flow vocabulary, how OpenID Connect adds identity on top, and current practice. You will know most of it; use it to check that your words match the common ones. | verified; content per watch-page description and chapters; also in Track D 5.1; watch once |
+| 13.3 | Python FastAPI Tutorial (Part 10): Authentication - Registration and Login with JWT | Corey Schafer | https://www.youtube.com/watch?v=Go4wYJJhR3k | length ? | Start | DESK | The Block 5 series continues (2026): user registration with Argon2 password hashing, login that returns a JWT, settings with pydantic-settings, and the client keeping the token. | verified; description |
+| 13.4 | Python FastAPI Tutorial (Part 11): Authorization - Protecting Routes and Verifying Current User | Corey Schafer | https://www.youtube.com/watch?v=MY0TFMMm9B0 | length ? | Start | DESK | The next episode (2026): a reusable `get_current_user` dependency that checks the token, the user id taken from the token instead of the request body, and ownership checks so users can only change their own posts: the pattern for per-user chats. | verified; description |
+| 13.5 | NGINX Explained - What is Nginx | TechWorld with Nana | https://www.youtube.com/watch?v=iInUBOVeBCc | length ? | Start | BIKE | Per its chapters (2024): Nginx as web server, reverse proxy and load balancer, how its configuration is organised, caching and TLS termination, and how an Nginx load balancer compares with a cloud load balancer (the Block 16 question). | verified; description |
+| 13.6 | Docker and Nginx Reverse Proxy | Wes Doyle | https://www.youtube.com/watch?v=hxngRDmHTM0 | length ? | Deeper | DESK | Per its chapters, a Compose file where one Nginx container routes paths to two Python Flask APIs and a front-end container, with the `nginx.conf` written line by line. From 2020 and Flask, not FastAPI; the Compose and Nginx parts are unchanged. | verified; description |
+
+**Code:** 13.1, 13.2 and 13.5: none (concepts). 13.3: https://github.com/CoreyMSchafer/FastAPI-10-Authentication (last updated 2026-01; `auth.py` with `OAuth2PasswordBearer`, PyJWT and `pwdlib`; matched by name with the description's cut-off link). 13.4: https://github.com/CoreyMSchafer/FastAPI-11-Authorization (last updated 2026-01; matched by name the same way). 13.6: the description links a repository under `github.com/productive-dev/` that is cut off on the watch page; type along. Rate limiting and a second JWT example: the Block 5 repo for 5.3, https://github.com/pixegami/fastapi-gemini-ai (last updated 2025-06; `src/auth/throttling.py` is a small in-memory per-user limiter and `src/auth/dependencies.py` checks the JWT).
+**Optional (extra):**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 13.O1 | Create a Nginx Reverse Proxy for a Node Server with Docker Compose | WittCode | https://www.youtube.com/watch?v=U60MdJeov_0 | length ? | Start | DESK | Per its chapters (2023), the same reverse proxy as 13.6 with a newer Compose file: a Node server, the Nginx configuration, both images, debugging and a look inside the running Nginx container. A smaller channel; the Node part is short. | verified; description |
+| 13.O2 | API Gateway Pattern & Kong in a Microservices World | The Linux Foundation | https://www.youtube.com/watch?v=OUUiS28hZuw | 41:45 | Deeper | BIKE | The only API-gateway concept talk I verified; it is a vendor (Kong) talk, judged from the title only, so keep the pattern and discount the product. | verified; title-based; also in Track D 3.O1; watch once |
+| 13.O3 | Rate Limiter using Spring Cloud Gateway and Redis example \| Tech Primers | Tech Primers | https://www.youtube.com/watch?v=0LoqPg6h6wc | 15:15 | Deeper | DESK | By title, an API gateway in Spring Cloud Gateway with a Redis-backed rate limiter, which ties Block 1's Redis to the gateway pattern [Track E; Redis arrives in Block 18 here]. I could not read the watch page, and a gateway tutorial of this kind may be several Spring versions old. | verified; title-based; also in Track E 2.5; watch once |
+
+**Build it (follow the video):**
+1. Watch 13.1 and 13.2. On your sheet, write one line each for: authentication (who are you), authorization (what may you do), session, JWT, OAuth 2.0 (delegated access) and OpenID Connect (login on top of OAuth). Mark which one DocDesk uses in this block (a password login that issues its own JWT, no outside identity provider yet; Cognito comes in Block 22).
+2. Clone the Part 10 repo, open it in VS Code and run it as its README says (`uv sync` and `fastapi dev main.py`, or plain `pip`). Then follow 13.3 against that code: read `config.py` (settings and `SECRET_KEY`), `auth.py` (hash, verify, create and verify a token) and the register and token routes, pausing the video to find each piece.
+3. In `/docs`, register a user, then press "Authorize" and log in: FastAPI's password flow form calls the token route for you. Copy the `access_token` and paste it into https://jwt.io (or decode it with `python -c "import jwt; print(jwt.decode(TOKEN, options={'verify_signature': False}))"`): you see the `sub` and `exp` claims, readable by anyone, which is why a JWT is signed but never holds secrets.
+4. Follow 13.4 with the Part 11 repo: the `get_current_user` dependency, a protected route that returns 401 without a token, and the ownership check that returns 403 when you edit someone else's post. Make one of each with `curl` and note which status code means "who are you?" and which means "not yours".
+5. Go back to 5.3 (Block 5) and watch from 12:51 (Rate Limiting) to 22:38: read `throttling.py` and `dependencies.py` in its repo, run it, and send requests in a loop until you get 429. Note that the counter lives in one Python process's memory.
+6. Watch 13.5 for the "why", then follow 13.6: a Compose file with an `nginx` service that is the only one with a published port, and an `nginx.conf` with `location` blocks that forward paths to the services by their Compose names. Run `docker compose up` and check that the services are no longer reachable on their own ports.
+
+**Carry it into DocDesk:**
+- Migration: add `email` (unique) and `password_hash` to `users`, and a table `api_keys(id, user_id, key_hash, name, created_at, revoked_at)`. Store only hashes, never the password or the key itself.
+- Add `docdesk/auth.py` modelled on 13.3: `hash_password`, `verify_password`, `create_access_token` (15-minute expiry) and `get_current_user`. Add `POST /auth/register` and `POST /auth/token` (the OAuth2 password flow form, so `/docs` can log in). Put `SECRET_KEY` in `.env` (generate it with `python -c "import secrets; print(secrets.token_hex(32))"`), never in the code.
+- Per-user data: `/chat`, `/ask`, `/agent` and `GET /conversations/{id}` take `user = Depends(get_current_user)`; the user id comes from the token, not the request body; every conversation query filters on `user_id`, and a conversation that belongs to someone else returns 404 (do not reveal that it exists). Add `GET /conversations` that lists only your own.
+- API keys for scripts: `POST /api-keys` creates a random key (`secrets.token_urlsafe(32)`), shows it once and stores its hash; `get_current_user` also accepts an `X-API-Key` header and looks up the hash. Use a key from a small `scripts/ask.py` that calls `/ask` without a password.
+- Rate limit in the API, as in 5.3, but per user and only on the model-calling routes (for example 20 questions per minute per user), returning 429 with a `Retry-After` header. Like 5.3's limiter it lives in memory; Block 18 moves the counter to Redis so several API copies share it.
+- Streamlit: a login form that stores the token in `st.session_state` and sends `Authorization: Bearer ...` on each call; on 401, show the login form again.
+- Nginx in Compose: an `nginx` service with `nginx/nginx.conf`, `ports: ["80:80"]` on Nginx only (remove the published ports of `api`, `ui`, `db` and `ollama`), `location /api/` proxied to `http://api:8000/` and `location /` to `http://ui:8501` with the WebSocket headers Streamlit needs (`proxy_http_version 1.1`, `proxy_set_header Upgrade $http_upgrade`, `proxy_set_header Connection "upgrade"`). Set `DOCDESK_API_URL` for the UI to `http://api:8000` (inside the network) as before.
+- At the gateway: `limit_req_zone` with a per-IP limit on `/api/` (coarse protection for everyone), `client_max_body_size` for uploads, and an access log line that includes the request time. The per-user limit stays in the API, because only the API knows who the user is.
+
+**Done when:** with `docker compose up`, only port 80 answers on your laptop; you can register two users in the page, each sees only their own conversations, and `curl localhost/api/conversations/<other user's id>` with your token returns 404; a request without a token returns 401; `scripts/ask.py` works with an API key and stops working after you revoke it; and a burst of 30 fast questions gets 429 responses from the API, while a flood of unauthenticated requests is cut by Nginx's `limit_req` (503 by default, or the status you set).
+**Stretch:** add refresh tokens (a long-lived token stored server-side that can be revoked, as in 13.1's trade-off), or replace your own login with Keycloak in Compose and validate its JWTs in FastAPI; this is the OIDC pattern from 13.2 that Block 22 repeats with Cognito.
+**Cost and teardown:** no cloud cost; one more small container (Nginx). `docker compose down` as before. Rotate `SECRET_KEY` if you ever commit it: every token issued with it becomes invalid, which is also how you log everyone out.
+**Progression check:** New: password hashing, JWT access tokens, a current-user dependency, ownership checks, API keys, rate limits at two places, and a reverse proxy as the only door. Reused: the Block 5 API, the Block 9 Compose stack, the Block 10 tables, the Block 5 video (5.3) for rate limiting. Jump size: medium; the concepts come first (13.1-13.2), then the same series you used in Blocks 5 and 10 adds login (13.3) and then authorization (13.4), and the gateway (13.5-13.6) is configuration in front of code that already works, with no cloud yet.
+**Architect's question:** you now check identity in the API and limit traffic in two places. In a bank, which checks belong at the gateway (TLS, coarse rate limits, API-key validation, request size), which must stay in the service (may this user see this conversation or this document), and what happens to your design when the identity provider is the bank's single sign-on and DocDesk never sees a password?
+
+<details><summary>Recap questions</summary>
+
+1. Q: What is the difference between authentication and authorization, and which HTTP status codes go with each? A: Authentication establishes who the caller is (401 Unauthorized when it is missing or invalid); authorization decides what that caller may do (403 Forbidden, or 404 when you should not reveal that the resource exists).
+2. Q: Why can anyone read a JWT, and why can they still not forge one? A: The header and claims are only Base64-encoded, not encrypted; the signature over them is made with a secret (or private key) only the server has, so a changed claim no longer matches the signature and the server rejects it.
+3. Q: Why keep a per-user rate limit in the API when Nginx already limits requests? A: Nginx sees IP addresses, not users, so it can only throttle coarse traffic; the API knows the authenticated user and can apply a fair per-user limit on the expensive model calls.
+
+</details>
+
+---
+
+## Block 14: AWS foundations: a safe account, IAM, the CLI, a budget and S3
+
+**What you build:** A personal AWS account set up the safe way (root user locked away behind MFA, a monthly budget with email alerts before anything else, a separate admin identity for daily work), the AWS CLI signed in without long-lived access keys, and an S3 bucket that holds the DocDesk PDFs, which `ingest.py` now reads with boto3. Nothing is deployed yet.
+**New layer:** the cloud account, identity (IAM) and object storage. **Reuses:** the DocDesk PDFs from Block 0 and `ingest.py` from Blocks 8 and 10; the app itself still runs in Compose on your laptop.
+**Needs:** Block 13 working (only the ingestion step changes here). A phone with an authenticator app (or a hardware security key) for MFA, an email address used only for this account, and a payment card in case the sign-up asks for one (the sign-up screens change; follow what they show). One-time: AWS CLI version 2 (14.4's description says `aws login` needs version 2.32.0 or later; `aws --version` shows yours) and `pip install boto3`. Personal account only: nothing from work, no work credentials.
+**Architecture so far:**
+```
+ * AWS account (one Region for the whole track)
+     * root user: MFA, no access keys, locked away
+     * AWS Budgets: monthly cost budget -> email at 50% / 80% / 100% (actual and forecast)
+     * IAM: admin identity for you (console + `aws login`), MFA on
+            * policy docdesk-s3-read (ListBucket, GetObject on the docs prefix)  -> used in Block 15
+     * S3 bucket  docdesk-docs-<random>   (Block Public Access on, encryption on)
+          docs/*.pdf
+              ^
+              | boto3 (list_objects_v2, get_object)
+ laptop:  ingest.py --source s3://docdesk-docs-.../docs/  -> Postgres + pgvector (Compose, Block 10)
+          nginx -> ui / api  (Block 13, unchanged)
+```
+**Follow the video:**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 14.1 | AWS IAM Core Concepts You NEED to Know | Be A Better Dev | https://www.youtube.com/watch?v=_ZCTvmaPgao | length ? | Start | BIKE | A whiteboard-style introduction (2021) to IAM through one practical example: users and groups, policies and permissions, roles and the trust relationship that lets a service assume one. The console has moved on; the ideas have not. | verified; description |
+| 14.2 | How to Set Up & Secure an New Free Tier AWS Account | cloudmancer | https://www.youtube.com/watch?v=SOOuSNG23No | length ? | Start | DESK | Per its chapters (2025): signing up, signing in as the root user and protecting it with MFA, creating an IAM user for daily work and signing in as that user, then creating a budget. A small channel, chosen because it covers exactly this sequence on the current console. | verified; description |
+| 14.3 | How to Set up a cost budget using AWS Budgets & Get $20 in Credits | BeSA Cloud Academy | https://www.youtube.com/watch?v=CnBGRrYCksg | length ? | Start | DESK | A two-minute walk through a monthly cost budget with email alerts at thresholds (2025), which on the newer free plan also earns a credit. A small community channel; watch it right after the root user is protected, before you create anything else. | verified; description |
+| 14.4 | The Safest Way to Authenticate AWS CLI in 2026 (No Access Keys Needed) | Tech With Yeshwanth | https://www.youtube.com/watch?v=OvDsVD6nshw | length ? | Start | DESK | Per its description (2026): why long-lived access keys are risky, signing the CLI in with your console identity using `aws login`, checking who you are, session expiry and `aws logout`, and how older SDKs can share the session through `credential_process`. A small channel; check each command against the AWS CLI documentation it links. | verified; description |
+| 14.5 | Working with AWS S3 using boto3 and Python | Hands-On-Cloud | https://www.youtube.com/watch?v=AT9tEHuhg68 | length ? | Start | DESK | Per its chapters (2022), a long boto3 session in sections: list and create buckets, upload files, list and filter objects, download them, delete, and pre-signed URLs. Watch only the sections the Build steps name. A smaller channel; boto3's S3 calls have not changed. | verified; description |
+
+**Code:** 14.1 to 14.4: none (console and CLI); for 14.4 keep the AWS CLI user guide page "Login for AWS local development using console credentials" open (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sign-in.html, read 2026-11-17): it confirms the 2.32.0 minimum, says an IAM user needs the `SignInLocalDevelopmentAccess` managed policy (an administrator already has it covered), and shows the `credential_process` profile for SDKs that cannot read the session yet. 14.5: no repo; the description links a written article on hands-on.cloud (cut off on the watch page); type along.
+**Optional (extra):**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 14.O1 | How do I use the AWS CLI to get temporary credentials for an IAM Identity Center user? | Amazon Web Services | https://www.youtube.com/watch?v=Ts8qbicxjcs | length ? | Deeper | DESK | A two-minute AWS Knowledge Center clip (2025): where the CLI caches an IAM Identity Center sign-in and how to turn it into temporary credentials. Only for the Stretch path (Identity Center instead of an IAM user). | verified; description |
+
+**Build it (follow the video):**
+1. Watch 14.1 and write on your sheet, in one line each: principal (who), policy (what is allowed, on which resource), role (a set of permissions something can assume for a while), trust policy (who may assume the role). Then add the one that matters most from Block 15 on: "a container gets permissions from a role, never from a key in its environment".
+2. Follow 14.2 to 2:28: sign up, sign in as the root user and turn on MFA for root. Do not create access keys for root, ever.
+3. Before anything else, follow 14.3 (and 14.2 from 5:11): a monthly cost budget with an amount you choose, email alerts at 50%, 80% and 100% of actual cost and at 100% of forecast cost. Check that the alert email address is one you read.
+4. Back to 14.2 at 2:28: create your admin identity (the video's IAM user), turn on MFA for it, sign out of root, and sign in with the new identity's sign-in URL. From now on, root stays unused.
+5. Follow 14.4: update the CLI, run `aws login`, then `aws sts get-caller-identity` and read the ARN: it must be your admin identity, not root. Run `aws s3 ls` (empty is fine) and `aws logout`, then log in again.
+6. In the S3 console, create a bucket with a globally unique name (for example `docdesk-docs-` plus a few random characters) in your chosen Region; leave Block Public Access on and default encryption on. Upload one PDF by hand.
+7. Follow 14.5 for "Listing and filtering buckets" (0:56), "Uploading files and objects" (33:00), "Listing and filtering objects" (51:00) and "Downloading objects" (59:49), typing the calls against your own bucket with `boto3.client("s3")`; skip versioning, deletes, copies and pre-signed URLs for now.
+
+**Carry it into DocDesk:**
+- `aws s3 sync docs/ s3://<your-bucket>/docs/` uploads all DocDesk PDFs; `aws s3 ls s3://<your-bucket>/docs/` shows them.
+- Add `docdesk/storage.py` with `list_pdfs(prefix) -> list[str]` (`list_objects_v2` with a paginator) and `read_pdf(key) -> bytes` (`get_object(...)["Body"].read()`), and give `ingest.py` a `--source` option: a local folder as before, or `s3://bucket/prefix/`; pass the bytes to your PDF reader through `io.BytesIO`. Chunk ids and citations now use the S3 key as the source.
+- Settings: `AWS_REGION`, `DOCDESK_BUCKET`, `DOCDESK_PREFIX=docs/`. No keys in `.env`: boto3 finds the credentials from your CLI sign-in through `AWS_PROFILE`. If your boto3 cannot read the `aws login` session, add the `credential_process` profile from the CLI guide page in Code (`aws configure export-credentials ... --format process`) and point `AWS_PROFILE` at it.
+- To run `ingest.py` inside the Compose `api` container, mount `~/.aws` read-only into it and set `AWS_PROFILE`; this is for the laptop only, and Block 15 replaces it with a role.
+- Create (but do not attach yet) a customer-managed IAM policy `docdesk-s3-read`: `s3:ListBucket` on the bucket with a condition on the `docs/` prefix, and `s3:GetObject` on `arn:aws:s3:::<bucket>/docs/*`. Block 15 attaches it to the container's role.
+- In `docdesk/README.md`, write down the Region, the bucket name and the budget amount, and the rule "no access keys in files, ever".
+
+**Done when:** the root user has MFA and you are signed in day to day as your admin identity; the budget shows in AWS Budgets with its alert thresholds; `aws sts get-caller-identity` shows your admin identity; `python ingest.py --source s3://<bucket>/docs/` loads all PDFs into Postgres; and `/ask` cites the S3 keys as sources with the same answers as before.
+**Stretch:** do it the enterprise way: enable IAM Identity Center, create a user with an `AdministratorAccess` permission set, sign the CLI in with `aws configure sso` and `aws sso login` (14.O1 shows where those credentials live), and remove the IAM user. Then turn on S3 versioning and see an overwritten PDF come back.
+**Cost and teardown:** nothing in this block runs by the hour. S3 charges for the storage and requests you use, which is very little for a few PDFs; check the S3 pricing page and your free-plan credits. Keep the bucket and the budget: Blocks 15 to 17 use them. At the end of the track, empty and delete the bucket (`aws s3 rb s3://<bucket> --force`), and if you ever created access keys, deactivate and delete them in IAM.
+**Progression check:** New: the account, the root user and MFA, a budget, IAM identities and policies, CLI sign-in, an S3 bucket and boto3. Reused: the PDFs, `ingest.py` and the whole local stack, unchanged apart from where the PDFs are read from. Jump size: medium but flat; many small console steps, each with its own short video, and no deployment, networking or running cost yet.
+**Architect's question:** in a bank, a developer never gets an account like this one: there are many accounts (per team and per environment) under AWS Organizations, people sign in through the bank's identity provider, and service control policies forbid whole classes of action. Which of today's steps would the platform team do for DocDesk, and which permissions would you still have to ask for, in writing, for Block 15?
+
+<details><summary>Recap questions</summary>
+
+1. Q: Why lock away the root user and use a separate admin identity? A: Root has unlimited power that policies cannot restrict, so it is protected with MFA, has no access keys and is used only for the few tasks that need it; daily work uses an identity whose permissions can be limited, logged and revoked.
+2. Q: What is the difference between an IAM user and an IAM role? A: A user is a long-lived identity for one person or system with its own credentials; a role has no credentials of its own and is assumed for a limited time by a trusted principal (a person, a service such as ECS, or another account), which receives temporary credentials.
+3. Q: Why create the budget before anything else? A: Cloud resources charge while they exist, not only while you use them; a budget with actual and forecast alerts is the earliest warning that something was left running, and it takes ten minutes to set up.
+
+</details>
+
+---
+
+## Block 15: DocDesk's containers on AWS: ECR, ECS Fargate, RDS and secrets
+
+**What you build:** The same three images from Blocks 9 and 13 (Nginx, API, Streamlit) pushed to Amazon ECR and running as one ECS service on Fargate, talking to a managed Postgres (RDS for PostgreSQL with pgvector) in private subnets, reading the PDFs from S3 through a role, and getting its passwords and API keys from Secrets Manager or Parameter Store instead of a `.env` file. You reach it by the task's public IP address for now; the proper front door is Block 16.
+**New layer:** a cloud runtime, a managed database and managed secrets, on top of a first VPC. **Reuses:** the Block 9 images and Compose layout, the Block 10 schema and migrations, the Block 13 Nginx and auth, and the Block 14 account, CLI sign-in, bucket and `docdesk-s3-read` policy.
+**Needs:** Block 14 done (budget alerts on). Docker on the laptop. A hosted model key for the cloud (Ollama does not come along: Fargate has no GPU and the model is too large to ship in an image; Bedrock arrives in Block 17). AWS App Runner, once the simplest way to run one container, is closed to new customers: the App Runner developer guide's availability-change page (read on 2026-11-17, in its Japanese edition; the English page could not be fetched here) says existing customers can keep using it, no new features are planned, and recommends Amazon ECS Express Mode instead. This block therefore uses ECS on Fargate, by hand first, with Express Mode as the optional shortcut (15.O1).
+**Architecture so far:**
+```
+ laptop: docker build --platform linux/amd64 ... ; docker push --> * ECR: docdesk-nginx, docdesk-api, docdesk-ui
+                                                                         |
+ * VPC (2 Availability Zones)                                            v
+   * public subnets:  * ECS service "docdesk" (Fargate, 1 task, public IP)
+                        task = nginx :80  +  api :8000  +  ui :8501   (share localhost)
+                        * task role: docdesk-s3-read (Block 14)  -> S3 bucket docs/
+                        * execution role: pull from ECR, read secrets, write logs
+                        * security group sg-app: port 80 from YOUR IP only
+   * private subnets: * RDS for PostgreSQL (pgvector), not public
+                        * security group sg-db: 5432 from sg-app only
+ * Secrets Manager / Parameter Store: DB password, OPENAI_API_KEY, SECRET_KEY
+ * CloudWatch Logs: one log stream per container
+ browser --> http://<task public IP>/        (no domain, no HTTPS yet: Block 16)
+```
+**Follow the video:**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 15.1 | AWS Networking Fundamentals | Amazon Web Services | https://www.youtube.com/watch?v=hiKPPy584Mg | length ? | Start | BIKE | An AWS session (2019) on VPC basics: planning IP ranges, subnets, routing, security groups and network ACLs, and NAT, followed by connecting a VPC to a data centre with VPN or Direct Connect, which can wait. Older, but these building blocks have not changed. | verified; description |
+| 15.2 | Docker to AWS ECS: Deploy Your First Container Step by Step | Cloud Guru | https://www.youtube.com/watch?v=xCjs7qXP-mE | length ? | Start | DESK | Per its chapters (2026): an ECR repository, CLI and IAM setup, building and pushing an image, then a VPC with public and private subnets and route tables, an ECS cluster, a task definition and a service, followed by a load balancer and a NAT gateway (Block 16 picks those up). A smaller channel; its chapters match this block step for step. | verified; description |
+| 15.3 | How to Create an Amazon RDS Database & Get Free $20 in Credits | BeSA Cloud Academy | https://www.youtube.com/watch?v=QF0J3VroFs8 | length ? | Start | DESK | A short console walk-through (2025) of creating an RDS database with PostgreSQL: engine, master credentials, the default settings, and then deleting the instance so it stops costing money. A small community channel. | verified; description |
+| 15.4 | AWS Systems Manager Parameter Store - Use Credentials with ECS Environment Variables (Hands-On) | Ethereum-Blockchain-Developer \| BlockOnAir | https://www.youtube.com/watch?v=a6B9nF9nBiY | length ? | Deeper | DESK | Per its chapters, Parameter Store compared with Secrets Manager (00:00), then a hands-on lab that stores a credential and hands it to an ECS container as an environment variable (03:40). From a 2020 ECS course, so the console looks different; the task-definition `secrets` mechanism is the same. | verified; description |
+
+**Code:** none of these videos needs a repo: 15.2's description does not link one, and the code you deploy is DocDesk's own. Keep the AWS documentation for ECS task definitions (`secrets`, `taskRoleArn`, `executionRoleArn`) open while you type.
+**Optional (extra):**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 15.O1 | Build production-ready applications with Amazon ECS Express Mode | Containers from the Couch | https://www.youtube.com/watch?v=z9JUEQjpGgY | length ? | Start | DESK | An AWS-run live show (2025) where AWS developer advocates introduce ECS Express Mode: one command turns a container image into a running, scaling service with its own URL. Watch it after you built the pieces by hand, to see what the shortcut creates for you. | verified; description |
+| 15.O2 | Getting Started With pgvector and Amazon Aurora PostgreSQL | AWS Developers | https://www.youtube.com/watch?v=e9SHaO9RNzk | length ? | Deeper | BIKE | AWS's own introduction (2023) to the pgvector extension on Aurora PostgreSQL: storing embeddings next to ordinary tables and running similarity searches; the same extension you enable on RDS for PostgreSQL here, and one of Bedrock's vector stores in Block 17. | verified; description |
+
+**Build it (follow the video):**
+1. Watch 15.1 up to the part on VPN and Direct Connect. Draw one VPC on your sheet with two public and two private subnets in two Availability Zones, an internet gateway, and two security groups (`sg-app`, `sg-db`) with an arrow "5432 from sg-app only". Write the rule: a security group allows traffic in by source; the default is deny.
+2. Follow 15.2 from 02:40 to 13:38 with its own sample (or straight away with `docdesk-api`): create an ECR repository, log Docker in to ECR (`aws ecr get-login-password ... | docker login ...`), tag and push an image, and find it in the console. On an Apple-silicon Mac, build with `--platform linux/amd64` (or choose ARM64 in the task definition).
+3. Continue 15.2 from 13:38 to 31:07: the VPC, subnets and route tables, an ECS cluster, a task definition and a service. Stop at 31:07; Block 16 picks up the load balancer from there. To reach the task without a load balancer, run it in a public subnet with "Assign public IP" on and a security group that allows its port from your own IP address only, then open `http://<public IP>:<port>`.
+4. Note what 15.2 does at 39:31 (a NAT gateway so tasks in private subnets can reach the internet and ECR): you do not need it while the task sits in a public subnet, and it is charged by the hour (see Cost and teardown).
+5. Follow 15.3: create an RDS for PostgreSQL database, but change three defaults: "Public access: No", put it in your VPC's private subnets with `sg-db`, and choose "Manage master credentials in AWS Secrets Manager" so RDS creates and stores the password for you. Note the endpoint name.
+6. Follow 15.4 (from 03:40) for the mechanism: a value stored outside the image, an execution role allowed to read it, and a `secrets` entry in the task definition that turns it into an environment variable inside the container. Do the same for the RDS secret (Secrets Manager) and for one value of your own in Parameter Store (a SecureString).
+
+**Carry it into DocDesk:**
+- Three ECR repositories (`docdesk-nginx`, `docdesk-api`, `docdesk-ui`); build the Nginx image with your `nginx.conf` copied in; tag each image with the Git commit, not only `latest`, and push.
+- One task definition `docdesk` with the three containers (Fargate, `awsvpc` network mode). Containers in one task share `localhost`, so in a cloud copy of `nginx.conf` the upstreams become `127.0.0.1:8000` and `127.0.0.1:8501`, and `DOCDESK_API_URL` becomes `http://127.0.0.1:8000`. Only Nginx exposes port 80. Log driver `awslogs`, one stream per container.
+- Settings from the environment: `DB_HOST` (the RDS endpoint), `DB_NAME`, `DB_USER`, and `DB_PASSWORD` from the RDS-managed secret (`valueFrom` with the secret's ARN and the `password` key); `OPENAI_API_KEY` and `SECRET_KEY` from Parameter Store SecureStrings or Secrets Manager; `DOCDESK_PROVIDER=openai`; `AWS_REGION`, `DOCDESK_BUCKET`. Build `DATABASE_URL` in `Settings` from the parts. No `.env` file and no `~/.aws` mount in the cloud.
+- Roles: the task execution role (pull from ECR, write logs, read exactly these secrets and parameters) and a task role with `docdesk-s3-read` attached, so boto3 inside the API gets S3 access with no keys at all.
+- One-off tasks with the API image and a command override (`aws ecs run-task ... --overrides`): first `alembic upgrade head` (your Block 10 migrations, including `CREATE EXTENSION vector`), then `python ingest.py --source s3://<bucket>/docs/`. They run inside the VPC, so they can reach the private database that your laptop cannot.
+- Service `docdesk` with desired count 1 in a public subnet, public IP on, `sg-app` allowing port 80 from your IP only; `sg-db` allowing 5432 from `sg-app` only.
+
+**Done when:** `http://<task public IP>/` shows the DocDesk login page; you can register, log in and ask a question that comes back with citations to S3 keys; the answer and the conversation are in RDS (a second task started later still sees the conversation); CloudWatch Logs shows the API's request lines; and `grep -ri "sk-\|password" ` over the task definition JSON finds no secret values, only ARNs.
+**Stretch:** recreate the same service with ECS Express Mode (15.O1) from your `docdesk-api` image and list everything it created for you (service, load balancer, security groups, scaling); then delete it. Or move the task to a private subnet and give it VPC endpoints for ECR, S3, CloudWatch Logs and Secrets Manager instead of a NAT gateway, and compare what each option costs on the pricing pages.
+**Cost and teardown:** from this block on, things cost money while they exist. Charged while running (check each pricing page for your Region): Fargate tasks (by vCPU and memory for as long as the task runs), the RDS instance (by the hour while it runs, plus storage), public IPv4 addresses, Secrets Manager secrets, and ECR storage. If you follow 15.2's NAT gateway step: "you are charged for each hour that your NAT gateway is available and each gigabyte of data that it processes" (Amazon VPC User Guide, "Pricing for NAT gateways", read 2026-11-17), so delete it at the end of every session. After each session: set the service's desired count to 0 and stop the RDS instance. The RDS guide's page on stopping an instance (read 2026-11-17) says a stopped instance still pays for its provisioned storage and backups (and a public IPv4 address if it has one), and that RDS starts it again automatically after seven consecutive days, so stop it again or delete it. At the end of Block 16 (or now, if you pause the track): delete the service and cluster, deregister the task definitions, delete the RDS instance (take a final snapshot only if you want the data), the ECR repositories, the secrets and parameters, any NAT gateway and its Elastic IP, the security groups and the VPC. Watch the budget email for the next few days.
+**Progression check:** New: ECR, a VPC with subnets and security groups, ECS clusters, task definitions and services on Fargate, RDS, IAM roles for tasks, and managed secrets. Reused: the same images (Blocks 9 and 13), the same migrations and ingestion (Blocks 10 and 14), the S3 policy (Block 14). Jump size: large, the biggest so far, so it is split: networking as a concept first (15.1), then one image pushed and run (15.2), then the database (15.3), then secrets (15.4); the application code changes only in how it reads its settings.
+**Architect's question:** the same image now runs on your laptop and in AWS with different settings. Which differences are allowed between environments (addresses, secrets, sizes) and which are not (code, dependencies, schema)? And for a bank: why would the database's password be managed and rotated by RDS and Secrets Manager rather than chosen by you, and who should be able to read it?
+
+<details><summary>Recap questions</summary>
+
+1. Q: What is the difference between an ECS task's execution role and its task role? A: The execution role is used by ECS itself to start the task (pull the image from ECR, fetch secrets for the `secrets` entries, write logs); the task role is assumed by your code inside the container for its own AWS calls, such as reading from S3.
+2. Q: Why is the database in a private subnet with a security group that only allows the app's security group? A: Nothing on the internet can reach it, and inside the VPC only tasks that carry `sg-app` can open a connection on port 5432, so a leaked password alone is not enough to connect.
+3. Q: How does a secret reach the container without being in the image or the task definition? A: The task definition holds only the secret's ARN in a `secrets` entry; when the task starts, ECS uses the execution role to fetch the value from Secrets Manager or Parameter Store and injects it as an environment variable.
+
+</details>
+
+---
+
+## Block 16: The internet edge: your domain, HTTPS, a load balancer, a CDN and a firewall
+
+**What you build:** A proper front door for the service from Block 15: a name (`docdesk.<your-domain>`) in Route 53, a free public TLS certificate from AWS Certificate Manager (ACM), an Application Load Balancer that terminates HTTPS and forwards to the ECS service, CloudFront in front of it as the CDN, and AWS WAF with AWS managed rules and a rate-based rule. The ECS task loses its public IP: only the load balancer can reach it.
+**New layer:** DNS, TLS, the cloud load balancer and the edge (CDN and firewall). **Reuses:** the Block 15 VPC, ECS service and security groups; the Block 13 Nginx, auth and rate limits; the Block 0 picture of the request walk.
+**Needs:** Block 15 running. A domain you control: register a cheap one in Route 53 (a domain is charged every year) or use a subdomain of one you already own by delegating it to a Route 53 hosted zone. Nothing to install.
+**Architecture so far:**
+```
+ browser: https://docdesk.<your-domain>
+   |  * DNS: Route 53 hosted zone, ALIAS docdesk -> CloudFront
+   v
+ * CloudFront (HTTPS with an ACM certificate in us-east-1)  + * AWS WAF web ACL
+     managed rules (common, known bad inputs, IP reputation) + rate-based rule
+   |  HTTPS to the origin  (origin.docdesk.<your-domain> -> ALB)
+   v
+ * Application Load Balancer (public subnets, sg-alb: 443 from CloudFront)
+     listener 443 (ACM certificate in your Region), listener 80 -> redirect to 443
+     target group (type ip, port 80, health check /api/health)
+   v
+ ECS service "docdesk" (private or public subnet, NO public IP; sg-app: 80 from sg-alb only)
+   nginx -> ui / api  (Block 15)  ->  RDS (sg-db), S3, secrets
+```
+**Follow the video:**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 16.1 | CNAME vs Alias Records in Route 53 \| Explained with Examples | KnoDAX | https://www.youtube.com/watch?v=R5AnTB5gf1c | length ? | Start | BIKE | A short comparison (2024) of the two ways to point a name at something else in Route 53: what a CNAME and an Alias record are, where each is allowed, and why Alias is the choice for AWS resources such as a load balancer or CloudFront and for the bare domain. A small channel. | verified; description |
+| 16.2 | Secure AWS ECS Apps with ALB & SSL/TLS (ACM + Route 53) \| Hands-On AWS Tutorial \| #11 | Learn It Right Way | https://www.youtube.com/watch?v=a7mfpc1BWNY | length ? | Start | DESK | Per its chapters (2025): what TLS and a certificate are, ACM, where the certificate attaches, HTTPS termination at the ALB and the HTTP-to-HTTPS redirect (theory to 09:13), then a hands-on demo with a Fargate service, the ALB, the certificate and a Route 53 record. Episode 11 of a series; you built its starting point (an ECS service behind an ALB) with 15.2. | verified; description |
+| 16.3 | Protecting your endpoints with AWS Web Application Firewall (WAF) | Majestic.cloud | https://www.youtube.com/watch?v=RyVfisoZwMQ | length ? | Start | DESK | A 2023 walk-through of AWS WAF as a filter in front of an endpoint: rules against SQL injection, cross-site scripting and other common attacks, attached to an API Gateway in the demo; the same web ACL attaches to CloudFront or an ALB. A smaller channel. | verified; description |
+| 16.4 | How to prevent direct access to CloudFront origins with custom headers and AWS WAF | Majestic.cloud | https://www.youtube.com/watch?v=9TlWF0-Ah8Q | length ? | Deeper | DESK | The next step from the same channel (2023): CloudFront adds a secret custom header, and a WAF web ACL on the load balancer or API Gateway blocks every request that lacks it, so nobody can go around the CDN and its firewall. | verified; description |
+
+**Code:** none; this block is console configuration. Keep the AWS hands-on tutorial "How to Register a Domain Name with Amazon Route 53" (https://docs.aws.amazon.com/hands-on/latest/get-a-domain/get-a-domain.html) open for the domain step.
+**Optional (extra):** none for this block (the API-gateway concept talk is 13.O2).
+
+**Build it (follow the video):**
+1. Watch 16.1 and add to your Block 0 sheet the records you will create: `NS` (who answers for your domain), `CNAME` (name to name, never at the apex), and Route 53 `ALIAS` records for `origin.docdesk` (to the ALB) and `docdesk` (to CloudFront). Run `dig +short example.com A` and `dig +short www.example.com CNAME` on any public site to see real records.
+2. Get the name: register a domain in Route 53 following the AWS hands-on tutorial in Code (the hosted zone is created for you), or create a hosted zone for a subdomain such as `aws.<your-existing-domain>` and add its four `NS` records at your current DNS provider. Wait until `dig NS <name>` shows the Route 53 name servers.
+3. Watch 16.2 to 09:13 (TLS, ACM, where certificates attach, termination at the ALB, redirect). Then request the ACM certificate in your Region for `docdesk.<domain>` and `origin.docdesk.<domain>` with DNS validation, press "Create records in Route 53", and wait for the status "Issued".
+4. The load balancer: go back to 15.2 at 31:07 and follow it to 39:31 with DocDesk (ALB in the public subnets, a target group of type `ip`, the ECS service registered with it, health checks), then follow 16.2's demo from 09:13: an HTTPS listener with your certificate, the HTTP listener redirecting to HTTPS, and a Route 53 Alias record `origin.docdesk` pointing at the ALB. Open `https://origin.docdesk.<domain>` and look at the certificate in the browser.
+5. The CDN (no follow-along video was verified for this step, so use the console wizard and the Carry list below): request a second certificate for `docdesk.<domain>` in us-east-1, create a CloudFront distribution with `origin.docdesk.<domain>` as an HTTPS-only custom origin and caching disabled for the app, add `docdesk.<domain>` as an alternate name, and point an Alias record `docdesk` at the distribution. Wait for "Deployed", then open `https://docdesk.<domain>`.
+6. Follow 16.3: create a web ACL (for DocDesk, scope CloudFront; the video attaches its ACL to an API Gateway), add AWS managed rule groups, send a request with `?q=' OR 1=1--` and find it in the sampled requests, then add a rate-based rule and watch it trigger with a quick loop of `curl` calls.
+7. Follow 16.4: CloudFront adds a secret custom header to every origin request, and the origin rejects requests without it (the video uses a WAF web ACL on the origin; an ALB listener rule that returns 403 does the same job without a second web ACL). Confirm that `https://origin.docdesk.<domain>` called directly now returns 403 while `https://docdesk.<domain>` works.
+
+**Carry it into DocDesk:**
+- DNS: a public hosted zone for your domain (or delegated subdomain); write down its four name servers and check them with `dig NS <domain>`.
+- Certificates: one ACM certificate for `docdesk.<domain>` and `origin.docdesk.<domain>` in your Region (for the ALB), and one for `docdesk.<domain>` in us-east-1 (CloudFront only accepts certificates from that Region); validate both with DNS records that ACM creates in Route 53 for you.
+- ALB: in the public subnets, security group `sg-alb`; a target group of type `ip` on port 80 with health check `/api/health`; listener 443 with the certificate forwarding to the target group, and listener 80 that redirects to 443. Update the ECS service to register with the target group, turn "Assign public IP" off, and change `sg-app` to allow port 80 from `sg-alb` only. If the tasks move to private subnets they need a way to reach ECR, S3, Bedrock and Secrets Manager: VPC endpoints or a NAT gateway (see Cost and teardown).
+- Route 53: an ALIAS record `origin.docdesk` pointing at the ALB. Test `https://origin.docdesk.<domain>/` before adding CloudFront.
+- CloudFront: a distribution with the ALB (as `origin.docdesk.<domain>`, HTTPS only) as the origin, alternate name `docdesk.<domain>` with the us-east-1 certificate, viewer protocol "Redirect HTTP to HTTPS", and two behaviours: `/api/*` and the Streamlit app paths with caching disabled and all headers, cookies and query strings forwarded (they are per-user and must never be cached; CloudFront passes WebSocket connections through, which Streamlit needs), and only truly static files (if you add any, for example `/static/*`) cached. Then an ALIAS record `docdesk` pointing at the distribution.
+- Lock the origin: allow 443 on `sg-alb` only from CloudFront (the AWS-managed prefix list for CloudFront origin-facing addresses), and have CloudFront add a secret custom header that an ALB listener rule checks, so nobody can bypass the edge by calling the ALB directly.
+- WAF: a web ACL on the CloudFront distribution with the AWS managed rule groups for common threats, known bad inputs and the IP reputation list, plus a rate-based rule on `/api/` per IP; start the rules in Count mode, read the sampled requests, then switch them to Block. Keep Nginx's and the API's limits from Block 13: three layers, three different jobs.
+- Settings: Streamlit and FastAPI behind proxies need to know they are on HTTPS (for example `--forwarded-allow-ips` for uvicorn); check that login redirects and links use `https://docdesk.<domain>`.
+
+**Done when:** `https://docdesk.<your-domain>` shows a valid certificate in the browser, `http://` redirects to `https://`, you can log in and get cited answers; the ALB's own DNS name and the task's former public IP no longer answer from your laptop; `dig docdesk.<domain>` returns CloudFront addresses; and a loop of fast requests to `/api/` from one machine shows up as blocked in the WAF metrics.
+**Stretch:** put Amazon API Gateway (an HTTP API with a VPC link to the ALB) in front of `/api/*` instead, with usage plans or a Lambda authorizer, and list what it gave you that the ALB plus WAF did not, and what it cost you (limits, latency, another place for configuration).
+**Cost and teardown:** charged while they exist (check each pricing page): the Application Load Balancer is charged "for each hour or partial hour" it runs plus Load Balancer Capacity Units used per minute, with a free-tier allowance for new customers (Elastic Load Balancing pricing page, read 2026-11-17); a NAT gateway, if you add one, is charged per hour available and per gigabyte processed (Block 15); VPC interface endpoints, CloudFront and AWS WAF have their own charges (check their pricing pages before you create them); a Route 53 hosted zone is billed monthly, when it is created and on the first day of each month, not prorated, except that a zone deleted within 12 hours of creation is not charged, and a registered domain is billed per year (Amazon Route 53 pricing page, read 2026-11-17); alias queries to the ALB and to CloudFront are free per the same page. ACM public certificates used with the ALB and CloudFront cost nothing extra (check the ACM pricing page). After each session: scale the ECS service to 0 and stop RDS (Block 15); the ALB still charges while it exists, so delete it if you pause for more than a day or two and recreate it from your notes. At the end of the track: delete the WAF web ACL, the CloudFront distribution (disable, wait, then delete), the ALB and target group, any NAT gateway and VPC endpoints, the ACM certificates, then the Block 15 resources; keep or delete the hosted zone (deleting it stops the monthly charge; the domain renews yearly unless you turn off auto-renew).
+**Progression check:** New: DNS records and hosted zones, ACM certificates and DNS validation, the ALB with listeners and target groups, CloudFront behaviours and origins, AWS WAF rules. Reused: the Block 15 service, VPC and security groups (only their rules change), the Block 13 gateway and limits, the Block 0 map. Jump size: medium; five pieces, but each is configuration in front of a service that already works, added in the order a request meets them in reverse (name, certificate, load balancer, CDN, firewall), and each is tested on its own URL before the next.
+**Architect's question:** an ALB, Amazon API Gateway and your own Nginx can each route, throttle and check something. For DocDesk in a bank, which one owns TLS, which owns rate limits per client, which owns authentication, and why might the bank's central edge (its own CDN, WAF and API gateway, run by another team) replace CloudFront and WAF entirely?
+
+<details><summary>Recap questions</summary>
+
+1. Q: Why does Route 53 offer ALIAS records when CNAME records exist? A: A CNAME cannot sit at the root of a domain (the zone apex) and costs a lookup; an ALIAS record points a name, including the apex, straight at an AWS resource such as a load balancer or CloudFront, follows its changing addresses, and Route 53 does not charge for those queries.
+2. Q: Where is TLS terminated in this design, and why are there two certificates? A: At CloudFront for the browser and again at the ALB for the CloudFront-to-origin hop; CloudFront only uses certificates from us-east-1, while the ALB needs one in its own Region.
+3. Q: What does AWS WAF add that the Block 13 Nginx limit does not? A: It runs at the edge before traffic reaches your VPC, uses managed rule groups that AWS maintains against common attacks and bad IP addresses, and applies rate-based rules across all edge locations, while Nginx only sees what already reached your task.
+
+</details>
+
+---
+
+## Block 17: Amazon Bedrock: a third provider, then a managed RAG to compare with yours
+
+**What you build:** Amazon Bedrock as a third model provider behind the Block 6 switch (`DOCDESK_PROVIDER=bedrock`), called with boto3's Converse API from the laptop and then from the ECS task through its role, with no API key at all; then a Bedrock Knowledge Base over the same S3 PDFs, queried side by side with your own Block 8/10 RAG on the same questions, and a short build-versus-buy table you fill in yourself.
+**New layer:** managed GenAI services (a model API inside your cloud account, and managed retrieval). **Reuses:** the Block 6 provider switch, the Block 8 questions and `/ask`, the Block 10 pgvector retrieval, the Block 14 bucket and IAM, the Block 15 task role and the Block 16 site.
+**Needs:** Block 15 done (Block 16 is not required for the code, only for the public URL). One-time: `pip install -U boto3` (the Converse API needs a recent boto3), and in the Bedrock console for your Region, check that the chat model and the embeddings model you want are available to your account; some model providers ask for a short use-case form the first time. IAM: your admin identity can do everything here; the ECS task role needs `bedrock:InvokeModel` (and `bedrock:InvokeModelWithResponseStream` for streaming) on the chosen model, and `bedrock:Retrieve` / `bedrock:RetrieveAndGenerate` for the Knowledge Base.
+**Architecture so far:**
+```
+ browser -> CloudFront + WAF -> ALB (HTTPS) -> ECS task: nginx -> ui / api        (Blocks 15-16)
+                                                   |
+                                         get_provider()  <- DOCDESK_PROVIDER     (Block 6)
+                                           openai | ollama (laptop) | * bedrock
+                                                                        |
+                                              * boto3 "bedrock-runtime" converse(modelId, messages, system)
+                                                (task role, no key)
+   POST /ask          -> your RAG: pgvector on RDS + prompt + provider            (Blocks 8, 10)
+ * POST /ask?engine=kb -> * Bedrock Knowledge Base  (boto3 "bedrock-agent-runtime"
+                             retrieve / retrieve_and_generate)
+                               * data source: S3 bucket docs/   (Block 14)
+                               * embeddings model + * vector store (S3 Vectors or Aurora PostgreSQL)
+```
+**Follow the video:**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 17.1 | AWS re:Invent 2025 - Mastering model choice: The 3-step Amazon Bedrock advantage (AIM391) | AWS Events | https://www.youtube.com/watch?v=Vu91YwZxskY | 56:43 | Deeper | BIKE | The product angle on model families and trade-offs: how a team picks among many models (quality, latency, price) and switches between them, with a customer example. Vendor-framed, so keep the criteria and discount the sales parts. | verified; also in Track C 1.5; watch once |
+| 17.2 | AI Conversations Made Simple: Overview of Amazon Bedrock Converse API | AWS Developers | https://www.youtube.com/watch?v=wNyih2j0IbE | length ? | Start | DESK | Per its chapters (2024), an AWS developer advocate shows why calling each model in its own request format hurts, then the Converse API as one call for many models, multi-turn conversations and tool use, with code on screen. | verified; description |
+| 17.3 | AWS re:Invent 2024 - Build scalable RAG applications using Amazon Bedrock Knowledge Bases (AIM305) | AWS Events | https://www.youtube.com/watch?v=jSlNfr8Uuco | 56:51 | Deeper | BIKE | The AWS product angle on managed enterprise knowledge bases (ingestion, chunking, vector store, retrieval). Content judged from the title only. May be dated: Bedrock Knowledge Bases has changed a lot since Dec 2024. | verified (existence); content per title only; also in Track C 3.5; watch once |
+| 17.4 | Build a Full-Stack RAG App with Amazon Bedrock (Knowledge Base & S3 Vectors) - Deploy in AWS Console | Cumulus Cycles | https://www.youtube.com/watch?v=BciUpLuyb3k | length ? | Deeper | DESK | Per its description (2026): a Knowledge Base built in the console over an S3 bucket of documents, with S3 Vectors as the vector store instead of OpenSearch and Titan embeddings, synced and then called from a Lambda function behind API Gateway with a React page. A smaller channel; only the Knowledge Base part is needed here. | verified; description |
+
+**Code:** 17.1 and 17.3: none (talks). 17.2: no repo is linked; the code is short and on screen, and the Converse API pages of the Amazon Bedrock user guide have the same calls. 17.4: the description links a repository under `github.com/CumulusCycles/` that is cut off on the watch page; open it from the description for the console settings, or follow the video.
+**Optional (extra):**
+
+| # | Title | Channel | Link | Length | Level | Mode | What you will get | Status |
+|---|---|---|---|---|---|---|---|---|
+| 17.O1 | Amazon Bedrock Knowledge Bases - how to build RAG on AWS in 2025 | AWS Polska | https://www.youtube.com/watch?v=It769ydwS-k | 1:01:15 | Start | DESK (assumed from title) | A build-along for RAG on Bedrock Knowledge Bases. Regional AWS channel; content and mode judged from the title only. | verified (existence); content per title only; also in Track C 8.D1; watch once |
+| 17.O2 | AWS re:Invent 2025 - Bridging from POC to production: An intro to Amazon Bedrock AgentCore (AIM2204) | AWS Events | https://www.youtube.com/watch?v=oDjESsByBmM | 59:01 | Start | BIKE | The map of AgentCore (runtime, identity, gateway, memory and related pieces) from its product lead, an AWS tech lead and an Ericsson customer (Vivek Singh, Mark Roy, Sarbashish Das). Start here for the AWS agent platform. | verified; also in Track C 8.1; watch once |
+
+**Build it (follow the video):**
+1. Watch 17.1 on the bike and write five model-choice criteria on your sheet (for example quality on your task, latency, price per thousand tokens, context length, availability in your Region). You will use them to pick DocDesk's Bedrock model.
+2. In the Bedrock console, in the Region you chose in Block 14, open the model catalog, pick one chat model and one embeddings model that are available to your account, and try the chat model in the playground with a DocDesk question.
+3. Follow 17.2: watch 02:06 to 08:22 to see the problem (every model family has its own request body), then type along from 08:22: `bedrock-runtime` client, `converse(modelId=..., messages=[...], system=[...])`, and the multi-turn part (11:40) where you append the assistant's reply and the next user turn.
+4. In a `bedrock_smoke.py` like your Block 1 smoke test, send the same question to two different models by changing only `modelId`, and print `usage` (input and output tokens) and the latency. If a model id is rejected, use the inference profile id the console shows for it.
+5. Watch 17.3 for the vocabulary of managed RAG (data source, ingestion and sync, chunking, vector store, retrieve, retrieve and generate) and write next to each word the file or function in your Blocks 7, 8 and 10 code that does the same job.
+6. Follow 17.4 for the Knowledge Base part only: an S3 data source, S3 Vectors as the vector store, a Titan embeddings model, "Sync", and a test question in the console. Skip the Lambda, API Gateway and React parts: DocDesk's own API and page play those roles.
+7. Call the Knowledge Base from Python: `boto3.client("bedrock-agent-runtime").retrieve_and_generate(...)` with its id and a model ARN, print the answer and each citation's S3 location, then `retrieve(...)` to see the raw chunks and scores.
+
+**Carry it into DocDesk:**
+- Add `BedrockProvider` next to `OpenAIProvider` and `OllamaProvider` in `core.py`: `boto3.client("bedrock-runtime").converse(modelId=settings.model, system=[{"text": ...}], messages=[...], inferenceConfig={"maxTokens": ..., "temperature": ...})`. Map your message list to Converse's `{"role", "content": [{"text": ...}]}` shape, read the answer from `output.message.content`, and the token counts from `usage` (`inputTokens`, `outputTokens`) for the cost line. `DOCDESK_PROVIDER=bedrock` with `DOCDESK_MODEL=<model id or inference profile id>`; `/health` shows it.
+- Keep the Block 3 contract: ask for the same JSON as before and validate it with the same Pydantic model; if your model supports Converse tool use, you can also pass the schema as a tool, as in Block 11.
+- In ECS: add a policy to the task role that allows `bedrock:InvokeModel` on that one model (or inference profile) ARN, set the two settings in the task definition, and remove `OPENAI_API_KEY` from the secrets when Bedrock is the default. Redeploy and check that `/ask` works with no model key anywhere.
+- Knowledge Base: create one in the console with your bucket's `docs/` prefix as the S3 data source, an embeddings model, and a quick-create vector store; choose Amazon S3 Vectors (or Aurora PostgreSQL Serverless), not OpenSearch Serverless (see Cost and teardown). Run "Sync", then test it in the console's chat panel.
+- Add `docdesk/kb.py` with `kb_ask(question)` calling `boto3.client("bedrock-agent-runtime").retrieve_and_generate(...)` with your Knowledge Base id and model ARN, and returning answer and citations (the S3 URI and the retrieved text) in your `AskResponse` shape; expose it as `POST /ask` with `engine=kb` (default stays `engine=own`). Also try `retrieve(...)` alone and feed its chunks to your own prompt: managed retrieval with your own generation.
+- Run your ten Block 8 Stretch questions (question plus expected file and page; write them now if you skipped that Stretch) through `engine=own` and `engine=kb` (same model for both) and fill in `docs/build-vs-buy.md`:
+
+  | | Your RAG (Blocks 8-10) | Bedrock Knowledge Base |
+  |---|---|---|
+  | Quality (correct answers with correct citations, out of 10) | | |
+  | Cost (per question, and fixed monthly pieces) | | |
+  | Control (chunking, prompts, filters, where data lives, tests) | | |
+  | Effort (hours to build, and to run and change it) | | |
+  | Verdict for DocDesk | | |
+
+**Done when:** `DOCDESK_PROVIDER=bedrock` answers `/chat` and `/ask` both on the laptop and on the deployed site with no model API key in any secret; `/ask?engine=kb` returns answers with citations to the same S3 PDFs; and `docs/build-vs-buy.md` has numbers in every cell and a one-paragraph verdict.
+**Stretch:** add a Bedrock Guardrail to the Converse call and see which of your questions it blocks (a preview of Block 20); or put a metadata filter on the Knowledge Base query (for example only one PDF) and compare with a `WHERE source = ...` in your own SQL.
+**Cost and teardown:** Bedrock models are charged per input and output token on demand (check the Bedrock pricing page for your model and Region); a Knowledge Base adds the embeddings tokens for every sync and the cost of its vector store. Choose the vector store with care: the Amazon OpenSearch Service pricing page (read 2026-11-17) says classic OpenSearch Serverless collections are billed "at least for a minimum of 2 OCUs" for the first collection in an account (half that with the dev-test option), while its newer NextGen collections scale to zero after 10 minutes without traffic. The Bedrock user guide's page on creating a knowledge base (read 2026-11-17) lists Amazon S3 Vectors and Amazon Aurora PostgreSQL Serverless as quick-create vector stores, so pick one of those for this experiment and check its pricing page. Teardown after the comparison: delete the Knowledge Base and its data source, then delete the vector store it created (the S3 vector bucket and index, or the Aurora cluster, which deleting the Knowledge Base does not necessarily remove), and remove the extra IAM permissions. Switch `DOCDESK_PROVIDER` back if you want to stop Bedrock charges, and tear down the Block 15-16 resources as listed there when you pause.
+**Progression check:** New: Bedrock model access, the Converse API, IAM permissions for a model, a Knowledge Base (data source, sync, vector store, retrieve and generate). Reused: the provider switch (Block 6), the eval questions and `/ask` (Block 8), pgvector retrieval (Block 10), the bucket (Block 14), the task role (Block 15). Jump size: small for the provider (one more class behind a switch built for this in Block 6), medium for the Knowledge Base, which is a managed version of what you built in Blocks 7, 8 and 10, so every setting in its console has a name you already know.
+**Architect's question:** build or buy? Your own RAG gives you control over chunking, prompts, filtering and tests; the Knowledge Base gives you less code to run and AWS's roadmap. For a bank, weigh where the data and embeddings live, how you test and explain a retrieval result to an auditor, what happens when the managed service changes its defaults, and how hard it is to leave. Which parts of DocDesk would you buy, and which must stay yours?
+
+<details><summary>Recap questions</summary>
+
+1. Q: What does Bedrock's Converse API give you over calling each model's own request format? A: One request and response shape (system prompt, messages, inference settings, tool use, usage counts) for all supported models, so switching models is a change of model id instead of new code.
+2. Q: How does the ECS task call Bedrock without an API key? A: Its task role has an IAM policy that allows `bedrock:InvokeModel` on the chosen model; boto3 in the container gets temporary credentials for that role automatically, and every call is signed and logged in CloudTrail.
+3. Q: What does a Bedrock Knowledge Base do for you, and what does it still need from you? A: It reads the documents from the data source, chunks and embeds them, stores the vectors in a vector store, and retrieves (and optionally generates) at query time; you still choose the data, the embeddings model, the vector store and its cost, the chunking settings, the prompt, and you still have to evaluate the answers.
+
+</details>
+
+<!-- Pages to check (Blocks 13-17): every new row's watch page was read (oEmbed was refused by the fetch allowlist again; title and channel come from the watch-page metadata); YouTube rate-limited the fetch tool for long stretches, so several candidates could not be read. Kept rows whose page title matched the search result. Skipped because the page returned did not match the searched title or ID: VL9DNCDzJBY (search title "NGINX Explained"; the page read was "NGINX Explained | Reverse Proxy & Load Balancer (Complete Guide)", SYA Academy), bVjwu1WN42I (search "Set Up AWS IAM Identity Center"), iF9fs8Rw4Uo (search "AWS Identity and Access Management (IAM) Basics"), 7r2z3Qn3Qz8 and O3LCsq1g0GU (search "How to Use Python with AWS S3"), uzgJmnIR9qs (search "CloudFront with ALB as Custom Origin with SSL"). Read but not used: 7aOb0vZHT5k ("AWS Free Tier and the New AWS Experience", 2026; the page did not name the channel, only links to AWS Developers), TllCWtY7zRc (page title "AWS re:Invent 2025 - Launch web applications in seconds with Amazon ECS Express Mode (CNS379)", AWS Events; the search title differed slightly). Could not be read: oBJFf2VSizo, uM_yxhXn9ts, wzHH7FbBb9E, IHcYmNsJCuo, iWcS3q6Kwys, 8Fwrdlvqk2M, vv3tjd9ASyU, DL3fJMD-CRI, 3e_9JqPd7U4, YKT9bWvy_PI, 6-fhKSzePRc, QjQFN6qG5jk, YmZPqPEBUkY, JRZiQFVWpi8, vxvgpDZOuYw. Gap: no CloudFront follow-along (CloudFront with an ALB origin) was verified for Block 16; IHcYmNsJCuo, 6-fhKSzePRc, QjQFN6qG5jk and YmZPqPEBUkY are the candidates to re-check. Repos were checked with git ls-remote and a shallow clone (last commit date). -->
+
 <!-- BLOCKS GO HERE -->
