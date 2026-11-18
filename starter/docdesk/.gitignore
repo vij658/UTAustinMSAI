@@ -1,0 +1,32 @@
+# secrets: never commit these
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# data you generate or download (Blocks 7-10)
+data/pdfs/*
+!data/pdfs/README.md
+chroma/
+*.sqlite
+*.db
+
+# editors and OS
+.vscode/
+.idea/
+.DS_Store
+
+# infrastructure state (Block 21)
+.terraform/
+*.tfstate
+*.tfstate.*
